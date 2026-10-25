@@ -839,6 +839,34 @@ circle.jig{animation:jit .35s linear 3}
 .tcar{display:flex;justify-content:center}.tcar .car{max-width:320px;width:100%;height:auto}
 .tsample{font:400 15px var(--rf);color:var(--ink2);text-align:center;padding:24px 0 30vh;margin:0}
 .thread .cur .ulw{text-decoration:none}
+/* Readable font option (Atkinson Hyperlegible) everywhere, and thread extras */
+:root[data-font="readable"]{--fd:"Atkinson Hyperlegible",system-ui,sans-serif;--fb:"Atkinson Hyperlegible",system-ui,sans-serif}
+:root[data-font="readable"] body{font-size-adjust:.48}
+:root[data-font="readable"] .slide svg text{font-family:var(--fd)}
+:root[data-font="readable"] .thread{--rf:"Atkinson Hyperlegible",system-ui,sans-serif}
+:root[data-font="easy"] .tp p,:root[data-font="easy"] .tlist li{font-size:16px;line-height:1.75}
+:root[data-font="easy"] .ttab{font-size:14.5px}
+.tlabel{font:700 15px var(--rf)!important;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)!important;margin:0 0 .4em!important}
+.tlabel.ok{color:var(--au)!important}.tlabel.no{color:var(--dh)!important}
+.tlist{margin:0 0 .9em;padding:0 0 0 1.2em;font:400 19px/1.6 var(--rf)}
+.tlist li{margin:.15em 0}
+.tlist.x li{text-decoration:line-through;text-decoration-color:var(--dh);text-decoration-thickness:1.5px;color:var(--ink2)}
+.tbig{font:700 26px/1.25 var(--fd)!important;margin:.6em 0!important}
+.tquote{font-style:italic;border-left:3px solid var(--au);padding-left:12px}
+.tpeace{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;text-align:center}
+.tpeace span{display:grid;place-items:center;margin:0 auto 4px;width:40px;height:40px;border-radius:50%;background:var(--au);color:#fff;font:700 20px var(--fd)}
+:root[data-theme="dark"] .tpeace span{color:#1C1626}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tpeace span{color:#1C1626}}
+.tpeace small{font:400 13px/1.2 var(--rf);color:var(--ink2)}
+.tex{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:16px!important}
+.tex .pill{font:400 15px var(--rf);min-height:32px;padding:4px 12px}
+.tchat{display:flex;flex-direction:column;gap:6px;margin:0 0 .9em}
+.tchat p{margin:0!important;max-width:85%;padding:8px 12px;border-radius:16px;font-size:17px!important;line-height:1.4!important}
+.tchat .me{align-self:flex-start;background:var(--au-s)}
+.tchat .me.x{text-decoration:line-through;text-decoration-color:var(--dh)}
+.tchat .fb{align-self:flex-end;background:var(--dh-s)}
+.thread #storygo{margin-top:8px}
+.tend{height:22vh}
 </style>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:image" content="https://audhd-peace-treaty.netlify.app/og.png">
@@ -937,7 +965,7 @@ const still = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /* ---------- theme ---------- */
 function applyTheme(){ const t = ls.get("pt.theme", null); if (t) document.documentElement.dataset.theme = t; else delete document.documentElement.dataset.theme; document.documentElement.dataset.font = ls.get("pt.font","cute") }
-const FONTS = [["cute","Cute","Gaegu"],["clean","Clean","Inter"],["round","Round","Outfit"],["easy","Easy-read","OpenDyslexic"]];
+const FONTS = [["cute","Cute","Gaegu"],["readable","Readable","Atkinson Hyperlegible"],["clean","Clean","Inter"],["easy","Easy-read","OpenDyslexic"]];
 function setFont(f){ ls.set("pt.font",f); document.documentElement.dataset.font=f; $$(".fpk").forEach(b=>b.classList.toggle("on",b.dataset.f===f)); requestAnimationFrame(buildLogo) }
 function isDark(){ const t = document.documentElement.dataset.theme; return t ? t==="dark" : matchMedia("(prefers-color-scheme: dark)").matches }
 applyTheme();
@@ -1973,7 +2001,7 @@ function vBlog(keepY){
 /* ---------- Quick read as the thread, typeset for reading (sample: parts 1-3) ---------- */
 function vThread(keepY){
   if (STORYOFF){ STORYOFF(); STORYOFF = null }
-  const T = `<span class="kau">Thinking Brain</span>`, F = `<span class="kdh">Feeling Brain</span>`;
+  const T = `<span class="kau">Thinking Brain</span>`, F = `<span class="kdh">Feeling Brain</span>`, E = ex();
   const car = () => { const d = document.createElement("div"); d.innerHTML = carSVG(); const svg = d.firstElementChild; svg.classList.add("told"); svg.removeAttribute("id"); return d.innerHTML };
   const parts = [
     { name:"Civil war", html:`
@@ -1994,7 +2022,86 @@ function vThread(keepY){
       <figure class="tfig"><div class="tcar">${car()}</div><figcaption>The ${F} at the wheel. The ${T} with the map.</figcaption></figure>
       <p><b>Your <span class="kdh">FEELING BRAIN</span> has ALWAYS been driving.</b><br>It's ALWAYS had control of the wheel.<br>It's ALWAYS decided where to go.</p>
       <p><b>Your ${T} is the passenger with the map.</b><br>Great at planning.<br>Tires out fast.<br>Easily talked into whatever the driver wants.</p>
-      <p>In the AuDHD brain?<br><b>This driver is operating at 200% INTENSITY.</b><br>While the ${T} has the most detailed maps ever created.</p>` }
+      <p>In the AuDHD brain?<br><b>This driver is operating at 200% INTENSITY.</b><br>While the ${T} has the most detailed maps ever created.</p>` },
+    { name:"Directions", html:`
+      <p><b>Your ${T} is the one giving directions.</b></p>
+      <p class="tlabel ok">It can</p>
+      <ul class="tlist"><li>Suggest better routes.</li><li>Offer clever shortcuts.</li><li>Warn about traffic ahead.</li></ul>
+      <p class="tlabel no">It CANNOT</p>
+      <ul class="tlist"><li>Actually drive the car.</li><li>Force the Feeling Brain to move.</li><li>Take control of the wheel.</li></ul>
+      <p><b>Shouting "just focus!" or "stick to the schedule!"</b> is like screaming directions at a driver who speaks another language.</p>` },
+    { name:"Breakthrough", html:`
+      <p class="tlabel">Breakthrough moment</p>
+      <p><b>Your ${F} speaks ONE language:</b></p>
+      <p>What we try (and FAIL):</p>
+      <ul class="tlist x"><li>Throwing logic at it.</li><li>Drowning it in facts.</li><li>Forcing it to "be rational".</li></ul>
+      <p class="tbig">EMPATHY<br>EMPATHY<br>Only EMPATHY</p>
+      <p><b>The TRUTH:</b><br>Emotional problems can ONLY have emotional solutions.</p>
+      <p>Time to learn a new language...</p>` },
+    { name:"A new language", html:`
+      <p><b>So how do we work with this reality?</b></p>
+      <p>We need a new way to communicate:</p>
+      <ul class="tlist"><li>One that speaks to emotions.</li><li>One that respects both brains.</li><li>One that builds trust, not force.</li></ul>
+      <p class="tbig">Let's make <span class="hl">P.E.A.C.E.</span></p>
+      <figure class="tfig"><div class="tpeace">${[["P","Pause"],["E","Explore"],["A","Acknowledge"],["C","Connect"],["E","Ease in"]].map(([l,w])=>`<div><span>${l}</span><small>${w}</small></div>`).join("")}</div><figcaption>Five steps for your ${T} to talk to your ${F}.</figcaption></figure>
+      <p class="tex">Our example on the way: ${Object.entries(EX).map(([k,o])=>`<button class="pill soft exc${(S.ex||"email")===k?" on":""}" data-x="${k}">${o.label}</button>`).join("")}</p>` },
+    { name:"P · Pause", html:`
+      <p class="tlabel">P · Pause</p>
+      <p><b>First, pause.</b></p>
+      <p>Your ${T} is how you talk, how you think, how you do everything. Now it has to talk to the one that's actually driving. And you can't do that on the run.</p>
+      <p><b>What am I avoiding right now?</b><br>Notice you've gone off path.<br>No judging. It's just information.</p>
+      <p>And don't start shouting instructions. Start the conversation.</p>` },
+    { name:"E · Explore", html:`
+      <p class="tlabel">E · Explore</p>
+      <p><b>Ask your Feeling Brain.</b></p>
+      <p>What your THINKING BRAIN wants to scream:</p>
+      <ul class="tlist x">${E.sh.map(x=>`<li>"${esc(x)}"</li>`).join("")}</ul>
+      <p>The car won't budge. Instead, we ask gently:</p>
+      <p class="tquote">"Hey Feeling Brain... what's going on with ${esc(E.it)} today?"</p>
+      <p><b>Say it out loud if you can.</b><br>If you can't, say it inside. But out loud works best.</p>
+      <p><b>What happens next:</b><br>Your ${F} answers before words can load. Words aren't its language. It talks in waves of sensations. Your body is always telling you something. We've just forgotten how to listen.</p>
+      <p>You'll feel:</p>
+      <ul class="tlist"><li>Anxiety spike.</li><li>Stomach tighten.</li><li>Shoulders tense.</li><li>Heaviness set in.</li></ul>
+      <p><b>Now we're getting somewhere...</b></p>` },
+    { name:"A · Acknowledge", html:`
+      <p class="tlabel">A · Acknowledge</p>
+      <p><b>Let it breathe.</b></p>
+      <p>Let every messy feeling out where you can see it. Then tell it: <b>"I see you're feeling this. That totally makes sense."</b> It's trying to protect you, even when the way it protects you doesn't help.</p>
+      <p>What NOT to do:</p>
+      <ul class="tlist x"><li>Fight these feelings.</li><li>Logic them away.</li><li>Shame them into submission.</li></ul>
+      <p>Instead:</p>
+      <ul class="tlist"><li>Let them surface.</li><li>Let them breathe.</li><li>Let them exist.</li></ul>
+      <p><b>Why this works:</b><br>The longer a feeling gets to talk, the looser its hands get on the wheel.</p>` },
+    { name:"C · Connect", html:`
+      <p class="tlabel">C · Connect</p>
+      <p><b>Remind it with feelings.</b></p>
+      <p>Your ${T} is a meaning-making machine. It knows <b>why</b> this matters. But it can't lecture the ${F} into caring. It has to help it <b>feel</b> it.</p>
+      <p>Don't list logical benefits like:</p>
+      <ul class="tlist x"><li>"It's good for your health"</li><li>"You should be productive"</li><li>"Everyone else can do it"</li></ul>
+      <p>Instead, remind the Feeling Brain:</p>
+      <ul class="tlist"><li>"${esc(E.remind)}"</li><li>"Remember that surge of PRIDE when you crushed it?"</li><li>"Remember how PEACEFUL your body felt after?"</li></ul>
+      <p><b>Because the Feeling Brain only responds to feelings.</b> And the meaning you give a feeling changes how it feels.</p>
+      <p>"My stomach is tight."</p>
+      <ul class="tlist x"><li>"It means I'm going to fail." That story keeps the car parked.</li></ul>
+      <ul class="tlist"><li>"It means this matters to me." That story starts the engine.</li></ul>
+      <p><b>Same feeling. Different meaning.</b></p>` },
+    { name:"E · Ease in", html:`
+      <p class="tlabel">E · Ease in</p>
+      <p><b>Bargain a tiny first step.</b></p>
+      <p><b>The golden rule:</b> bargain like a kid trading lunch. It only swaps if it thinks it's winning. You can't order a child around. It has to feel like its own idea.</p>
+      <div class="tchat"><p class="me x">"${esc(E.big)}"</p><p class="fb">Nope. Way too big.</p></div>
+      <p>What good deals look like:</p>
+      <div class="tchat">${E.deals.map((d,k)=>`<p class="me">"${esc(d)}"</p><p class="fb">${esc(E.rep[k])}</p>`).join("")}</div>
+      <p><b>Remember: start tiny.</b><br>Your Feeling Brain is sensitive, stubborn and allergic to big asks.<br>If it says no, don't fight it. Make it smaller and ask again.</p>` },
+    { name:"The conversation", html:`
+      <p><b>That's the conversation.</b></p>
+      <p>Simple in concept, but it will take time to get a hang of it.</p>
+      <p><b>This isn't a one-time fix.</b><br>This dialogue between the brains requires consistent practice over time.</p>
+      <p>What you're learning:</p>
+      <ul class="tlist"><li>A new language.</li><li>A daily practice.</li><li>A different kind of dance.</li></ul>
+      <p>The goal isn't "perfect control" (that's an illusion anyway).<br><b>The goal is partnership.</b><br>And like any skill, it can be learned.</p>
+      <p class="tbig">And it starts by practicing. Right now.</p>
+      <button class="btn" id="storygo">Start the Wizard<sup class='tm'>TM</sup></button>` }
   ];
   app.innerHTML = top() + `
     <div class="sprog" aria-hidden="true"><i></i></div>
@@ -2002,7 +2109,7 @@ function vThread(keepY){
       <header class="thead"><h1 class="ptitle">The AuDHD <span class="hl">Peace Treaty</span><sup class='tm'>TM</sup></h1>
         <p class="tmeta">${ICONS.t[0]} About 2 minutes of reading. Only once.</p></header>
       ${parts.map((p,n)=>`<section class="tp" id="ss${n+1}" data-n="${n+1}" aria-label="${esc(p.name)}"><span class="tnum">${n+1}/</span>${p.html}</section>`).join("")}
-      <p class="tsample">Sample: parts 1 to 3. The rest follows once this feels right.</p>
+      <div class="tend"></div>
     </article>
     <button class="spill" aria-expanded="false"><b>1</b>/${parts.length} · <span>${esc(parts[0].name)}</span></button>`;
   wireTop(); track("thread_opened");
@@ -2022,6 +2129,8 @@ function vThread(keepY){
   addEventListener("scroll", onScroll, {passive:true}); addEventListener("resize", onScroll);
   STORYOFF = () => { removeEventListener("scroll", onScroll); removeEventListener("resize", onScroll) };
   pill.onclick = () => { const n = (cur+1) % parts.length; const t = $("#ss"+(n+1)); if (t) scrollTo({top: scrollY + t.getBoundingClientRect().top - 76, behavior: still()?"auto":"smooth"}) };
+  $$(".exc").forEach(b=>b.onclick = () => { S.ex = b.dataset.x; track("example_changed",{example:S.ex}); const y = scrollY; vThread(true); scrollTo(0,y) });
+  $("#storygo").onclick = () => { track("wizard_clicked",{from:"thread"}); if (SITE==="web"){ ls.set("pt.intro",true); setTimeout(()=>{ location.href = WIZARD_URL },250) } else { S.view="start"; render(); scrollTo(0,0) } };
   if (!keepY) scrollTo(0,0);
   tick();
 }
