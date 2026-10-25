@@ -1987,13 +1987,14 @@ function vThread(keepY){
       <figure class="tfig"><table class="ttab"><thead><tr><th class="kau">Thinking Brain</th><th class="kdh">Feeling Brain</th></tr></thead>
         <tbody>${PAIRS.map(p=>`<tr><td>${p[0]}</td><td>${p[1]}</td></tr>`).join("")}</tbody></table></figure>` },
     { name:"Who's driving", html:`
-      <p>We <b>assume</b> the ${T} is driving. While the ${F} just rides along, shouting out where it wants to go...</p>
-      <p>That's what most of us think. If that were true, life would be easy. You'd think it, and you'd do it.</p>
-      <p><b>But here's the plot twist.</b> That's not how your mind actually works.</p>
+      <p><b>We ASSUME</b> the <span class="kau">THINKING BRAIN</span> is driving.<br>While the <span class="kdh">FEELING BRAIN</span> just rides along, shouting out where it wants to go...</p>
+      <p>So who's really behind the wheel?</p>
+      <p><b>That's what most of us think.</b> If that were true, life would be easy. You'd think it, and you'd do it.</p>
+      <p><b>But here's the PLOT TWIST.</b><br>That's not how your mind ACTUALLY works.</p>
       <figure class="tfig"><div class="tcar">${car()}</div><figcaption>The ${F} at the wheel. The ${T} with the map.</figcaption></figure>
-      <p><b>Your ${F} has always been driving.</b> It's always had control of the wheel. It's always decided where to go.</p>
-      <p><b>Your ${T} is the passenger with the map.</b> Great at planning. Tires out fast. Easily talked into whatever the driver wants.</p>
-      <p>In the AuDHD brain? <b>This driver is operating at 200% intensity.</b> While the ${T} has the most detailed maps ever created.</p>` }
+      <p><b>Your <span class="kdh">FEELING BRAIN</span> has ALWAYS been driving.</b><br>It's ALWAYS had control of the wheel.<br>It's ALWAYS decided where to go.</p>
+      <p><b>Your ${T} is the passenger with the map.</b><br>Great at planning.<br>Tires out fast.<br>Easily talked into whatever the driver wants.</p>
+      <p>In the AuDHD brain?<br><b>This driver is operating at 200% INTENSITY.</b><br>While the ${T} has the most detailed maps ever created.</p>` }
   ];
   app.innerHTML = top() + `
     <div class="sprog" aria-hidden="true"><i></i></div>
