@@ -765,6 +765,27 @@ circle.jig{animation:jit .35s linear 3}
 @keyframes beat{50%{transform:scale(1.15)}}
 .goalscene{display:flex;flex-direction:column;justify-content:center;height:100%}
 @media (prefers-reduced-motion:reduce){.scene{transition:none}.dheart{animation:none}}
+/* ===== story v5: seamless stage, line at the bottom, text fades before it, bigger bold reading ===== */
+.stagewrap{padding-bottom:6px;border-bottom:2px dashed var(--ink2)}
+.stagebox{border-bottom:0;padding-bottom:4px}
+.stagewrap::before,.top::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:var(--grain);mix-blend-mode:var(--blend);background-image:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.top{isolation:isolate}
+.stagewrap{isolation:isolate}
+.stagewrap::after{content:"";position:absolute;left:0;right:0;top:calc(100% + 2px);height:34px;background:linear-gradient(var(--paper) 30%,transparent);pointer-events:none}
+.scene .ropesvg,.scene .smap,.scene .fstage,.scene .sgrip,.scene .thoughts{background:none;box-shadow:none}
+.scene .thoughts span{box-shadow:inset 0 0 0 1.5px var(--rule)}
+.story .stx p,.story .stx li,.story .stx .cardtxt,.story .stx .body{font:700 24px/1.22 var(--fd)}
+.story .stx p b,.story .stx .cardtxt b{font-weight:700}
+.story .stx .hook{font-size:25px}
+.story .stx h2{font-size:31px}
+.story .stx .shb{font-size:21px}
+.story .ticks li{font-size:24px}
+.pairspace{height:16vh}
+.dbrain{width:44%;text-align:center}
+.dtx{font:700 19px/1.15 var(--fd);color:var(--ink);min-height:2.3em}
+.dbrain .dot{width:52px;height:52px}
+.duoscene{align-items:flex-start;padding-top:6px}
+.dvs{margin-top:10px}
 </style>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:image" content="https://audhd-peace-treaty.netlify.app/og.png">
@@ -1571,12 +1592,13 @@ function storySections(){
     } };
 
   const S2 = { name:SNAMES[1],
-    pic:`<div class="duoscene"><div class="dbrain au"><span class="dot"></span><span class="dic"></span><b>Thinking Brain</b></div><span class="dvs">vs</span><div class="dbrain dh"><span class="dot"></span><span class="dic"></span><b>Feeling Brain</b></div></div>`,
-    steps:[`<h2 class="sh2">Meet the two passengers in your head.</h2>`,
-      ...PAIRS.map(p=>`<p class="cardtxt"><b class="kau">Thinking Brain:</b> ${p[0]}<br><b class="kdh">Feeling Brain:</b> ${p[1]}</p>`)],
+    pic:`<div class="duoscene"><div class="dbrain au"><span class="dot"></span><b>Thinking Brain</b><span class="dic"></span><span class="dtx"></span></div><span class="dvs">vs</span><div class="dbrain dh"><span class="dot"></span><b>Feeling Brain</b><span class="dic"></span><span class="dtx"></span></div></div>`,
+    steps:[`<h2 class="sh2">Meet the two passengers in your head.</h2>`, ...PAIRS.map(()=>`<div class="pairspace" aria-hidden="true"></div>`)],
     apply(el,b){
-      const k = b-1;
-      el.querySelectorAll(".dbrain").forEach((d,i)=>{ const ic = d.querySelector(".dic"); ic.innerHTML = k>=0 ? ICONS[i?"f":"t"][Math.min(3,k)] : ""; if (k>=0) kick(ic, "popin") });
+      const k = Math.min(PAIRS.length-1, b-1);
+      el.querySelectorAll(".dbrain").forEach((d,i)=>{ const ic = d.querySelector(".dic"), tx = d.querySelector(".dtx");
+        ic.innerHTML = k>=0 ? ICONS[i?"f":"t"][k] : ""; tx.textContent = k>=0 ? PAIRS[k][i] : "";
+        if (k>=0){ kick(ic, "popin"); kick(tx, "popin") } });
     } };
 
   const S3 = { name:SNAMES[2],
