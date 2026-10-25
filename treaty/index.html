@@ -6,7 +6,7 @@
 <title>The AuDHD Peace Treaty Wizard™</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Inter:wght@400;600;700&family=Outfit:wght@400;600;700&family=Lexend:wght@400;500;600;700&family=Poppins:wght@700&family=Lora:ital,wght@1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;600;700&family=Outfit:wght@400;600;700&family=Lexend:wght@400;500;600;700&family=Poppins:wght@700&family=Lora:ital,wght@1,500&display=swap" rel="stylesheet">
 <style>
 
 /* Same design system as The AuDHD Map: cream paper, plum = autism / Thinking Brain, tomato = ADHD / Feeling Brain, yellow = brand + "what you become", blue = steps, green = the solution. Flow: how it works (3 quick screens) -> start -> optional reset -> the talk -> Tiny Thing Card -> zoom out to the triangle. */
@@ -815,6 +815,30 @@ circle.jig{animation:jit .35s linear 3}
 .btx p.yes{color:var(--au)}
 .btx .stp{padding:0}
 .blog .bs:last-child{padding-bottom:18vh}
+/* ===== Quick read: the thread, typeset for reading ===== */
+.thread{--rf:"Atkinson Hyperlegible",system-ui,sans-serif;display:flex;flex-direction:column;gap:0;animation:none;max-width:34em;margin:0 auto;width:100%}
+:root[data-font="clean"] .thread{--rf:"Inter",system-ui,sans-serif}
+:root[data-font="round"] .thread{--rf:"Outfit",system-ui,sans-serif}
+:root[data-font="easy"] .thread{--rf:"OpenDyslexic",system-ui,sans-serif}
+.thead{display:flex;flex-direction:column;gap:10px;padding:8px 0 18px}
+.thead .ptitle{font-size:44px}
+.tmeta{display:flex;align-items:center;gap:8px;margin:0;font:400 16px/1.4 var(--rf);color:var(--ink2)}
+.tmeta svg{width:18px;height:18px;color:var(--ink2)}
+.tp{padding:22px 0 18px;border-top:1px solid var(--rule)}
+.tnum{display:block;font:700 20px var(--fd);color:var(--ink2);margin-bottom:8px}
+.tp p{font:400 19px/1.65 var(--rf);color:var(--ink);margin:0 0 .85em;font-size-adjust:none}
+.tp p:last-child{margin-bottom:0}
+.tp b{font-weight:700}
+.tp .kau,.tp .kdh{font-weight:700}
+.tfig{margin:6px 0 18px}
+.tfig figcaption{font:400 15px/1.4 var(--rf);color:var(--ink2);text-align:center;margin-top:6px}
+.ttab{width:100%;border-collapse:collapse;font:400 17px/1.4 var(--rf)}
+.ttab th{font:700 17px var(--rf);text-align:left;padding:8px 10px;border-bottom:2px solid var(--rule)}
+.ttab td{padding:9px 10px;vertical-align:top;border-bottom:1px solid var(--rule);width:50%}
+.ttab td:first-child{border-right:1px solid var(--rule)}
+.tcar{display:flex;justify-content:center}.tcar .car{max-width:320px;width:100%;height:auto}
+.tsample{font:400 15px var(--rf);color:var(--ink2);text-align:center;padding:24px 0 30vh;margin:0}
+.thread .cur .ulw{text-decoration:none}
 </style>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:image" content="https://audhd-peace-treaty.netlify.app/og.png">
@@ -1204,7 +1228,7 @@ async function vArticle(){
   if (focusOn()){ S.sdone = {}; readThen(null, () => {}) }
 }
 function vHow(fast){
-  if (!fast && readStyle() && ls.get("pt.style","")) { vBlog(); return }
+  if (!fast && readStyle() && ls.get("pt.style","")) { vThread(); return }
   const i = ORD[S.hi]; const E = ex(); let body = ""; track("slide_viewed",{slide:S.hi+1});
   if (i===0) body = `
     <h1 class="ptitle">The AuDHD <span class="hl">Peace Treaty</span><sup class='tm'>TM</sup></h1>
@@ -1942,6 +1966,61 @@ function vBlog(keepY){
   pill.onclick = () => { sheet.hidden = !sheet.hidden; pill.setAttribute("aria-expanded", String(!sheet.hidden)) };
   $$(".exc").forEach(b=>b.onclick = () => { S.ex = b.dataset.x; track("example_changed",{example:S.ex}); const y = scrollY; vBlog(true); scrollTo(0,y) });
   $("#storygo").onclick = () => { track("wizard_clicked",{from:"blog"}); if (SITE==="web"){ ls.set("pt.intro",true); setTimeout(()=>{ location.href = WIZARD_URL },250) } else { S.view="start"; render(); scrollTo(0,0) } };
+  if (!keepY) scrollTo(0,0);
+  tick();
+}
+
+/* ---------- Quick read as the thread, typeset for reading (sample: parts 1-3) ---------- */
+function vThread(keepY){
+  if (STORYOFF){ STORYOFF(); STORYOFF = null }
+  const T = `<span class="kau">Thinking Brain</span>`, F = `<span class="kdh">Feeling Brain</span>`;
+  const car = () => { const d = document.createElement("div"); d.innerHTML = carSVG(); const svg = d.firstElementChild; svg.classList.add("told"); svg.removeAttribute("id"); return d.innerHTML };
+  const parts = [
+    { name:"Civil war", html:`
+      <p><span class="kau">Autism:</span> "I need structure."<br><span class="kdh">ADHD:</span> "I hate being controlled."</p>
+      <p><span class="kau">Autism:</span> "I love the same routine."<br><span class="kdh">ADHD:</span> "I'm allergic to repetition."</p>
+      <p><b><span class="kau">Au</span><span class="kdh">DHD</span> is like living with an internal civil war.</b></p>
+      <p>Your nervous system is being pulled by opposing forces, while your entire nervous system is screaming "NO!"</p>
+      <p><b>But there's a hidden backdoor to this resistance.</b></p>` },
+    { name:"Two passengers", html:`
+      <p><b>Meet the two passengers in your head.</b></p>
+      <figure class="tfig"><table class="ttab"><thead><tr><th class="kau">Thinking Brain</th><th class="kdh">Feeling Brain</th></tr></thead>
+        <tbody>${PAIRS.map(p=>`<tr><td>${p[0]}</td><td>${p[1]}</td></tr>`).join("")}</tbody></table></figure>` },
+    { name:"Who's driving", html:`
+      <p>We <b>assume</b> the ${T} is driving. While the ${F} just rides along, shouting out where it wants to go...</p>
+      <p>That's what most of us think. If that were true, life would be easy. You'd think it, and you'd do it.</p>
+      <p><b>But here's the plot twist.</b> That's not how your mind actually works.</p>
+      <figure class="tfig"><div class="tcar">${car()}</div><figcaption>The ${F} at the wheel. The ${T} with the map.</figcaption></figure>
+      <p><b>Your ${F} has always been driving.</b> It's always had control of the wheel. It's always decided where to go.</p>
+      <p><b>Your ${T} is the passenger with the map.</b> Great at planning. Tires out fast. Easily talked into whatever the driver wants.</p>
+      <p>In the AuDHD brain? <b>This driver is operating at 200% intensity.</b> While the ${T} has the most detailed maps ever created.</p>` }
+  ];
+  app.innerHTML = top() + `
+    <div class="sprog" aria-hidden="true"><i></i></div>
+    <article class="thread slide">
+      <header class="thead"><h1 class="ptitle">The AuDHD <span class="hl">Peace Treaty</span><sup class='tm'>TM</sup></h1>
+        <p class="tmeta">${ICONS.t[0]} About 2 minutes of reading. Only once.</p></header>
+      ${parts.map((p,n)=>`<section class="tp" id="ss${n+1}" data-n="${n+1}" aria-label="${esc(p.name)}"><span class="tnum">${n+1}/</span>${p.html}</section>`).join("")}
+      <p class="tsample">Sample: parts 1 to 3. The rest follows once this feels right.</p>
+    </article>
+    <button class="spill" aria-expanded="false"><b>1</b>/${parts.length} · <span>${esc(parts[0].name)}</span></button>`;
+  wireTop(); track("thread_opened");
+  const els = $$(".tp"), bar = $(".sprog i"), pill = $(".spill");
+  const units = [...document.querySelectorAll(".thread .tp > p")];
+  const seen = {}; let cur = -1, raf = 0, curU = null;
+  const tick = () => {
+    raf = 0; let c = 0; els.forEach((e,i)=>{ if (e.getBoundingClientRect().top < innerHeight*0.45) c = i });
+    const max = document.documentElement.scrollHeight - innerHeight; bar.style.width = (max>0 ? Math.min(100, scrollY/max*100) : 0) + "%";
+    if (c !== cur){ cur = c; pill.querySelector("b").textContent = c+1; pill.querySelector("span").textContent = parts[c].name; if (!seen[c]){ seen[c] = 1; track("section_viewed",{slide:c+1, name:parts[c].name, view:"thread"}) } }
+    if (focusOn()){
+      let best = null, bd = 1e9; units.forEach(u=>{ const r = u.getBoundingClientRect(); const d = Math.abs((r.top + r.bottom)/2 - innerHeight*0.45); if (d < bd){ bd = d; best = u } });
+      if (best !== curU){ if (curU) curU.classList.remove("cur"); curU = best; if (best){ if (!best.querySelector(":scope > .ulw")) best.innerHTML = `<span class="ulw">${best.innerHTML}</span>`; best.classList.add("cur") } }
+    } else if (curU){ curU.classList.remove("cur"); curU = null }
+  };
+  const onScroll = () => { if (!raf) raf = requestAnimationFrame(tick) };
+  addEventListener("scroll", onScroll, {passive:true}); addEventListener("resize", onScroll);
+  STORYOFF = () => { removeEventListener("scroll", onScroll); removeEventListener("resize", onScroll) };
+  pill.onclick = () => { const n = (cur+1) % parts.length; const t = $("#ss"+(n+1)); if (t) scrollTo({top: scrollY + t.getBoundingClientRect().top - 76, behavior: still()?"auto":"smooth"}) };
   if (!keepY) scrollTo(0,0);
   tick();
 }
