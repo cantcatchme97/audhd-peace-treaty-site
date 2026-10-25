@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>The AuDHD Peace Treaty Wizard™ · Free</title>
+<meta name="description" content="Your Thinking Brain and Feeling Brain keep fighting over the wheel. Learn how to make them talk, then practise it live with the Wizard. Free.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:image" content="https://audhd-peace-treaty.netlify.app/og.png">
+<meta property="og:url" content="https://audhd-peace-treaty.netlify.app">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:title" content="The AuDHD Peace Treaty Wizard™ · Free">
+<meta property="og:description" content="Learn how to make your two brains talk, then practise it live. About 2 minutes.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F7F2E8;--sheet:#EEE6D6;--card:#FFFCF5;--ink:#211B2E;--ink2:#4A4257;--rule:rgba(33,27,46,.13);--au:#3E2F66;--dh:#C8442A;--y:#FFD43B;--fd:"Gaegu","Comic Neue",cursive}
+@media (prefers-color-scheme:dark){:root{--paper:#1C1626;--sheet:#272034;--card:#2A2338;--ink:#F1EAF7;--ink2:#D3C9DE;--rule:rgba(241,234,247,.14);--au:#B9A6F0;--dh:#F08A68}}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--paper);color:var(--ink);font:400 20px/1.3 var(--fd);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.bg{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;gap:14px;padding:84px 20px 0;filter:blur(2.5px);opacity:.7;pointer-events:none;user-select:none}
+.bg h1{font:700 52px/.95 var(--fd);margin:0;text-align:center;max-width:520px}
+.bg h1 span{background:linear-gradient(transparent 58%,var(--y) 58%,var(--y) 92%,transparent 92%)}
+.bg .war{width:100%;max-width:440px;background:var(--card);border-radius:18px;padding:16px;box-shadow:inset 0 0 0 1px var(--rule)}
+.bub{display:inline-block;padding:8px 14px;border-radius:16px;color:#fff;font:700 20px var(--fd);animation:bub 4s infinite}
+.bub.au{background:var(--au)}.bub.dh{background:var(--dh);float:right;animation-delay:2s}
+@keyframes bub{0%,45%{opacity:1}50%,95%{opacity:.15}100%{opacity:1}}
+#you{animation:tug 4s ease-in-out infinite}
+@keyframes tug{0%,40%{transform:translateX(-50px)}50%,90%{transform:translateX(50px)}100%{transform:translateX(-50px)}}
+.bg .pills{display:flex;gap:10px;justify-content:center}.bg .pills i{font-style:normal;padding:9px 18px;border-radius:999px;color:#fff;font-weight:700}
+.top{position:relative;z-index:2;padding:16px 20px}
+.logo{display:inline-block;background:var(--y);color:#2B2140;border-radius:12px;padding:6px 12px 4px;font:700 26px/1 var(--fd)}.logo small{display:block;font-size:13px;opacity:.75}.logo b{color:#3E2F66}.logo em{font-style:normal;color:#C8442A}
+main{position:relative;z-index:2;min-height:calc(100vh - 70px);display:grid;place-items:end center;padding:12px 12px calc(14px + env(safe-area-inset-bottom,0px))}
+.card{width:100%;max-width:420px;background:var(--card);border-radius:28px;padding:26px 22px 20px;box-shadow:0 18px 50px rgba(0,0,0,.18),inset 0 0 0 2px var(--y);animation:in .5s cubic-bezier(.3,1.4,.5,1) both}
+@keyframes in{from{opacity:0;transform:translateY(16px) scale(.96)}to{opacity:1;transform:none}}
+.tag{display:inline-block;background:var(--y);color:#2B2140;font-weight:700;font-size:17px;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px 2px;border-radius:9px}
+h2{font:700 32px/1 var(--fd);margin:10px 0 8px}
+p{margin:0 0 10px;color:var(--ink2)}p b{color:var(--ink)}
+.kau{color:var(--au);font-weight:700}.kdh{color:var(--dh);font-weight:700}
+.time{display:flex;gap:8px;align-items:center;font-weight:700;color:var(--ink);margin:6px 0 16px}
+form{display:flex;flex-direction:column;gap:10px}
+input[type=email],input[type=text]{font:700 21px var(--fd);padding:12px 16px;border-radius:16px;border:2px solid var(--rule);background:var(--paper);color:var(--ink);outline:none}
+input[type=email]:focus,input[type=text]:focus{border-color:var(--y)}
+button{appearance:none;border:0;cursor:pointer;background:var(--y);color:#2B2140;font:700 23px/1 var(--fd);min-height:52px;border-radius:16px;box-shadow:0 4px 0 #C99E12;transition:transform .1s,box-shadow .1s}
+button:active{transform:translateY(3px);box-shadow:0 1px 0 #C99E12}button:disabled{opacity:.7}
+.hp{position:absolute;left:-5000px;width:1px;height:1px;overflow:hidden}
+.fine{font-size:16px;opacity:.8;margin:12px 0 0;text-align:center}
+.err{color:var(--dh);font-weight:700;margin:0}.err:empty{display:none}
+.tm{font-size:.42em;vertical-align:super;opacity:.8}
+@media (prefers-reduced-motion:reduce){.bub,#you,.card{animation:none}}
+
+main{grid-template-columns:minmax(0,1fr);min-height:calc(100svh - 70px)}
+.card{justify-self:center;min-width:0;width:100%}
+input,button{width:100%;min-width:0;max-width:100%}
+h2{overflow-wrap:break-word}
+@media (max-height:760px){.top{padding:10px 16px}.logo{font-size:22px}.card{padding:18px 18px 14px;border-radius:24px}h2{font-size:27px;margin:8px 0 6px}p{margin:0 0 6px;font-size:18px}.time{margin:4px 0 10px}form{gap:8px}input[type=email],input[type=text]{padding:9px 14px;font-size:19px}button{min-height:46px;font-size:21px}.fine{font-size:14px;margin-top:8px}}
+</style>
+<script>
+!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags identify setPersonProperties group resetGroups reset get_distinct_id get_session_id alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+posthog.init("phc_vhUmnsmQbPvXfpUHhuKVgh6a3arJ6E5ivCV8y2KjcBCu",{api_host:"https://us.i.posthog.com",person_profiles:"identified_only",session_recording:{maskAllInputs:true}});
+</script>
+</head>
+<body>
+<div class="bg" aria-hidden="true">
+  <h1>The AuDHD <span>Peace Treaty</span><sup class="tm">TM</sup></h1>
+  <div class="war">
+    <span class="bub au">"I need structure."</span><span class="bub dh">"I hate being controlled."</span>
+    <svg viewBox="0 0 320 110" width="100%"><line x1="20" y1="60" x2="300" y2="60" stroke="var(--rule)" stroke-width="3" stroke-dasharray="3 7"/><g id="you"><path d="M160 60 L60 60" stroke="var(--au)" stroke-width="8" stroke-linecap="round"/><path d="M160 60 L260 60" stroke="var(--dh)" stroke-width="8" stroke-linecap="round"/><circle cx="160" cy="60" r="30" fill="var(--sheet)" stroke="var(--y)" stroke-width="6"/><text x="160" y="67" text-anchor="middle" font-size="21" font-weight="700" fill="var(--ink)" font-family="Gaegu">You</text></g></svg>
+    <div class="pills"><i style="background:var(--au)">Autism pulls</i><i style="background:var(--dh)">ADHD pulls</i></div>
+  </div>
+</div>
+<div class="top"><span class="logo"><small>how to</small><b>Au</b><em>DHD</em></span></div>
+<main>
+  <div class="card" role="dialog" aria-labelledby="h">
+    <span class="tag">Made for AuDHD brains</span>
+    <h2 id="h">The AuDHD Peace Treaty Wizard<sup class="tm">TM</sup></h2>
+    <p>Your <span class="kau">Thinking Brain</span> knows what to do. Your <span class="kdh">Feeling Brain</span> has the wheel.</p>
+    <p><b>Learn how to make them talk. Then practise it live with the Wizard.</b></p>
+    <div class="time"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg>About 2 minutes. Only once.</div>
+    <form id="f" novalidate>
+      <input type="text" name="FIRSTNAME" id="fname" placeholder="Your first name" autocomplete="given-name" required aria-label="Your first name">
+      <input type="email" name="EMAIL" id="email" placeholder="Your email" autocomplete="email" required aria-label="Your email">
+      <div class="hp" aria-hidden="true"><input type="text" name="email_address_check" tabindex="-1" autocomplete="off"></div>
+      <p class="err" id="err" role="alert"></p>
+      <button id="go" type="submit">Get the Wizard</button>
+    </form>
+    <p class="fine">I'll send you the free tool and the occasional email, and see how far you get so I can make it better. Unsubscribe anytime.</p>
+  </div>
+</main>
+<script>
+const FORM_URL = "https://0fd7f420.sibforms.com/serve/MUIFAJev9QQ-ZJhRRR74RUmsuF5b_1hk0_HrEgCOPlNXmQ2nM_IgpARW0a57-FS-qIpNirIakAUg-YYCudgw2j1yACVlL-39Qw4Q4EVOpng2O1AiUv10IL7aHc-cu7h8tcJJU306VR9TG5RpiYs2uZZSgApoUniOt73GWUdyLFawKQhkgN-VmHco5RqBT3TV7gxX_lU8tAH9_rUVNQ==";   // Brevo form action URL (…sibforms.com/serve/…)
+const WIZARD_URL = "/treaty/"; // the Peace Treaty artifact link
+const fn=document.getElementById("fname"), f=document.getElementById("f"), em=document.getElementById("email"), err=document.getElementById("err"), go=document.getElementById("go");
+f.addEventListener("submit", async e => {
+  e.preventDefault(); err.textContent="";
+  const n=fn.value.trim(), v=em.value.trim();
+  if(!n){ err.textContent="What should I call you?"; fn.focus(); return }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){ err.textContent="That email doesn't look right."; em.focus(); return }
+  if(f.email_address_check.value){ return } // bot
+  go.disabled=true; go.textContent="Opening the Wizard...";
+  try{
+    const d=new FormData(); d.append("FIRSTNAME",n); d.append("EMAIL",v); d.append("email_address_check",""); d.append("locale","en");
+    try{ posthog.identify(v.toLowerCase(),{name:n,email:v.toLowerCase()}); posthog.capture("signed_up") }catch(_){}
+    if(FORM_URL) await fetch(FORM_URL,{method:"POST",body:d,mode:"no-cors"});
+    fetch("https://ntfy.sh/audhd-pt-a74a725f754a",{method:"POST",body:"New signup: "+n.slice(0,40),headers:{"Title":"Peace Treaty Wizard","Tags":"tada"}}).catch(()=>{});
+  }catch(_){}
+  setTimeout(()=>{ if(WIZARD_URL) location.href=WIZARD_URL; else { go.textContent="You're in."; } }, 400);
+});
+</script>
+</body>
+</html>
