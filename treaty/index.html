@@ -728,6 +728,43 @@ circle.jig{animation:jit .35s linear 3}
 .stp:last-child{padding-bottom:6vh}
 .ss+.ss{margin-top:6px;padding-top:16px}
 .ropespace{height:46vh}
+/* ===== story v4: one stage on top, reading underneath ===== */
+.stagewrap{position:sticky;top:calc(env(safe-area-inset-top,0px) + 66px);z-index:8;background:var(--paper);padding:4px 0 26px}
+.stagebox{height:40svh;min-height:230px;display:flex;flex-direction:column;border-bottom:2px dashed var(--ink2);padding-bottom:8px}
+@media (max-height:700px){.stagebox{height:35svh;min-height:200px}}
+.stagebox .peaceroad{display:none;position:static;border:0;padding:0 0 6px;background:none}
+.stagebox.peace .peaceroad{display:block}
+.scenes{position:relative;flex:1;min-height:0}
+.scene{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:8px;opacity:0;visibility:hidden;transition:opacity .45s ease,visibility 0s .45s}
+.scene.on{opacity:1;visibility:visible;transition:opacity .45s ease}
+.scene .scar{padding:4px;height:100%;display:flex;flex-direction:column;justify-content:center;box-shadow:none;background:none}
+.scene .scar .car{max-height:calc(100% - 48px);width:auto;max-width:100%}
+.scene .smap{height:100%;display:flex;flex-direction:column;justify-content:center}
+.scene .smap svg.tmap{max-height:calc(100% - 30px);width:auto;max-width:100%;margin:0 auto}
+.scene .ropesvg{max-height:calc(100% - 76px)}
+.scene .fstage{min-height:0;max-height:100%}
+.scene .fface{width:72px;height:72px}
+.scene .sstage{min-height:0;height:100%}
+.scene .sbody .bodyfig{max-height:calc(40svh - 120px)}
+.scene .thoughts{height:110px}
+.ss{padding-top:0}
+.ss+.ss{border-top:0;margin-top:0;padding-top:18px}
+.stp{padding:.5em 2px}
+.stp:last-child{padding-bottom:1.2em}
+.ss:last-child .stp:last-child{padding-bottom:30vh}
+.ropespace{height:40vh}
+.duoscene{display:flex;align-items:center;justify-content:center;gap:14px;height:100%}
+.dbrain{display:flex;flex-direction:column;align-items:center;gap:6px;font:700 18px var(--fd)}
+.dbrain .dot{width:64px;height:64px;border-radius:50%}
+.dbrain.au .dot{background:var(--au)}.dbrain.dh .dot{background:var(--dh)}
+.dbrain.au b{color:var(--au)}.dbrain.dh b{color:var(--dh)}
+.dic{height:34px;width:34px;color:var(--ink)}.dic svg{width:100%;height:100%}
+.dic.popin{animation:pop .35s ease both}
+.dvs{width:34px;height:34px;border-radius:50%;background:var(--card);display:grid;place-items:center;font:700 16px var(--fd);box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.dheart{width:34px;height:30px;background:#FFD43B;clip-path:path("M17 29 C 6 21 0 15 0 8.5 C 0 3.5 4 0 8.5 0 C 12 0 15 2 17 5 C 19 2 22 0 25.5 0 C 30 0 34 3.5 34 8.5 C 34 15 28 21 17 29 Z");animation:beat 1.4s ease-in-out infinite}
+@keyframes beat{50%{transform:scale(1.15)}}
+.goalscene{display:flex;flex-direction:column;justify-content:center;height:100%}
+@media (prefers-reduced-motion:reduce){.scene{transition:none}.dheart{animation:none}}
 </style>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:image" content="https://audhd-peace-treaty.netlify.app/og.png">
@@ -1521,12 +1558,11 @@ function storySections(){
       if (b>=1){ el.querySelector(".rope").style.transform = ""; el.querySelector(".youtxt").textContent = "NO!"; el.querySelector(".sbubs").innerHTML = ""; el._q = 9; if (b===1) kick(el.querySelector(".ropesvg"), "shake") }
       else { el.querySelector(".youtxt").textContent = "You"; el._q = -2 }
     },
-    live(el){
+    live(el, line, sec){
       if (el._q === 9) return;
-      const pic = el.querySelector(".spic"), sp = el.querySelector(".ropespace");
-      const pinned = pic.getBoundingClientRect().top <= parseFloat(getComputedStyle(pic).top) + 1;
-      const d = sp.getBoundingClientRect().top - (pic.getBoundingClientRect().bottom), span = sp.offsetHeight;
-      let k = -1; if (pinned) k = Math.max(0, Math.min(3, Math.floor((span - d) / (span/4))));
+      const sp = sec.querySelector(".ropespace"), sb = document.querySelector(".stagewrap").getBoundingClientRect().bottom;
+      const d = sp.getBoundingClientRect().top - sb, span = sp.offsetHeight;
+      let k = d > span*0.15 ? -1 : Math.max(0, Math.min(3, Math.floor((span*0.15 - d) / (span/4))));
       if (k === el._q) return; el._q = k;
       const Q = [["au","Autism",'"I need structure."'],["dh","ADHD",'"I hate being controlled."'],["au","Autism",'"I love the same routine."'],["dh","ADHD",'"I\'m allergic to repetition."']];
       if (k<0){ el.querySelector(".rope").style.transform = ""; el.querySelector(".sbubs").innerHTML = ""; return }
@@ -1534,21 +1570,13 @@ function storySections(){
       el.querySelector(".sbubs").innerHTML = `<div class="bub ${q[0]} on"><span class="who">${q[1]}</span>${q[2]}</div>`;
     } };
 
-  const S2 = { name:SNAMES[1], plain:true,
-    steps:[`<h2 class="sh2">Meet the two passengers in your head.</h2>
-      <div class="duo2 big">
-        <div class="blk au"><span class="lb">Thinking Brain</span><ul>${PAIRS.map((_,k)=>rowHTML("t",k,false)).join("")}</ul></div>
-        <div class="vs">vs</div>
-        <div class="blk dh"><ul>${PAIRS.map((_,k)=>rowHTML("f",PAIRS.length-1-k,false)).join("")}</ul><span class="lb lbb">Feeling Brain</span></div>
-      </div>`],
-    live(el,line){
-      const d = el.querySelector(".duo2"), top = d.getBoundingClientRect().top;
-      const b = Math.min(PAIRS.length-1, Math.floor((line - top - 40) / 90));
-      if (b === el._b) return; el._b = b;
-      d.classList.toggle("big", b<0);
-      const t = el.querySelectorAll(".blk.au .row2"), f = el.querySelectorAll(".blk.dh .row2"), N = PAIRS.length;
-      t.forEach((r,k)=>r.classList.toggle("open", k<=b));
-      f.forEach((r,k)=>r.classList.toggle("open", (N-1-k)<=b));
+  const S2 = { name:SNAMES[1],
+    pic:`<div class="duoscene"><div class="dbrain au"><span class="dot"></span><span class="dic"></span><b>Thinking Brain</b></div><span class="dvs">vs</span><div class="dbrain dh"><span class="dot"></span><span class="dic"></span><b>Feeling Brain</b></div></div>`,
+    steps:[`<h2 class="sh2">Meet the two passengers in your head.</h2>`,
+      ...PAIRS.map(p=>`<p class="cardtxt"><b class="kau">Thinking Brain:</b> ${p[0]}<br><b class="kdh">Feeling Brain:</b> ${p[1]}</p>`)],
+    apply(el,b){
+      const k = b-1;
+      el.querySelectorAll(".dbrain").forEach((d,i)=>{ const ic = d.querySelector(".dic"); ic.innerHTML = k>=0 ? ICONS[i?"f":"t"][Math.min(3,k)] : ""; if (k>=0) kick(ic, "popin") });
     } };
 
   const S3 = { name:SNAMES[2],
@@ -1617,7 +1645,8 @@ function storySections(){
       else { const p = el.querySelector(".proj"); p.className = "proj"; p.textContent = ""; say(el, ""); setMouth(el, "flat") }
     } };
 
-  const S6 = { name:SNAMES[5], plain:true,
+  const S6 = { name:SNAMES[5],
+    pic:`<div class="duoscene calm"><div class="dbrain au"><span class="dot"></span><b>Thinking Brain</b></div><span class="dheart"></span><div class="dbrain dh"><span class="dot"></span><b>Feeling Brain</b></div></div>`,
     steps:[
       `<h2>So how do we work with this reality?</h2>`,
       `<p class="cardtxt"><b>We need a new way to communicate:</b></p><ul class="ticks"><li>One that speaks to emotions</li><li>One that respects both brains</li><li>One that builds trust, not force</li></ul>`,
@@ -1715,7 +1744,9 @@ function storySections(){
     } };
 
   const chat = (you, fb, ok) => `<div class="cpair"><span class="shb ${ok?"":"nope"}">"${esc(you)}"</span><span class="shb fb">${esc(fb)}</span></div>`;
-  const S11 = { name:SNAMES[10], plain:true, peace:true, roadAt:b=> b>=6 ? 5 : b>=5 ? 4 : 3,
+  const S11 = { name:SNAMES[10], peace:true, roadAt:b=> b>=6 ? 5 : b>=5 ? 4 : 3,
+    pic: stageHTML(),
+    apply(el,b){ say(el, ""); setMouth(el, b===2 ? "frown" : b>=3 ? "smile" : "flat"); if (b===2) kick(el.querySelector(".fwho"), "hit") },
     steps:[
       `<span class="tag">E · Ease in</span><h2>Bargain a tiny first step.</h2>`,
       `<p class="body"><b>The golden rule:</b> bargain like a kid trading lunch. It only swaps if it thinks it's winning. You can't order a child around. It has to feel like its own idea.</p>`,
@@ -1726,9 +1757,10 @@ function storySections(){
       `<p class="cardtxt"><b>Remember: start tiny.</b><br>Your Feeling Brain is sensitive, stubborn and allergic to big asks.<br>If it says no, don't fight it. Make it smaller and ask again.</p>`],
   };
 
-  const S12 = { name:SNAMES[11], plain:true,
+  const S12 = { name:SNAMES[11],
+    pic:`<div class="goalscene">${roadS(5)}</div>`,
     steps:[
-      `${roadS(5)}<h2>That's the conversation.</h2><p class="body">Simple in concept, but it will take time to get a hang of it.</p>`,
+      `<h2>That's the conversation.</h2><p class="body">Simple in concept, but it will take time to get a hang of it.</p>`,
       `<p class="cardtxt"><b>This isn't a one-time fix.</b><br>This dialogue between the brains requires consistent practice over time.</p>`,
       `<p class="cardtxt"><b>What you're learning:</b></p><ul class="ticks"><li>A new language</li><li>A daily practice</li><li>A different kind of dance</li></ul>`,
       `<p class="cardtxt">The goal isn't "perfect control" (that's an illusion anyway).<br><b>The goal is partnership.</b><br>And like any skill, it can be learned.</p>`,
@@ -1741,16 +1773,11 @@ let STORYOFF = null;
 function vStory(keepY){
   if (STORYOFF){ STORYOFF(); STORYOFF = null }
   const secs = storySections();
-  let html = secs.map((s,n)=>{
-    const steps = s.spacers ? Array.from({length:s.spacers},(_,i)=>`<div class="stp spacer" data-i="${i}" aria-hidden="true"></div>`).join("")
-      : s.steps.map((h,i)=>`<div class="stp" data-i="${i}">${h}</div>`).join("");
-    return `<section class="ss${s.plain?" plain":""}" data-n="${n+1}" id="ss${n+1}" aria-label="${esc(s.name)}">
-      ${s.pic ? `<div class="spic">${s.pic}</div>` : ""}
-      <div class="stx">${steps}</div>
-    </section>`;
-  });
-  const p0 = secs.findIndex(s=>s.peace), p1 = secs.length - 1 - [...secs].reverse().findIndex(s=>s.peace);
-  html = html.slice(0,p0).join("") + `<div class="peacewrap"><div class="peaceroad">${roadS(-1)}</div>${html.slice(p0,p1+1).join("")}</div>` + html.slice(p1+1).join("");
+  const html = secs.map((s,n)=>{
+    const steps = s.steps.map((h,i)=>`<div class="stp" data-i="${i}">${h}</div>`).join("");
+    return `<section class="ss" data-n="${n+1}" id="ss${n+1}" aria-label="${esc(s.name)}"><div class="stx">${steps}</div></section>`;
+  }).join("");
+  const scenes = secs.map((s,n)=>`<div class="scene" data-n="${n+1}">${s.pic||""}</div>`).join("");
   app.innerHTML = top() + `
     <div class="sprog" aria-hidden="true"><i></i></div>
     <div class="shero">
@@ -1758,38 +1785,39 @@ function vStory(keepY){
       <p class="cardtxt tline"><span class="tic">${ICONS.t[0]}</span><span><b>About 2 minutes of reading. Only once.</b><br>Just scroll. The pictures move as you read.</span></p>
       <div class="scue" aria-hidden="true">Scroll<svg viewBox="0 0 24 24" width="22" height="22"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
     </div>
-    <div class="story">${html}</div>
+    <div class="story slide"><div class="stagewrap"><div class="stagebox"><div class="peaceroad">${roadS(-1)}</div><div class="scenes">${scenes}</div></div></div>${html}</div>
     <nav class="stoc" aria-label="Sections">${secs.map((s,n)=>`<a href="#ss${n+1}" data-n="${n+1}">${esc(s.name)}</a>`).join("")}</nav>
     <button class="spill" aria-expanded="false"><b>1</b>/${secs.length} · <span>${esc(secs[0].name)}</span></button>
     <div class="ssheet" hidden>${secs.map((s,n)=>`<a href="#ss${n+1}" data-n="${n+1}">${n+1}. ${esc(s.name)}</a>`).join("")}</div>`;
   wireTop(); track("story_opened");
-  const els = $$(".ss"), state = secs.map((s,i)=>({ s, el:els[i], steps:[...els[i].querySelectorAll(".stp")], beat:-2 }));
+  const els = $$(".ss"), sc = $$(".scene"), state = secs.map((s,i)=>({ s, el:els[i], scene:sc[i], steps:[...els[i].querySelectorAll(".stp")], beat:-2 }));
+  const stageW = $(".stagewrap"), stageB = $(".stagebox");
   const bar = $(".sprog i"), pill = $(".spill"), sheet = $(".ssheet"), toc = $$(".stoc a");
   const seen = {}; let cur = -1, raf = 0, roadNow = -2, curU = null;
   const units = [...document.querySelectorAll(".story .stx h2,.story .stx .tag,.story .stx p.hook,.story .stx p.body,.story .stx p.cardtxt")];
   const tick = () => {
-    raf = 0; const line = innerHeight * 0.68; let c = 0;
+    raf = 0; const sb = stageW.getBoundingClientRect().bottom, line = sb + (innerHeight - sb) * 0.35; let c = 0;
     state.forEach((st,i)=>{
       const r = st.el.getBoundingClientRect(); if (r.top < line) c = i;
       if (r.bottom < -innerHeight || r.top > innerHeight*2) { if (st.beat !== -2) return }
       let b = -1; st.steps.forEach((p,k)=>{ if (p.getBoundingClientRect().top < line) b = k });
-      if (b !== st.beat){ st.beat = b; st.steps.forEach((p,k)=>p.classList.toggle("on", k<=b)); if (st.s.apply) st.s.apply(st.el, b) }
-      if (st.s.live) st.s.live(st.el, line);
+      if (b !== st.beat){ st.beat = b; st.steps.forEach((p,k)=>p.classList.toggle("on", k<=b)); if (st.s.apply) st.s.apply(st.scene, b) }
+      if (st.s.live) st.s.live(st.scene, line, st.el);
     });
     let at = -1; state.forEach(st=>{ if (st.s.peace && st.beat>=0) at = st.s.roadAt(st.beat) }); if (at !== roadNow){ roadNow = at; roadTo(null, at) }
     if (focusOn()){
-      let best = null, bd = 1e9; units.forEach(u=>{ const r = u.getBoundingClientRect(); const d = Math.abs((r.top + r.bottom)/2 - innerHeight*0.5); if (d < bd){ bd = d; best = u } });
+      let best = null, bd = 1e9; units.forEach(u=>{ const r = u.getBoundingClientRect(); const d = Math.abs((r.top + r.bottom)/2 - (sb + (innerHeight - sb) * 0.4)); if (d < bd){ bd = d; best = u } });
       if (best !== curU){ if (curU) curU.classList.remove("cur"); curU = best; if (best){ if (!best.querySelector(":scope > .ulw")) best.innerHTML = `<span class="ulw">${best.innerHTML}</span>`; best.classList.add("cur") } }
     } else if (curU){ curU.classList.remove("cur"); curU = null }
     const max = document.documentElement.scrollHeight - innerHeight; bar.style.width = (max>0 ? Math.min(100, scrollY/max*100) : 0) + "%";
-    if (c !== cur){ cur = c; pill.querySelector("b").textContent = c+1; pill.querySelector("span").textContent = secs[c].name; toc.forEach((a,k)=>a.classList.toggle("on", k===c)) }
+    if (c !== cur){ cur = c; sc.forEach((x,k)=>x.classList.toggle("on", k===c)); stageB.classList.toggle("peace", !!secs[c].peace); pill.querySelector("b").textContent = c+1; pill.querySelector("span").textContent = secs[c].name; toc.forEach((a,k)=>a.classList.toggle("on", k===c)) }
     const shown = state.findIndex(st=>{ const r = st.el.getBoundingClientRect(); return r.top < innerHeight*0.6 && r.bottom > innerHeight*0.4 });
     if (shown>-1 && !seen[shown]){ seen[shown] = 1; track("section_viewed",{slide:shown+1, name:secs[shown].name}); if (shown===secs.length-1) track("story_completed") }
   };
   const onScroll = () => { if (!raf) raf = requestAnimationFrame(tick) };
   addEventListener("scroll", onScroll, {passive:true}); addEventListener("resize", onScroll);
   STORYOFF = () => { removeEventListener("scroll", onScroll); removeEventListener("resize", onScroll); $$(".ss").forEach(s=>clearInterval(s._loop)) };
-  const jump = n => { const t = $("#ss"+n); if (t) scrollTo({top: scrollY + t.getBoundingClientRect().top - 70, behavior: still()?"auto":"smooth"}); sheet.hidden = true; pill.setAttribute("aria-expanded","false"); track("section_jump",{slide:+n}) };
+  const jump = n => { const t = $("#ss"+n); if (t) scrollTo({top: scrollY + t.getBoundingClientRect().top - stageW.getBoundingClientRect().bottom - 8, behavior: still()?"auto":"smooth"}); sheet.hidden = true; pill.setAttribute("aria-expanded","false"); track("section_jump",{slide:+n}) };
   $$(".stoc a,.ssheet a").forEach(a=>a.onclick = e => { e.preventDefault(); jump(a.dataset.n) });
   pill.onclick = () => { sheet.hidden = !sheet.hidden; pill.setAttribute("aria-expanded", String(!sheet.hidden)) };
   $$(".exc").forEach(b=>b.onclick = () => { S.ex = b.dataset.x; track("example_changed",{example:S.ex}); const y = scrollY; vStory(true); scrollTo(0,y) });
