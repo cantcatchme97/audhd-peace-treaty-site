@@ -787,6 +787,34 @@ circle.jig{animation:jit .35s linear 3}
 .duoscene{align-items:flex-start;padding-top:6px}
 .dvs{margin-top:10px}
 .stagewrap::after{display:none}
+/* ===== Quick read as a blog ===== */
+.bhero{display:flex;flex-direction:column;gap:12px;margin-bottom:6px}
+.blog{display:flex;flex-direction:column;gap:0;animation:none}
+.bs{padding:18px 0 22px}
+.bs+.bs{border-top:2px dashed var(--rule)}
+.bfig{margin:0 0 14px;display:flex;flex-direction:column;align-items:center;gap:6px}
+.bpic{width:100%;cursor:pointer;display:flex;flex-direction:column;gap:8px;border-radius:18px;padding:10px;background:var(--card);box-shadow:inset 0 0 0 1px var(--rule);-webkit-tap-highlight-color:transparent}
+.bpic:active{transform:scale(.99)}
+.bpic:focus-visible{outline:3px solid #FFD43B;outline-offset:2px}
+.bpic .peaceroad{position:static;border:0;padding:0;background:none}
+.bpic .scar{box-shadow:none;background:none;padding:0}
+.bpic .scar .car{max-width:320px}
+.bpic .ropesvg,.bpic .smap,.bpic .fstage,.bpic .sgrip{box-shadow:none}
+.bpic .duoscene{padding:6px 0}
+.bpic .sstage{min-height:0}
+.bpic .sstage .sbody .bodyfig{max-height:200px}
+.bpic.settling *{transition:none!important;animation:none!important}
+.bcap{font:700 16px var(--fd);color:var(--ink2)}
+.btx{display:flex;flex-direction:column;gap:10px}
+.btx p,.btx li,.btx .cardtxt,.btx .body{font:700 24px/1.25 var(--fd)}
+.btx .hook{font-size:25px}
+.btx h2{font-size:31px}
+.btx .shb{font-size:21px}
+.btx .ticks li{font-size:24px}
+.btx p.no{text-decoration:line-through;text-decoration-color:var(--dh);text-decoration-thickness:2px;color:var(--ink2)}
+.btx p.yes{color:var(--au)}
+.btx .stp{padding:0}
+.blog .bs:last-child{padding-bottom:18vh}
 </style>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:image" content="https://audhd-peace-treaty.netlify.app/og.png">
@@ -1176,7 +1204,7 @@ async function vArticle(){
   if (focusOn()){ S.sdone = {}; readThen(null, () => {}) }
 }
 function vHow(fast){
-  if (!fast && readStyle() && ls.get("pt.style","")) { vStory(); return }
+  if (!fast && readStyle() && ls.get("pt.style","")) { vBlog(); return }
   const i = ORD[S.hi]; const E = ex(); let body = ""; track("slide_viewed",{slide:S.hi+1});
   if (i===0) body = `
     <h1 class="ptitle">The AuDHD <span class="hl">Peace Treaty</span><sup class='tm'>TM</sup></h1>
@@ -1845,6 +1873,75 @@ function vStory(keepY){
   pill.onclick = () => { sheet.hidden = !sheet.hidden; pill.setAttribute("aria-expanded", String(!sheet.hidden)) };
   $$(".exc").forEach(b=>b.onclick = () => { S.ex = b.dataset.x; track("example_changed",{example:S.ex}); const y = scrollY; vStory(true); scrollTo(0,y) });
   $("#storygo").onclick = () => { track("wizard_clicked",{from:"story"}); if (SITE==="web"){ ls.set("pt.intro",true); setTimeout(()=>{ location.href = WIZARD_URL },250) } else { S.view="start"; render(); scrollTo(0,0) } };
+  if (!keepY) scrollTo(0,0);
+  tick();
+}
+
+/* ---------- Quick read as a calm blog: text first, one still picture per section, tap a picture to play it ---------- */
+const REST = { 1: -1 };            // section index -> beat the still picture rests on (default: the last beat)
+function settle(fig, s, b){ fig.classList.add("settling"); if (s.apply) s.apply(fig, b); requestAnimationFrame(()=>requestAnimationFrame(()=>fig.classList.remove("settling"))) }
+function vBlog(keepY){
+  if (STORYOFF){ STORYOFF(); STORYOFF = null }
+  const secs = storySections();
+  const PEACE_AT = { 6:0, 7:1, 8:2, 9:3, 10:5 };
+  const body = (s,n) => {
+    let steps = s.steps.filter(h=>!/ropespace|pairspace/.test(h));
+    if (n===1) steps = steps.concat(PAIRS.map(p=>`<p class="cardtxt"><b class="kau">Thinking Brain:</b> ${p[0]}<br><b class="kdh">Feeling Brain:</b> ${p[1]}</p>`));
+    if (n===0) steps = [`<p class="cardtxt"><span class="kau">Autism:</span> "I need structure."<br><span class="kdh">ADHD:</span> "I hate being controlled."<br><span class="kau">Autism:</span> "I love the same routine."<br><span class="kdh">ADHD:</span> "I'm allergic to repetition."</p>`].concat(steps);
+    return steps.join("");
+  };
+  const html = secs.map((s,n)=>`<section class="bs" id="ss${n+1}" data-n="${n+1}" aria-label="${esc(s.name)}">
+      ${s.pic ? `<figure class="bfig"><div class="bpic" role="button" tabindex="0" aria-label="Play this picture" data-n="${n}">${n in PEACE_AT ? `<div class="peaceroad">${roadS(PEACE_AT[n])}</div>` : ""}${s.pic}</div><figcaption class="bcap">▶ Tap to play</figcaption></figure>` : ""}
+      <div class="btx">${body(s,n)}</div>
+    </section>`).join("");
+  app.innerHTML = top() + `
+    <div class="sprog" aria-hidden="true"><i></i></div>
+    <div class="bhero">
+      <h1 class="ptitle">The AuDHD <span class="hl">Peace Treaty</span><sup class='tm'>TM</sup></h1>
+      <p class="cardtxt tline"><span class="tic">${ICONS.t[0]}</span><span><b>About 2 minutes of reading. Only once.</b><br>Tap any picture to watch it play.</span></p>
+    </div>
+    <div class="blog slide">${html}</div>
+    <nav class="stoc" aria-label="Sections">${secs.map((s,n)=>`<a href="#ss${n+1}" data-n="${n+1}">${esc(s.name)}</a>`).join("")}</nav>
+    <button class="spill" aria-expanded="false"><b>1</b>/${secs.length} · <span>${esc(secs[0].name)}</span></button>
+    <div class="ssheet" hidden>${secs.map((s,n)=>`<a href="#ss${n+1}" data-n="${n+1}">${n+1}. ${esc(s.name)}</a>`).join("")}</div>`;
+  wireTop(); track("blog_opened");
+  const figs = $$(".bpic"), timers = [];
+  figs.forEach(f=>{ const n = +f.dataset.n, s = secs[n]; settle(f, s, n in REST ? REST[n] : s.steps.length-1) });
+  const play = f => {
+    const n = +f.dataset.n, s = secs[n], cap = f.parentNode.querySelector(".bcap"); if (f._playing) return; f._playing = true;
+    track("picture_played",{slide:n+1, name:s.name}); cap.textContent = "Playing...";
+    let seq;
+    if (n===0){ const Q = [["au","Autism",'"I need structure."'],["dh","ADHD",'"I hate being controlled."'],["au","Autism",'"I love the same routine."'],["dh","ADHD",'"I\'m allergic to repetition."']];
+      seq = [0,1,2,3].map(k=>()=>{ f.querySelector(".youtxt").textContent = "You"; f.querySelector(".rope").style.transform = `translateX(${k%2===0?-46:46}px)`; f.querySelector(".sbubs").innerHTML = `<div class="bub ${Q[k][0]} on"><span class="who">${Q[k][1]}</span>${Q[k][2]}</div>` }).concat([()=>s.apply(f,1)]);
+    } else {
+      const last = s.steps.length-1; seq = [];
+      for (let b=-1; b<=last; b++) seq.push(()=>s.apply(f,b));
+      if (n in REST) seq.push(()=>s.apply(f,REST[n]));
+    }
+    seq.forEach((fn,i)=>timers.push(setTimeout(fn, i*(n===0?1100:850))));
+    timers.push(setTimeout(()=>{ f._playing = false; cap.textContent = "↻ Tap to play again" }, seq.length*(n===0?1100:850)+300));
+  };
+  figs.forEach(f=>{ f.onclick = () => play(f); f.onkeydown = e => { if (e.key==="Enter"||e.key===" "){ e.preventDefault(); play(f) } } });
+  const els = $$(".bs"), bar = $(".sprog i"), pill = $(".spill"), sheet = $(".ssheet"), toc = $$(".stoc a");
+  const units = [...document.querySelectorAll(".blog .btx h2,.blog .btx .tag,.blog .btx p.hook,.blog .btx p.body,.blog .btx p.cardtxt")];
+  const seen = {}; let cur = -1, raf = 0, curU = null;
+  const tick = () => {
+    raf = 0; let c = 0; els.forEach((e,i)=>{ if (e.getBoundingClientRect().top < innerHeight*0.45) c = i });
+    const max = document.documentElement.scrollHeight - innerHeight; bar.style.width = (max>0 ? Math.min(100, scrollY/max*100) : 0) + "%";
+    if (c !== cur){ cur = c; pill.querySelector("b").textContent = c+1; pill.querySelector("span").textContent = secs[c].name; toc.forEach((a,k)=>a.classList.toggle("on", k===c)); if (!seen[c]){ seen[c] = 1; track("section_viewed",{slide:c+1, name:secs[c].name}); if (c===secs.length-1) track("story_completed") } }
+    if (focusOn()){
+      let best = null, bd = 1e9; units.forEach(u=>{ const r = u.getBoundingClientRect(); const d = Math.abs((r.top + r.bottom)/2 - innerHeight*0.45); if (d < bd){ bd = d; best = u } });
+      if (best !== curU){ if (curU) curU.classList.remove("cur"); curU = best; if (best){ if (!best.querySelector(":scope > .ulw")) best.innerHTML = `<span class="ulw">${best.innerHTML}</span>`; best.classList.add("cur") } }
+    } else if (curU){ curU.classList.remove("cur"); curU = null }
+  };
+  const onScroll = () => { if (!raf) raf = requestAnimationFrame(tick) };
+  addEventListener("scroll", onScroll, {passive:true}); addEventListener("resize", onScroll);
+  STORYOFF = () => { removeEventListener("scroll", onScroll); removeEventListener("resize", onScroll); timers.forEach(clearTimeout); figs.forEach(f=>clearInterval(f._loop)) };
+  const jump = n => { const t = $("#ss"+n); if (t) scrollTo({top: scrollY + t.getBoundingClientRect().top - 76, behavior: still()?"auto":"smooth"}); sheet.hidden = true; pill.setAttribute("aria-expanded","false"); track("section_jump",{slide:+n}) };
+  $$(".stoc a,.ssheet a").forEach(a=>a.onclick = e => { e.preventDefault(); jump(a.dataset.n) });
+  pill.onclick = () => { sheet.hidden = !sheet.hidden; pill.setAttribute("aria-expanded", String(!sheet.hidden)) };
+  $$(".exc").forEach(b=>b.onclick = () => { S.ex = b.dataset.x; track("example_changed",{example:S.ex}); const y = scrollY; vBlog(true); scrollTo(0,y) });
+  $("#storygo").onclick = () => { track("wizard_clicked",{from:"blog"}); if (SITE==="web"){ ls.set("pt.intro",true); setTimeout(()=>{ location.href = WIZARD_URL },250) } else { S.view="start"; render(); scrollTo(0,0) } };
   if (!keepY) scrollTo(0,0);
   tick();
 }
