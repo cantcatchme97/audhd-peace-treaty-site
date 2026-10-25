@@ -719,6 +719,15 @@ circle.jig{animation:jit .35s linear 3}
 .proj.warm::before{content:"";position:absolute;inset:0;background:#FFD43B;clip-path:path("M17 29 C 6 21 0 15 0 8.5 C 0 3.5 4 0 8.5 0 C 12 0 15 2 17 5 C 19 2 22 0 25.5 0 C 30 0 34 3.5 34 8.5 C 34 15 28 21 17 29 Z")}
 .spill{left:16px;transform:none}
 .ssheet{left:16px;transform:none}
+/* story v3: one clear anchor line under every pinned picture; no fading text; no big gaps */
+.spic{padding-bottom:10px;border-bottom:2px dashed var(--ink2)}
+.spic::after{display:none}
+.peaceroad{border-bottom:2px dashed var(--ink2)}
+.peacewrap .spic{border-top:0}
+.stp,.stp.on{opacity:1!important;transition:none}
+.stp:last-child{padding-bottom:6vh}
+.ss+.ss{margin-top:6px;padding-top:16px}
+.ropespace{height:46vh}
 </style>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:image" content="https://audhd-peace-treaty.netlify.app/og.png">
@@ -1504,15 +1513,25 @@ function storySections(){
         <rect x="0" y="62" width="10" height="20" rx="3" fill="var(--au)"/><rect x="310" y="62" width="10" height="20" rx="3" fill="var(--dh)"/>
       </svg>`,
     steps:[
+      `<div class="ropespace" aria-hidden="true"></div>`,
       `<p class="hook"><span class="kau">Au</span><span class="kdh">DHD</span> is like living with an internal civil war.</p>`,
       `<p class="body">Your nervous system is being pulled by opposing forces, while your entire nervous system is screaming "NO!"</p>`,
       `<p class="hook">But there's a hidden backdoor to this resistance.</p>`],
     apply(el,b){
+      if (b>=1){ el.querySelector(".rope").style.transform = ""; el.querySelector(".youtxt").textContent = "NO!"; el.querySelector(".sbubs").innerHTML = ""; el._q = 9; if (b===1) kick(el.querySelector(".ropesvg"), "shake") }
+      else { el.querySelector(".youtxt").textContent = "You"; el._q = -2 }
+    },
+    live(el){
+      if (el._q === 9) return;
+      const pic = el.querySelector(".spic"), sp = el.querySelector(".ropespace");
+      const pinned = pic.getBoundingClientRect().top <= parseFloat(getComputedStyle(pic).top) + 1;
+      const d = sp.getBoundingClientRect().top - (pic.getBoundingClientRect().bottom), span = sp.offsetHeight;
+      let k = -1; if (pinned) k = Math.max(0, Math.min(3, Math.floor((span - d) / (span/4))));
+      if (k === el._q) return; el._q = k;
       const Q = [["au","Autism",'"I need structure."'],["dh","ADHD",'"I hate being controlled."'],["au","Autism",'"I love the same routine."'],["dh","ADHD",'"I\'m allergic to repetition."']];
-      const show = k => { const q = Q[k%4]; el.querySelector(".rope").style.transform = `translateX(${k%2===0?-46:46}px)`; el.querySelector(".sbubs").innerHTML = `<div class="bub ${q[0]} on"><span class="who">${q[1]}</span>${q[2]}</div>` };
-      clearInterval(el._loop);
-      if (b<0){ let k=0; show(0); el.querySelector(".youtxt").textContent = "You"; if (!still()) el._loop = setInterval(()=>show(++k), 1500) }
-      else { el.querySelector(".rope").style.transform = ""; el.querySelector(".youtxt").textContent = "NO!"; el.querySelector(".sbubs").innerHTML = ""; if (b===0) kick(el.querySelector(".ropesvg"), "shake") }
+      if (k<0){ el.querySelector(".rope").style.transform = ""; el.querySelector(".sbubs").innerHTML = ""; return }
+      const q = Q[k]; el.querySelector(".rope").style.transform = `translateX(${k%2===0?-46:46}px)`;
+      el.querySelector(".sbubs").innerHTML = `<div class="bub ${q[0]} on"><span class="who">${q[1]}</span>${q[2]}</div>`;
     } };
 
   const S2 = { name:SNAMES[1], plain:true,
