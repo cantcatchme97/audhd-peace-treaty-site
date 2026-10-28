@@ -1654,14 +1654,14 @@ const cmF=n=>Math.round(n*10)/10;
 const cmArc=(r,a1,a2,sw)=>{const [x1,y1]=cmPt(r,a1),[x2,y2]=cmPt(r,a2);return `M${cmF(x1)},${cmF(y1)} A${r},${r} 0 0 ${sw} ${cmF(x2)},${cmF(y2)}`};
 const CM_PH=[
  {k:"p0",name:"Understand",prob:"Confusion",feel:"lost",to:"Clear",mid:300,say:"Level 1 · checkpoints 1 to 3 · this map",text:"Kills the confusion of never fitting the ADHD box or the autism box. You come out <b>Clear</b>: you know what's going on in your head, and what it needs."},
- {k:"p1",name:"Untangle",prob:"Civil War",feel:"stuck",to:"Unstuck",mid:60,say:"Level 2 · checkpoints 4 to 6 · Owner's Manual",text:"Ends the civil war between your two brains: what goes in, how they decide, and what you do. You come out <b>Unstuck</b>."},
+ {k:"p1",name:"Regulate",prob:"Civil War",feel:"stuck",to:"Unstuck",mid:60,say:"Level 2 · checkpoints 4 to 6 · Owner's Manual",text:"Ends the civil war between your two brains: what goes in, how they decide, and what you do. You come out <b>Unstuck</b>."},
  {k:"p2",name:"Sustain",prob:"Burnout",feel:"drained",to:"Capable",mid:180,say:"Level 3 · checkpoints 7 to 9 · Owner's Manual",text:"Breaks the burnout cycle with a spoon budget, a rhythm and small wins that hold up on bad weeks. You come out <b>Capable</b>."}];
 const CM_ST=[
  ["Map Both","Brains","profile",267,"→ How your two brains take in the world and decide, in a quick walk-through<br>→ 12 everyday ADHD moments, 12 autism moments, and 6 that live in both<br>→ For each one: how often it's you, and whether you hide it<br><b>You walk away with:</b> your profile, the traits that are strong and the ones you hide.","This map · Parts 0 to 2 · about 15 min","Map both brains","Your ADHD side and your autism side, mapped side by side."],
  ["Spot The","Tug","costs",300,"→ 7 tugs where your brains want opposite things (calm vs stimulation, familiar vs new, alone vs together…)<br>→ 11 ways people mask, and which ones cost you most<br>→ 11 burnout signs, to see where you are right now<br><b>You walk away with:</b> your full AuDHD shape, what it's costing you, and your red flags.","This map · Parts 3 to 5 · about 12 min","Spot the tug","The tug-of-war, masking and burnout: what it costs you."],
  ["Pick Main","Quest","focus",332,"→ Pick 3 values that matter even on a bad day<br>→ Rate health, wealth and relationships<br>→ Choose your main quest, and for how long<br>→ Split your 10 spoons across the three<br><b>You walk away with:</b> your plan card.","This map · Part 6 · about 5 min","Pick your main quest","The one area of life to work on first."],
- ["Tune","Inputs","setup",28,"Sleep, food, movement, screens, noise and your space: everything going in, set up so neither brain gets flooded.<br><b>You walk away with:</b> your setup.","Owner's Manual · input","Tune your inputs","Sleep, food, movement, screens, noise and your space, set up for both brains."],
- ["Make","Peace","treaty",60,"When your two brains fight, they agree on one next step. The full Peace Treaty, for every kind of stuck.<br><b>You walk away with:</b> your treaty.","Owner's Manual · processing","Make peace","The full Peace Treaty, for every kind of stuck."],
+ ["Calm The","Noise","input",28,"Sleep, food, movement, screens, noise and your space: everything going in, set up so neither brain gets flooded.<br><b>You walk away with:</b> your setup.","Owner's Manual · input","Calm the noise","Sleep, food, movement, screens, noise and your space, set up for both brains."],
+ ["Make","Peace","processing",60,"When your two brains fight, they agree on one next step. The full Peace Treaty, for every kind of stuck.<br><b>You walk away with:</b> your treaty.","Owner's Manual · processing","Make peace","The full Peace Treaty, for every kind of stuck."],
  ["Make","Moves","output",92,"Small moves on your main quest, even before you feel ready.<br><b>You walk away with:</b> your next moves.","Owner's Manual · output","Make moves","Small moves on your main quest, even before you feel ready."],
  ["Budget","Spoons","energy",148,"Know what fills your spoons and what drains them, and spend them on purpose.<br><b>You walk away with:</b> your energy budget.","Owner's Manual · energy","Budget your spoons","What fills your spoons, what drains them, and how to spend them on purpose."],
  ["Build","Rhythm","anchors",180,"A few fixed anchors for one brain, freedom in between for the other.<br><b>You walk away with:</b> your anchors.","Owner's Manual · rhythm","Build your rhythm","A few fixed anchors for one brain, freedom in between for the other."],
@@ -1690,7 +1690,7 @@ const CM_MODES={
  start:{done:0,here:0,tag:"start here",info:"s0",cap:"<b>Level 1 · Understand</b>: 3 checkpoints. It ends at <b>Clear</b>."},
  s1:{done:1,here:1,tag:"next",info:"s1",from:0,cap:"Checkpoint 1 saved ✓ Next: <b>Spot the tug</b>."},
  s2:{done:2,here:2,tag:"next",info:"s2",from:1,cap:"Checkpoint 2 saved ✓ One more to <b>Clear</b>."},
- end:{done:3,here:"Clear",tag:"you are here",info:"p1",from:2,glow:1,cap:"Level 1 complete. You're <b>Clear</b>. Unlock <b>Level 2 · Untangle</b>: from Clear to <b>Unstuck</b>."}};
+ end:{done:3,here:"Clear",tag:"you are here",info:"p1",from:2,glow:1,cap:"Level 1 complete. You're <b>Clear</b>. Unlock <b>Level 2 · Regulate</b>: from Clear to <b>Unstuck</b>."}};
 function cmStepPos(i){const [x,y]=cmPt(400,CM_ST[i][3]),o=CM_OFF["s"+i]||{x:0,y:0};return [x+o.x,y+o.y]}
 function cmOrigin(i){const [x,y]=i==="Clear"?cmPt(352,357):cmStepPos(i);return [((x-CM_VB[0])/CM_VB[2]*100).toFixed(1)+"%",((y-CM_VB[1])/CM_VB[3]*100).toFixed(1)+"%"]}
 let cmN=0;
@@ -1848,7 +1848,7 @@ function decodeHTML(s){
 }
 const FIRSTCH={burn:["7","Budget your spoons","Your burnout is high, so the first job is your spoons: know what drains them and spend them on purpose."],
  seesaw:["5","Make peace","Your two brains fight a lot, so the first job is getting them to agree on one next step."],
- au:["4","Tune your inputs","Your autistic brain is strong, so the first job is what you see, hear, eat and touch every day."],
+ au:["4","Calm the noise","Your autistic brain is strong, so the first job is what you see, hear, eat and touch every day."],
  dh:["8","Build your rhythm","Your ADHD brain is strong, so the first job is a few anchors that still leave room for new."],
  mask:["6","Make moves","You mask a lot, so the first job is what you do and show: small moves where you can drop the mask."]};
 
@@ -2017,7 +2017,7 @@ function renderHere(){
    ${(()=>{const {ks}=decodeKeys(s);const f=ks.length?FIRSTCH[ks[0]]:null;return f?`<div class="note yel">${T("Your first checkpoint on the next levels: step "+f[0]+", "+f[1]+".",f[2])}</div>`:""})()}
    <div class="offer on stack g12"><span class="you-badge">What's next</span>
     <h2 style="margin:0">The <span class="kau">Au</span><span class="kdh">DHD</span> Owner's Manual<sup class="tm">TM</sup></h2>
-    <p>Nobody gave you the manual for running two operating systems in one head. This is it: <b>Level 2 · Untangle</b> and <b>Level 3 · Sustain</b>, built around <b>your</b> main quest, with the tools I use myself.</p>
+    <p>Nobody gave you the manual for running two operating systems in one head. This is it: <b>Level 2 · Regulate</b> and <b>Level 3 · Sustain</b>, built around <b>your</b> main quest, with the tools I use myself.</p>
     <div class="chlist">${CHAP.map(([n,t,d])=>`<div><i>${n}</i><span><b>${t}</b><br><span class="small muted">${d}</span></span></div>`).join("")}</div>
     <p class="small"><b>Your $37 counts toward it.</b> You've already done Level 1.</p>
     ${OWNERS_URL?`<a class="btn" href="${OWNERS_URL}" target="_blank" rel="noopener" style="text-decoration:none;align-self:stretch">See the Owner's Manual →</a>`:`<button class="btn" disabled style="align-self:stretch">Founding seats open in November</button><span class="small muted" style="align-self:center">You'll get an email the day it opens.</span>`}</div>
