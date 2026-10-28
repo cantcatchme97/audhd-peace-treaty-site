@@ -1,4 +1,5 @@
 User-agent: *
 Disallow: /treaty/
 Disallow: /map/
+Disallow: /map2/
 Disallow: /app/
