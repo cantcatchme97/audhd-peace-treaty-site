@@ -1,8 +1,21 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow"><link rel="icon" href="/app/icon-192.png"><link rel="apple-touch-icon" href="/app/apple-touch-icon.png"><script>
 !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags identify setPersonProperties group resetGroups reset get_distinct_id get_session_id alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
 posthog.init("phc_vhUmnsmQbPvXfpUHhuKVgh6a3arJ6E5ivCV8y2KjcBCu",{api_host:"https://us.i.posthog.com",person_profiles:"identified_only"});
-</script><style>:root{color-scheme:light}body{margin:0}</style></head><body>
-<title>The AuDHD Pre-Diagnosis Toolkit</title>
+</script><style>:root{color-scheme:light}body{margin:0}.dec{background:var(--sheet);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:8px}
+.dec h3{margin:0;font-size:22px}
+.dec .lv{font:600 11px var(--fb);letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;align-self:flex-start}
+.dec ul{margin:0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:6px;font-size:15px}
+.dec li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:6px}
+.dec li::before{content:"✓";font-weight:700;color:var(--ok)}
+.dec li.no::before{content:"✕";color:var(--dh)}
+.dec .k{font:600 11px var(--fb);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.dtxt{width:100%;min-height:84px;border-radius:12px;border:1.5px solid var(--rule);background:var(--paper);color:var(--ink);font:400 15px/1.5 var(--fb);padding:10px 12px;resize:vertical}
+.docp{background:#fff;color:#211B2E;border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--shadow)}
+.docp h2,.docp h3{color:#211B2E}.docp .muted{color:#5d5568}
+.docp table{width:100%;border-collapse:collapse;font-size:14px}.docp td{border-top:1px solid #e3dccd;padding:7px 4px;vertical-align:top}.docp td:first-child{font-weight:600;width:38%}
+@media print{body *{visibility:hidden}.docp,.docp *{visibility:visible}.docp{position:absolute;left:0;right:0;top:0;width:auto;max-width:none;margin:0;padding:8mm;box-shadow:none;border-radius:0}.docp table td{font-size:12pt}.docp .dtxt{border:1px solid #ccc}.noprint{display:none!important}}
+</style></head><body>
+<title>Am I AuDHD? The Pre-Diagnosis Map</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Grandstander:wght@500;700&family=Patrick+Hand&family=Lexend:wght@400;500;600;700&family=Poppins:wght@700&family=Lora:ital,wght@1,500&display=swap" rel="stylesheet">
@@ -748,12 +761,12 @@ const route=cur=>`<div class="route">${CH.map((c,i)=>`<div class="${i<cur?"done"
 function renderWelcome(){
   const started=S.i>0||Object.keys(S.beat).length>0;
   const li=(i,c,b,t)=>`<li><span class="icw" style="color:${c}">${I[i]}</span><span><b>${b}:</b> ${t}</span></li>`;
-  app.innerHTML=`${topbar("The AuDHD Pre-Diagnosis Toolkit")}
+  app.innerHTML=`${topbar("The Pre-Diagnosis Map")}
   <section class="stack g24" style="padding-top:6px">
    <div class="brand">${logoHTML()}<span class="hint">psst… try throwing the letters</span></div>
    <div class="stack g12">
-    <h1 class="ptitle"><span class="th">The</span> <span class="kau">Au</span><span class="kdh">DHD</span><span class="psub">Pre-Diagnosis Toolkit<sup class="tm">TM</sup></span></h1>
-    <p class="lead">Never quite fit with ADHD people, or with autistic people? <b>You might be both</b>, with the two sides pulling against each other all day long. This toolkit maps your shape, so you know what you are walking into before you ever book an assessment.</p>
+    <h1 class="ptitle"><span class="th">Am I</span> <span class="kau">Au</span><span class="kdh">DHD</span>?<span class="psub">The Pre-Diagnosis Map<sup class="tm">TM</sup></span></h1>
+    <p class="lead">Never quite fit with ADHD people, or with autistic people? <b>You might be both</b>, with the two sides pulling against each other all day long. This map shows your shape, which tools fit it and which ones to stop forcing, and gives you the words for a doctor if you want an assessment.</p>
     <p>The neurodivergent community calls the combination <b>AuDHD</b>. It means having both, and it means the two <em>interact</em>, contradict and reshape each other inside your head.</p>
     <p><b>Pre-diagnosis</b> means it comes before a diagnosis, never instead of one. You don't need anyone's permission to understand your own brain, and you walk away with clear words and examples to take to a professional.</p>
    </div>
@@ -1119,7 +1132,7 @@ function wireBefore(){
 
 /* ================= done placeholder ================= */
 function renderDone(){
-  if(LEAD){app.innerHTML=`${topbar("The AuDHD Pre-Diagnosis Toolkit")}<section class="stack g20" style="padding-top:8px">
+  if(LEAD){app.innerHTML=`${topbar("The Pre-Diagnosis Map")}<section class="stack g20" style="padding-top:8px">
    <div class="yellow-stage stack g16"><div style="font-size:44px;color:#2B2140"><span class="icw">${I.gear}</span></div><span class="eyebrow" style="color:#2B2140;opacity:.7">You did it</span><h2 style="color:#2B2140">You know how the machine works.</h2></div>
    <p>Now the real question: <b>is it ADHD, autism, both, or AuDHD?</b> And what does <i>your</i> shape look like?</p>
    <div class="panel stack g10"><span class="eyebrow">Coming soon · The full AuDHD Map</span>
@@ -1128,7 +1141,7 @@ function renderDone(){
    <div class="note yel">${T("Know someone whose brain runs two operating systems?","Send them this page. It's free.")}</div>
    <button class="btn ghost" id="b0">← Back to the walkthrough</button><button class="textbtn" id="hm" style="align-self:center">Back to the start</button></section>`;
    wireTop();$("#b0").onclick=()=>{S.view="p0";save();render()};$("#hm").onclick=()=>{S.view="welcome";save();render();scrollTo(0,0)};return}
-  app.innerHTML=`${topbar("The AuDHD Pre-Diagnosis Toolkit")}<section class="stack g20" style="padding-top:8px">
+  app.innerHTML=`${topbar("The Pre-Diagnosis Map")}<section class="stack g20" style="padding-top:8px">
    <div class="yellow-stage stack g16"><div style="font-size:44px;color:#2B2140"><span class="icw">${I.gear}</span></div><span class="eyebrow" style="color:#2B2140;opacity:.7">Part 0 complete</span><h2 style="color:#2B2140">You know how the machine works.</h2>${route(1)}</div>
    <p>Next: Part 1, your ADHD side. 12 everyday moments. You pick how often each one is true for you.</p>
    <button class="btn" id="sp1">Start Part 1 →</button><button class="btn ghost" id="b0">← Back to Part 0</button><button class="textbtn" id="hm" style="align-self:center">Back to the start</button></section>`;
@@ -1571,8 +1584,13 @@ function renderResults(){
 
    ${recent?`<div class="note">${T("Most of this started recently.","ADHD and autism are lifelong, so they usually show up in childhood. If most of yours started in the last few years, stress or burnout may be a big part of the picture. Worth exploring with a professional.")}</div>`:lifelong?`<div class="note">${T("These have been with you for a long time.","That fits: ADHD and autism are both lifelong.")}</div>`:""}
 
+   <div class="stack g12"><h2>Your shape, decoded</h2>
+    <p>Here's what your shape needs, so you stop forcing fixes made for a different brain. Start with the first card.</p>
+    ${decodeHTML(s)}
+    <p class="small muted">Start with one change, not all of them. Pick the one that feels easiest.</p></div>
+
    <div class="stack g12"><h2>What next</h2>
-    <div class="offer"><b>Take this to a professional</b><span class="small muted">Screenshot this page. It gives you clear words and examples for an assessment, or just for explaining yourself to people you love.</span></div>
+    <div class="offer"><b>Make your doctor page</b><span class="small muted">Your answers, turned into one page you can bring to an assessment, or use to explain yourself to people you love. About 3 minutes.</span><button class="btn ghost" id="toDoc" style="min-height:46px">Make my doctor page →</button></div>
     <div class="offer on"><span class="you-badge">Part 6</span><b>Choose your season</b><span class="small muted">You know your shape. Now pick the one area of life to work on first, and how much energy it gets. About 5 minutes.</span><button class="btn" id="toSeason" style="min-height:46px">Choose my season →</button></div></div>
 
    <div class="note pink">${T("This comes before a diagnosis.","It's a pre-diagnosis map, built from 30 years of lived experience and checked against published research. Your answers <i>look like</i> a pattern. Only a qualified clinician can diagnose ADHD or autism.")}</div>
@@ -1581,8 +1599,110 @@ function renderResults(){
   $("#redo").onclick=()=>{S.view="deck:adhd";const st=dk("adhd");st.step="card";st.i=0;save();render();scrollTo(0,0)};
   $("#restart").onclick=()=>{delete S.dk;S.view="deck:adhd";save();render();scrollTo(0,0)};
   $("#toSeason").onclick=()=>{S.view="season";save();render();scrollTo(0,0)};
+  $("#toDoc").onclick=()=>{S.docFrom="results";S.view="doctor";save();render();scrollTo(0,0)};
   const h=$("#st");h&&h.focus({preventScroll:true});
 }
+
+/* ================= YOUR SHAPE, DECODED ================= */
+const DECODE={
+ dh:{name:"Your ADHD side",col:"var(--dh)",need:"Structure that comes from outside you.",
+  acc:["Keep things where you can see them: open shelves, clear boxes, a list on the wall, not in an app.","Work with someone nearby, in person or on video. Your brain starts easier with company.","Change your routine every few weeks, on purpose, before it goes stale."],
+  tools:["A visual timer for anything longer than 10 minutes.","Start with a 2-minute version of the task. Starting is the hard part."],
+  stop:["Systems you have to remember to open.","Plans that only work on willpower."]},
+ au:{name:"Your autism side",col:"var(--au)",need:"Predictability, and protection from too much input.",
+  acc:["Fixed times for the big anchors: sleep, meals, start of work.","Ask people for a heads-up before plans change. It's a fair request.","Keep a sensory kit with you: headphones or earplugs, sunglasses, something soft."],
+  tools:["A 10-minute buffer between one thing and the next.","One ready sentence for saying no, so you don't have to invent it under pressure."],
+  stop:["\"Just go with the flow.\"","Back-to-back plans with no recovery in between."]},
+ seesaw:{name:"Your seesaw",col:"var(--ink)",need:"Negotiation, so both sides get a turn.",
+  acc:["Structure with choice inside it: a fixed time, but a free choice of task.","A short menu of options instead of one strict plan."],
+  tools:["The Peace Treaty: when the two sides fight, find the one next step they both agree on.","Alternate days or blocks: one for routine, one for something new."],
+  stop:["Advice written for only one side. It will always upset the other one."]},
+ mask:{name:"Your masking",col:"var(--au)",need:"Places and people where you don't have to perform.",
+  acc:["Plan recovery time after people time. Put it in the calendar, don't wait to earn it.","Have one person or one place where you can drop the act completely."],
+  tools:["Pick the place you mask most and drop one mask there first, a small one.","Notice the cost: rate your energy before and after social time."],
+  stop:["Saying yes to every plan because you can hold it together."]},
+ burn:{name:"Your burnout",col:"var(--dh)",need:"Less load before anything new.",
+  acc:["Drop, delay or hand off one thing this week.","Protect sleep and quiet time first. Everything else runs on them."],
+  tools:["Before you say yes, rate your energy 1 to 10. Under 4 means no, or not now.","Rest on purpose, even when nothing is \"wrong\"."],
+  stop:["New productivity systems right now. For you, rest is the tool."]}
+};
+function decodeKeys(s){
+  const v={dh:s.adhd,au:s.aut,seesaw:s.conflict,mask:s.mask,burn:s.burn};
+  let ks=Object.keys(v).filter(k=>v[k]>=.35).sort((a,b)=>v[b]-v[a]);
+  if(v.burn>=.6){ks=["burn",...ks.filter(k=>k!=="burn")]}
+  return {ks:ks.slice(0,3),v};
+}
+function decodeHTML(s){
+  const {ks,v}=decodeKeys(s);
+  if(!ks.length) return `<div class="note">${T("No side stands out strongly.","That's useful too. Look at the area of life that costs you most, and start with small changes to your surroundings there. A professional can help you find what's behind it.")}</div>`;
+  return ks.map((k,i)=>{const d=DECODE[k];return `<div class="dec">
+    <span class="lv" style="background:${d.col};color:var(--paper)">${i===0?"Start here · ":""}${word(v[k])}</span>
+    <h3 style="color:${d.col}">${d.name}</h3><p><b>What it needs:</b> ${d.need}</p>
+    <span class="k">Change your surroundings</span><ul>${d.acc.map(x=>`<li>${x}</li>`).join("")}</ul>
+    <span class="k">Tools to try</span><ul>${d.tools.map(x=>`<li>${x}</li>`).join("")}</ul>
+    <span class="k">Stop forcing</span><ul>${d.stop.map(x=>`<li class="no">${x}</li>`).join("")}</ul></div>`}).join("");
+}
+const FIRSTCH={burn:["7","Find your window","Your burnout is high, so the first job is pace: stretch without strain, rest on purpose."],
+ seesaw:["5","Negotiate the voices","Your two sides fight a lot, so the first job is getting them to agree on one next step."],
+ au:["4","Shape what comes in","Your autism side is strong, so the first job is what you see, hear and touch every day."],
+ dh:["6","Act on what matters","Your ADHD side is strong, so the first job is small moves you can actually start."],
+ mask:["4","Shape what comes in","You mask a lot, so the first job is building places where you can drop it."]};
+
+/* ================= YOUR DOCTOR PAGE ================= */
+function DOC(){S.doc=S.doc||{moment:"",kid:"",help:""};return S.doc}
+function renderDoctor(){
+  const s=scores(),R=RES[s.res],d=DOC();
+  const kidNow=[s.childA,s.childU].filter(x=>x!==undefined);
+  const since=!kidNow.length?"":kidNow.every(x=>x===2)?"Mostly in the last few years":kidNow.some(x=>x===0)?"Since childhood":"For many years";
+  const list=xs=>xs.length?xs.join(", "):"None marked";
+  const esc=t=>(t||"").replace(/</g,"&lt;");
+  const today=new Date().toLocaleDateString(undefined,{day:"numeric",month:"long",year:"numeric"});
+  app.innerHTML=`${topbar(`<button class="textbtn" id="back" style="text-decoration:none;font-weight:600">← My map</button>`)}<section class="stack g24" style="padding-top:8px">
+   <div class="yellow-stage stack g12 noprint"><span class="eyebrow" style="color:#2B2140;opacity:.7">Your doctor page</span>
+    <h1 style="color:#2B2140;margin:0" tabindex="-1" id="st">Your words, ready.</h1>
+    <p style="color:#2B2140">Most people freeze in the appointment and forget half of it. This page says it for you. Add a few real moments below, then print it or screenshot it.</p></div>
+
+   <div class="docp" id="docp">
+    <div><span class="eyebrow">Pre-assessment notes · ${today}</span><h2 style="margin:4px 0 0">What I'd like you to know</h2>
+     <p class="small muted">From a self-reflection map. It's not a diagnosis. It's my own account, to help our conversation.</p></div>
+    <table>
+     <tr><td>My answers look most like</td><td>${R.name}</td></tr>
+     <tr><td>ADHD traits, weekly or more</td><td>${list(s.strongDh.map(c=>c.lab))}</td></tr>
+     <tr><td>Autistic traits, weekly or more</td><td>${list(s.strongAu.map(c=>c.lab))}</td></tr>
+     <tr><td>Traits that sit in both</td><td>${list(s.strongBoth.map(c=>c.lab))}</td></tr>
+     <tr><td>The two sides pull against each other</td><td>${s.felt.length} of 7 pulls, often or constantly${s.felt.length?": "+s.felt.map(c=>c.lab.toLowerCase()).join(", "):""}</td></tr>
+     <tr><td>Traits I hide from people</td><td>${list(s.hidden.map(c=>c.lab))}${s.ctx.length?`. Most at: ${s.ctx.slice(0,3).map(x=>x[0]).join(", ")}`:""}</td></tr>
+     <tr><td>Signs of burnout right now</td><td>${list(s.flags.slice(0,6))}</td></tr>
+     ${since?`<tr><td>How long</td><td>${since}</td></tr>`:""}
+    </table>
+    <div class="stack g8"><h3 style="margin:0">In my own words</h3>
+     <label class="small" for="d1"><b>One moment that sums it up</b> <span class="muted">(a real day, as specific as you can)</span></label>
+     <textarea id="d1" class="dtxt" placeholder="Last week I…">${esc(d.moment)}</textarea>
+     <label class="small" for="d2"><b>What people who knew me as a kid noticed</b> <span class="muted">(ask a parent, a sibling or an old friend)</span></label>
+     <textarea id="d2" class="dtxt" placeholder="My mum says I always…">${esc(d.kid)}</textarea>
+     <label class="small" for="d3"><b>What I want help with</b></label>
+     <textarea id="d3" class="dtxt" placeholder="I want to understand why…">${esc(d.help)}</textarea></div>
+   </div>
+
+   <div class="stack g8 noprint"><button class="btn" id="print">Print or save as PDF</button>
+    <p class="small muted" style="text-align:center">Your notes save on this device only.</p></div>
+
+   <div class="stack g12 noprint"><h2>The path, in three steps</h2>
+    <div class="note">${T("Before","Find someone qualified to assess adults for ADHD and autism, ideally both. Book it, even if the wait is long. Waiting lists are normal.")}</div>
+    <div class="note">${T("During","Bring this page. Read from it if you freeze. Doctors look for real examples and for signs that started in childhood, so the moments you wrote above matter most.")}</div>
+    <div class="note">${T("After","Whatever the answer, give yourself a few days to take it in. If it's a yes, ask what support fits you. If it's a no, your struggles are still real, and you still deserve help with them. Your map and your tools still work either way.")}</div></div>
+   <button class="btn ghost noprint" id="back2">← Back to my map</button></section>`;
+  wireTop();
+  const back=()=>{S.view=S.docFrom||"results";save();render();scrollTo(0,0)};
+  $("#back").onclick=back;$("#back2").onclick=back;
+  $("#d1").oninput=e=>{d.moment=e.target.value.slice(0,1200);save()};
+  $("#d2").oninput=e=>{d.kid=e.target.value.slice(0,1200);save()};
+  $("#d3").oninput=e=>{d.help=e.target.value.slice(0,1200);save()};
+  $("#print").onclick=()=>{try{posthog.capture("doctor_page_printed")}catch(e){}window.print()};
+  try{posthog.capture("doctor_page_opened")}catch(e){}
+  const h=$("#st");h&&h.focus({preventScroll:true});
+}
+
 /* ================= PART 6 · YOUR SEASON ================= */
 const OWNERS_URL=""; /* set when the Owner's Manual page is live */
 const VALUES=["Freedom","Family","Health","Creativity","Security","Growth","Love","Adventure","Honesty","Peace","Achievement","Learning","Fun","Helping others","Independence","Meaning or faith","Friendship","Calm"];
@@ -1693,6 +1813,7 @@ function renderHere(){
      <div class="note"><b class="t" style="color:var(--dh)">Channel → Unstuck</b>Change what comes in, how you handle the two voices, and what you do next.</div>
      <div class="note"><b class="t" style="color:var(--dh)">Compound → Capable</b>A pace, a week and a daily check that keep the plan alive on bad weeks.</div></div></div>
 
+   ${(()=>{const {ks}=decodeKeys(s);const f=ks.length?FIRSTCH[ks[0]]:null;return f?`<div class="note yel">${T("Your first step on the next side: chapter "+f[0]+", "+f[1]+".",f[2])}</div>`:""})()}
    <div class="offer on stack g12"><span class="you-badge">What's next</span>
     <h2 style="margin:0">The <span class="kau">Au</span><span class="kdh">DHD</span> Owner's Manual<sup class="tm">TM</sup></h2>
     <p>Nobody gave you the manual for running two operating systems in one head. This is it: chapters 4 to 9, built around <b>your</b> season, with the tools I use myself.</p>
@@ -1701,10 +1822,12 @@ function renderHere(){
     ${OWNERS_URL?`<a class="btn" href="${OWNERS_URL}" target="_blank" rel="noopener" style="text-decoration:none;align-self:stretch">See the Owner's Manual →</a>`:`<button class="btn" disabled style="align-self:stretch">Founding seats open in November</button><span class="small muted" style="align-self:center">You'll get an email the day it opens.</span>`}</div>
 
    <div class="note pink">${T("This comes before a diagnosis.","Your map shows a pattern your answers look like. Only a qualified clinician can diagnose ADHD or autism. Take your map and this card with you.")}</div>
+   <button class="btn ghost" id="toDoc2">Make my doctor page →</button>
    <button class="btn ghost" id="redoS">← Change my season</button></section>`;
   wireTop();
   $("#back").onclick=()=>{S.view="season";save();render();scrollTo(0,0)};
   $("#redoS").onclick=$("#back").onclick;
+  $("#toDoc2").onclick=()=>{S.docFrom="here";S.view="doctor";save();render();scrollTo(0,0)};
   const h=$("#st");h&&h.focus({preventScroll:true});
 }
 
@@ -1732,7 +1855,7 @@ function colorize(root){const w=document.createTreeWalker(root,NodeFilter.SHOW_T
   ns.forEach(n=>{const f=document.createDocumentFragment();n.nodeValue.split(/\b(AuDHD|ADHD|[Aa]utis(?:m|tic))\b/).forEach((s,i)=>{if(i%2===0){if(s)f.append(s);return}const sp=document.createElement("span");sp.className="kw";
     if(s==="AuDHD")sp.innerHTML='<span class="kau">Au</span><span class="kdh">DHD</span>';else{sp.classList.add(s==="ADHD"?"dh":"au");sp.textContent=s}f.append(sp)});n.replaceWith(f)})}
 let _cz=0;new MutationObserver(()=>{if(_cz)return;_cz=requestAnimationFrame(()=>{_cz=0;colorize(app)})}).observe(app,{childList:true,subtree:true});
-function render(){ closeSheet(); paperLayer(); if(LEAD&&S.view!=="welcome"&&S.view!=="p0"&&S.view!=="done"){S.view="welcome"} if(LEAD&&S.view==="p0"&&!S.email){S.view="welcome"} if(S.view&&S.view.startsWith("deck:")){if(!DECKS[S.view.slice(5)]){S.view="deck:adhd";delete S.dk}return renderDeck(S.view.slice(5))} if(S.view==="results") return renderResults(); if(S.view==="season") return renderSeason(); if(S.view==="here") return renderHere(); if(S.view==="p1"||S.view==="p2soon"||S.view==="dest"){S.view="deck:adhd";return render()} if(S.view==="p0") renderP0(); else if(S.view==="done") renderDone(); else renderWelcome(); }
+function render(){ closeSheet(); paperLayer(); if(LEAD&&S.view!=="welcome"&&S.view!=="p0"&&S.view!=="done"){S.view="welcome"} if(LEAD&&S.view==="p0"&&!S.email){S.view="welcome"} if(S.view&&S.view.startsWith("deck:")){if(!DECKS[S.view.slice(5)]){S.view="deck:adhd";delete S.dk}return renderDeck(S.view.slice(5))} if(S.view==="results") return renderResults(); if(S.view==="season") return renderSeason(); if(S.view==="here") return renderHere(); if(S.view==="doctor") return renderDoctor(); if(S.view==="p1"||S.view==="p2soon"||S.view==="dest"){S.view="deck:adhd";return render()} if(S.view==="p0") renderP0(); else if(S.view==="done") renderDone(); else renderWelcome(); }
 render();
 })();
 </script>
