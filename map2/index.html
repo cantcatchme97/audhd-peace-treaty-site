@@ -807,7 +807,7 @@ function dotField(){
 const CH=["How it works","ADHD","Autism","The seesaw","Masking & burnout","Your map","Your main quest"];
 const MINI=[["Map Both Brains",["How your brains work","Your ADHD brain","Your autistic brain"]],["Spot The Tug",["The 7 tugs","Masks and burnout","Your shape"]],["Pick Main Quest",["Values, areas, main quest, spoons"]]];
 const route=cur=>{if(cur>=7)return "";const st=cur<=2?0:cur<=5?1:2,sub=cur-[0,3,6][st],[nm,items]=MINI[st];
-  return `<div class="route2"><span class="r2h">Step ${st+1} of 3 · ${nm}</span><div class="r2c">${items.map((t,i)=>`<span class="${i<sub?"done":i===sub?"now":""}">${i<sub?"✓ ":""}${t}</span>`).join("")}</div></div>`};
+  return `<div class="route2"><span class="r2h">Level 1 · Checkpoint ${st+1} of 3 · ${nm}</span><div class="r2c">${items.map((t,i)=>`<span class="${i<sub?"done":i===sub?"now":""}">${i<sub?"✓ ":""}${t}</span>`).join("")}</div></div>`};
 
 /* ================= WELCOME ================= */
 function renderWelcome(){
@@ -818,7 +818,8 @@ function renderWelcome(){
    <div class="brand">${logoHTML()}<span class="hint">psst… try throwing the letters</span></div>
    <div class="stack g12">
     <h1 class="ptitle"><span class="th">Am I</span> <span class="kau">Au</span><span class="kdh">DHD</span>?<span class="psub">The Pre-Diagnosis Map<sup class="tm">TM</sup></span></h1>
-    <p class="lead">Never quite fit with ADHD people, or with autistic people? <b>You might be both.</b> This map walks you round the first part of the circle, one step at a time.</p>
+    <span class="eyebrow">Level 1 of the AuDHD Owner's Manual</span>
+    <p class="lead">Never quite fit with ADHD people, or with autistic people? <b>You might be both.</b> This map walks you through Level 1, one checkpoint at a time.</p>
    </div>
    ${circleMap("start")}
    <div class="facts"><span>About 35 minutes</span><span>Saves on this device</span><span>No login</span><span>Comes before a diagnosis</span></div>
@@ -1652,9 +1653,9 @@ const cmPt=(r,deg)=>{const a=deg*Math.PI/180;return [CM_CX+r*Math.sin(a),CM_CY-r
 const cmF=n=>Math.round(n*10)/10;
 const cmArc=(r,a1,a2,sw)=>{const [x1,y1]=cmPt(r,a1),[x2,y2]=cmPt(r,a2);return `M${cmF(x1)},${cmF(y1)} A${r},${r} 0 0 ${sw} ${cmF(x2)},${cmF(y2)}`};
 const CM_PH=[
- {k:"p0",name:"Understand",prob:"Confusion",feel:"lost",to:"Clear",mid:300,say:"Phase 1 · steps 1 to 3 · this map",text:"Kills the confusion of never fitting the ADHD box or the autism box. You come out <b>Clear</b>: you know what's going on in your head, and what it needs."},
- {k:"p1",name:"Channel",prob:"Civil War",feel:"stuck",to:"Unstuck",mid:60,say:"Phase 2 · steps 4 to 6 · Owner's Manual",text:"Ends the civil war between your two brains: what goes in, how they decide, and what you do. You come out <b>Unstuck</b>."},
- {k:"p2",name:"Compound",prob:"Burnout",feel:"drained",to:"Capable",mid:180,say:"Phase 3 · steps 7 to 9 · Owner's Manual",text:"Breaks the burnout cycle with a spoon budget, a rhythm and small wins that hold up on bad weeks. You come out <b>Capable</b>."}];
+ {k:"p0",name:"Understand",prob:"Confusion",feel:"lost",to:"Clear",mid:300,say:"Level 1 · checkpoints 1 to 3 · this map",text:"Kills the confusion of never fitting the ADHD box or the autism box. You come out <b>Clear</b>: you know what's going on in your head, and what it needs."},
+ {k:"p1",name:"Untangle",prob:"Civil War",feel:"stuck",to:"Unstuck",mid:60,say:"Level 2 · checkpoints 4 to 6 · Owner's Manual",text:"Ends the civil war between your two brains: what goes in, how they decide, and what you do. You come out <b>Unstuck</b>."},
+ {k:"p2",name:"Sustain",prob:"Burnout",feel:"drained",to:"Capable",mid:180,say:"Level 3 · checkpoints 7 to 9 · Owner's Manual",text:"Breaks the burnout cycle with a spoon budget, a rhythm and small wins that hold up on bad weeks. You come out <b>Capable</b>."}];
 const CM_ST=[
  ["Map Both","Brains","profile",267,"→ How your two brains take in the world and decide, in a quick walk-through<br>→ 12 everyday ADHD moments, 12 autism moments, and 6 that live in both<br>→ For each one: how often it's you, and whether you hide it<br><b>You walk away with:</b> your profile, the traits that are strong and the ones you hide.","This map · Parts 0 to 2 · about 15 min","Map both brains","Your ADHD side and your autism side, mapped side by side."],
  ["Spot The","Tug","costs",300,"→ 7 tugs where your brains want opposite things (calm vs stimulation, familiar vs new, alone vs together…)<br>→ 11 ways people mask, and which ones cost you most<br>→ 11 burnout signs, to see where you are right now<br><b>You walk away with:</b> your full AuDHD shape, what it's costing you, and your red flags.","This map · Parts 3 to 5 · about 12 min","Spot the tug","The tug-of-war, masking and burnout: what it costs you."],
@@ -1686,10 +1687,10 @@ const IC=c=>[
  /* 9 stack wins: stacked blocks and a sparkle */
  `<rect x="-24" y="10" width="48" height="13" rx="4" fill="currentColor" fill-opacity=".22"/><rect x="-17" y="-4" width="34" height="13" rx="4" fill="currentColor" fill-opacity=".22"/><rect x="-10" y="-18" width="20" height="13" rx="4" fill="currentColor" fill-opacity=".22"/><path d="M19,-28 v9 M14.5,-23.5 h9"/>`];
 const CM_MODES={
- start:{done:0,here:0,tag:"start here",info:"s0",cap:"Today you walk <b>Understand</b>: steps 1, 2 and 3. It ends at <b>Clear</b>."},
- s1:{done:1,here:1,tag:"next",info:"s1",from:0,cap:"Step 1 done ✓ Next: <b>Spot the tug</b>."},
- s2:{done:2,here:2,tag:"next",info:"s2",from:1,cap:"Step 2 done ✓ One more step to <b>Clear</b>."},
- end:{done:3,here:"Clear",tag:"you are here",info:"p1",from:2,glow:1,cap:"You're <b>Clear</b>. Next on the circle: <b>Channel</b>, from Clear to <b>Unstuck</b>."}};
+ start:{done:0,here:0,tag:"start here",info:"s0",cap:"<b>Level 1 · Understand</b>: 3 checkpoints. It ends at <b>Clear</b>."},
+ s1:{done:1,here:1,tag:"next",info:"s1",from:0,cap:"Checkpoint 1 saved ✓ Next: <b>Spot the tug</b>."},
+ s2:{done:2,here:2,tag:"next",info:"s2",from:1,cap:"Checkpoint 2 saved ✓ One more to <b>Clear</b>."},
+ end:{done:3,here:"Clear",tag:"you are here",info:"p1",from:2,glow:1,cap:"Level 1 complete. You're <b>Clear</b>. Unlock <b>Level 2 · Untangle</b>: from Clear to <b>Unstuck</b>."}};
 function cmStepPos(i){const [x,y]=cmPt(400,CM_ST[i][3]),o=CM_OFF["s"+i]||{x:0,y:0};return [x+o.x,y+o.y]}
 function cmOrigin(i){const [x,y]=i==="Clear"?cmPt(352,357):cmStepPos(i);return [((x-CM_VB[0])/CM_VB[2]*100).toFixed(1)+"%",((y-CM_VB[1])/CM_VB[3]*100).toFixed(1)+"%"]}
 let cmN=0;
@@ -1705,8 +1706,8 @@ function circleMap(mode){
   CM_PH.forEach((p,i)=>{const d=M.done>=(i+1)*3,c=d?DONE:LINE;
     o+=`<path d="${cmArc(338,p.mid-45,p.mid+44,1)}" fill="none" stroke="${c}" stroke-width="${d?7:5}" stroke-linecap="round" marker-end="url(#${uid}${d?"d":"a"})"/>`;
     [p.mid-20,p.mid+20].forEach(a=>{const [x1,y1]=cmPt(330,a),[x2,y2]=cmPt(362,a);o+=`<line x1="${cmF(x1)}" y1="${cmF(y1)}" x2="${cmF(x2)}" y2="${cmF(y2)}" stroke="${c}" stroke-width="5" stroke-linecap="round"/>`})});
-  CM_PH.forEach((p,i)=>{o+=`<g data-k="${p.k}" role="button" tabindex="0" aria-label="Phase ${i+1}: ${p.name}" class="${M.glow===i?"glow":""}"><use href="#${uid}g${i}" fill="none" stroke="${M.glow===i?"var(--cm-green2)":"var(--cm-green)"}" stroke-width="54" stroke-linecap="round"/>
-    <text ${H} font-size="30" fill="var(--cm-greent)" dy="10" letter-spacing="3"><textPath href="#${uid}g${i}" startOffset="50%" text-anchor="middle">${p.name.toUpperCase()}</textPath></text></g>`});
+  CM_PH.forEach((p,i)=>{o+=`<g data-k="${p.k}" role="button" tabindex="0" aria-label="Level ${i+1}: ${p.name}" class="${M.glow===i?"glow":""}"><use href="#${uid}g${i}" fill="none" stroke="${M.glow===i?"var(--cm-green2)":"var(--cm-green)"}" stroke-width="54" stroke-linecap="round"/>
+    <text ${H} font-size="30" fill="var(--cm-greent)" dy="10" letter-spacing="3"><textPath href="#${uid}g${i}" startOffset="50%" text-anchor="middle">${i+1} · ${p.name.toUpperCase()}</textPath></text></g>`});
   [["Clear",357,352],["Unstuck",119,372],["Capable",239,370]].forEach(([w,a,rr])=>{const [x,y]=cmPt(rr,a),wd=w.length*17+34,on=M.here==="Clear"&&w==="Clear";
     o+=Dg("yl-"+w,`<rect x="${cmF(x-wd/2)}" y="${cmF(y-21)}" width="${wd}" height="42" rx="21" fill="${on?"#FFD43B":"var(--cm-gold)"}"/><text ${H} x="${cmF(x)}" y="${cmF(y+9)}" text-anchor="middle" font-size="26" fill="${on?"#2B2140":"var(--cm-goldt)"}" letter-spacing="1">${w}</text>`)});
   [[300,-60],[60,60],[180,0]].forEach(([a,rot],i)=>{const [x,y]=cmPt(178,a),p=CM_PH[i];
@@ -2009,16 +2010,16 @@ function renderHere(){
      ${z.why?`<b>Why</b><span>“${z.why.replace(/</g,"&lt;")}”</span>`:""}</div>
     <p class="small muted">Screenshot this card. It's the first page of your plan.</p></div>
 
-   <div class="stack g12"><h2>Where you are on the circle</h2>
-    <p>You just finished <b>Understand</b>, steps 1 to 3. You're <b>Clear</b>. This whole map, from Part 0 to your main quest, was one third of the circle. Your two brains are clear now, but they're still at war. The next two thirds are where life starts to change.</p>
+   <div class="stack g12"><h2>Where you are in the Owner's Manual</h2>
+    <p>Level 1 complete: you're <b>Clear</b>. This whole map was Level 1 of the AuDHD Owner's Manual. Your two brains are clear now, but they're still at war. Levels 2 and 3 are where life starts to change.</p>
     ${circleMap("end")}</div>
 
-   ${(()=>{const {ks}=decodeKeys(s);const f=ks.length?FIRSTCH[ks[0]]:null;return f?`<div class="note yel">${T("Your first stop on the next sides: step "+f[0]+", "+f[1]+".",f[2])}</div>`:""})()}
+   ${(()=>{const {ks}=decodeKeys(s);const f=ks.length?FIRSTCH[ks[0]]:null;return f?`<div class="note yel">${T("Your first checkpoint on the next levels: step "+f[0]+", "+f[1]+".",f[2])}</div>`:""})()}
    <div class="offer on stack g12"><span class="you-badge">What's next</span>
     <h2 style="margin:0">The <span class="kau">Au</span><span class="kdh">DHD</span> Owner's Manual<sup class="tm">TM</sup></h2>
-    <p>Nobody gave you the manual for running two operating systems in one head. This is it: chapters 4 to 9, built around <b>your</b> main quest, with the tools I use myself.</p>
+    <p>Nobody gave you the manual for running two operating systems in one head. This is it: <b>Level 2 · Untangle</b> and <b>Level 3 · Sustain</b>, built around <b>your</b> main quest, with the tools I use myself.</p>
     <div class="chlist">${CHAP.map(([n,t,d])=>`<div><i>${n}</i><span><b>${t}</b><br><span class="small muted">${d}</span></span></div>`).join("")}</div>
-    <p class="small"><b>Your $37 counts toward it.</b> You've already done chapters 1 to 3.</p>
+    <p class="small"><b>Your $37 counts toward it.</b> You've already done Level 1.</p>
     ${OWNERS_URL?`<a class="btn" href="${OWNERS_URL}" target="_blank" rel="noopener" style="text-decoration:none;align-self:stretch">See the Owner's Manual →</a>`:`<button class="btn" disabled style="align-self:stretch">Founding seats open in November</button><span class="small muted" style="align-self:center">You'll get an email the day it opens.</span>`}</div>
 
    <div class="note pink">${T("This comes before a diagnosis.","Your map shows a pattern your answers look like. Only a qualified clinician can diagnose ADHD or autism. Take your map and this card with you.")}</div>
