@@ -4,3 +4,5 @@ https://:project.pages.dev/*
   X-Robots-Tag: noindex, nofollow
 /treaty/*
   X-Robots-Tag: noindex, nofollow
+/map/*
+  X-Robots-Tag: noindex, nofollow

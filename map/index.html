@@ -1,0 +1,1740 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow"><link rel="icon" href="/app/icon-192.png"><link rel="apple-touch-icon" href="/app/apple-touch-icon.png"><script>
+!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags identify setPersonProperties group resetGroups reset get_distinct_id get_session_id alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+posthog.init("phc_vhUmnsmQbPvXfpUHhuKVgh6a3arJ6E5ivCV8y2KjcBCu",{api_host:"https://us.i.posthog.com",person_profiles:"identified_only"});
+</script><style>:root{color-scheme:light}body{margin:0}</style></head><body>
+<title>The AuDHD Pre-Diagnosis Toolkit</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Grandstander:wght@500;700&family=Patrick+Hand&family=Lexend:wght@400;500;600;700&family=Poppins:wght@700&family=Lora:ital,wght@1,500&display=swap" rel="stylesheet">
+<style>
+/* Layout: phone-first single column (max 560px). Each Part 0 screen = one interactive visual on top + "beats" of text below that reveal one at a time (tap to continue). Cream paper for reading; plum = autism, tomato = ADHD; yellow only for brand moments and the reading marker. */
+:root{
+  --paper:#F7F2E8; --sheet:#EEE6D6; --sheet2:#E6DCC8; --ink:#211B2E; --ink2:#4A4257; --muted:#776E83;
+  --rule:rgba(33,27,46,.13); --au:#3E2F66; --dh:#C8442A; --au-s:rgba(62,47,102,.11); --dh-s:rgba(200,68,42,.11);
+  --ok:#3F7D58; --ok-s:rgba(63,125,88,.13); --in:#2E6FA7; --in-s:rgba(46,111,167,.12); --pr:#A86F0C; --pr-s:rgba(224,162,27,.16); --out:#3F7D58; --out-s:rgba(63,125,88,.13); --yellow:#FFD43B; --mark:rgba(255,212,59,.62);
+  --btn:#2B2140; --btn-ink:#F7F2E8; --onc:#fff; --shadow:0 10px 30px rgba(43,33,64,.10);
+  --grain:.2; --blend:multiply;
+  --fd:"Gaegu","Comic Neue",cursive; --fb:"Lexend",system-ui,sans-serif; --hs:1.12; --fw:700; --ls:0;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#1C1626; --sheet:#272034; --sheet2:#30283F; --ink:#F1EAF7; --ink2:#D3C9DE; --muted:#A497B3;
+  --rule:rgba(241,234,247,.14); --au:#B9A6F0; --dh:#F08A68; --au-s:rgba(185,166,240,.14); --dh-s:rgba(240,138,104,.14);
+  --ok:#7CC79A; --ok-s:rgba(124,199,154,.14); --in:#86BCEB; --in-s:rgba(134,188,235,.14); --pr:#F2C55C; --pr-s:rgba(242,197,92,.14); --out:#7CC79A; --out-s:rgba(124,199,154,.14); --mark:rgba(255,212,59,.28);
+  --btn:#F1EAF7; --btn-ink:#1C1626; --onc:#1C1626; --shadow:0 10px 30px rgba(0,0,0,.35); --grain:.45; --blend:soft-light; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#1C1626; --sheet:#272034; --sheet2:#30283F; --ink:#F1EAF7; --ink2:#D3C9DE; --muted:#A497B3;
+  --rule:rgba(241,234,247,.14); --au:#B9A6F0; --dh:#F08A68; --au-s:rgba(185,166,240,.14); --dh-s:rgba(240,138,104,.14);
+  --ok:#7CC79A; --ok-s:rgba(124,199,154,.14); --in:#86BCEB; --in-s:rgba(134,188,235,.14); --pr:#F2C55C; --pr-s:rgba(242,197,92,.14); --out:#7CC79A; --out-s:rgba(124,199,154,.14); --mark:rgba(255,212,59,.28);
+  --btn:#F1EAF7; --btn-ink:#1C1626; --onc:#1C1626; --shadow:0 10px 30px rgba(0,0,0,.35); --grain:.45; --blend:soft-light; color-scheme:dark}
+:root[data-font="grand"]{--fd:"Grandstander",cursive;--hs:.9;--fw:700}
+:root[data-font="patrick"]{--fd:"Patrick Hand",cursive;--hs:1;--fw:400}
+:root[data-font="clear"]{--fd:"Lexend",system-ui,sans-serif;--hs:.82;--fw:600;--ls:-.01em}
+:root[data-font="clear"] body{letter-spacing:.015em;line-height:1.72}
+
+html,body{min-height:100%}
+html{background:var(--paper);overflow-x:clip}
+body{background:var(--paper);color:var(--ink);font:400 16px/1.6 var(--fb);-webkit-font-smoothing:antialiased;overflow-x:clip}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:var(--grain);mix-blend-mode:var(--blend);
+ background-image:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+[hidden]{display:none!important}
+.wrap{position:relative;z-index:1;max-width:560px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+h1,h2,h3{font-family:var(--fd);font-weight:var(--fw);letter-spacing:var(--ls);line-height:1.08;margin:0;text-wrap:balance}
+h1{font-size:calc(34px * var(--hs))}
+h2{font-size:calc(29px * var(--hs))}
+h3{font-size:calc(22px * var(--hs))}
+p{margin:0}
+b,strong{font-weight:600}
+.muted{color:var(--muted)}
+.small{font-size:13.5px}
+.stack{display:flex;flex-direction:column}
+.g6{gap:6px}.g8{gap:8px}.g10{gap:10px}.g12{gap:12px}.g16{gap:16px}.g20{gap:20px}.g24{gap:24px}.g32{gap:32px}
+.eyebrow{font:600 11px/1.2 var(--fb);letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+button{font-family:inherit}
+.btn{appearance:none;border:0;cursor:pointer;background:var(--btn);color:var(--btn-ink);font:600 15.5px/1 var(--fb);min-height:50px;padding:0 24px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .12s}
+.btn:active{transform:scale(.98)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--rule)}
+.btn[disabled]{opacity:.35;cursor:not-allowed}
+.chip{appearance:none;border:0;cursor:pointer;background:var(--sheet);color:var(--ink);font:500 13.5px/1.2 var(--fb);padding:8px 12px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--rule)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);box-shadow:none}
+:focus-visible{outline:2.5px solid var(--dh);outline-offset:3px}
+
+/* ---------- top bar ---------- */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid transparent}
+.top.lined{border-bottom-color:var(--rule)}
+.top .name{font:600 13px var(--fb);color:var(--muted);flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;gap:10px}
+.icon{appearance:none;border:0;cursor:pointer;width:38px;height:38px;border-radius:12px;background:var(--sheet);color:var(--ink);display:grid;place-items:center;font:600 15px var(--fb);box-shadow:inset 0 0 0 1px var(--rule)}
+.icon svg{width:18px;height:18px}
+.menu{position:absolute;right:0;top:54px;background:var(--paper);border-radius:16px;box-shadow:var(--shadow),inset 0 0 0 1px var(--rule);padding:10px;display:flex;flex-direction:column;gap:4px;width:250px;z-index:30}
+.menu .opt{appearance:none;border:0;cursor:pointer;background:transparent;color:var(--ink);text-align:left;padding:10px 12px;border-radius:10px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.menu .opt[aria-checked="true"]{background:var(--sheet)}
+.menu .opt b{font-size:22px;line-height:1}
+.menu .opt small{font:400 12px var(--fb);color:var(--muted)}
+.menu hr{border:0;border-top:1px solid var(--rule);margin:6px 0}
+.menu label{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 12px;font-size:14px;cursor:pointer}
+.menu input{accent-color:var(--dh);width:18px;height:18px}
+.minibar{flex:1;height:4px;border-radius:2px;background:var(--rule);position:relative;min-width:60px;max-width:160px;overflow:hidden}
+.minibar i{position:absolute;inset:0 auto 0 0;background:linear-gradient(90deg,var(--au),var(--dh));border-radius:2px;transition:width .4s}
+
+/* ---------- brand card + logo ---------- */
+.brand{background:radial-gradient(95% 85% at 35% 25%,#FFE27A,#FFD43B 65%,#F6C62E);border-radius:24px;padding:26px 12px 14px;position:relative;color:#2B2140;display:flex;flex-direction:column;align-items:center;gap:6px;touch-action:pan-y}
+.brand::before{content:"";position:absolute;inset:0;border-radius:inherit;opacity:.16;mix-blend-mode:multiply;pointer-events:none;background-image:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.logo{position:relative;display:flex;flex-direction:column;align-items:center;user-select:none;-webkit-user-select:none}
+.logo .how{font:italic 500 26px/1 "Lora",Georgia,serif;opacity:.8;margin-bottom:2px}
+.logo .word{display:flex;align-items:flex-end;gap:4px}
+.logo .au{font:700 66px/1 "Poppins","Avenir Next",sans-serif;letter-spacing:-2px;color:#2B2140;cursor:grab;touch-action:none;display:inline-block;position:relative}
+.logo .au i{display:inline-block;width:0;height:0}
+.logo .dhd{display:flex;align-items:flex-end;position:relative}
+.logo .L{display:block;overflow:visible;cursor:grab;touch-action:none;will-change:transform}
+.logo .L:active,.logo .au:active{cursor:grabbing}
+.logo svg.dots{display:block;overflow:visible;margin-top:4px}
+.shake{animation:shake .5s cubic-bezier(.36,.07,.19,.97)}
+@keyframes shake{10%,90%{transform:translateX(-2px)}20%,80%{transform:translateX(5px)}30%,50%,70%{transform:translateX(-9px)}40%,60%{transform:translateX(9px)}}
+.logo.intro .au{animation:auIn .7s cubic-bezier(.2,.7,.2,1) both}
+.logo.intro .dhd{animation:dhdIn 1s .2s both}
+@keyframes auIn{from{transform:translateX(-50px);opacity:0}to{transform:none;opacity:1}}
+@keyframes dhdIn{0%{transform:translateY(60px);opacity:0}35%{transform:translateY(-14px);opacity:1}55%{transform:translateY(5px)}72%{transform:translateY(-4px)}86%{transform:translateY(1px)}100%{transform:none}}
+.hint{font:500 12px var(--fb);opacity:.65}
+
+/* ---------- welcome ---------- */
+.lead{font-size:16.5px;color:var(--ink2)}
+.disc{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center;background:var(--sheet);border-radius:20px;padding:16px}
+.disc svg{width:116px;height:auto;display:block}
+.disc ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px;font-size:14px;line-height:1.35}
+.disc li{display:grid;grid-template-columns:18px minmax(0,1fr);gap:6px}
+@media (max-width:420px){.disc{grid-template-columns:minmax(0,1fr)}.disc svg{margin:0 auto}}
+.facts{display:flex;flex-wrap:wrap;gap:6px}
+.facts span{font-size:12.5px;padding:5px 10px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--rule);color:var(--ink2)}
+.route{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));text-align:center;font-size:11px;line-height:1.2;color:var(--muted);position:relative}
+.route::before{content:"";position:absolute;left:8%;right:8%;top:13px;border-top:2px dashed var(--rule)}
+.route div{display:flex;flex-direction:column;align-items:center;gap:6px;position:relative}
+.route i{font-style:normal;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--paper);box-shadow:inset 0 0 0 1.5px var(--ink2);font:700 12px var(--fb);color:var(--ink)}
+.route .now i{background:var(--dh);color:#fff;box-shadow:none}
+.route .done i{background:var(--ink);color:var(--paper);box-shadow:none}
+.route .now span{color:var(--ink);font-weight:600}
+
+/* ---------- Part 0 screen ---------- */
+.ticks{display:flex;gap:3px;flex:1;max-width:220px}
+.ticks i{flex:1;height:4px;border-radius:2px;background:var(--rule)}
+.ticks i.d{background:var(--ink2)}.ticks i.n{background:var(--dh)}
+.vis{background:var(--sheet);border-radius:22px;padding:16px;position:relative;overflow:hidden}
+.beats{display:flex;flex-direction:column;gap:14px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.beat{transition:opacity .35s;padding-left:14px;position:relative;font-size:16.5px}
+.beat::before{content:"";position:absolute;left:0;top:4px;bottom:4px;width:3px;border-radius:2px;background:transparent;transition:background .3s}
+.beat.fut{display:none}
+.beat.past{opacity:.38}
+.beat.now{opacity:1}
+.beat.now::before{background:var(--dh)}
+.beat.now .hl{background-image:linear-gradient(var(--mark),var(--mark));background-repeat:no-repeat;background-position:0 88%;background-size:100% 42%;-webkit-box-decoration-break:clone;box-decoration-break:clone;animation:sweep .7s ease-out both}
+@keyframes sweep{from{background-size:0% 42%}to{background-size:100% 42%}}
+.all .beat{opacity:1}.all .beat.now::before{background:transparent}.all .beat.now .hl{background-image:none}
+.beat.callout{background:var(--sheet);border-radius:16px;padding:14px 16px 14px 18px}
+.beat.callout.yel{background:rgba(255,212,59,.18)}
+.beat.callout.pink{background:var(--dh-s)}
+.beat.big{font-size:19px;font-weight:600}
+.tapmore{font:500 12.5px var(--fb);color:var(--muted);display:flex;align-items:center;gap:6px;justify-content:center;animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(3px)}}
+.navrow{display:flex;gap:10px;align-items:center}
+.navrow .btn{flex:1}
+.textbtn{appearance:none;border:0;background:none;color:var(--muted);font:500 13px var(--fb);cursor:pointer;padding:6px 2px;text-decoration:underline;text-underline-offset:3px}
+
+/* nodes / flow */
+.node{border-radius:14px;padding:9px 12px;font-size:13.5px;line-height:1.3;background:var(--paper);box-shadow:inset 0 0 0 1.5px var(--rule);transition:opacity .45s,transform .45s}
+.node b{font-weight:600}
+.node.dh{box-shadow:inset 0 0 0 1.5px var(--dh);background:var(--dh-s)}
+.node.au{box-shadow:inset 0 0 0 1.5px var(--au);background:var(--au-s)}
+.node.ok{box-shadow:inset 0 0 0 1.5px var(--ok);background:var(--ok-s)}
+.node.ink{background:var(--ink);color:var(--paper);box-shadow:none}
+.off{opacity:0;transform:translateY(8px)}
+.dim{opacity:.25}
+.arrow{width:2px;height:16px;background:var(--muted);margin:0 auto;position:relative;transition:opacity .4s}
+.arrow::after{content:"";position:absolute;left:-4px;bottom:-2px;border:5px solid transparent;border-top:6px solid var(--muted);border-bottom:0}
+
+/* laptop */
+.laptop{display:flex;flex-direction:column;align-items:center;gap:0}
+.screen{width:100%;max-width:330px;aspect-ratio:16/10;background:var(--ink);border-radius:14px 14px 4px 4px;padding:10px;box-sizing:border-box;display:flex;flex-direction:column;gap:8px;position:relative}
+.screen .ttl{font:600 11px var(--fb);color:var(--paper);opacity:.7;display:flex;justify-content:space-between}
+.wins{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.win{border:0;cursor:pointer;border-radius:8px;padding:8px;color:#fff;font:600 12px/1.3 var(--fb);text-align:left;display:flex;flex-direction:column;gap:4px;position:relative}
+.win.au{background:#4A3A7A}.win.dh{background:#C8442A}
+.win small{font-weight:400;opacity:.9;transition:opacity .4s}
+.win .x{position:absolute;top:5px;right:7px;opacity:.7}
+.jit{animation:jit .18s linear infinite}
+@keyframes jit{25%{transform:translate(1px,-1px)}75%{transform:translate(-1px,1px)}}
+.base{width:112%;max-width:370px;height:12px;background:var(--sheet2);border-radius:0 0 12px 12px;box-shadow:inset 0 1px 0 var(--rule)}
+.res{width:100%;max-width:330px;margin-top:14px}
+.res .lab{display:flex;justify-content:space-between;font:600 11px var(--fb);color:var(--muted);margin-bottom:5px}
+.res .bar{height:12px;border-radius:6px;background:var(--paper);box-shadow:inset 0 0 0 1px var(--rule);position:relative;overflow:hidden}
+.res .bar i{position:absolute;top:0;bottom:0;transition:width 1s ease}
+.res .bar .a{left:0;background:var(--au)}.res .bar .d{right:0;background:var(--dh)}
+.fan{display:inline-block}.spin{animation:spin .5s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+.toast{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);background:var(--ink);color:var(--paper);font:500 13px var(--fb);padding:8px 14px;border-radius:999px;white-space:nowrap;transition:opacity .3s}
+
+/* loop */
+.loopsvg{width:100%;height:auto;display:block}
+.loopsvg .n{transition:opacity .5s}
+.dial{transition:transform .8s cubic-bezier(.3,1.5,.5,1);transform-box:fill-box;transform-origin:center}
+
+/* desk */
+.modes{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.desk{position:relative;height:236px;border-radius:16px;background:var(--paper);box-shadow:inset 0 0 0 1px var(--rule);margin-top:12px;overflow:hidden}
+.desk .lbl{position:absolute;left:12px;bottom:10px;font:600 11px var(--fb);color:var(--muted)}
+.desk .bin{position:absolute;right:10px;bottom:8px;font-size:12px;color:var(--muted);display:flex;align-items:center;gap:4px}
+.sig{position:absolute;left:0;top:0;white-space:nowrap;font:500 13px var(--fb);padding:6px 10px;border-radius:999px;background:var(--sheet);box-shadow:inset 0 0 0 1px var(--rule);transition:transform .7s cubic-bezier(.3,1.25,.5,1),opacity .5s,background .4s;will-change:transform}
+.sig.hot{background:var(--dh-s);box-shadow:inset 0 0 0 1.5px var(--dh)}
+.sig .num{font-weight:700;color:var(--ok);margin-right:4px}
+.wob{animation:wob .9s ease-in-out infinite}
+.outcome{margin-top:10px;text-align:center;font-size:14px;min-height:42px}
+
+/* habituation */
+.hab{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.hab .col{background:var(--paper);border-radius:14px;padding:10px;display:flex;flex-direction:column;gap:6px;box-shadow:inset 0 0 0 1px var(--rule)}
+.hab .col h4{margin:0;font:600 12px var(--fb);color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.hab .it{font-size:13.5px;transition:opacity .2s}
+.load{height:8px;border-radius:4px;background:var(--rule);overflow:hidden;margin-top:4px}
+.load i{display:block;height:100%;transition:width .2s,background .3s}
+.hab .say{font-size:12.5px;color:var(--ink2);min-height:34px}
+.rng{width:100%;accent-color:var(--dh)}
+.rlab{display:flex;justify-content:space-between;font:600 12px var(--fb);color:var(--muted)}
+
+/* bucket + window */
+.bucket{width:100%;max-width:300px;height:auto;display:block;margin:0 auto}
+.water{transition:none}
+.win2{display:flex;flex-direction:column;gap:12px;margin-top:6px}
+.wbar{position:relative;height:30px;border-radius:10px;overflow:hidden;display:flex;font:600 11px var(--fb)}
+.wbar span{display:grid;place-items:center;text-align:center;line-height:1.1;padding:0 4px;color:#fff}
+.wnt .u{background:#9C94A8;width:20%}.wnt .c{background:var(--ok);width:60%}.wnt .o{background:#9C94A8;width:20%}
+.wad .u{background:var(--dh);width:44%}.wad .c{background:var(--ok);width:12%}.wad .o{background:#4A3A7A;width:44%}
+.knob{position:absolute;top:-4px;bottom:-4px;width:4px;border-radius:2px;background:var(--ink);box-shadow:0 0 0 2px var(--paper);transform:translateX(-50%);transition:left .05s}
+.wread{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 10px;font-size:13.5px;align-items:center}
+.wread b{font:600 11px var(--fb);color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+
+/* processing */
+.scen{display:flex;gap:6px;flex-wrap:wrap}
+.lanes{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.lane{display:flex;flex-direction:column;gap:0;align-items:stretch}
+.ans{align-self:center;font:700 12px var(--fb);padding:3px 10px;border-radius:999px;background:var(--ink);color:var(--paper);margin:4px 0}
+.merge{margin-top:10px;display:flex;flex-direction:column;align-items:center;gap:6px}
+.mini-ss{width:180px;height:auto;display:block}
+.beam{transform-box:view-box;transform-origin:90px 34px;transition:transform .9s cubic-bezier(.3,1.5,.5,1)}
+.rock{animation:rock 2s ease-in-out infinite}
+@keyframes rock{0%,100%{transform:rotate(-9deg)}50%{transform:rotate(9deg)}}
+
+/* mask */
+.wants{background:var(--paper);border-radius:16px;padding:14px;box-shadow:inset 0 0 0 1px var(--rule);display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center}
+.wants .q{font:600 12px var(--fb);color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.wants .r{font-size:18px;font-weight:600;min-height:52px;display:grid;place-items:center}
+.two{display:flex;gap:8px;width:100%}.two .btn{flex:1;min-height:44px;font-size:14.5px;padding:0 10px}
+.batt{display:flex;align-items:center;gap:10px;margin-top:14px}
+.cell{flex:1;height:22px;border-radius:7px;box-shadow:inset 0 0 0 2px var(--ink2);padding:3px;position:relative}
+.cell::after{content:"";position:absolute;right:-7px;top:6px;width:4px;height:10px;border-radius:0 2px 2px 0;background:var(--ink2)}
+.cell i{display:block;height:100%;border-radius:4px;transition:width .6s ease,background .4s}
+.mstat{font:600 13px var(--fb);font-variant-numeric:tabular-nums;min-width:44px;text-align:right}
+.crash{position:absolute;inset:0;background:#7f1d1d;color:#fef2f2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:20px;border-radius:22px;animation:rise .35s ease both}
+@keyframes rise{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+
+/* complete map */
+.cmap{display:flex;flex-direction:column;gap:0}
+.grp{border-radius:16px;padding:10px;display:flex;flex-direction:column;gap:8px}
+.grp>.gt{font:700 11px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between}
+.grp.in{background:var(--dh-s)}.grp.pr{background:var(--au-s)}.grp.out{background:var(--sheet2)}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mbox{appearance:none;border:0;cursor:pointer;text-align:left;color:var(--ink);font:400 12.5px/1.3 var(--fb);background:var(--paper);border-radius:12px;padding:8px 10px;box-shadow:inset 0 0 0 1px var(--rule);position:relative;transition:box-shadow .2s,transform .2s}
+.mbox b{display:block;font-size:13px;font-weight:600;margin-bottom:2px}
+.mbox .pt{position:absolute;top:-8px;right:6px;font:700 10px var(--fb);background:var(--ink);color:var(--paper);border-radius:999px;padding:2px 7px}
+.mbox.sel{box-shadow:inset 0 0 0 2.5px var(--dh);transform:translateY(-1px)}
+.mbox.wide{grid-column:1/-1;text-align:center}
+.mexp{margin-top:12px;font-size:14px;background:var(--paper);border-radius:12px;padding:10px 12px;min-height:44px;box-shadow:inset 0 0 0 1px var(--rule)}
+
+/* quick ref */
+.qr{background:var(--paper);border-radius:16px;padding:14px;margin-top:12px;box-shadow:inset 0 0 0 1px var(--rule)}
+.qr dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 12px;font-size:14px}
+.qr dt{font:600 11px/1.5 var(--fb);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding-top:2px}
+.qr dd{margin:0}
+
+/* before you start */
+.tbl{overflow-x:auto;border-radius:12px;box-shadow:inset 0 0 0 1px var(--rule);margin-top:8px}
+.tbl table{border-collapse:collapse;width:100%;min-width:520px;font-size:13px;line-height:1.4}
+.tbl th,.tbl td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--rule)}
+.tbl th{background:var(--sheet);font-weight:600}
+.tbl tr:last-child td{border-bottom:0}
+details.ideas{background:var(--sheet);border-radius:16px;padding:12px 16px}
+details.ideas summary{cursor:pointer;font-weight:600}
+details.ideas .stack{margin-top:10px}
+.check{display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:16px;background:var(--sheet);cursor:pointer;font-size:15px}
+.check input{width:20px;height:20px;margin:2px 0 0;accent-color:var(--dh);flex:none}
+.yellow-stage{background:radial-gradient(95% 85% at 35% 25%,#FFE27A,#FFD43B 65%,#F6C62E);color:#2B2140;border-radius:24px;padding:30px 20px;text-align:center}
+.yellow-stage .route i{background:#FFE68A}.yellow-stage .route .done i{background:#2B2140;color:#FFD43B}.yellow-stage .route{color:#2B2140}.yellow-stage .route::before{border-color:rgba(43,33,64,.3)}
+
+/* ---------- round 2 additions ---------- */
+:root{--bez:#3D3450}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bez:#5F5375}}
+:root[data-theme="dark"]{--bez:#5F5375}
+.icw{display:inline-flex;width:1em;height:1em;vertical-align:-.14em;flex:none}
+.icw svg{width:100%;height:100%;display:block}
+h2 .icw{margin-right:3px}
+.try{display:flex;gap:8px;align-items:center;font:600 13.5px/1.3 var(--fb);color:var(--dh);background:var(--dh-s);border-radius:12px;padding:8px 12px;margin-bottom:12px}
+.try .icw{width:18px;height:18px;animation:tapb 1.4s ease-in-out infinite}
+@keyframes tapb{50%{transform:translateY(-2px) rotate(-8deg)}}
+.maker{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:start;padding:14px 16px;border-radius:16px;box-shadow:inset 0 0 0 1.5px var(--rule);font-size:14.5px}
+.maker .icw{width:22px;height:22px;margin-top:2px}
+.disc li .icw{width:16px;height:16px;margin-top:2px}
+.beat .t{display:block;margin-bottom:2px}
+.beat .who,.beat .ask,.beat .yn{display:block}
+.beat .ask{font-weight:600;font-size:18px;margin:2px 0 4px}
+.beat .yn{padding-left:4px}
+.beat.rule{border-radius:14px;padding:10px 12px 10px 16px}
+.beat.rule.now{background:var(--sheet)}
+.beat.rule.now .hl{background-image:none}
+.note{background:var(--sheet);border-radius:14px;padding:12px 14px;font-size:15px}
+.note .t{display:block}
+.note.pink{background:var(--dh-s)}
+.screen{max-width:290px;border:7px solid var(--bez);border-bottom-width:9px;border-radius:14px 14px 4px 4px;background:#1C1626;padding:8px}
+.screen .ttl{color:#F1EAF7;font:600 11px var(--fb);opacity:.75}
+.base{width:100%;max-width:322px;height:13px;background:var(--bez);border-radius:2px 2px 14px 14px;position:relative;box-shadow:none}
+.base i{position:absolute;left:50%;top:0;width:48px;height:5px;margin-left:-24px;background:rgba(255,255,255,.2);border-radius:0 0 6px 6px}
+.win .wt{display:flex;align-items:center;gap:5px}
+.win.closing{transform:scale(.25);opacity:.2;transition:transform .35s,opacity .35s}
+.hw{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:center;margin-top:14px}
+.fanbox{display:flex;flex-direction:column;align-items:center;gap:2px;font:600 11px var(--fb);color:var(--muted);white-space:nowrap}
+.fan{width:48px;height:48px;display:block}
+#fb{transform-box:view-box;transform-origin:22px 22px}
+.res{max-width:none;margin-top:0;min-width:0}
+.rt{display:block;font:600 11.5px/1.3 var(--fb);color:var(--muted);margin-bottom:6px}
+.rl{display:flex;justify-content:space-between;font:600 11.5px var(--fb);margin-top:5px;gap:8px}
+.ll{font:500 10.5px var(--fb);color:var(--muted)}
+.chip .icw{margin-right:2px}
+.cmap .arrow{height:10px}
+.grp{padding:8px;gap:6px}
+.grp .gt{display:flex;align-items:center;gap:6px}
+.mbox{font-size:11.5px;padding:7px 8px}
+.mbox b{font-size:12.5px;display:flex;align-items:center;gap:4px;margin-bottom:1px}
+.mbox span{display:block}
+.mbox .pt{font-size:9px;top:-7px}
+.pair.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.mexp{margin-top:10px}
+.node .icw{margin-right:2px}
+
+/* ---------- round 3 ---------- */
+.journey{background:radial-gradient(95% 85% at 35% 25%,#FFE27A,#FFD43B 65%,#F6C62E);color:#2B2140;border-radius:22px;padding:18px 14px 16px;display:flex;flex-direction:column;gap:12px}
+.journey .route,.journey p{color:#2B2140}.journey .route i{background:#FFE68A;color:#2B2140;box-shadow:inset 0 0 0 1.5px #2B2140}.journey .route .now i{background:#C8442A;color:#fff;box-shadow:none}.journey .route::before{border-color:rgba(43,33,64,.3)}.journey .route .now span{color:#2B2140}
+.ticks .tk{flex:1;height:14px;border:0;padding:5px 0;background:none;cursor:pointer;position:relative}
+.ticks .tk::after{content:"";position:absolute;left:0;right:0;top:5px;height:4px;border-radius:2px;background:var(--rule)}
+.ticks .tk.d::after,.ticks .tk.v::after{background:var(--ink2)}.ticks .tk.n::after{background:var(--dh)}
+.ticks .tk[disabled]{cursor:default}
+.rules{display:flex;flex-direction:column;gap:8px}
+.rulec{appearance:none;border:0;cursor:pointer;text-align:left;display:grid;grid-template-columns:26px minmax(0,1fr);gap:10px;align-items:start;background:var(--paper);color:var(--ink);font:400 14.5px/1.45 var(--fb);padding:12px;border-radius:14px;box-shadow:inset 0 0 0 1px var(--rule);transition:background .2s}
+.rulec .t{display:block}
+.rulec .tk{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;box-shadow:inset 0 0 0 2px var(--rule);color:transparent;font-weight:700;font-size:13px;transition:all .25s}
+.rulec[aria-pressed="true"]{background:var(--ok-s)}
+.rulec[aria-pressed="true"] .tk{background:var(--ok);color:#fff;box-shadow:none;transform:scale(1.08)}
+.pcard{background:var(--paper);border-radius:14px;padding:12px 14px;box-shadow:inset 3px 0 0 var(--side)}
+.pq{display:flex;flex-direction:column;gap:6px;margin-top:12px}
+.pq .ql{font-size:14px}
+.popts{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:6px}
+.popt{appearance:none;border:0;cursor:pointer;background:var(--paper);color:var(--ink);font:400 12.5px/1.2 var(--fb);min-height:54px;border-radius:12px;padding:8px 4px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;box-shadow:inset 0 0 0 1px var(--rule);text-align:center}
+.popt[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.popts.five .popt{font-size:11px}
+@media (max-width:420px){.popt{font-size:11.5px;padding:8px 2px;min-height:58px}}
+.lv{display:flex;gap:3px}.lv b{width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.25}.lv b.f{opacity:1}
+.pres{margin-top:14px;font-size:14px;background:var(--paper);border-radius:12px;padding:12px;box-shadow:inset 0 0 0 1px var(--rule)}
+.sbar{height:10px;border-radius:5px;background:var(--rule);overflow:hidden;margin-bottom:8px}.sbar i{display:block;height:100%;transition:width .6s ease}
+
+/* ---------- part 1 ---------- */
+.tag{display:inline-flex;align-items:center;gap:6px;font:600 11.5px var(--fb);letter-spacing:.1em;text-transform:uppercase}
+.mv{padding:10px 16px;display:flex;justify-content:center}
+.mv svg{width:100%;max-width:300px;height:auto;display:block;overflow:visible}
+.mv svg *{transform-box:fill-box;transform-origin:center}
+.desc{font-size:16.5px}
+.desc b{background-image:linear-gradient(var(--mark),var(--mark));background-repeat:no-repeat;background-position:0 88%;background-size:100% 42%}
+.scorebox{background:var(--sheet);border-radius:20px;padding:4px 14px 14px}
+.nbox{margin-top:12px}.nbox summary{cursor:pointer;color:var(--muted);font-size:14px}
+.nbox textarea{width:100%;box-sizing:border-box;margin-top:8px;min-height:70px;border-radius:12px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);font:400 15px/1.5 var(--fb);padding:10px 12px}
+.sect{border-radius:24px;padding:28px 20px;display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.sect.dh{background:var(--dh-s);color:var(--dh)}.sect.ink{background:var(--sheet);color:var(--ink)}
+.sect h2,.sect p{color:var(--ink)}
+.note.yel{background:rgba(255,212,59,.2)}
+.panel{background:var(--sheet);border-radius:20px;padding:18px}
+.big{font:600 15px var(--fb)}.big b{font:var(--fw) calc(44px * var(--hs))/1 var(--fd)}
+.io2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.io2 b{font-size:20px}
+.toprow{display:grid;grid-template-columns:36px minmax(0,1fr);gap:10px;align-items:center;background:var(--sheet);border-radius:14px;padding:12px}
+.toprow .rank{font:var(--fw) calc(30px * var(--hs))/1 var(--fd);color:var(--dh);text-align:center}
+@keyframes sky{0%,100%{fill:#BFE3F2}35%{fill:#F6B26B}50%,85%{fill:#1E1A3A}95%{fill:#F6B26B}}
+@keyframes skyfill{0%,100%{fill:#BFE3F2}35%{fill:#F6B26B}50%,85%{fill:#1E1A3A}95%{fill:#F6B26B}}
+@keyframes orbit{from{transform:rotate(-70deg)}to{transform:rotate(290deg)}}
+@keyframes stars{0%,40%{opacity:0}50%,85%{opacity:1}95%,100%{opacity:0}}
+@keyframes fly{0%{transform:translate(var(--x),var(--y));opacity:0}15%{opacity:1}80%{transform:translate(0,0);opacity:1}100%{transform:translate(0,0);opacity:0}}
+@keyframes drain{0%{width:98px}70%{width:6px}100%{width:6px}}
+@keyframes ouch{0%,55%{opacity:0}65%,100%{opacity:1}}
+@keyframes hit{0%,30%{transform:scale(1)}36%{transform:scale(.7)}46%{transform:scale(1.1)}60%,100%{transform:scale(1)}}
+@keyframes wave{0%,30%{opacity:0;transform:scale(.6)}40%{opacity:.8}80%,100%{opacity:0;transform:scale(1.15)}}
+@keyframes rush{0%{transform:translateX(0)}45%,70%{transform:translateX(118px)}100%{transform:translateX(0)}}
+@keyframes fade{0%{opacity:1;filter:none}80%{opacity:.15;filter:grayscale(1)}100%{opacity:1}}
+@keyframes dimx{0%,100%{opacity:.25}50%{opacity:.45}}
+@keyframes knob{0%{transform:rotate(-60deg)}60%,100%{transform:rotate(120deg)}}
+@keyframes pump{0%,30%{opacity:.2}50%,90%{opacity:1}100%{opacity:.2}}
+@keyframes nudge{0%,100%{transform:translateX(0)}20%{transform:translateX(-4px)}30%{transform:translateX(3px)}40%{transform:translateX(-2px)}50%{transform:none}}
+@keyframes vanish{0%,40%{opacity:1}55%,90%{opacity:0}100%{opacity:1}}
+@keyframes appear{0%,35%{opacity:0;transform:scale(.4)}45%,90%{opacity:1;transform:scale(1)}100%{opacity:0}}
+@keyframes pop{0%,10%{transform:scale(.6);opacity:0}20%,70%{transform:scale(1);opacity:1}85%,100%{opacity:0}}
+@keyframes count{0%,15%{opacity:0}20%,35%{opacity:1}40%,100%{opacity:0}}
+@keyframes bounce{from{transform:translateY(0)}to{transform:translateY(-10px)}}
+@keyframes drawL2{0%{stroke-dashoffset:1}70%,100%{stroke-dashoffset:0}}
+@keyframes buzz{from{transform:translate(-1.5px,1px)}to{transform:translate(1.5px,-1px)}}
+.yellow-stage .route .now i{background:#C8442A;color:#fff;box-shadow:none}.yellow-stage .route .now span{font-weight:600}
+.io2 .eyebrow{display:block;margin-bottom:2px}
+
+/* ---------- deck ---------- */
+.deckwrap{position:relative;padding-top:12px}
+.deckwrap .ghost{position:absolute;left:10px;right:10px;height:40px;border-radius:22px;background:var(--sheet2)}
+.deckwrap .g2{top:0;left:22px;right:22px;opacity:.5}.deckwrap .g1{top:6px;opacity:.8}
+.dcard{position:relative;background:var(--paper);border-radius:22px;padding:18px;box-shadow:var(--shadow),inset 0 0 0 1px var(--rule);font-size:16px}
+.dcard.dmain{min-height:150px;display:flex;flex-direction:column;gap:12px;justify-content:center;animation:deal .35s ease-out both}
+.dcard .mo{font:var(--fw) calc(24px * var(--hs))/1.25 var(--fd);margin:0}
+.dcard.flipping{animation:flip .26s ease-in forwards}
+.dcard.flipped .mo{font-size:calc(17px * var(--hs));opacity:.6}
+@keyframes deal{from{transform:translateY(18px) rotate(-2deg);opacity:0}to{transform:none;opacity:1}}
+@keyframes flip{to{transform:rotateY(90deg)}}
+.revl{display:flex;flex-direction:column;gap:6px;border-top:1px dashed var(--rule);padding-top:12px;animation:deal .35s ease-out both}
+.mvbox svg{width:100%;max-width:240px;height:auto;display:block;margin:0 auto;overflow:visible}
+.mvbox svg *{transform-box:fill-box;transform-origin:center}
+.scale5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.s5{appearance:none;border:0;cursor:pointer;background:var(--sheet);color:var(--ink);font:500 12.5px/1.2 var(--fb);min-height:62px;border-radius:14px;padding:8px 2px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;box-shadow:inset 0 0 0 1px var(--rule)}
+.s5:hover{box-shadow:inset 0 0 0 1.5px var(--ink2)}
+.s5:active{background:var(--ink);color:var(--paper)}
+.dep{appearance:none;cursor:pointer;align-self:center;background:transparent;color:var(--ink2);font:500 14px var(--fb);border:1.5px dashed var(--rule);border-radius:999px;padding:9px 18px}
+.whybox{display:flex;flex-direction:column;gap:8px;background:var(--sheet);border-radius:18px;padding:14px}
+.whybox .chip{text-align:left;border-radius:12px;padding:11px 12px;font-size:14px}
+.demo{display:flex;flex-direction:column;gap:10px;align-items:center}
+.demo .dcard{font:var(--fw) calc(19px * var(--hs))/1.25 var(--fd);width:100%;box-sizing:border-box}
+.scale5.mini{width:100%}.scale5.mini span{font:500 10.5px var(--fb);text-align:center;padding:8px 0;border-radius:10px;background:var(--paper);box-shadow:inset 0 0 0 1px var(--rule)}
+.scale5.mini span.on{background:var(--ink);color:var(--paper)}
+.dep.mini{font-size:12px;padding:5px 12px}
+.rankl{display:flex;flex-direction:column;gap:8px}
+.rk{appearance:none;border:0;cursor:pointer;text-align:left;display:grid;grid-template-columns:32px minmax(0,1fr);gap:10px;align-items:center;background:var(--sheet);color:var(--ink);font:400 14px/1.35 var(--fb);padding:12px;border-radius:14px;box-shadow:inset 0 0 0 1px var(--rule)}
+.rk .rn{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;box-shadow:inset 0 0 0 2px var(--rule);font:700 14px var(--fb)}
+.rk.on{box-shadow:inset 0 0 0 2px var(--dh)}.rk.on .rn{background:var(--dh);color:#fff;box-shadow:none}
+.rrow{display:grid;grid-template-columns:74px minmax(0,1fr) 40px;gap:10px;align-items:center;font-size:14px}
+.rrow .sbar{margin:0}.rrow b{text-align:right;font-variant-numeric:tabular-nums}
+@keyframes grow{0%{width:4px}70%,100%{width:140px}}
+
+/* ---------- full map ---------- */
+.menu{max-height:80vh;overflow:auto}
+.ambs{display:flex;flex-wrap:wrap;gap:6px;padding:4px 12px 6px}.ambs .chip{font-size:12.5px;padding:6px 10px}
+.ctx{align-self:flex-start;font:600 11px var(--fb);padding:3px 9px;border-radius:999px;background:var(--sheet);color:var(--ink2)}
+.scale4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.ssb{width:100%;max-width:300px;height:auto;display:block;margin:0 auto}.ssb.big{max-width:340px}
+.ssb .beam{transition:transform .8s cubic-bezier(.3,1.5,.5,1)}
+.ssrow{display:grid;grid-template-columns:72px minmax(0,1fr) 72px;align-items:center;gap:6px;border-bottom:1px solid var(--rule);padding:4px 0}.ssrow:last-child{border-bottom:0}
+.ssrow .l{text-align:right;font:600 12px var(--fb);color:var(--au)}.ssrow .r{font:600 12px var(--fb);color:var(--dh)}.ssrow .ssb{max-width:180px}
+.vgrid{display:flex;flex-wrap:wrap;gap:8px}
+.vchip{appearance:none;border:0;cursor:pointer;font:500 15px var(--fb);padding:11px 16px;border-radius:999px;background:var(--sheet);color:var(--ink);box-shadow:inset 0 0 0 1px var(--rule)}
+.vchip[aria-pressed="true"]{background:var(--dh);color:#fff;box-shadow:none}
+.whyline{background:var(--sheet);border-radius:14px;padding:10px 14px}
+.wyin{width:100%;box-sizing:border-box;min-height:70px;border-radius:12px;border:1px solid var(--rule);background:var(--sheet);color:var(--ink);font:400 15px/1.5 var(--fb);padding:10px 12px}
+.pts{display:flex;flex-direction:column;gap:8px}
+.prow{display:grid;grid-template-columns:minmax(0,1fr) 38px 26px 38px;grid-template-areas:"l m n p" "d d d d";align-items:center;gap:4px 8px;background:var(--sheet);border-radius:14px;padding:10px 12px}
+.prow>span:first-child{grid-area:l;font-size:15px}.prow b{text-align:center;font-size:18px;font-variant-numeric:tabular-nums}
+.prow .pips{grid-area:d;color:var(--dh);letter-spacing:3px;font-size:12px;min-height:0}
+.pm{appearance:none;border:0;cursor:pointer;width:38px;height:38px;border-radius:12px;background:var(--paper);color:var(--ink);font:600 20px var(--fb);box-shadow:inset 0 0 0 1px var(--rule)}.pm[disabled]{opacity:.3}
+.radar6{width:100%;max-width:400px;height:auto;display:block;margin:0 auto}
+.rpoly{animation:fadeIn 1s ease both}@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.dest{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.dest div{background:var(--sheet);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:2px}.dest b{font:var(--fw) calc(30px * var(--hs))/1 var(--fd);color:var(--dh)}.dest span{font-size:13px}
+.levers{display:flex;flex-direction:column;gap:8px}.lev{background:var(--sheet);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:6px;opacity:.65}.lev.on{opacity:1;box-shadow:inset 0 0 0 2px var(--dh)}
+.lev .lt{font:600 10.5px var(--fb);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.move{display:grid;grid-template-columns:36px minmax(0,1fr);gap:10px;background:var(--sheet);border-radius:14px;padding:12px}.move .rank{font:var(--fw) calc(30px * var(--hs))/1 var(--fd);color:var(--dh);text-align:center}.move p{margin-top:4px}
+.zones{display:flex;flex-direction:column;gap:8px}.z{border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:3px;font-size:14px}
+.z.g{background:var(--ok-s)}.z.y{background:rgba(255,212,59,.22)}.z.r{background:var(--dh-s)}
+.hexa{width:100%;max-width:380px;height:auto;display:block;margin:0 auto}
+.offer{background:var(--sheet);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:6px;align-items:flex-start}.offer.on{box-shadow:inset 0 0 0 2px var(--dh)}.offer .btn{align-self:stretch}
+.you-badge{display:inline-block;font:700 10.5px var(--fb);letter-spacing:.08em;text-transform:uppercase;background:var(--dh);color:#fff;border-radius:999px;padding:3px 9px}
+.micro{display:grid;grid-template-columns:auto auto auto;justify-content:center;align-items:center;gap:12px;background:var(--sheet);border-radius:18px;padding:16px}.micro p{grid-column:1/-1}
+.mz{display:flex;flex-direction:column;align-items:center;gap:4px;font:600 12px var(--fb)}.mz .icw{font-size:28px}.micro .arr{font-size:22px;color:var(--muted)}
+@keyframes grow2{0%{width:4px}80%,100%{width:48px}}
+@keyframes fillup{0%{height:0;y:78px}70%{height:46px;y:32px}100%{height:46px;y:32px}}
+@keyframes dim2{0%,30%{opacity:1}60%,100%{opacity:.35}}
+
+/* ---------- paper overlay (inspired by Paperman: a sheet of paper over the screen) ---------- */
+body::before{opacity:0!important}
+#paper{position:fixed;inset:0;pointer-events:none;z-index:40;mix-blend-mode:multiply}
+:root[data-paper="matte"] #paper{background-image:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.16}
+:root[data-paper="linen"] #paper{background-image:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9 .045' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23n)'/%3E%3C/svg%3E"),url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.045 .9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.18}
+:root[data-paper="parchment"] #paper{background-image:radial-gradient(120% 90% at 50% 40%,transparent 55%,rgba(120,80,30,.18)),url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.22' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .32 0 0 0 0 .15 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23n)'/%3E%3C/svg%3E"),url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.32}
+:root[data-paper="vellum"] #paper{background:rgba(255,253,248,.2);mix-blend-mode:normal;opacity:1;backdrop-filter:blur(.3px)}
+:root[data-paper="none"] #paper{display:none}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) #paper{mix-blend-mode:soft-light;filter:invert(1)}:root:not([data-theme="light"])[data-paper="vellum"] #paper{background:rgba(20,15,28,.18);filter:none;mix-blend-mode:normal}}
+:root[data-theme="dark"] #paper{mix-blend-mode:soft-light;filter:invert(1)}
+:root[data-theme="dark"][data-paper="vellum"] #paper{background:rgba(20,15,28,.18);filter:none;mix-blend-mode:normal}
+/* ---------- settings ---------- */
+.setbtn{appearance:none;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:9px;height:38px;padding:0 12px;border-radius:999px;background:var(--sheet);color:var(--ink);font:600 15px var(--fb);box-shadow:inset 0 0 0 1px var(--rule)}
+.setbtn .icw{width:17px;height:17px}
+.sheet-bg{position:fixed;inset:0;background:rgba(20,15,28,.45);z-index:90;animation:fadeIn .2s both}
+.sheet{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:min(560px,100%);max-height:88vh;overflow:auto;box-sizing:border-box;z-index:91;background:var(--paper);color:var(--ink);border-radius:24px 24px 0 0;padding:18px max(18px,env(safe-area-inset-left,0px)) calc(22px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:10px;box-shadow:0 -10px 40px rgba(0,0,0,.25);animation:sheetUp .28s cubic-bezier(.2,.8,.2,1) both}
+@keyframes sheetUp{from{transform:translate(-50%,40px);opacity:0}to{transform:translate(-50%,0);opacity:1}}
+.shead{display:flex;justify-content:space-between;align-items:center}.shead h3{margin:0}
+.howto{background:rgba(255,212,59,.2);border-radius:16px;padding:12px 14px;font-size:14.5px}.howto ul{margin:6px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
+.sgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.sgrid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.so{appearance:none;border:0;cursor:pointer;text-align:left;background:var(--sheet);color:var(--ink);border-radius:14px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;box-shadow:inset 0 0 0 1px var(--rule);font:500 14px var(--fb)}
+.so small{font:400 11.5px var(--fb);color:var(--muted)}
+.so[aria-pressed="true"]{box-shadow:inset 0 0 0 2.5px var(--dh);background:var(--paper)}
+
+.leadf{display:flex;flex-direction:column;gap:10px;background:var(--sheet);border-radius:20px;padding:16px;box-shadow:inset 0 0 0 2px var(--dh)}
+.leadf input[type=email]{font:400 17px var(--fb);padding:14px 16px;border-radius:14px;border:1.5px solid var(--rule);background:var(--paper);color:var(--ink)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.knob{background:transparent!important;box-shadow:0 0 0 2px var(--ink),0 0 0 4px rgba(255,255,255,.6)!important;width:10px!important;border-radius:5px!important;top:-6px!important;bottom:-6px!important}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+:root[data-font="clear"] *{animation-duration:.01s!important}
+
+h1[tabindex="-1"]:focus,h2[tabindex="-1"]:focus{outline:none}
+.popts.cat .lv{display:none}
+.chiprow{display:flex;flex-wrap:wrap;gap:8px}
+.chip.static{cursor:default}
+.dots{display:flex;flex-wrap:wrap;gap:6px}.dt{width:18px;height:18px;border-radius:50%;box-shadow:inset 0 0 0 2px var(--c);display:inline-block}.dt.on{background:var(--c)}.dt.half{background:linear-gradient(90deg,var(--c) 50%,transparent 50%)}
+.exonly{align-self:flex-start;font:700 11px var(--fb);letter-spacing:.12em;text-transform:uppercase;padding:3px 10px;border-radius:999px;background:#FFD43B;color:#2B2140}
+.quad{width:100%;max-width:340px;height:auto;display:block;margin:0 auto}
+.qpulse{animation:pump 1.8s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.leanbox{background:rgba(255,255,255,.45);border-radius:14px;padding:10px 14px;display:flex;flex-direction:column;gap:2px;color:#2B2140}
+.resic .icw{vertical-align:-2px}
+@media (prefers-reduced-motion:reduce){.qpulse{animation:none}}
+
+/* ---- v3: colour + two-voices + stacked cards ---- */
+.ptitle{font-size:calc(52px * var(--hs));line-height:.95;margin:0}.ptitle .th{color:var(--ink)}
+.kau{color:var(--au)}.kdh{color:var(--dh)}
+.kw{font-weight:600}.kw.dh{color:var(--dh)}.kw.au{color:var(--au)}
+.stg{align-self:flex-start;font:700 11px var(--fb);letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:999px}
+.stg.in{background:var(--in-s);color:var(--in)}.stg.pr{background:var(--pr-s);color:var(--pr)}.stg.out{background:var(--out-s);color:var(--out)}
+.beat.stg-in::before,.beat.stg-pr::before,.beat.stg-out::before{background:var(--c)!important}.beat.stg-in{--c:var(--in)}.beat.stg-pr{--c:var(--pr)}.beat.stg-out{--c:var(--out)}
+.beat.stg-in b:first-child{color:var(--in)}.beat.stg-pr b:first-child{color:var(--pr)}.beat.stg-out b:first-child{color:var(--out)}
+.chat{display:flex;flex-direction:column;gap:8px;width:100%}
+.bub{max-width:82%;padding:9px 13px;border-radius:18px;font:500 15px/1.35 var(--fb);opacity:0;transform:translateY(8px) scale(.97);transition:opacity .35s,transform .35s}
+.bub.on{opacity:1;transform:none}
+.bub .who{display:block;font:700 10.5px var(--fb);letter-spacing:.08em;text-transform:uppercase;opacity:.75;margin-bottom:2px}
+.bub.au{align-self:flex-start;background:var(--au);color:#fff;border-bottom-left-radius:6px}
+.bub.dh{align-self:flex-end;background:var(--dh);color:#fff;border-bottom-right-radius:6px;text-align:right}
+.bub.both{align-self:center;max-width:92%;background:#FFD43B;color:#2B2140;text-align:center;border-radius:16px;margin-top:4px}
+:root[data-theme="dark"] .bub.au,:root[data-theme="dark"] .bub.dh{color:#1C1626}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .bub.au,:root:not([data-theme="light"]) .bub.dh{color:#1C1626}}
+.chat.small2 .bub{font-size:14px}
+.res2{width:100%;margin-top:6px}.res2 .rt{display:block;font:600 11px var(--fb);color:var(--muted);margin-bottom:6px}
+.bar2{display:flex;height:12px;border-radius:6px;overflow:hidden;box-shadow:inset 0 0 0 1px var(--rule)}
+.bar2 i{display:block;height:100%}.bar2 .a{flex:4;background:var(--au)}.bar2 .d{flex:4;background:var(--dh)}
+.bar2 .mid{flex:2;background:repeating-linear-gradient(45deg,var(--au) 0 6px,var(--dh) 6px 12px);animation:pump 1.4s ease-in-out infinite}
+.res2 .rl{display:flex;justify-content:space-between;gap:6px;font:600 11px var(--fb);margin-top:5px}.res2 .midl{color:var(--muted)}
+.flow{display:flex;flex-direction:column;gap:0;width:100%}
+.stp{border-radius:14px;padding:10px 12px;background:var(--paper);box-shadow:inset 4px 0 0 var(--c),inset 0 0 0 1px var(--rule);display:flex;flex-direction:column;gap:2px;transition:opacity .35s}
+.stp.w{--c:var(--ink2)}.stp.in{--c:var(--in)}.stp.pr{--c:var(--pr)}.stp.out{--c:var(--out)}
+.stp .sn{font:700 13px var(--fb);color:var(--c);display:flex;align-items:center;gap:6px}.stp .ss{font-size:11.5px;color:var(--muted)}
+.stp .sb{font-size:14.5px;line-height:1.4;margin-top:3px;display:flex;flex-direction:column;gap:5px}
+.vb{display:block;padding:5px 10px;border-radius:12px;font-size:13.5px}.vb.dh{background:var(--dh-s);color:var(--dh);align-self:flex-end}.vb.au{background:var(--au-s);color:var(--au);align-self:flex-start}.vb.one{background:var(--ok-s)}
+.fa{font-size:11.5px;color:var(--muted);text-align:center;padding:4px 0 4px;position:relative;transition:opacity .35s}
+.fa::before{content:"↓";display:block;font-size:14px;line-height:1}
+.fa.back::before{content:none}.fa.back{padding-top:8px;font-weight:600;color:var(--ink2)}
+.flow .off,#dm.off{opacity:.12}
+.flow.swap .sb{animation:deal .35s ease-out both}
+.pic{display:flex;flex-direction:column;width:100%}
+.prow{appearance:none;border:0;cursor:pointer;text-align:left;display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;align-items:start;background:var(--paper);border-radius:14px;padding:11px 12px;color:var(--ink);box-shadow:inset 4px 0 0 var(--c),inset 0 0 0 1px var(--rule);font:inherit}
+.prow.w{--c:var(--ink2)}.prow.in{--c:var(--in)}.prow.pr{--c:var(--pr)}.prow.out{--c:var(--out)}.prow.cost{--c:var(--dh)}
+.prow .pt2,.prow .pt2 *{text-align:left}
+.idc:last-child:nth-child(odd){grid-column:1/-1}
+.prow .pi{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--sheet);color:var(--c)}
+.prow b{display:block;font-size:15px;color:var(--c)}.prow .pt2>span{display:block;font-size:13.5px}.prow em{display:none;font-style:normal;font:600 11.5px var(--fb);margin-top:5px;color:var(--ink2)}
+.prow[aria-expanded="true"]{background:var(--sheet)}.prow[aria-expanded="true"] em{display:block}
+.parr{height:14px;width:2px;background:var(--rule);margin:2px auto}.parr.back{height:auto;width:auto;background:none;text-align:center;font-size:12px;color:var(--muted);margin-top:6px}
+.flips{display:flex;flex-direction:column;gap:10px;width:100%}
+.flip{appearance:none;border:0;cursor:pointer;background:none;padding:0;display:grid;perspective:900px;font:inherit;color:inherit;text-align:left}
+.flip>span{grid-area:1/1;border-radius:18px;padding:16px;backface-visibility:hidden;transition:transform .5s;box-shadow:inset 0 0 0 1.5px var(--c)}
+.flip.dh{--c:var(--dh)}.flip.au{--c:var(--au)}.flip.both{--c:var(--pr)}
+.flip .fr{background:var(--paper);display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:44px}.fr b{font:var(--fw) calc(22px * var(--hs))/1.1 var(--fd);color:var(--c)}
+.flip .bk{background:var(--paper);transform:rotateY(180deg)}.flip .bk b{display:block;color:var(--c);margin-bottom:8px}
+.flip[aria-pressed="true"] .fr{transform:rotateY(-180deg)}.flip[aria-pressed="true"] .bk{transform:none}
+.flip dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px;margin:0;font-size:13.5px}.flip dt{font:600 10.5px var(--fb);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-top:2px}.flip dd{margin:0}
+.flip[aria-pressed="false"] .bk{max-height:76px;overflow:hidden}.flip[aria-pressed="true"] .fr{max-height:76px;overflow:hidden}
+.qas,.ideas2{display:flex;flex-direction:column;gap:8px}
+.qac,.idc{appearance:none;border:0;cursor:pointer;text-align:left;font:inherit;color:var(--ink);background:var(--sheet);border-radius:16px;padding:13px 15px;display:flex;flex-direction:column;gap:6px;animation:deal .45s ease-out both;animation-delay:var(--d,0s)}
+.qac .qq{display:flex;justify-content:space-between;gap:10px;font-weight:600;font-size:15.5px}.qac .qq i{font-style:normal;color:var(--dh);font-size:20px;line-height:1;transition:transform .25s}
+.qac .qa2,.idc .id2{display:none;font-size:14.5px;line-height:1.5}.qac[aria-expanded="true"] .qa2,.idc[aria-expanded="true"] .id2{display:block;animation:deal .3s ease-out both}
+.qac[aria-expanded="true"] .qq i{transform:rotate(45deg)}
+.ideas2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.idc .ii{color:var(--dh)}.idc b{font-size:14.5px}.idc[aria-expanded="true"]{grid-column:1/-1;background:var(--paper);box-shadow:inset 0 0 0 1.5px var(--dh)}
+.tips{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.tips li{display:grid;grid-template-columns:30px minmax(0,1fr);gap:10px;align-items:start;background:var(--sheet);border-radius:14px;padding:11px 12px;font-size:14.5px;line-height:1.45}
+.tips .tic{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-weight:700;color:#fff}
+.tips .t1 .tic{background:var(--ok)}.tips .t2 .tic{background:var(--pr)}.tips .t3 .tic{background:var(--in)}
+.qstack{display:flex;flex-direction:column;gap:10px}
+.qb{display:flex;flex-direction:column;gap:8px;background:var(--sheet);border-radius:18px;padding:12px 12px 14px;box-shadow:inset 3px 0 0 var(--pa,var(--ink))}
+.qb.qdone{background:transparent;box-shadow:inset 3px 0 0 var(--pa,var(--ink)),inset 0 0 0 1px var(--rule)}
+.qin{animation:qin .35s ease-out both}@keyframes qin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.s5.on{background:var(--pa,var(--ink));color:var(--onc)!important;box-shadow:none}.s5.on .lv b{opacity:.45;background:currentColor}.s5.on .lv b.f{opacity:1}
+.deck .chip[aria-pressed="true"]{background:var(--pa,var(--ink));color:var(--onc)}
+.depbox{display:flex;flex-direction:column;gap:6px}
+.eyebrow.pa{color:var(--pa)}
+.dcard.dmain.still{animation:none}.nofx .revl{animation:none}
+.btn.ghost:hover,.icon:hover,.textbtn#home:hover{color:var(--dh);box-shadow:inset 0 0 0 1.5px var(--dh)}
+.btn.ghost:focus-visible,.icon:focus-visible{outline:2px solid var(--dh);outline-offset:2px}
+.knob{width:2px!important;background:var(--ink)!important;opacity:.55;box-shadow:none!important;border-radius:1px!important;top:-4px!important;bottom:-4px!important}
+@media (prefers-reduced-motion:reduce){.bub{transition:none}.qin,.qac,.idc,.flow.swap .sb{animation:none}.bar2 .mid{animation:none}}
+
+/* ---------- part 6: season + triangle ending ---------- */
+.ptitle .psub{display:block;font-size:.56em;line-height:1.05;margin-top:6px;color:var(--ink)}
+.prow.sprow{grid-template-columns:minmax(0,1fr) 38px 42px 38px}
+.wread2{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 14px;font-size:15px;align-items:baseline}
+.wread2>b{font:600 11px var(--fb);color:var(--muted);text-transform:uppercase;letter-spacing:.07em}
+.trihere{width:100%;max-width:360px;height:auto;display:block;margin:0 auto}
+.lanes2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:440px){.lanes2{grid-template-columns:1fr}}
+.chlist{display:flex;flex-direction:column;gap:8px;width:100%}
+.chlist>div{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;align-items:start;font-size:14.5px}
+.chlist i{font-style:normal;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;box-shadow:inset 0 0 0 2px var(--dh);color:var(--dh);font:700 12px var(--fb)}
+.chip[disabled]{cursor:not-allowed}
+.tm{font:600 .3em/1 var(--fb);letter-spacing:.04em;vertical-align:super;margin-left:3px;opacity:.8}
+</style>
+
+<div class="wrap" id="app"></div>
+
+<script>
+(() => {
+/* ================= state ================= */
+const KEY="audhdmap.v2";
+const load=()=>{try{return JSON.parse(localStorage.getItem(KEY)||"null")}catch(e){return null}};
+const LEAD=!!window.__LEAD__;
+const S=Object.assign({view:"welcome",i:0,beat:{},font:"gaegu",all:true,sfx:true,amb:"",theme:"",ack:false},load()||{});
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const R=document.documentElement, app=document.getElementById("app");
+function applyPrefs(){ R.dataset.paper=S.paper||"matte"; if(S.font&&S.font!=="gaegu") R.dataset.font=S.font; else delete R.dataset.font; if(S.theme) R.dataset.theme=S.theme; else delete R.dataset.theme; }
+applyPrefs();
+const $=(s,el=document)=>el.querySelector(s), $$=(s,el=document)=>[...el.querySelectorAll(s)];
+const hl=t=>`<span class="hl">${t}</span>`;
+
+/* ================= top bar ================= */
+const ICON_SUN=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>`;
+const ICON_MOON=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>`;
+const isDark=()=>S.theme?S.theme==="dark":matchMedia("(prefers-color-scheme: dark)").matches;
+const FONTS=[["gaegu","Gaegu","pencil doodle","Gaegu"],["grand","Grandstander","bouncy","Grandstander"],["patrick","Patrick Hand","notebook print","Patrick Hand"],["clear","Clear","plain, calm, easy to read","Lexend"]];
+function topbar(left){
+  return `<div class="top" id="top"><div class="name">${left}</div>
+   <button class="setbtn" id="aa" aria-label="Settings: theme, text, paper and sound" aria-haspopup="dialog"><span>Aa</span><span class="icw">${isDark()?I_SUN:I_MOON}</span><span class="icw">${S.sfx||S.amb?I_SND:I_MUTE}</span></button></div>`;
+}
+const I_SUN=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>`;
+const I_MOON=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>`;
+const I_SND=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>`;
+const I_MUTE=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9l5 6M22 9l-5 6"/></svg>`;
+const PAPERS=[["matte","Matte","clean, even grain"],["linen","Linen","soft woven texture"],["parchment","Parchment","warm, aged paper"],["vellum","Vellum","hazy, lowest contrast"],["none","Plain","no texture"]];
+function sheetHTML(first){
+  const opt=(grp,k,label,sub,on,style="")=>`<button class="so" data-g="${grp}" data-k="${k}" aria-pressed="${on}"><b style="${style}">${label}</b>${sub?`<small>${sub}</small>`:""}</button>`;
+  return `<div class="sheet-bg" id="sbg"></div><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="shT">
+   <div class="shead"><h3 id="shT">${first?"Make it comfortable first":"Your settings"}</h3><button class="icon" id="shX" aria-label="Close">✕</button></div>
+   ${first?`<div class="howto"><p><b>How to use the Map</b></p><ul><li>Answer for the <b>last few months</b>, not your best or worst day.</li><li>Not sure? <b>"It depends"</b> is a real answer.</li><li>Take breaks. It saves as you go.</li><li>Change any of these later from the <b>Aa</b> button at the top.</li></ul></div>`:""}
+   <span class="eyebrow">Theme</span><div class="sgrid three">${opt("theme","","Auto","follows phone",!S.theme)}${opt("theme","light","Light","",S.theme==="light")}${opt("theme","dark","Dark","",S.theme==="dark")}</div>
+   <span class="eyebrow">Heading style</span><div class="sgrid">${FONTS.map(([k,n,d,f])=>opt("font",k,n,d,S.font===k,`font-family:'${f}',cursive;font-size:${k==="clear"?16:20}px`)).join("")}</div>
+   <span class="eyebrow">Paper</span><div class="sgrid">${PAPERS.map(([k,n,d])=>opt("paper",k,n,d,(S.paper||"matte")===k)).join("")}</div>
+   <span class="eyebrow">Sound</span><div class="sgrid three">${opt("sfx","1","Tap sounds on","",!!S.sfx)}${opt("sfx","","Tap sounds off","",!S.sfx)}</div>
+   <div class="sgrid">${[["","No background"],["rain","Rain"],["brown","Brown noise"],["cafe","Café hum"]].map(([k,l])=>opt("amb",k,l,"",(S.amb||"")===k)).join("")}</div>
+   <span class="eyebrow">Reading</span><div class="sgrid three">${opt("all","1","Whole page","all at once",!!S.all)}${opt("all","","Line by line","focus highlight",!S.all)}</div>
+   ${first?`<button class="btn" id="shGo" style="margin-top:6px">Start →</button>`:""}</div>`;
+}
+let sheetOpen=false;
+function openSheet(first,onDone){
+  closeSheet();sheetOpen=true;const w=document.createElement("div");w.id="sheetw";w.innerHTML=sheetHTML(first);document.body.append(w);
+  const close=()=>{closeSheet();if(first){S.setup=1;save();onDone&&onDone()}else render()};
+  $("#shX").onclick=close;$("#sbg").onclick=close;if($("#shGo"))$("#shGo").onclick=close;
+  w.addEventListener("keydown",e=>{if(e.key==="Escape")close()});
+  $$(".so",w).forEach(b=>b.onclick=()=>{const g=b.dataset.g,k=b.dataset.k;
+    if(g==="theme")S.theme=k;if(g==="font")S.font=k;if(g==="paper")S.paper=k;if(g==="sfx"){S.sfx=!!k;if(S.sfx){ac();blip(520,880,.09,.08)}}if(g==="amb")setAmb(k);if(g==="all")S.all=!!k;
+    save();applyPrefs();$$(`.so[data-g="${g}"]`,w).forEach(x=>x.setAttribute("aria-pressed",x===b))});
+  setTimeout(()=>{const f=$(".so",w);f&&f.focus()},50);
+}
+function closeSheet(){const w=$("#sheetw");if(w)w.remove();sheetOpen=false}
+function wireTop(){
+  $("#aa").onclick=e=>{e.stopPropagation();openSheet(false)};
+  const top=$("#top");const sc=()=>top&&top.classList.toggle("lined",scrollY>4);addEventListener("scroll",sc,{passive:true});sc();
+}
+/* paper overlay sits ABOVE the page (like a sheet of paper over your screen) and softens contrast */
+function paperLayer(){let p=$("#paper");if(!p){p=document.createElement("div");p.id="paper";p.setAttribute("aria-hidden","true");document.body.append(p)}R.dataset.paper=S.paper||"matte"}
+/* one global click sound for every button, instead of wiring each one */
+document.addEventListener("pointerdown",e=>{if(!S.sfx)return;const t=e.target.closest("button,.check,label");if(!t||t.disabled)return;const a=ac();if(a&&a.state==="suspended")a.resume();blip(t.classList.contains("btn")?440:560,t.classList.contains("btn")?660:900,.08,.07)},true);
+
+/* ================= icons (custom, no emoji) ================= */
+const SV=p=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
+const I={
+ input:SV(`<path d="M3 12h11M10 8l4 4-4 4"/><path d="M15 4h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-4"/>`),
+ output:SV(`<path d="M9 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h4"/><path d="M10 12h11M17 8l4 4-4 4"/>`),
+ gear:SV(`<circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="6.5"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/>`),
+ world:SV(`<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/>`),
+ bolt:SV(`<path d="M13 2 4 14h7l-1 8 9-12h-7z" fill="currentColor" stroke="none"/>`),
+ inf:SV(`<path d="M12 12c-2-2.6-3.6-4-5.5-4a4 4 0 0 0 0 8c1.9 0 3.5-1.4 5.5-4s3.6-4 5.5-4a4 4 0 0 1 0 8c-1.9 0-3.5-1.4-5.5-4z" stroke-width="2.4"/>`),
+ seesaw:SV(`<path d="M2.5 15.5l19-6"/><path d="M12 12.5l-3.5 8h7z"/><circle cx="5" cy="11.5" r="2"/><circle cx="19" cy="6.5" r="2"/>`),
+ mask:SV(`<path d="M3 7c3-1 6-1.5 9-1.5S18 6 21 7c0 6-3 10-9 10S3 13 3 7z"/><path d="M7.5 11c1-.8 2-.8 3 0M13.5 11c1-.8 2-.8 3 0"/>`),
+ map:SV(`<path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/>`),
+ key:SV(`<circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3"/>`),
+ hand:SV(`<path d="M9 11V4.5a1.5 1.5 0 0 1 3 0V10m0-1.5a1.5 1.5 0 0 1 3 0V11m0-1a1.5 1.5 0 0 1 3 0v4a6 6 0 0 1-6 6h-1a6 6 0 0 1-5-2.7L3.6 14a1.5 1.5 0 0 1 2.5-1.7L9 15"/>`),
+ eye:SV(`<path d="M2 12s3.5-6.5 10-6.5S22 12 22 12s-3.5 6.5-10 6.5S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>`),
+ cam:SV(`<path d="M4 8h3l2-2.5h6L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.5"/>`),
+ path:SV(`<circle cx="5" cy="18" r="2"/><circle cx="19" cy="6" r="2"/><path d="M7 18h6a3 3 0 0 0 0-6h-2a3 3 0 0 1 0-6h6"/>`)
+};
+const ic=(n,c)=>`<span class="icw"${c?` style="color:${c}"`:""}>${I[n]}</span>`;
+const tryPill=t=>`<div class="try" id="try">${ic("hand")}<span>${t}</span></div>`;
+
+/* ================= logo with throwable letters ================= */
+function logoHTML(){return `<div class="logo intro" id="logo" aria-label="how to AuDHD" role="img"><div class="how">how to</div><div class="word"><span class="au" id="au">Au<i></i></span><span class="dhd" id="dhd"></span></div><svg class="dots" id="dots" aria-hidden="true"></svg></div>`}
+function buildLogo(){
+  const au=$("#au"),dhd=$("#dhd"),dots=$("#dots"),logo=$("#logo"); if(!au) return;
+  setTimeout(()=>logo&&logo.classList.remove("intro"),1400);
+  const fs=parseFloat(getComputedStyle(au).fontSize), h=fs*.7, sw=fs*.14, pad=sw;
+  let seed=7;const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647};
+  const wob=(pts,a)=>pts.map(([x,y],i)=>[x+(i&&i<pts.length-1?(rnd()-.5)*a:0),y+(i&&i<pts.length-1?(rnd()-.5)*a:0)]);
+  const smooth=pts=>{let d=`M${pts[0][0].toFixed(1)} ${pts[0][1].toFixed(1)}`;for(let i=1;i<pts.length-1;i++){const xc=(pts[i][0]+pts[i+1][0])/2,yc=(pts[i][1]+pts[i+1][1])/2;d+=` Q${pts[i][0].toFixed(1)} ${pts[i][1].toFixed(1)} ${xc.toFixed(1)} ${yc.toFixed(1)}`}const E=pts[pts.length-1];return d+` L${E[0].toFixed(1)} ${E[1].toFixed(1)}`};
+  const line=(x0,y0,x1,y1,n=8)=>Array.from({length:n+1},(_,i)=>[x0+(x1-x0)*i/n,y0+(y1-y0)*i/n]);
+  const D=()=>{const w=h*.78,arc=[[0,0]];for(let t=0;t<=1.0001;t+=1/18){const a=-Math.PI/2+Math.PI*t;arc.push([w*.22+Math.cos(a)*w*.78,h/2+Math.sin(a)*h/2])}arc.push([0,h]);return [line(0,h,0,0,8),arc]};
+  const H=()=>{const w=h*.72;return [line(0,0,0,h,8),line(w,0,w,h,8),line(0,h*.5,w,h*.47,6)]};
+  const L=[[D(),h*.78,-6,4],[H(),h*.72,5,-10],[D(),h*.78,-2,3]];
+  dhd.innerHTML=L.map(([st,w,rot,dy],k)=>`<svg class="L" data-k="${k}" width="${w+pad*2}" height="${h+pad*2}" viewBox="${-pad} ${-pad} ${w+pad*2} ${h+pad*2}" style="margin-right:${k<2?-pad*.35:0}px;transform:translateY(${dy*fs/200}px) rotate(${rot}deg)" data-rot="${rot}" data-dy="${dy*fs/200}"><g fill="none" stroke="#C8442A" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round">${st.map(s=>`<path d="${smooth(wob(s,sw*.23))}"/>`).join("")}</g></svg>`).join("");
+  const base=au.querySelector("i").getBoundingClientRect().bottom, ab=au.getBoundingClientRect().bottom;
+  dhd.style.marginBottom=(ab-base-pad+fs*.05)+"px";
+  const auW=au.offsetWidth, dW=dhd.offsetWidth, r=fs*.034;
+  let ds="";for(let px=r*2;px<auW-r;px+=fs*.15) ds+=`<circle data-k=".14" cx="${px}" cy="${r*5}" r="${r}" fill="#2B2140"/>`;
+  [[0,0,1],[.08,-.5,.7],[.16,.4,1.25],[.26,-.9,.85],[.34,.2,1.5],[.44,-.3,.7],[.52,.7,1.1],[.62,-1,1],[.7,.1,1.4],[.78,-.6,.7],[.86,.5,1],[.94,-.2,1.25]].forEach(([fx,fy,fr])=>ds+=`<circle data-k="1" cx="${auW+10+fx*dW}" cy="${r*5+fy*r*3}" r="${r*fr}" fill="#C8442A"/>`);
+  dots.setAttribute("width",auW+dW+r*4);dots.setAttribute("height",r*10);dots.innerHTML=ds;
+  $$(".L",dhd).forEach(throwable);
+  if(!au._wired){au._wired=1;noAu(au);}
+  dotField();
+}
+function throwable(el){
+  const rot0=+el.dataset.rot, dy0=+el.dataset.dy;
+  let x=0,y=0,vx=0,vy=0,spin=0,raf=0,drag=false,lx=0,ly=0,lt=0,sx=0,sy=0;
+  const set=()=>{el.style.transform=`translate(${x}px,${y+dy0}px) rotate(${rot0+spin}deg)`};
+  el.addEventListener("pointerdown",e=>{e.preventDefault();cancelAnimationFrame(raf);drag=true;el.setPointerCapture(e.pointerId);sx=e.clientX-x;sy=e.clientY-y;lx=e.clientX;ly=e.clientY;lt=performance.now();el.style.zIndex=5});
+  el.addEventListener("pointermove",e=>{if(!drag)return;const t=performance.now(),dt=Math.max(1,t-lt);vx=(e.clientX-lx)/dt*16;vy=(e.clientY-ly)/dt*16;lx=e.clientX;ly=e.clientY;lt=t;x=e.clientX-sx;y=e.clientY-sy;spin=x*.12;set()});
+  const up=()=>{if(!drag)return;drag=false;let flying=true,ft=0;
+    const step=()=>{ft++;
+      if(flying){x+=vx;y+=vy;vy+=.6;vx*=.97;spin+=vx*.9;if(ft>22||(Math.abs(vx)<1&&Math.abs(vy)<1))flying=false;}
+      else{const k=.08,c=.78;vx=(vx-x*k)*c;vy=(vy-y*k)*c;x+=vx;y+=vy;spin*=.86;}
+      set();
+      if(!flying&&Math.abs(x)<.3&&Math.abs(y)<.3&&Math.abs(vx)<.3&&Math.abs(vy)<.3&&Math.abs(spin)<.3){x=y=spin=0;set();el.style.zIndex="";return}
+      raf=requestAnimationFrame(step)};
+    raf=requestAnimationFrame(step)};
+  el.addEventListener("pointerup",up);el.addEventListener("pointercancel",up);
+}
+/* "Au" moves a little, springs back and shakes no, like a wrong Mac password */
+function noAu(el){
+  let drag=false,sx=0,sy=0;
+  const lim=v=>Math.sign(v)*Math.min(22,Math.abs(v)*.22);
+  el.addEventListener("pointerdown",e=>{e.preventDefault();drag=true;el.setPointerCapture(e.pointerId);sx=e.clientX;sy=e.clientY;el.classList.remove("shake","intro-done");el.style.transition="none"});
+  el.addEventListener("pointermove",e=>{if(!drag)return;el.style.transform=`translate(${lim(e.clientX-sx)}px,${lim(e.clientY-sy)}px)`});
+  const up=()=>{if(!drag)return;drag=false;el.style.transition="transform .14s ease-out";el.style.transform="translate(0,0)";
+    setTimeout(()=>{el.style.transition="";el.style.transform="";void el.offsetWidth;el.classList.add("shake")},150)};
+  el.addEventListener("pointerup",up);el.addEventListener("pointercancel",up);
+  el.addEventListener("animationend",()=>el.classList.remove("shake"));
+}
+/* dots get pushed away by your finger, then spring back. Au dots barely budge. */
+function dotField(){
+  const brand=$(".brand"),svg=$("#dots"); if(!brand||!svg) return;
+  brand._cs=$$("circle",svg).map(c=>({c,x:+c.getAttribute("cx"),y:+c.getAttribute("cy"),k:+c.dataset.k,ox:0,oy:0,vx:0,vy:0}));
+  if(brand._df) return; brand._df=1;
+  let px=null,py=null,raf=0;
+  const tick=()=>{const r=svg.getBoundingClientRect();let moving=false;
+    brand._cs.forEach(d=>{let tx=0,ty=0;
+      if(px!==null){const dx=d.x+r.left-px,dy=d.y+r.top-py,dist=Math.hypot(dx,dy),RR=64;if(dist<RR){const f=(1-dist/RR)*34*d.k;tx=dx/(dist||1)*f;ty=dy/(dist||1)*f;}}
+      d.vx=(d.vx+(tx-d.ox)*.16)*.74;d.vy=(d.vy+(ty-d.oy)*.16)*.74;d.ox+=d.vx;d.oy+=d.vy;
+      if(Math.abs(d.ox)>.05||Math.abs(d.oy)>.05||Math.abs(d.vx)>.05||Math.abs(d.vy)>.05)moving=true;
+      d.c.setAttribute("transform",`translate(${d.ox.toFixed(2)} ${d.oy.toFixed(2)})`)});
+    raf=(moving||px!==null)?requestAnimationFrame(tick):0};
+  const kick=()=>{if(!raf)raf=requestAnimationFrame(tick)};
+  brand.addEventListener("pointermove",e=>{px=e.clientX;py=e.clientY;kick()});
+  ["pointerleave","pointerup","pointercancel"].forEach(t=>brand.addEventListener(t,()=>{px=null;kick()}));
+}
+/* ================= route ================= */
+const CH=["How it works","ADHD","Autism","The seesaw","Masking & burnout","Your map","Your season"];
+const route=cur=>`<div class="route">${CH.map((c,i)=>`<div class="${i<cur?"done":i===cur?"now":""}"><i>${i<cur?"✓":i}</i><span>${c}</span></div>`).join("")}</div>`;
+
+/* ================= WELCOME ================= */
+function renderWelcome(){
+  const started=S.i>0||Object.keys(S.beat).length>0;
+  const li=(i,c,b,t)=>`<li><span class="icw" style="color:${c}">${I[i]}</span><span><b>${b}:</b> ${t}</span></li>`;
+  app.innerHTML=`${topbar("The AuDHD Pre-Diagnosis Toolkit")}
+  <section class="stack g24" style="padding-top:6px">
+   <div class="brand">${logoHTML()}<span class="hint">psst… try throwing the letters</span></div>
+   <div class="stack g12">
+    <h1 class="ptitle"><span class="th">The</span> <span class="kau">Au</span><span class="kdh">DHD</span><span class="psub">Pre-Diagnosis Toolkit<sup class="tm">TM</sup></span></h1>
+    <p class="lead">Never quite fit with ADHD people, or with autistic people? <b>You might be both</b>, with the two sides pulling against each other all day long. This toolkit maps your shape, so you know what you are walking into before you ever book an assessment.</p>
+    <p>The neurodivergent community calls the combination <b>AuDHD</b>. It means having both, and it means the two <em>interact</em>, contradict and reshape each other inside your head.</p>
+    <p><b>Pre-diagnosis</b> means it comes before a diagnosis, never instead of one. You don't need anyone's permission to understand your own brain, and you walk away with clear words and examples to take to a professional.</p>
+   </div>
+   <div class="maker"><span class="icw" style="color:var(--dh)">${I.path}</span><p><b>Who made this?</b> Someone who has lived with an AuDHD brain for 30 years. Everything here comes from that lived experience, checked against published research and the books listed at the end.</p></div>
+   <div class="stack g12">
+    <h2>What You'll Discover</h2>
+    <p>By the end, you'll have a <b>spiky profile</b>: a picture of how your brain processes the world. It's a shape you can look at, save and come back to.</p>
+    <div class="disc">${exampleRadar()}
+     <ul>${li("key","var(--dh)","Your answer","ADHD, autism, both, or the AuDHD tug-of-war")}
+     ${li("bolt","var(--dh)","Your ADHD patterns","how your brain takes in stimulation and what it does with it")}
+     ${li("inf","var(--au)","Your Autism patterns","how your brain maps the world and responds to it")}
+     ${li("seesaw","var(--ink)","Your AuDHD seesaw","two systems that want opposite things at the same time")}
+     ${li("mask","var(--ink)","Your masking and burnout","the hidden cost of performing \"normal\"")}
+     ${li("map","var(--ink)","Your complete brain map","your shape across all five, in one picture")}
+     ${li("path","var(--dh)","Your season","one area of life to work on first, and how to split your energy")}</ul></div>
+   </div>
+   <div class="facts"><span>About 35 minutes</span><span>Saves on this device</span><span>No login</span><span>Comes before a diagnosis</span></div>
+   <div class="journey"><h3>Your Journey</h3>${route(0)}
+    <p class="small">Part 0 shows how your brain works. Parts 1 to 4 map each piece. Part 5 puts it all together. Part 6 picks where you go next.</p></div>
+   ${LEAD&&!S.email?`<form class="leadf" id="leadf" novalidate><label for="em"><b>Start free: How your AuDHD brain works</b><br><span class="small muted">About 8 minutes, interactive. We'll also email you the link so you can come back.</span></label><input type="email" id="em" name="email" autocomplete="email" placeholder="your@email.com" required><input type="text" name="bot-field" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true"><p class="small" id="emerr" style="color:var(--dh)" hidden>That email doesn't look right. Check it and try again.</p><button class="btn" type="submit">Start the free walkthrough →</button></form>`:""}
+   <div class="stack g10" ${LEAD&&!S.email?"hidden":""}><button class="btn" id="go">${started?"Continue where you left off →":LEAD?"Start the free walkthrough →":"Let's map it →"}</button>
+    ${started?`<button class="textbtn" id="reset" style="align-self:center">Start over</button>`:""}</div>
+  </section>`;
+  wireTop();
+  requestAnimationFrame(buildLogo);
+  if(document.fonts) document.fonts.ready.then(buildLogo);
+  $("#go").onclick=()=>{const go=()=>{S.view="p0";save();render();scrollTo(0,0)};if(!S.setup)openSheet(true,go);else go()};
+  const lf=$("#leadf");if(lf)lf.onsubmit=e=>{e.preventDefault();const em=$("#em").value.trim();if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)){$("#emerr").hidden=false;return}
+   const body=new URLSearchParams({"form-name":"leads",email:em,source:"lead-magnet-part0","bot-field":lf.elements["bot-field"].value}).toString();
+   fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body}).catch(()=>{});
+   S.email=em;save();$("#go").click()};
+  const r=$("#reset"); if(r) r.onclick=()=>{S.i=0;S.beat={};S.ack=false;save();render()};
+}
+function exampleRadar(){
+  const v=[.82,.6,.9,.7,.45],n=5,R=46,c=60,p=(i,r)=>{const a=-Math.PI/2+i*2*Math.PI/n;return [c+Math.cos(a)*R*r,c+Math.sin(a)*R*r]};
+  const ring=s=>[0,1,2,3,4].map(i=>p(i,s).join(",")).join(" ");
+  return `<svg viewBox="0 0 120 128" aria-label="Example spiky profile shape"><polygon points="${ring(1)}" fill="none" stroke="var(--rule)"/><polygon points="${ring(.5)}" fill="none" stroke="var(--rule)"/>
+   <polygon points="${v.map((x,i)=>p(i,x).join(",")).join(" ")}" fill="var(--dh)" fill-opacity=".2" stroke="var(--dh)" stroke-width="2" stroke-linejoin="round"/>
+   ${v.map((x,i)=>{const [a,b]=p(i,x);return `<circle cx="${a}" cy="${b}" r="2.6" fill="var(--au)"/>`}).join("")}
+   <text x="60" y="124" text-anchor="middle" font-size="8.5" font-family="Lexend,sans-serif" fill="var(--muted)">example shape</text></svg>`;
+}
+
+/* ================= PART 0 SCREENS ================= */
+const T=(t,b)=>`<b class="t">${t}</b>${b}`;
+const STG={in:"Stage 1 · Input",pr:"Stage 2 · Processing",out:"Stage 3 · Output"};
+const SCREENS_ALL=[
+/* 1 */ {t:`${ic("inf","var(--au)")}${ic("bolt","var(--dh)")} Two Voices, One Brain`, vis:voicesVis,
+ beats:[`If that chat sounds like the inside of your head, you've met the two voices.`,
+  {c:"big",h:`That's your brain.`},
+  `One voice is tuned for pattern, order and depth. The other is tuned for novelty, speed and stimulation. They share <b>one body, one day and one battery</b>. Neither one has an off switch.`,
+  `This part explains <b>how the two voices work</b>, why they clash, and what that means for your everyday life.`]},
+/* 2 */ {t:`${ic("key","var(--dh)")} The Core Idea`, vis:momentVis,
+ beats:[`Every moment passes through <b>three stages</b>. Let's follow one: <b>your phone buzzes while a friend is talking.</b>`,
+  {c:"stg-in",h:`<b>Input: what comes in.</b> Everything that reaches you: sounds, sights, your body, your feelings.`},
+  {c:"stg-pr",h:`<b>Processing: what your head does with it.</b> Sorting, deciding, feeling. This is where the two voices talk.`},
+  {c:"stg-out",h:`<b>Output: what you do.</b> What you say, do or show. It goes back out into the world, and the loop starts again.`},
+  `This loop runs <b>every second of every day</b>. In your brain it works fine. The settings on each stage just sit at different levels.`,
+  `Now switch to <b>AuDHD settings</b> and follow the same moment again.`]},
+/* 3 */ {stage:"in", t:`${ic("bolt","var(--dh)")} ADHD: No Receptionist`, vis:deskVis,
+ beats:[`Imagine your brain has a <b>reception desk</b>. In a neurotypical brain, a receptionist sorts the incoming mail. Urgent goes on top, junk goes in the bin, routine gets filed.`,
+  {c:"big",h:`Your ADHD brain fired the receptionist.`},
+  `Everything arrives with the same priority. The email notification, the flickering light, your own hunger and the conversation you're supposed to be in all land on the desk at once, in one pile.`,
+  `Your attention works fine. It's just buried under <b>far too much input</b>, all at the same volume.`]},
+/* 4 */ {stage:"in", t:`${ic("inf","var(--au)")} Autism: Nothing Fades`, vis:habVis,
+ beats:[`Now picture the same desk with <b>the most thorough receptionist in the world</b>. Every letter gets opened, read in full, compared with everything that came before, and filed in detail.`,
+  `Nothing gets thrown away or simplified. The clock ticking in the background gets filed. So does the texture of your shirt, and the look on your colleague's face, checked against every other time you've seen it.`,
+  {c:"big",h:`Your brain takes in everything at full resolution, and keeps it there.`}]},
+/* 5 */ {stage:"in", t:`${ic("seesaw","var(--ink)")} When Both Run Together`, vis:bothVis,
+ beats:[`Now put the two together. Your ADHD brain has <b>no filter</b>, so everything arrives at once. Your autistic brain has <b>no fade</b>, so nothing goes away.`,
+  {c:"callout pink big",h:`Everything arrives at once, and nothing goes away.`},
+  `You're flooded with input (ADHD) and can't tune any of it out (autism). That's why AuDHD people feel overwhelmed in places that seem normal to everyone else.`,
+  `Researchers call the result a <b>narrow window of tolerance</b>. The amount of stimulation you can handle gets squeezed from both sides.`]},
+/* 6 */ {stage:"pr", t:`${ic("gear","var(--au)")} Where the Tug-of-War Lives`, vis:procVis,
+ beats:[`Once input arrives, your head has to <b>do something with it</b>. This is where the two voices start arguing.`,
+  {c:"rule dh",h:`<span class="who" style="color:var(--dh)">${ic("bolt")} Your ADHD voice asks:</span><span class="ask">"Is this interesting?"</span><span class="yn"><b>Yes</b> → full power.</span><span class="yn"><b>No</b> → shut it down and find something better.</span>`},
+  {c:"rule au",h:`<span class="who" style="color:var(--au)">${ic("inf")} Your autism voice asks:</span><span class="ask">"Does this fit the plan?"</span><span class="yn"><b>Yes</b> → safe, carry on.</span><span class="yn"><b>No</b> → danger, analyse further.</span>`},
+  `Two different questions, about the same moment, at the same time.`,
+  {c:"callout yel",h:T("The tug-of-war",`Most of your daily struggle comes from the two voices <b>reaching different answers about the same moment</b>, then fighting over what to do.`)}]},
+/* 7 */ {stage:"out", t:`${ic("mask","var(--dh)")} What You Actually Do`, vis:maskVis,
+ beats:[`After the input arrives and the voices have argued, you <b>do something</b>. This is the part the world sees.`,
+  {c:"big",h:`Most of the time, what you show the world is different from what your brain actually wanted to do.`},
+  `In between sits a <b>mask</b>: what you say out loud, while the two voices are still arguing inside.`,
+  {c:"callout pink",h:T("Burnout comes from the mask",`It builds up from the energy it costs to hide your natural reactions, all day, every day, for years.`)}]},
+/* 8 */ {t:`${ic("map","var(--ink)")} The Whole Loop`, vis:pictureVis,
+ beats:[`Here's everything in one picture, from the moment something happens to what it costs you.`,
+  {c:"callout",h:T(`${ic("cam")} Screenshot this`,`Next time you're overwhelmed and can't tell why, ask: <em>where am I stuck?</em><span class="yn"><b>Input:</b> too much coming in.</span><span class="yn"><b>Processing:</b> the voices are fighting.</span><span class="yn"><b>Output:</b> the mask is too heavy.</span><span class="yn" style="margin-top:6px">Knowing where you're stuck is the first step to getting unstuck.</span>`)}]},
+/* 9 */ {t:`${ic("inf","var(--au)")}${ic("bolt","var(--dh)")} Quick Reference`, vis:qrVis,
+ beats:[`The cheat sheet for both voices, and for when they run together.`]},
+/* 10 */ {t:`${ic("path","var(--dh)")} Before You Start`, vis:null, plain:true}
+];
+const SCREENS=LEAD?SCREENS_ALL.slice(0,9):SCREENS_ALL;
+function renderP0(force){
+  S.max=Math.max(S.max||0,S.i);
+  const sc=SCREENS[S.i]; const n=SCREENS.length;
+  app.innerHTML=`${topbar(`<button class="textbtn" id="home" style="text-decoration:none;font-weight:600">← Map</button><span class="ticks">${SCREENS.map((_,k)=>`<button class="tk ${k<S.i?"d":k===S.i?"n":k<=(S.max||0)?"v":""}" data-k="${k}" ${k>(S.max||0)?"disabled":""} aria-label="Go to screen ${k+1}"></button>`).join("")}</span>`)}
+  <section class="stack g20" style="padding-top:8px">
+   <div class="stack g6"><span class="eyebrow">Part 0 · How your brain works · ${S.i+1} of ${n}</span>${sc.stage?`<span class="stg ${sc.stage}">${STG[sc.stage]}</span>`:""}<h2 tabindex="-1" id="st">${sc.t}</h2></div>
+   ${sc.vis?`<div class="vis" id="vis"></div>`:""}
+   ${sc.plain?beforeStart():`<div class="beats ${S.all?"all":""}" id="beats" role="button" tabindex="0" aria-label="Tap to read the next line">${sc.beats.map((b,k)=>{const o=typeof b==="string"?{h:b}:b;return `<p class="beat ${o.c||""}" data-k="${k}">${hl(o.h)}</p>`}).join("")}</div>
+   <div class="tapmore" id="tapmore">tap the text to continue ↓</div>`}
+   <div class="navrow"><button class="btn ghost" id="prev" style="flex:0 0 auto;padding:0 18px" aria-label="Previous">←</button><button class="btn" id="next">Next →</button></div>
+   ${sc.plain?"":`<button class="textbtn" id="showall" style="align-self:center">${S.all?"Read line by line":"Show the whole page"}</button>`}
+  </section>`;
+  $$(".ticks .tk").forEach(t=>t.onclick=()=>{const k=+t.dataset.k;if(k===S.i)return;S.i=k;save();renderP0();scrollTo(0,0)});
+  wireTop(()=>renderP0(true));
+  $("#home").onclick=()=>{S.view="welcome";save();render();scrollTo(0,0)};
+  cur={sc,api:null};
+  if(sc.vis){cur.api=sc.vis($("#vis"))||{};}
+  if(sc.plain){wireBefore();}
+  else{
+    const total=sc.beats.length; if(S.beat[S.i]===undefined) S.beat[S.i]=S.all?total-1:0;
+    const b=$("#beats");
+    b.onclick=e=>{if(e.target.closest("a,button"))return;adv()};
+    b.onkeydown=e=>{if(e.key===" "||e.key==="Enter"){e.preventDefault();adv()}};
+    $("#showall").onclick=()=>{S.all=!S.all;if(S.all)S.beat[S.i]=total-1;save();renderP0()};
+    paint(false);
+  }
+  $("#next").onclick=()=>adv(true);
+  $("#prev").onclick=back;
+  if(!force) $("#st").focus({preventScroll:true});
+}
+function paint(scroll){
+  const sc=cur.sc,k=S.beat[S.i],total=sc.beats.length;
+  $$(".beat").forEach((el,i)=>{el.classList.toggle("past",i<k);el.classList.toggle("now",i===k);el.classList.toggle("fut",i>k)});
+  $("#tapmore").hidden=k>=total-1||S.all;
+  $("#next").textContent=k<total-1&&!S.all?"Next line ↓":(S.i<SCREENS.length-1?"Next →":"Start Part 1 →");
+  cur.api&&cur.api.beat&&cur.api.beat(k);
+  if(scroll){const el=$(".beat.now");el&&el.scrollIntoView({behavior:"smooth",block:"nearest"})}
+  save();
+}
+function adv(fromBtn){
+  const sc=cur.sc;
+  if(!sc.plain){const total=sc.beats.length;if(S.beat[S.i]<total-1&&!S.all){S.beat[S.i]++;paint(true);return}}
+  if(sc.plain&&!S.ack) return;
+  if(S.i<SCREENS.length-1){S.i++;save();renderP0();scrollTo(0,0)} else {S.view="done";save();render();scrollTo(0,0)}
+}
+function back(){if(S.i>0){S.i--;save();renderP0();scrollTo(0,0)}else{S.view="welcome";save();render();scrollTo(0,0)}}
+addEventListener("keydown",e=>{if(S.view!=="p0"||/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName))return;if(e.key==="ArrowRight"){e.preventDefault();adv()}if(e.key==="ArrowLeft"){e.preventDefault();back()}});
+
+/* ---------- visual 1: two voices (from the #1 post format) ---------- */
+function voicesVis(v){
+  const CH=[["au","I need structure."],["dh","I hate being controlled."],["au","I love the same routine."],["dh","I'm allergic to repetition."]];
+  v.innerHTML=`${tryPill("Tap Replay to hear the two voices again.")}
+   <div class="chat" id="chat">${CH.map(([s,t],i)=>`<div class="bub ${s}"><span class="who">${s==="au"?ic("inf")+" Autism":"ADHD "+ic("bolt")}</span>${t}</div>`).join("")}
+    <div class="bub both"><span class="who">${ic("inf")}${ic("bolt")} Living with both</span>Please schedule my chaos. But not too strictly.<br>Let it surprise me. But not too much.</div></div>
+   <div class="res2"><span class="rt">One shared battery: energy, attention, time</span><div class="bar2"><i class="a"></i><i class="mid"></i><i class="d"></i></div>
+    <div class="rl"><span style="color:var(--au)">${ic("inf")} Autism wants</span><span class="midl">both want this</span><span style="color:var(--dh)">ADHD wants ${ic("bolt")}</span></div></div>
+   <button class="chip" id="replay" style="align-self:center">↺ Replay</button>`;
+  let tm=[];const still=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const play=()=>{tm.forEach(clearTimeout);tm=[];const bs=$$(".bub",v);bs.forEach(b=>b.classList.toggle("on",still));if(!still)bs.forEach((b,i)=>tm.push(setTimeout(()=>b.classList.add("on"),250+i*850)))};
+  $("#replay",v).onclick=e=>{e.stopPropagation();play()};
+  play();
+  return {};
+}
+
+/* ---------- visual 2: follow one moment through the loop ---------- */
+function momentVis(v){
+  const T={a:{i:"Her voice comes first. The buzz is a faint noise in the background.",p:`<span class="vb one">One clear answer: <b>check it later.</b></span>`,o:"You keep listening.",b:"She keeps talking. Nothing else happens."},
+   b:{i:"Everything arrives at the same volume: the buzz, her voice, the music, your hunger. None of it fades.",p:`<span class="vb dh">${ic("bolt")} Who is it? Check it NOW!</span><span class="vb au">${ic("inf")} Rule: never check mid-sentence.</span>`,o:"You lose the thread, then nod and smile like you heard every word. <i>That smile is the mask.</i>",b:"She notices you drifted. That's new input, and the loop runs again."}};
+  const st=(cls,n,ttl,sub,body)=>`<div class="stp ${cls}" data-n="${n}"><span class="sn">${ttl}</span><span class="ss">${sub}</span><div class="sb">${body}</div></div>`;
+  v.innerHTML=`${tryPill("Tap the text below to follow the moment.")}
+   <div class="flow" id="flow">
+    ${st("w",0,`${ic("world")} The world`,"something happens",`Your phone buzzes while a friend is talking.`)}
+    <div class="fa" data-n="1">raw data: the buzz, her voice, café music, your hunger</div>
+    ${st("in",1,`${ic("input")} Input`,"what comes in",`<span id="mi"></span>`)}
+    <div class="fa" data-n="2"></div>
+    ${st("pr",2,`${ic("gear")} Processing`,"what your head does with it",`<span id="mp"></span>`)}
+    <div class="fa" data-n="3"></div>
+    ${st("out",3,`${ic("output")} Output`,"what you do",`<span id="mo"></span>`)}
+    <div class="fa back" data-n="3">↺ <span id="mb"></span></div></div>
+   <div class="modes" id="dm"><button class="chip" data-m="a" aria-pressed="true">Typical settings</button><button class="chip" data-m="b" aria-pressed="false">AuDHD settings</button></div>`;
+  let mode="a";
+  const fill=()=>{const t=T[mode];$("#mi",v).innerHTML=t.i;$("#mp",v).innerHTML=t.p;$("#mo",v).innerHTML=t.o;$("#mb",v).textContent=t.b;
+    $$("#dm .chip",v).forEach(x=>x.setAttribute("aria-pressed",x.dataset.m===mode));$("#flow",v).classList.toggle("adhd",mode==="b")};
+  $$("#dm .chip",v).forEach(c=>c.onclick=e=>{e.stopPropagation();mode=c.dataset.m;fill();const f=$("#flow",v);f.classList.remove("swap");void f.offsetWidth;f.classList.add("swap")});
+  fill();
+  return {beat(k){$$("[data-n]",v).forEach(el=>el.classList.toggle("off",+el.dataset.n>k));$("#dm",v).classList.toggle("off",k<4);
+    $("#try>span:last-child",v).textContent=k>=4?"Switch to AuDHD settings and follow the same moment.":"Tap the text below to follow the moment."}};
+}
+
+
+/* ---------- visual 3: reception desk ---------- */
+function deskVis(v){
+  const SIG=[["💬","Conversation"],["🍔","Hunger"],["💡","Flickering light"],["📧","Email"],["🎵","That song"],["🔒","Did I lock the door?"]];
+  v.innerHTML=`${tryPill("Switch between the two brains.")}
+   <div class="modes"><button class="chip" data-m="nt">Neurotypical brain</button><button class="chip" data-m="adhd">${ic("bolt","var(--dh)")} ADHD brain</button></div>
+   <div class="desk" id="desk">${SIG.map((s,i)=>`<span class="sig" data-i="${i}">${s[0]} ${s[1]}</span>`).join("")}<span class="lbl" id="dl"></span><span class="bin" id="bin">bin</span></div>
+   <div class="outcome" id="oc"></div>`;
+  let mode="nt",user=false;
+  const desk=$("#desk",v),sigs=$$(".sig",desk);
+  const PILE=[[.04,.07,-5],[.5,.04,4],[.1,.34,3],[.52,.3,-5],[.03,.6,4],[.42,.58,-3]];
+  const place=(fly)=>{const W=desk.clientWidth,H=desk.clientHeight;
+    sigs.forEach((s,i)=>{s.classList.remove("wob","hot");s.querySelector(".num")&&s.querySelector(".num").remove();
+      let x,y,r=0,sc=1,o=1;
+      if(mode==="nt"){ if(i<4){x=12;y=12+i*42;s.insertAdjacentHTML("afterbegin",`<span class="num">${i+1}.</span>`)}else{x=W-s.offsetWidth*.62-14;y=H-74+(i-4)*22;sc=.6;o=.4} }
+      else {const p=PILE[i];x=Math.min(W-s.offsetWidth-8,p[0]*W);y=p[1]*H;r=p[2];s.classList.add("hot");}
+      s.style.transitionDelay=fly?(i*.09)+"s":"0s";
+      if(fly){s.style.transition="none";s.style.transform=`translate(${W/2-40}px,-60px)`;s.style.opacity=0;void s.offsetWidth;s.style.transition="";}
+      s.style.transform=`translate(${x}px,${y}px) rotate(${r}deg) scale(${sc})`;s.style.opacity=o;
+      if(mode==="adhd") setTimeout(()=>s.classList.add("wob"),900);
+    });
+    $("#bin",v).style.opacity=mode==="nt"?1:.15;
+    $("#dl",v).textContent=mode==="nt"?"Receptionist sorts by priority":"No receptionist. All at once.";
+    $("#oc",v).innerHTML=mode==="nt"?`→ <b>Focused response</b>`:`→ <b>Overwhelm</b>, or <b>lock onto ONE</b><br><span class="muted small">(whichever is most interesting)</span>`;
+    $$("[data-m]",v).forEach(c=>c.setAttribute("aria-pressed",c.dataset.m===mode));};
+  $$("[data-m]",v).forEach(c=>c.onclick=e=>{e.stopPropagation();user=true;mode=c.dataset.m;place(true)});
+  requestAnimationFrame(()=>place(true));
+  addEventListener("resize",()=>desk.isConnected&&place(false));
+  return {beat(k){if(user)return;const m=k>=1?"adhd":"nt";if(m!==mode){mode=m;place(true)}}};
+}
+
+/* ---------- visual 4: habituation ---------- */
+function habVis(v){
+  const IT=[["⏰","Clock ticking"],["👕","Shirt texture"],["🙂","Colleague's face"],["🧊","Fridge hum"]];
+  v.innerHTML=`${tryPill("Drag the slider through the day.")}
+   <div class="rlab"><span>Hour 1</span><span id="hv">Hour 1.0</span><span>Hour 4</span></div>
+   <input class="rng" type="range" id="hr" min="1" max="4" step=".01" value="1" aria-label="Hours passed">
+   <div class="hab"><div class="col"><h4>Neurotypical</h4>${IT.map(i=>`<span class="it n">${i[0]} ${i[1]}</span>`).join("")}<span class="say" id="ns"></span><div class="load"><i id="nl" style="background:var(--ok)"></i></div><span class="ll">brain load</span></div>
+   <div class="col" style="box-shadow:inset 0 0 0 1.5px var(--au)"><h4 style="color:var(--au)">${ic("inf")} Autistic</h4>${IT.map(i=>`<span class="it a">${i[0]} ${i[1]}</span>`).join("")}<span class="say" id="as"></span><div class="load"><i id="al"></i></div><span class="ll">brain load</span></div></div>`;
+  const r=$("#hr",v);let user=false,raf;
+  const up=()=>{const h=+r.value,f=(h-1)/3;
+    $$(".it.n",v).forEach(e=>e.style.opacity=1-f*.88);
+    $("#nl",v).style.width=(18-f*8)+"%";
+    $("#al",v).style.width=(18+f*82)+"%";$("#al",v).style.background=f>.7?"var(--dh)":"var(--au)";
+    $("#hv",v).textContent=`Hour ${h.toFixed(1)}`;
+    $("#ns",v).innerHTML=f>.9?"Clock fades into the background. Shirt forgotten. Only new things get noticed. <b>Low load.</b>":"Things fade over time.";
+    $("#as",v).innerHTML=f>.9?"Clock STILL ticking. Shirt STILL scratching. Everything at full volume, hour 4. <b>Overload risk.</b>":"Nothing fades.";};
+  r.oninput=()=>{user=true;cancelAnimationFrame(raf);up()};r.onclick=e=>e.stopPropagation();
+  up();
+  return {beat(k){if(user||k<1)return;const t0=performance.now(),from=+r.value;const go=t=>{const p=Math.min(1,(t-t0)/5200);r.value=from+(4-from)*p;up();if(p<1)raf=requestAnimationFrame(go)};raf=requestAnimationFrame(go)}};
+}
+
+/* ---------- visual 5: bucket + window ---------- */
+function bothVis(v){
+  v.innerHTML=`${tryPill("Watch the tap pour in while the drain stays plugged.")}
+   <div id="bk"><svg class="bucket" viewBox="0 0 300 200" aria-label="A tap pouring in with no filter, and a plugged drain">
+   <rect x="80" y="4" width="102" height="20" rx="6" fill="var(--dh)"/><text x="131" y="18" text-anchor="middle" font-size="10.5" font-family="Lexend" font-weight="600" fill="#fff">ADHD: no filter</text>
+   <rect x="118" y="24" width="26" height="150" fill="var(--dh)" opacity=".35"/>
+   <path d="M70 60 L80 178 Q81 186 90 186 L210 186 Q219 186 220 178 L230 60" fill="none" stroke="var(--ink)" stroke-width="3"/>
+   <clipPath id="cp"><path d="M70 60 L80 178 Q81 186 90 186 L210 186 Q219 186 220 178 L230 60 Z"/></clipPath>
+   <rect id="wt" clip-path="url(#cp)" x="60" y="186" width="180" height="0" fill="var(--au)" opacity=".55"/>
+   <rect x="138" y="184" width="24" height="12" rx="3" fill="var(--au)"/><text x="168" y="198" font-size="10.5" font-family="Lexend" font-weight="600" fill="var(--au)">Autism: drain plugged</text>
+   <text id="ov" x="150" y="52" text-anchor="middle" font-size="13" font-family="Lexend" font-weight="700" fill="var(--dh)" opacity="0">OVERWHELM</text></svg>
+   <p class="small muted" style="text-align:center">Everything pours in. Nothing drains out.</p></div>
+   <div class="win2" id="ww" hidden>
+    <div class="stack g6"><span class="eyebrow">Neurotypical window</span><div class="wbar wnt"><span class="u">bored</span><span class="c">comfortable (wide)</span><span class="o">too much</span><i class="knob" id="k1"></i></div></div>
+    <div class="stack g6"><span class="eyebrow">AuDHD window</span><div class="wbar wad"><span class="u">BORED!</span><span class="c">ok</span><span class="o">TOO MUCH!</span><i class="knob" id="k2"></i></div></div>
+    <input class="rng" type="range" id="stim" min="0" max="100" value="22" aria-label="How much stimulation is in the room">
+    <div class="rlab"><span>Quiet room</span><span>Loud party</span></div>
+    <div class="wread"><b>NT</b><span id="r1"></span><b>AuDHD</b><span id="r2"></span></div></div>`;
+  let raf,t0=0;const wt=$("#wt",v),ov=$("#ov",v);
+  const fill=t=>{if(!v.isConnected)return;if(!t0)t0=t;const p=((t-t0)/6000)%1.15,h=Math.min(1,p)*126;wt.setAttribute("y",186-h);wt.setAttribute("height",h);ov.setAttribute("opacity",p>.95?1:0);raf=requestAnimationFrame(fill)};
+  if(!matchMedia("(prefers-reduced-motion: reduce)").matches) raf=requestAnimationFrame(fill); else {wt.setAttribute("y",80);wt.setAttribute("height",106)}
+  const s=$("#stim",v);s.onclick=e=>e.stopPropagation();
+  const up=()=>{const x=+s.value;$("#k1",v).style.left=x+"%";$("#k2",v).style.left=x+"%";
+    $("#r1",v).textContent=x<20?"A bit bored":x>80?"Too much":"Comfortable";
+    $("#r2",v).innerHTML=x<44?"ADHD says: <b>BORED! Need input!</b>":x>56?"Autism says: <b>TOO MUCH! Shut down!</b>":"<b>Tiny comfort zone.</b> You found it!";};
+  s.oninput=up;up();
+  return {beat(k){$("#ww",v).hidden=k<3;$("#bk",v).hidden=k>=3;$("#try>span:last-child",v).textContent=k>=3?"Slide from a quiet room to a loud party. Find the comfort zone.":"Watch the tap pour in while the drain stays plugged."}};
+}
+
+/* ---------- visual 6: two voices, two questions ---------- */
+function procVis(v){
+  const SC=[["A new café opened","Is it interesting? YES! Let's go now.","Does it fit the plan? NO. We have our café.",0],
+   ["Plans changed last minute","Ooh, something new. Fine by me!","NO. The plan was the plan.",0],
+   ["Same lunch as yesterday","Again? So boring.","Perfect. Same as always.",0],
+   ["Deep dive into your favourite topic","Is it interesting? YES!","Does it fit the pattern? YES!",1]];
+  v.innerHTML=`${tryPill("Pick a moment. Watch both voices answer it.")}
+   <div class="scen">${SC.map((s,i)=>`<button class="chip" data-s="${i}">${s[0]}</button>`).join("")}</div>
+   <div class="chat small2"><div class="bub dh" id="q1"></div><div class="bub au" id="q2"></div></div>
+   <div class="merge"><div class="node" style="text-align:center" id="res"></div>
+    <svg class="mini-ss" viewBox="0 0 180 60" aria-hidden="true"><polygon points="90,36 80,56 100,56" fill="var(--muted)"/><g class="beam" id="bm"><rect x="10" y="30" width="160" height="6" rx="3" fill="var(--ink)"/><rect x="16" y="12" width="20" height="18" rx="4" fill="var(--au)"/><circle cx="156" cy="21" r="9" fill="var(--dh)"/></g></svg></div>`;
+  let tm=[];
+  const pick=i=>{tm.forEach(clearTimeout);tm=[];const [n,a,b,agree]=SC[i];$$(".chip",v).forEach(c=>c.setAttribute("aria-pressed",+c.dataset.s===i));
+    const q1=$("#q1",v),q2=$("#q2",v);q1.classList.remove("on");q2.classList.remove("on");
+    q1.innerHTML=`<span class="who">ADHD ${ic("bolt")}</span>${a}`;q2.innerHTML=`<span class="who">${ic("inf")} Autism</span>${b}`;
+    $("#res",v).className="node dim";$("#res",v).textContent="Do they agree?";$("#bm",v).classList.remove("rock");$("#bm",v).style.transform="";
+    tm.push(setTimeout(()=>q1.classList.add("on"),200),setTimeout(()=>q2.classList.add("on"),900),setTimeout(()=>{$("#res",v).className="node "+(agree?"ok":"dh");
+      $("#res",v).innerHTML=agree?"<b>Both agree.</b> A rare moment of peace, and often your best work.":"<b>Tug-of-war.</b> Two answers to one moment, so you feel pulled both ways.";
+      const bm=$("#bm",v);bm.classList.toggle("rock",!agree);bm.style.transform=agree?"rotate(0deg)":""},1700))};
+  $$(".chip",v).forEach(c=>c.onclick=e=>{e.stopPropagation();pick(+c.dataset.s)});
+  pick(0);
+  return {};
+}
+
+
+/* ---------- visual 7: mask ---------- */
+function maskVis(v){
+  const W=["Rock back and forth to calm down","Say \"I'm bored, can we go?\"","Leave the loud party right now","Info-dump about your special interest","Look away instead of making eye contact","Blurt the thought before it vanishes","Flap your hands because you're excited","Say \"I don't get the joke\""];
+  v.innerHTML=`${tryPill("For each reaction, choose Show it or Mask it. Watch your battery.")}
+   <div class="wants"><span class="q">Your brain's natural reaction</span><span class="r" id="wr"></span>
+   <span class="q">Is this socially acceptable?</span><div class="two"><button class="btn ghost" id="show">Show it</button><button class="btn" id="hide">${ic("mask")} Mask it</button></div></div>
+   <div class="batt"><span class="small">Energy</span><div class="cell"><i id="bt"></i></div><span class="mstat" id="bp">100%</span></div>
+   <p class="small muted" id="mlog" style="margin-top:8px;text-align:center"></p>`;
+  let e=100,i=0,n=0;const r=$("#wr",v);
+  const draw=()=>{r.textContent=W[i%W.length];$("#bt",v).style.width=Math.max(0,e)+"%";$("#bt",v).style.background=e<30?"var(--dh)":e<60?"#D9A21B":"var(--ok)";$("#bp",v).textContent=Math.max(0,Math.round(e))+"%";$("#mlog",v).textContent=`Masked today: ${n}`};
+  $("#show",v).onclick=ev=>{ev.stopPropagation();i++;draw();$("#mlog",v).textContent=`Shown. No energy cost. Masked today: ${n}`};
+  $("#hide",v).onclick=ev=>{ev.stopPropagation();n++;e-=17+Math.random()*8;i++;draw();
+    if(e<=0){const c=document.createElement("div");c.className="crash";c.innerHTML=`<h3 style="color:#fef2f2;font-size:calc(34px * var(--hs))">BURNOUT</h3><p>System crash. The running total went past your capacity.</p><button class="btn" style="background:#fef2f2;color:#7f1d1d">Start a new day</button>`;v.append(c);
+      c.querySelector("button").onclick=x=>{x.stopPropagation();c.remove();e=100;n=0;draw()}}
+    else $("#mlog",v).textContent=`Energy cost added to today's total. Keep going (for now). Masked today: ${n}`;};
+  draw();return {};
+}
+
+/* ---------- visual 8: the whole loop, simple ---------- */
+function pictureVis(v){
+  const R=[["w","world","The world","Something happens: a buzz, a plan change, a loud room.","Part 5 puts it all together"],
+   ["in","input","Input: what comes in","ADHD: everything at once. Autism: nothing fades.","Parts 1 and 2"],
+   ["pr","gear","Processing: what your head does","Two voices, two questions, one tug-of-war.","Part 3"],
+   ["out","output","Output: what you do","What you show, and what you hide behind the mask.","Parts 1, 2 and 4"],
+   ["cost","mask","The cost","Hiding takes energy. Over years, it adds up to burnout.","Part 4"]];
+  v.innerHTML=`${tryPill("Tap a step to see which Part maps it.")}
+   <div class="pic">${R.map(([c,i,t,d,p],k)=>`${k?`<div class="parr"></div>`:""}<button class="prow ${c}" aria-expanded="false"><span class="pi">${ic(i)}</span><span class="pt2"><b>${t}</b><span>${d}</span><em>Mapped in ${p}</em></span></button>`).join("")}
+    <div class="parr back">↺ then back out into the world</div></div>`;
+  $$(".prow",v).forEach(b=>b.onclick=e=>{e.stopPropagation();const on=b.getAttribute("aria-expanded")!=="true";$$(".prow",v).forEach(x=>x.setAttribute("aria-expanded","false"));b.setAttribute("aria-expanded",on)});
+  return {};
+}
+
+/* ---------- visual 9: quick reference as flip cards ---------- */
+function qrVis(v){
+  const Q=[["dh",`${ic("bolt")} The ADHD voice`,"No filter, everything at once, novelty wears off fast","Interest, urgency, novelty, challenge","Bored, understimulated, stuck in routine, forced to wait","Speed, creativity, energy bursts, making connections"],
+   ["au",`${ic("inf")} The autism voice`,"Full resolution, nothing fades, details first","Predictability, depth, pattern, favourite topics","Too much input, routine broken, sudden change, social overload","Depth, pattern spotting, loyalty, systematic thinking"],
+   ["both",`${ic("inf")}${ic("bolt")} Both at once`,"Flooded and unable to tune out (the narrow window)","Needs novelty and predictability at the same time","The tug-of-war tips too far either way","When both line up, deep creative focus meets pattern spotting, and you're unstoppable"]];
+  v.innerHTML=`${tryPill("Tap a card to flip it.")}<div class="flips">${Q.map(q=>`<button class="flip ${q[0]}" aria-pressed="false"><span class="fr"><b>${q[1]}</b><span class="small">Tap to flip</span></span>
+    <span class="bk"><b>${q[1]}</b><dl><dt>Input</dt><dd>${q[2]}</dd><dt>Fuel</dt><dd>${q[3]}</dd><dt>Crashes when</dt><dd>${q[4]}</dd><dt>Strength</dt><dd>${q[5]}</dd></dl></span></button>`).join("")}</div>`;
+  $$(".flip",v).forEach(b=>b.onclick=e=>{e.stopPropagation();b.setAttribute("aria-pressed",b.getAttribute("aria-pressed")!=="true")});
+  return {};
+}
+
+/* ---------- screen 10: before you start ---------- */
+function beforeStart(){
+  const RULES=[["Go in order.","Parts 1 to 5 build on each other. Part 5 pulls your answers from every earlier part to make your map."],
+   ["Score how it feels inside.","If you never lose your keys because you have 5 backup systems and check all the time, that still counts. The effort is the signal."],
+   ["Take breaks.","No rush. Your ADHD side might want to finish in one sitting. Your autism side might need time to process each part. Honour both."],
+   ["\"It depends\" is a real answer.","Not sure? Tap it and say what it depends on. That's useful information too."]];
+  const QA=[["Is this a diagnosis?","No. Only a qualified professional can diagnose ADHD or autism. This helps you understand yourself, find words for what you feel and, if you want, prepare for an assessment."],
+   ["Is self-discovery valid?","Yes. Research from the University of Washington Autism Center suggests wrong self-identification is uncommon. You are the expert on your own experience."],
+   ["Is neurodivergence a disability?","It can be. The world is built for a different kind of brain, and that mismatch creates real barriers. Naming it is where building a life that fits you begins."]];
+  const IDEAS=[["input","Input and Output","Every trait has two sides.<br><b>Input:</b> how the world hits you.<br><b>Output:</b> what you end up doing.<br>Seeing them apart turns \"I'm broken\" into \"my brain works differently\"."],
+   ["seesaw","The tug-of-war","AuDHD is ADHD <i>times</i> autism. The two interact.<br>One craves quiet and routine. The other craves noise and novelty.<br>Both are real, both are you, and they take turns winning."],
+   ["map","A spectrum","The latest international classification (ICD-11) describes these conditions as a spectrum.<br>You sit somewhere along several scales, and that can shift with energy, place and life stage."],
+   ["gear","Processes, not labels","This map asks \"what's going on in my brain?\" instead of \"what's wrong with me?\"<br>The idea comes from process-based therapy research."],
+   ["path","Lived experience","Built from 30 years of living with an AuDHD brain.<br>Checked against published research."]];
+  return `<div class="stack g16">
+   <p>Now you know how the two voices work. Here's how to map yours.</p>
+   <div class="vis">${tryPill("Tap each rule once you've read it.")}
+    <div class="rules">${RULES.map((r,i)=>`<button class="rulec" data-r="${i}" aria-pressed="false"><span class="tk">✓</span><span>${T(r[0],r[1])}</span></button>`).join("")}</div>
+    <p class="small muted" id="rc" style="text-align:center;margin-top:8px">0 of 4 read</p></div>
+   <h3 style="margin-top:6px">What this is, and what it isn't</h3>
+   <div class="qas">${QA.map((q,i)=>`<button class="qac" aria-expanded="false" style="--d:${i*.12}s"><span class="qq">${q[0]}<i>+</i></span><span class="qa2">${q[1]}</span></button>`).join("")}</div>
+   <h3 style="margin-top:6px">The ideas behind this map</h3>
+   <div class="ideas2">${IDEAS.map(([ic2,t,d])=>`<button class="idc" aria-expanded="false"><span class="ii">${ic(ic2)}</span><b>${t}</b><span class="id2">${d}</span></button>`).join("")}</div>
+   <h3 style="margin-top:6px">Ready?</h3>
+   <p>Take a deep breath. Grab your favourite drink. Put on your comfort clothes. There's no rush and no deadline.</p>
+   <label class="check" for="ack"><input type="checkbox" id="ack" ${S.ack?"checked":""}><span>I understand this is a self-discovery tool, not a diagnosis.</span></label>
+  </div>`;
+}
+function wireBefore(){
+  const c=$("#ack"),n=$("#next");n.textContent="Start Part 1 →";n.disabled=!S.ack;c.onchange=()=>{S.ack=c.checked;save();n.disabled=!c.checked};
+  const read=new Set();$$(".rulec").forEach(b=>b.onclick=()=>{const on=b.getAttribute("aria-pressed")!=="true";b.setAttribute("aria-pressed",on);on?read.add(b.dataset.r):read.delete(b.dataset.r);$("#rc").textContent=read.size===4?"All 4 read. Nice.":`${read.size} of 4 read`});
+  $$(".qac,.idc").forEach(b=>b.onclick=()=>b.setAttribute("aria-expanded",b.getAttribute("aria-expanded")!=="true"));
+}
+
+/* ================= done placeholder ================= */
+function renderDone(){
+  if(LEAD){app.innerHTML=`${topbar("The AuDHD Pre-Diagnosis Toolkit")}<section class="stack g20" style="padding-top:8px">
+   <div class="yellow-stage stack g16"><div style="font-size:44px;color:#2B2140"><span class="icw">${I.gear}</span></div><span class="eyebrow" style="color:#2B2140;opacity:.7">You did it</span><h2 style="color:#2B2140">You know how the machine works.</h2></div>
+   <p>Now the real question: <b>is it ADHD, autism, both, or AuDHD?</b> And what does <i>your</i> shape look like?</p>
+   <div class="panel stack g10"><span class="eyebrow">Coming soon · The full AuDHD Map</span>
+    <p class="small">• 30 everyday moments: your ADHD side, your autism side, and the traits both share<br>• Your seesaw across 7 tug-of-wars<br>• What you hide, where you mask, and your burnout signals<br>• Your result (ADHD-leading, autism-leading, both, or AuDHD) and your shape</p>
+    <p class="small"><b>You're on the founding list</b> with ${(S.email||"").replace(/</g,"&lt;")}. You'll get it first, at the founder price.</p></div>
+   <div class="note yel">${T("Know someone whose brain runs two operating systems?","Send them this page. It's free.")}</div>
+   <button class="btn ghost" id="b0">← Back to the walkthrough</button><button class="textbtn" id="hm" style="align-self:center">Back to the start</button></section>`;
+   wireTop();$("#b0").onclick=()=>{S.view="p0";save();render()};$("#hm").onclick=()=>{S.view="welcome";save();render();scrollTo(0,0)};return}
+  app.innerHTML=`${topbar("The AuDHD Pre-Diagnosis Toolkit")}<section class="stack g20" style="padding-top:8px">
+   <div class="yellow-stage stack g16"><div style="font-size:44px;color:#2B2140"><span class="icw">${I.gear}</span></div><span class="eyebrow" style="color:#2B2140;opacity:.7">Part 0 complete</span><h2 style="color:#2B2140">You know how the machine works.</h2>${route(1)}</div>
+   <p>Next: Part 1, your ADHD side. 12 everyday moments. You pick how often each one is true for you.</p>
+   <button class="btn" id="sp1">Start Part 1 →</button><button class="btn ghost" id="b0">← Back to Part 0</button><button class="textbtn" id="hm" style="align-self:center">Back to the start</button></section>`;
+  wireTop();$("#sp1").onclick=()=>{S.view="deck:adhd";save();render();scrollTo(0,0)};$("#b0").onclick=()=>{S.view="p0";save();render()};$("#hm").onclick=()=>{S.view="welcome";save();render();scrollTo(0,0)};
+}
+
+/* ================= PART 1: ADHD traits ================= */
+const MV={ /* tiny looping pictures, one per trait */
+ filter:`<svg viewBox="0 0 200 110"><circle cx="100" cy="62" r="26" fill="var(--dh-s)" stroke="var(--dh)" stroke-width="2"/>${[[20,14,0],[180,18,.3],[14,96,.6],[186,94,.9],[100,6,1.2],[60,104,1.5]].map(([x,y,d])=>`<circle r="7" fill="var(--dh)" style="--x:${x-100}px;--y:${y-62}px;animation:fly 2.4s ${d}s ease-in infinite" cx="100" cy="62"/>`).join("")}<text x="100" y="66" text-anchor="middle" font-size="11" font-family="Lexend" font-weight="600" fill="var(--dh)">you</text></svg>`,
+ bored:`<svg viewBox="0 0 200 110"><rect x="40" y="40" width="110" height="30" rx="8" fill="none" stroke="var(--ink2)" stroke-width="3"/><rect x="150" y="48" width="8" height="14" rx="2" fill="var(--ink2)"/><rect x="46" y="46" height="18" rx="4" fill="var(--dh)" style="animation:drain 3.2s ease-in-out infinite"/><text x="100" y="92" text-anchor="middle" font-size="11" font-family="Lexend" fill="var(--muted)">stimulation</text><text x="100" y="28" text-anchor="middle" font-size="13" font-family="Lexend" font-weight="700" fill="var(--dh)" style="animation:ouch 3.2s infinite">ouch</text></svg>`,
+ rsd:`<svg viewBox="0 0 200 110"><rect x="30" y="26" width="58" height="30" rx="14" fill="var(--sheet2)"/><text x="59" y="46" text-anchor="middle" font-size="13" font-family="Lexend" fill="var(--ink)">k.</text><circle cx="140" cy="60" r="20" fill="var(--dh)" style="animation:hit 2.6s infinite;transform-box:fill-box;transform-origin:center"/>${[30,44,58].map((r,i)=>`<circle cx="140" cy="60" r="${r}" fill="none" stroke="var(--dh)" stroke-width="2" style="animation:wave 2.6s ${.9+i*.12}s infinite;opacity:0"/>`).join("")}</svg>`,
+ flood:`<svg viewBox="0 0 200 110"><rect x="138" y="14" width="8" height="86" fill="var(--ink2)"/>${["joy","anger","hype","dread"].map((w,i)=>`<g style="animation:rush 2.2s ${i*.08}s cubic-bezier(.5,0,.3,1) infinite"><rect x="${10}" y="${12+i*22}" width="54" height="18" rx="9" fill="${["#E3B21B","var(--dh)","var(--au)","var(--ink2)"][i]}"/><text x="37" y="${25+i*22}" text-anchor="middle" font-size="10" font-family="Lexend" font-weight="600" fill="#fff">${w}</text></g>`).join("")}</svg>`,
+ habit:`<svg viewBox="0 0 200 110"><g style="animation:fade 3.6s infinite"><polygon points="100,18 108,44 136,44 113,60 122,88 100,71 78,88 87,60 64,44 92,44" fill="#FFD43B" stroke="var(--ink)" stroke-width="2"/></g><text x="100" y="104" text-anchor="middle" font-size="11" font-family="Lexend" fill="var(--muted)"><tspan style="animation:days 3.6s infinite">day 1 → day 14</tspan></text></svg>`,
+ focus:`<svg viewBox="0 0 200 110"><defs><radialGradient id="sp"><stop offset="0" stop-color="#FFE27A" stop-opacity=".95"/><stop offset="1" stop-color="#FFE27A" stop-opacity="0"/></radialGradient><clipPath id="skyc"><rect x="0" y="0" width="200" height="110" rx="12"/></clipPath></defs>
+ <g clip-path="url(#skyc)"><rect width="200" height="110" style="animation:sky 6s linear infinite"/>
+ <g style="animation:orbit 6s linear infinite;transform-origin:100px 120px;transform-box:view-box"><circle cx="100" cy="28" r="11" fill="#FFC93B"/><circle cx="100" cy="212" r="9" fill="#F1EAF7"/><circle cx="104" cy="208" r="8" style="animation:skyfill 6s linear infinite"/></g>
+ ${[[24,18],[60,10],[150,14],[178,30],[36,40]].map(([x,y],i)=>`<circle cx="${x}" cy="${y}" r="1.4" fill="#fff" style="animation:stars 6s linear infinite"/>`).join("")}
+ <rect x="0" y="84" width="200" height="26" fill="var(--sheet2)"/>
+ <circle cx="100" cy="74" r="34" fill="url(#sp)"/><rect x="74" y="62" width="52" height="22" rx="4" fill="var(--ink)"/><rect x="78" y="65" width="44" height="15" rx="2" fill="var(--dh)" style="animation:pump 1.2s infinite"/><rect x="66" y="84" width="68" height="4" rx="2" fill="var(--ink)"/></g>
+ <text x="100" y="101" text-anchor="middle" font-size="10" font-family="Lexend" font-weight="600" fill="var(--ink2)">still on it…</text></svg>`,
+ seek:`<svg viewBox="0 0 200 110"><circle cx="70" cy="56" r="28" fill="var(--paper)" stroke="var(--ink2)" stroke-width="3"/><line x1="70" y1="56" x2="70" y2="34" stroke="var(--dh)" stroke-width="4" stroke-linecap="round" style="animation:knob 2.6s ease-in-out infinite;transform-origin:70px 56px;transform-box:view-box"/>${[0,1,2].map(i=>`<rect x="${118+i*18}" y="${70-i*16}" width="12" height="${14+i*16}" rx="3" fill="var(--dh)" style="animation:pump 2.6s ${i*.15}s infinite;opacity:.2"/>`).join("")}</svg>`,
+ timeIn:`<svg viewBox="0 0 200 110">${[[60,"5 min"],[140,"2 hours"]].map(([x,t])=>`<circle cx="${x}" cy="50" r="28" fill="var(--paper)" stroke="var(--ink2)" stroke-width="3"/><line x1="${x}" y1="50" x2="${x}" y2="30" stroke="var(--ink)" stroke-width="3" stroke-linecap="round" style="animation:spin 4s linear infinite;transform-origin:${x}px 50px;transform-box:view-box"/><text x="${x}" y="98" text-anchor="middle" font-size="11" font-family="Lexend" fill="var(--muted)">${t}</text>`).join("")}<text x="100" y="54" text-anchor="middle" font-size="16" font-family="Lexend" font-weight="700" fill="var(--dh)">=</text></svg>`,
+ paralysis:`<svg viewBox="0 0 200 110"><rect x="24" y="30" width="80" height="50" rx="8" fill="var(--paper)" stroke="var(--rule)" stroke-width="2"/>${[42,54,66].map(y=>`<rect x="34" y="${y}" width="60" height="5" rx="2" fill="var(--rule)"/>`).join("")}<g style="animation:nudge 1.8s infinite"><rect x="124" y="42" width="56" height="26" rx="13" fill="var(--ink)"/><text x="152" y="59" text-anchor="middle" font-size="11" font-family="Lexend" font-weight="600" fill="var(--paper)">START</text></g><text x="152" y="92" text-anchor="middle" font-size="10" font-family="Lexend" fill="var(--muted)">won't press</text></svg>`,
+ lose:`<svg viewBox="0 0 200 110"><g style="animation:vanish 3s infinite"><circle cx="64" cy="56" r="12" fill="none" stroke="var(--ink)" stroke-width="4"/><rect x="74" y="53" width="34" height="6" rx="3" fill="var(--ink)"/><rect x="98" y="58" width="5" height="10" fill="var(--ink)"/></g><polygon points="150,36 155,50 170,50 158,58 162,72 150,64 138,72 142,58 130,50 145,50" fill="#FFD43B" style="animation:appear 3s infinite;opacity:0"/></svg>`,
+ blurt:`<svg viewBox="0 0 200 110"><g style="animation:pop 2.4s infinite"><ellipse cx="80" cy="44" rx="44" ry="24" fill="var(--sheet2)"/><text x="80" y="49" text-anchor="middle" font-size="12" font-family="Lexend" font-weight="600" fill="var(--ink)">OH! wait...</text></g>${[0,1,2].map(i=>`<text x="${150+i*14}" y="80" font-size="16" font-family="Lexend" font-weight="700" fill="var(--dh)" style="animation:count 2.4s ${i*.5}s infinite;opacity:0">${3-i}</text>`).join("")}</svg>`,
+ fidget:`<svg viewBox="0 0 200 110"><rect x="40" y="70" width="120" height="8" rx="4" fill="var(--rule)"/><g style="animation:bounce .35s ease-in-out infinite alternate"><rect x="82" y="30" width="14" height="40" rx="6" fill="var(--dh)"/></g><g style="animation:bounce .5s .1s ease-in-out infinite alternate"><rect x="106" y="30" width="14" height="40" rx="6" fill="var(--au)"/></g></svg>`,
+ cycle:`<svg viewBox="0 0 200 110"><defs><marker id="cyah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--dh)"/></marker></defs>
+ <path d="M14 78 C40 78 44 22 70 22 C96 22 100 78 126 78" fill="none" stroke="var(--dh)" stroke-width="3.5" stroke-linecap="round" pathLength="1" style="stroke-dasharray:1;animation:drawL2 3.4s linear infinite"/>
+ <text x="70" y="14" text-anchor="middle" font-size="11" font-family="Lexend" font-weight="700" fill="var(--dh)">obsessed!</text>
+ <text x="112" y="96" text-anchor="middle" font-size="11" font-family="Lexend" font-weight="600" fill="var(--muted)">dropped</text>
+ <path d="M150 74 A22 22 0 1 0 172 48" fill="none" stroke="var(--dh)" stroke-width="2.5" marker-end="url(#cyah)" style="animation:spin 2.4s linear infinite;transform-origin:166px 60px;transform-box:view-box"/>
+ <text x="166" y="100" text-anchor="middle" font-size="11" font-family="Lexend" font-weight="700" fill="var(--ink)">repeat</text></svg>`,
+ timeOut:`<svg viewBox="0 0 200 110"><rect x="26" y="24" width="70" height="64" rx="8" fill="var(--paper)" stroke="var(--ink2)" stroke-width="2"/><rect x="26" y="24" width="70" height="16" rx="8" fill="var(--dh)"/><text x="61" y="70" text-anchor="middle" font-size="18" font-family="Lexend" font-weight="700" fill="var(--ink)">2:00</text><circle cx="146" cy="56" r="28" fill="var(--paper)" stroke="var(--ink2)" stroke-width="3"/><line x1="146" y1="56" x2="146" y2="36" stroke="var(--dh)" stroke-width="3" stroke-linecap="round" style="animation:spin .9s linear infinite;transform-origin:146px 56px;transform-box:view-box"/><text x="146" y="102" text-anchor="middle" font-size="10" font-family="Lexend" fill="var(--muted)">it's 3:40?!</text></svg>`,
+ systems:`<svg viewBox="0 0 200 110">${[[30,20,"#FFD43B",-6],[70,30,"var(--au-s)",4],[110,18,"var(--dh-s)",-3],[150,28,"#FFD43B",5],[50,62,"var(--dh-s)",3],[96,66,"#FFD43B",-5],[140,64,"var(--au-s)",2]].map(([x,y,c,r],i)=>`<rect x="${x-18}" y="${y}" width="36" height="32" rx="3" fill="${c}" stroke="var(--rule)" transform="rotate(${r} ${x} ${y+16})" style="animation:dimx 2.8s ${i*.2}s infinite"/>`).join("")}<text x="100" y="108" text-anchor="middle" font-size="10" font-family="Lexend" fill="var(--muted)">alarm · alarm · alarm</text></svg>`,
+ restless:`<svg viewBox="0 0 200 110"><circle cx="100" cy="56" r="40" fill="var(--paper)" stroke="var(--ink2)" stroke-width="3"/>${Array.from({length:9},(_,i)=>`<circle cx="${82+(i%3)*18}" cy="${38+Math.floor(i/3)*18}" r="5" fill="var(--dh)" style="animation:buzz .${2+i%4}s ${i*.05}s infinite alternate"/>`).join("")}<text x="100" y="108" text-anchor="middle" font-size="10" font-family="Lexend" fill="var(--muted)">calm outside, buzzing inside</text></svg>`
+};
+/* ================= MAP DATA (rebuild: Notion plan + 4 fixes) ================= */
+/* extra mini animations for autism, seesaw-free */
+const AMV=(inner,cap)=>`<svg viewBox="0 0 200 110">${inner}${cap?`<text x="100" y="104" text-anchor="middle" font-size="10" font-family="Lexend" fill="var(--muted)">${cap}</text>`:""}</svg>`;
+Object.assign(MV,{
+ sense:AMV(`<circle cx="100" cy="52" r="16" fill="var(--au)"/>${[24,36,48].map((r,i)=>`<circle cx="100" cy="52" r="${r}" fill="none" stroke="var(--au)" stroke-width="2.5" style="animation:wave 1.6s ${i*.25}s infinite;opacity:0"/>`).join("")}`,"everything at full volume"),
+ nohab:AMV(`<circle cx="70" cy="50" r="24" fill="var(--paper)" stroke="var(--ink2)" stroke-width="3"/><line x1="70" y1="50" x2="70" y2="32" stroke="var(--au)" stroke-width="3" stroke-linecap="round" style="animation:spin 2s steps(12) infinite;transform-origin:70px 50px;transform-box:view-box"/><text x="140" y="46" font-size="14" font-family="Lexend" font-weight="700" fill="var(--au)">tick</text><text x="140" y="66" font-size="14" font-family="Lexend" font-weight="700" fill="var(--au)">tick</text>`,"hour 1 · hour 4 · same volume"),
+ intero:AMV(`<rect x="70" y="20" width="60" height="64" rx="12" fill="var(--paper)" stroke="var(--ink2)" stroke-width="2"/><rect x="76" y="70" width="48" height="8" rx="4" fill="var(--au)" style="animation:grow2 3s infinite"/><text x="100" y="50" text-anchor="middle" font-size="18">🍽️</text>`,"signal arrives late"),
+ alexi:AMV(`<circle cx="100" cy="48" r="28" fill="var(--paper)" stroke="var(--ink2)" stroke-width="2"/><text x="100" y="56" text-anchor="middle" font-size="22" font-family="Lexend" font-weight="700" fill="var(--au)" style="animation:pump 2s infinite">?</text>`,"how do I feel? …"),
+ emoAu:AMV(`<rect x="40" y="30" width="40" height="40" rx="8" fill="var(--au)" style="animation:hit 2.4s infinite"/><rect x="120" y="44" width="20" height="20" rx="5" fill="var(--au)" opacity=".4" style="animation:appear 2.4s 1s infinite"/>`,"crushing now · or weeks later"),
+ social:AMV(`<circle cx="70" cy="48" r="20" fill="var(--paper)" stroke="var(--ink2)" stroke-width="2"/><circle cx="130" cy="48" r="20" fill="var(--paper)" stroke="var(--ink2)" stroke-width="2"/><path d="M92 40 Q100 30 108 40" fill="none" stroke="var(--au)" stroke-width="2.5" style="animation:pump 2s infinite"/><text x="130" y="54" text-anchor="middle" font-size="14">😏</text><text x="70" y="54" text-anchor="middle" font-size="14">🤔</text>`,"the words · the meaning"),
+ detail:AMV(`${Array.from({length:12},(_,i)=>`<rect x="${34+(i%6)*24}" y="${26+Math.floor(i/6)*26}" width="18" height="18" rx="3" fill="var(--au)" style="animation:pump 2.4s ${i*.12}s infinite;opacity:.2"/>`).join("")}`,"tree, tree, tree… forest"),
+ rigid:AMV(`<path d="M30 70 L70 70 L100 40 L130 40" fill="none" stroke="var(--au)" stroke-width="3" stroke-dasharray="5 5"/><path d="M100 40 L130 70 L170 70" fill="none" stroke="var(--dh)" stroke-width="3" style="animation:pump 2s infinite"/><circle cx="100" cy="40" r="5" fill="var(--ink)"/>`,"the plan · what happened"),
+ stim:AMV(`<g style="animation:rock 1.2s ease-in-out infinite;transform-origin:100px 80px;transform-box:view-box"><circle cx="100" cy="40" r="12" fill="var(--au)"/><rect x="92" y="52" width="16" height="30" rx="7" fill="var(--au)"/></g>`,"rock · hum · tap · calm"),
+ melt:AMV(`<rect x="70" y="30" width="60" height="50" rx="10" fill="var(--paper)" stroke="var(--ink2)" stroke-width="2"/><rect x="72" y="78" width="56" rx="8" fill="var(--dh)" style="animation:fillup 2.6s infinite"/>`,"too much → overflow"),
+ shut:AMV(`<rect x="60" y="24" width="80" height="56" rx="10" fill="var(--ink)" style="animation:dim2 3s infinite"/><text x="100" y="58" text-anchor="middle" font-size="12" font-family="Lexend" fill="var(--paper)">power save</text>`,"going quiet to recover"),
+ deep:AMV(`<circle cx="100" cy="52" r="30" fill="none" stroke="var(--au)" stroke-width="3"/><circle cx="100" cy="52" r="18" fill="none" stroke="var(--au)" stroke-width="3" opacity=".7"/><circle cx="100" cy="52" r="7" fill="var(--au)" style="animation:pump 1.6s infinite"/>`,"deeper and deeper"),
+ pattern:AMV(`${[0,1,2,3,4].map(i=>`<circle cx="${40+i*30}" cy="${i===3?40:60}" r="8" fill="${i===3?"var(--dh)":"var(--au)"}" ${i===3?'style="animation:pump 1.2s infinite"':""}/>`).join("")}`,"spot the odd one"),
+ honest:AMV(`<rect x="50" y="30" width="100" height="40" rx="20" fill="var(--au-s)" stroke="var(--au)" stroke-width="2"/><text x="100" y="55" text-anchor="middle" font-size="12" font-family="Lexend" font-weight="600" fill="var(--au)">I mean what I say</text>`,""),
+ routine:AMV(`${[0,1,2,3].map(i=>`<rect x="${32+i*36}" y="40" width="28" height="28" rx="6" fill="${i===2?"var(--dh)":"var(--au)"}" ${i===2?'style="animation:nudge 1.6s infinite"':""}/>`).join("")}`,"one change shakes the whole day"),
+ comm:AMV(`<rect x="34" y="28" width="132" height="36" rx="18" fill="var(--sheet2)"/><text x="100" y="51" text-anchor="middle" font-size="12" font-family="Lexend" fill="var(--ink)">"It's raining cats" 🐈?</text>`,"literal first"),
+ nonspeak:AMV(`<rect x="60" y="30" width="80" height="40" rx="20" fill="var(--paper)" stroke="var(--ink2)" stroke-width="2"/>${[84,100,116].map((x,i)=>`<circle cx="${x}" cy="50" r="4" fill="var(--au)" style="animation:pump 1.4s ${i*.2}s infinite;opacity:.2"/>`).join("")}`,"words are in there, the channel is offline"),
+ socbat:AMV(`<rect x="50" y="34" width="90" height="34" rx="6" fill="none" stroke="var(--ink2)" stroke-width="3"/><rect x="140" y="44" width="7" height="14" rx="2" fill="var(--ink2)"/><rect x="55" y="39" height="24" rx="3" fill="var(--au)" style="animation:drain 3s infinite"/>`,"after people, a long recharge"),
+ script:AMV(`${[0,1,2].map(i=>`<rect x="50" y="${26+i*16}" width="${100-i*20}" height="8" rx="4" fill="var(--au)" style="animation:pump 2s ${i*.3}s infinite;opacity:.25"/>`).join("")}`,"rehearsed, word for word")});
+
+
+Object.assign(MV,{
+ timeAll:MV.timeOut,
+ forget:AMV(`<rect x="60" y="22" width="80" height="58" rx="8" fill="var(--paper)" stroke="var(--ink2)" stroke-width="2"/><rect x="60" y="22" width="80" height="14" rx="7" fill="var(--dh)"/><text x="100" y="66" text-anchor="middle" font-size="16" font-family="Lexend" font-weight="700" fill="var(--ink)" style="animation:vanish 2.6s infinite">Dentist 3pm</text>`,"out of sight, out of mind"),
+ finish:AMV(`<rect x="30" y="44" width="140" height="14" rx="7" fill="var(--rule)"/><rect x="30" y="44" width="112" height="14" rx="7" fill="var(--dh)"/><circle cx="170" cy="30" r="8" fill="#FFD43B" style="animation:pump 1.4s infinite"/><text x="128" y="36" text-anchor="middle" font-size="11" font-family="Lexend" font-weight="700" fill="var(--dh)">80%</text>`,"ooh, something new"),
+ wait:AMV(`${[0,1,2,3].map(i=>`<circle cx="${50+i*24}" cy="52" r="9" fill="var(--muted)"/>`).join("")}<circle cx="158" cy="52" r="9" fill="var(--dh)" style="animation:buzz .25s infinite alternate"/>`,"still waiting…")});
+
+const SCALE=["Never","Rarely","Monthly","Weekly","Daily"];
+const AREAS3=["Work or study","Home and family","Friends and social"];
+const CTX=["Work or study","Friends","Family","Partner","Online"];
+const DEPS=["Where I am","Who I'm with","My energy","My mood","Time of day"];
+
+const TRAITS=[
+ /* ADHD */
+ {id:"filter",side:"dh",st:"Input",lab:"Distracted by Everything",mv:"filter",mo:"You're in a conversation, and a phone buzz, a flickering light and your own hunger all pull at you equally. You lose the thread.",
+  rev:"Most brains sort incoming information by priority automatically. Yours doesn't. The notification, the flickering light, your hunger and the conversation all arrive at <b>the same volume</b>."},
+ {id:"bored",side:"dh",st:"Input",lab:"Boredom Hurts",mv:"bored",mo:"A slow task with nothing to keep you stimulated feels almost physically unbearable, so you grab your phone or start something else.",
+  rev:"When input drops too low, boredom starts to <b>hurt</b>. Your brain grabs stimulation anywhere: daydreams, your phone, a new project, even an argument."},
+ {id:"habit",side:"dh",st:"Input",lab:"New Systems Wear Off",mv:"habit",mo:"A new app, planner or routine works brilliantly for a week or two. Then you just stop using it.",
+  rev:"Your brain tunes out repeated things fast. The system that worked perfectly for two weeks is <b>already filed under \"boring\"</b>. Autism does the opposite, as you saw in Part 0."},
+ {id:"time",side:"dh",st:"Input",lab:"Time Blindness",mv:"timeAll",mo:"Without a clock you can't tell if ten minutes or an hour has passed, so you run late or forget to eat, even on days you planned well.",
+  rev:"Your brain doesn't feel time passing in a straight line. <b>Five minutes and two hours can feel the same</b>, and late arrivals, missed deadlines and skipped meals follow."},
+ {id:"lose",side:"dh",st:"Output",lab:"Losing Things",mv:"lose",mo:"You put your keys, phone or glasses down for a second and they're gone.",
+  rev:"Keys, wallet, phone, glasses (on your head). Your brain <b>stops tracking them</b> the moment something more interesting shows up."},
+ {id:"forget",side:"dh",st:"Output",lab:"Out of Sight, Out of Mind",mv:"forget",mo:"If it isn't in front of you, it's gone. Appointments, replies and bills slip your mind until it's too late.",
+  rev:"Your working memory holds what's in front of you. When something leaves your sight, it often <b>leaves your mind too</b>. It has nothing to do with how much you care."},
+ {id:"finish",side:"dh",st:"Output",lab:"Starting, Not Finishing",mv:"finish",mo:"You start tasks and projects full of energy, then leave them nearly done when the next thing grabs you.",
+  rev:"Starting runs on novelty. Finishing needs the last and least interesting part. Once the novelty wears off, <b>your brain moves on to the next shiny thing</b>."},
+ {id:"wait",side:"dh",st:"Output",lab:"Waiting Is Hard",mv:"wait",mo:"Queues, slow walkers or a long loading screen make you so restless you'd rather leave or do something else.",
+  rev:"Waiting drops your input to almost zero. For an ADHD brain that gets <b>uncomfortable fast</b>, and the urge to move, leave or switch gets loud."},
+ {id:"blurt",side:"dh",st:"Output",lab:"Blurting and Interrupting",mv:"blurt",mo:"A thought jumps out of your mouth before the other person has finished.",
+  rev:"A thought appears and it <b>has to come out now</b>, because in three seconds it might be gone. You're racing your own forgetting."},
+ {id:"fidget",side:"dh",st:"Output",lab:"Fidgeting",mv:"fidget",mo:"Your leg bounces, you click pens or you pace while you're trying to focus.",
+  rev:"Your body moves so your brain can focus. Bouncing legs, clicking pens and pacing on calls <b>create the baseline stimulation</b> your brain needs before it can pay attention."},
+ {id:"rest",side:"dh",st:"Output",lab:"Restless Mind",mv:"restless",mo:"You look calm on the outside, but your mind won't stop racing.",
+  rev:"You can look calm while your mind <b>buzzes nonstop</b> inside. Racing thoughts, an engine that won't idle, and trouble switching off even when you're still."},
+ {id:"cycle",side:"dh",st:"Output",lab:"All-In, Then Drop It",mv:"cycle",mo:"You go all-in on a new hobby, buy the gear, then drop it completely a few weeks later.",
+  rev:"Intense obsession with something new, then <b>sudden, complete drop-off</b>. The pile of half-used gear is fast habituation (Input) producing a predictable Output."},
+ /* Autism */
+ {id:"sense",side:"au",st:"Input",lab:"Sensory Overwhelm",mv:"sense",mo:"A sound, light, smell or texture that others barely notice feels so intense you can't think about anything else.",
+  rev:"Your brain takes in sensory information at full resolution, across 8 senses: sight, sound, touch, smell, taste, body position, balance and inner body signals. Any of them can be <b>turned up, turned down, or both</b>."},
+ {id:"nohab",side:"au",st:"Input",lab:"Sounds That Never Fade",mv:"nohab",mo:"A ticking clock, a humming fridge or a scratchy tag never fades into the background. It bothers you just as much an hour later.",
+  rev:"Most brains turn repeated input down over time. Yours <b>keeps it at full volume</b>. That's the exact opposite of ADHD's fast habituation."},
+ {id:"alexi",side:"au",st:"Input",lab:"Feelings Without Names",mv:"alexi",mo:"Your chest is tight and you feel off, but you can't tell if it's worry, anger, hunger or tiredness.",
+  rev:"The feeling is there, but telling <b>which one it is</b>, or putting it into words, is hard. Feelings and body signals can blur together. Researchers call this alexithymia, and it's common in autism."},
+ {id:"social",side:"au",st:"Input",lab:"Reading People Differently",mv:"social",mo:"You can spot tiny changes in someone's face but miss sarcasm, or you know how someone feels and still don't know what to say.",
+  rev:"Your brain reads social information through a different system. Researchers call the mismatch between different kinds of minds the <b>double empathy problem</b>. It runs both ways."},
+ {id:"comm",side:"au",st:"Output",lab:"Saying It Straight",mv:"comm",mo:"People sometimes call you 'too blunt' when you were simply stating facts.",
+  rev:"Literal, direct, fact-first talk is <b>a different style</b>. It often gets mistaken for rudeness, or for ADHD's missing filter."},
+ {id:"detail",side:"au",st:"Input",lab:"Details First",mv:"detail",mo:"You notice the small details first and need time to build up the big picture, while others jump straight to the summary.",
+  rev:"You build understanding from the bottom up: <b>details first, big picture second</b>. It makes you great at spotting what doesn't fit, and it means overload comes sooner."},
+ {id:"change",side:"au",st:"Output",lab:"Change Throws You",mv:"routine",mo:"A small change to your plan, route or routine throws off your whole day, even when it's a good change.",
+  rev:"Your brain builds a detailed map of how things will go, and routines keep that map accurate. When something changes, even a small or good thing, <b>the map has to be redrawn</b>, and that costs real energy."},
+ {id:"deep",side:"au",st:"Output",lab:"Deep Interests",mv:"deep",mo:"You go deep on a few favourite topics, and you could spend hours on them happily, again and again.",
+  rev:"Deep focus on a few things at a time. When you're in one, <b>everything else dims</b>, and you build expertise fast."},
+ {id:"stim",side:"au",st:"Output",lab:"Stimming",mv:"stim",mo:"You rock, hum, tap, flap or repeat a movement or sound because it calms or settles you.",
+  rev:"Movement or sound that <b>settles your nervous system</b>. It's how your body handles too much or too little input, and holding it back costs energy."},
+ {id:"melt",side:"au",st:"Output",lab:"Meltdowns",mv:"melt",mo:"When too much builds up, you lose control for a while: tears, shouting, or a storm you hold in until you're alone.",
+  rev:"When input builds past capacity, the overload comes out. It's a <b>neurological overload</b>, and it can't be stopped by trying harder. Many autistic adults say meltdowns can also happen inside, held in until they're alone."},
+ {id:"shut",side:"au",st:"Output",lab:"Shutdowns",mv:"shut",mo:"When it's too much, you go blank. Words won't come, and you just sit or stare until it passes.",
+  rev:"The inward version of overload. You go quiet, flat or <b>unable to speak</b> while your system recovers. You still have plenty to say."},
+ {id:"socbat",side:"au",st:"Output",lab:"Social Battery Drains",mv:"socbat",mo:"After socialising, even with people you like, you need a long stretch alone to recover.",
+  rev:"Social processing runs at full power with no shortcuts, so <b>even good company drains the battery</b>."},
+ /* Shared: count for neither side */
+ {id:"rsd",side:"both",st:"Input",lab:"Rejection Sensitivity",mv:"rsd",mo:"A short \"ok.\" or no reply yet, and you're going back over what you said, again and again.",
+  rev:"You expect a no, you spot signs of it fast, and when it comes it <b>hits hard and stays</b>. It's very common in ADHD and shows up with autism and anxiety too. People often call the intense end Rejection Sensitive Dysphoria (RSD). That's a community term, not an official diagnosis."},
+ {id:"flood",side:"both",st:"Input",lab:"Big Feelings, Fast",mv:"flood",mo:"Something small goes wrong and within seconds the feeling is huge. Later it seems bigger than the moment was.",
+  rev:"Feelings that arrive fast, get big and are <b>hard to turn down</b>. Research finds this in many adults with ADHD, and it's common in autism too."},
+ {id:"focus",side:"both",st:"Output",lab:"Hyperfocus",mv:"focus",mo:"You get into something and look up to find hours have gone, and you've skipped meals or plans.",
+  rev:"<b>A look-alike.</b> ADHD locks on when something is new, exciting or urgent. Autism goes deep on long-time interests. From the outside they look the same, so this one counts for both sides."},
+ {id:"para",side:"both",st:"Output",lab:"Stuck Starting",mv:"paralysis",mo:"You know exactly what needs doing, and your body just won't start.",
+  rev:"<b>A look-alike.</b> ADHD gets stuck when a task has no interest or urgency. Autism can get stuck when the steps are unclear or the plan changed, which many people call autistic inertia. Same freeze, different cause."},
+ {id:"intero",side:"both",st:"Input",lab:"Body Signals Arrive Late",mv:"intero",mo:"You only notice you're starving, thirsty or need the bathroom once it's urgent.",
+  rev:"Interoception is your sense of what's happening <b>inside your body</b>. Both ADHD and autism can make those signals quiet or late."},
+ {id:"seek",side:"both",st:"Input",lab:"Sensory Seeking",mv:"seek",mo:"You turn the music up, chew things or keep moving, because it helps you feel switched on.",
+  rev:"Turning the input up to feel right. ADHD seeks stimulation so it can focus. Autism can seek certain sensations because they <b>feel good or settling</b>."}];
+
+const SEESAW=[
+ {id:"org",lab:"Organisation vs Chaos",mo:"You love things organised, yet your space and plans keep sliding into chaos.",l:"Order",r:"Chaos",
+  ex:"You build beautiful systems and then watch them fall apart. You crave order and produce disorder, then feel guilty about the mess and overwhelmed by the effort to fix it."},
+ {id:"calm",lab:"Calm vs Stimulation",mo:"The quiet room bores you, but the loud room overwhelms you.",l:"Calm",r:"Stimulation",
+  ex:"You're understimulated and overstimulated at the same time, always hunting for a Goldilocks zone that barely exists. This is the narrow window of tolerance from Part 0."},
+ {id:"risk",lab:"Caution vs Risk-Taking",mo:"You research a decision for ages, then suddenly jump on impulse.",l:"Caution",r:"Risk",
+  ex:"You agonise for hours, then make a snap choice that ignores all your research. Or you take a big risk, enjoy the thrill, then spend days processing the anxiety."},
+ {id:"new",lab:"Familiar vs New",mo:"You want your usual order, and you also crave something brand new.",l:"Familiar",r:"New",
+  ex:"You want the new restaurant and your safe order. A new hobby starts as rocket fuel and gets dropped, which upsets the part of you that wants consistency."},
+ {id:"plan",lab:"Planning vs Impulse",mo:"You make a detailed plan, then throw it out on the day, and feel anxious about it afterwards.",l:"Plan",r:"Impulse",
+  ex:"You spend hours planning the weekend. On Saturday morning your ADHD wants something else, and you spend the day anxious because you left the plan."},
+ {id:"cons",lab:"Consistency vs Adaptability",mo:"You insist on doing things your way, but your way keeps changing.",l:"Same way",r:"New way",
+  ex:"You insist on doing it your way, and your way changes every week. Other people find you inflexible and inconsistent at once."},
+ {id:"alone",lab:"Alone vs Together",mo:"You cancel plans to be alone, then feel lonely and bored an hour later.",l:"Alone",r:"Together",
+  ex:"You cancel plans because you're socially drained, then feel lonely and understimulated soon after. 'Leave me alone' and 'why is nobody texting me' in the same hour."}];
+
+const MASK=[
+ {id:"m1",lab:"Performing Facial Expressions",mo:"You consciously arrange your face to look interested, happy or concerned."},
+ {id:"m2",lab:"Forcing Eye Contact",mo:"You make yourself hold eye contact even though it's uncomfortable."},
+ {id:"m3",lab:"Performing \"Normal\" Energy",mo:"You act more upbeat, or more calm, than you actually feel."},
+ {id:"m4",lab:"Mirroring Others",mo:"You copy other people's tone, energy and body language to blend in."},
+ {id:"m5",lab:"Hiding Sensory Distress",mo:"Something is too loud, bright or scratchy, and you hide that it's hurting."},
+ {id:"m6",lab:"Pretending to Follow",mo:"You nod along in a conversation you've lost track of."},
+ {id:"m7",lab:"Holding Back Stims",mo:"You hold back the movement or fidget your body wants to make."},
+ {id:"m8",lab:"Scripting Conversations",mo:"You rehearse what you'll say, word for word, so you don't get it 'wrong'."},
+ {id:"m9",lab:"Hiding Your Interests",mo:"You hold back from talking about what you love so you don't seem 'too much'."},
+ {id:"m10",lab:"Forcing Small Talk",mo:"You push through small talk that feels pointless and draining."},
+ {id:"m11",lab:"Hiding How Hard Things Are",mo:"You use extra alarms, lists and late nights so nobody sees how much effort normal life takes."}];
+const BURN=[
+ {id:"b1",lab:"Exhaustion beyond normal tiredness",mo:"Tired in a way sleep doesn't fix."},
+ {id:"b2",lab:"Everyday tasks collapse",mo:"Simple tasks feel impossible to start or finish."},
+ {id:"b3",lab:"Losing interest in your interests",mo:"Things you love feel flat or out of reach."},
+ {id:"b4",lab:"Withdrawing more than you'd like",mo:"Pulling away from people, beyond your usual preference."},
+ {id:"b5",lab:"More meltdowns or shutdowns",mo:"They happen more often, or over smaller things."},
+ {id:"b6",lab:"Physical symptoms",mo:"Pain, illness or fatigue showing up in your body."},
+ {id:"b7",lab:"Losing skills you had",mo:"Cooking, driving or calls feel harder than they used to."},
+ {id:"b8",lab:"The mask slipping",mo:"You can't hold the 'normal' performance like before."},
+ {id:"b9",lab:"Feeling like you're getting worse",mo:"As if you're going backwards."},
+ {id:"b10",lab:"Emotional numbness",mo:"Feeling flat, far away or constantly low."},
+ {id:"b11",lab:"Grabbing quick relief",mo:"Scrolling, bingeing or other fast relief you can't seem to stop."}];
+
+/* ================= DECK ENGINE ================= */
+const ssBeam=(dir,l,r,big)=>{const deg=dir===undefined||dir===2?0:[-13,-7,0,7,13][dir];return `<svg class="ssb ${big?"big":""}" viewBox="0 0 220 84" aria-hidden="true"><polygon points="110,52 98,74 122,74" fill="var(--muted)"/><g class="beam ${dir===2?"rock":""}" style="transform-origin:110px 50px;transform-box:view-box;${dir===2?"":`transform:rotate(${deg}deg)`}"><rect x="12" y="46" width="196" height="7" rx="3.5" fill="var(--ink)"/><rect x="18" y="24" width="26" height="22" rx="5" fill="var(--au)"/><circle cx="196" cy="34" r="12" fill="var(--dh)"/></g><text x="22" y="82" font-size="10" font-family="Lexend" font-weight="600" fill="var(--au)">${l}</text><text x="200" y="82" text-anchor="end" font-size="10" font-family="Lexend" font-weight="600" fill="var(--dh)">${r}</text></svg>`};
+const sideOf=c=>c.side==="dh"?`${ic("bolt")} ADHD`:c.side==="au"?`${ic("inf")} Autism`:`${ic("bolt")}${ic("inf")} Both sides`;
+const sideCol=c=>c.side==="dh"?"var(--dh)":c.side==="au"?"var(--au)":"var(--ink2)";
+const strongA=a=>!!a&&(a.v>=3||!!a.dep);
+const qsTrait=c=>[
+ {k:"v",t:"scale",opts:SCALE,dep:true,label:"How often, over the last few months?"},
+ {k:"areas",t:"multi",opts:AREAS3,none:"None of these",label:"Where does it affect you?",sub:"Pick any that apply.",cond:a=>a.v>=2||!!a.dep},
+ {k:"hide",t:"chips",opts:["Yes","Sometimes","No"],label:"Do you hide this from people?",cond:strongA}];
+const revTrait=(c,a)=>`<div class="revl"><div class="mvbox">${MV[c.mv]||""}</div><span class="tag" style="color:${sideCol(c)}">${ic(c.st==="Input"?"input":"output")} ${c.st==="Input"?"Input: how the world hits you":"Output: what you end up doing"} · ${sideOf(c)}</span><h2 tabindex="-1" id="st">${c.lab}</h2><p class="small">${c.rev}</p></div>`;
+const saidTrait=(c,a)=>`${a.dep?"It depends ("+a.dep.join(", ")+")":SCALE[a.v]}${a.areas&&a.areas.length?" · "+a.areas.join(", ").toLowerCase():""}${a.hide!==undefined?" · hide it: "+["yes","sometimes","no"][a.hide]:""}`;
+const END_CHILD={title:"One last question for this part",q:"Think about the cards you said happen weekly or daily. Have they been with you since you were a kid?",
+ opts:["Yes, as far back as I remember","Some of them","Mostly in the last few years","Not sure"],
+ sub:"ADHD and autism are both lifelong, so this helps tell a lifelong trait from a hard year."};
+const exampleCard=(t,s)=>`<div class="vis">
+ <div class="demo"><span class="exonly">Example</span><div class="dcard">"${t}"</div><div class="scale5 mini">${SCALE.map((x,i)=>`<span class="${i===s?"on":""}">${x}</span>`).join("")}</div><span class="dep mini">It depends…</span></div></div>`;
+const traitIntro=(side)=>{const dh=side==="dh",n=TRAITS.filter(c=>c.side===side).length;
+ return `<h2 tabindex="-1" id="st">${dh?`${ic("bolt","var(--dh)")} Your ADHD side`:`${ic("inf","var(--au)")} Your autism side`}</h2>
+  <p>${n} everyday moments${dh?"":", from the autism side this time"}. For each one, pick <b>how often</b> it's been true for you over the last few months.</p>
+  <p>The questions build on the same card: if it happens monthly or more, you'll see where it affects you, and if it's weekly or more, whether you hide it.</p>
+  ${exampleCard(dh?"You walk into a room and forget why.":"The tag in your shirt is all you can think about.",3)}
+  <ul class="tips"><li class="t1"><span class="tic">✓</span><span><b>Score how it feels inside, not your coping.</b> Never lose your keys because you have 5 backup systems? That still counts.</span></li>
+   <li class="t2"><span class="tic">?</span><span><b>Not sure? Tap "It depends".</b> Then say what it depends on. That's useful too.</span></li>
+   <li class="t3"><span class="tic">↻</span><span><b>Think of the last few months</b>, not your best or worst day.</span></li></ul>
+  <div class="facts"><span>${n} cards</span><span>About 5 minutes</span><span>Saves as you go</span></div>`};
+const DECKS={
+ adhd:{name:"ADHD",cards:TRAITS.filter(c=>c.side==="dh"),eyebrow:"Part 1 · Your ADHD side",shuffle:1,intro:()=>traitIntro("dh"),qs:qsTrait,reveal:revTrait,said:saidTrait,end:END_CHILD},
+ autism:{name:"Autism",cards:TRAITS.filter(c=>c.side==="au"),eyebrow:"Part 2 · Your autism side",shuffle:1,intro:()=>traitIntro("au"),qs:qsTrait,reveal:revTrait,said:saidTrait,end:END_CHILD},
+ shared:{name:"Both sides",cards:TRAITS.filter(c=>c.side==="both"),eyebrow:"Part 3 · Both sides",shuffle:1,nomini:1,qs:qsTrait,reveal:revTrait,said:saidTrait,
+  intro:()=>`<h2 tabindex="-1" id="st">${ic("bolt","var(--dh)")}${ic("inf","var(--au)")} Where the two sides meet</h2>
+   <p>Part 3 is about how ADHD and autism <b>interact</b>. It starts with 6 traits that show up on <b>both</b> sides.</p>
+   <p>Some are look-alikes: the same behaviour with a different cause. They don't count toward ADHD or autism. They show where the two overlap.</p>
+   <div class="facts"><span>6 cards</span><span>About 2 minutes</span><span>Then the seesaw</span></div>`},
+ seesaw:{name:"The seesaw",cards:SEESAW,eyebrow:"Part 3 · The seesaw",
+  intro:()=>`<h2 tabindex="-1" id="st">${ic("seesaw")} Seven tug-of-wars</h2>
+   <p>Each card is a place where ADHD and autism often pull in opposite directions. This is the heart of AuDHD: having both is one thing, <b>feeling them fight</b> is what makes it AuDHD.</p>
+   <p>Three quick questions per card: do you feel the pull, which side wins lately, and how much it bothers you.</p>
+   <div class="vis">${tryPill("The beam tips toward whichever side wins.")}${ssBeam(2,"Autism side","ADHD side",1)}<p class="small muted" style="text-align:center">A rocking beam means it keeps flipping.</p></div>
+   <div class="facts"><span>7 cards</span><span>About 3 minutes</span></div>`,
+  qs:c=>[{k:"r",t:"scale",opts:["Not at all","Sometimes","Often","Constantly"],label:"Do you feel this push-pull?"},{k:"dir",t:"dir",cond:a=>a.r>=1},{k:"s",t:"scale",opts:["Peaceful with it","A little","Quite a lot","Tearing me apart"],label:"How much does it bother you?",cond:a=>a.r>=1}],
+  reveal:(c,a)=>`<div class="revl">${a.dir!==undefined?ssBeam(a.dir,c.l,c.r,1):""}<span class="tag" style="color:var(--ink2)">${ic("seesaw")} AuDHD seesaw</span><h2 tabindex="-1" id="st">${c.lab}</h2><p class="small"><b>The AuDHD experience:</b> ${c.ex}</p></div>`,
+  said:(c,a)=>`${["Not at all","Sometimes","Often","Constantly"][a.r]}${a.dir!==undefined?" · "+[`${c.l} wins`,`Mostly ${c.l.toLowerCase()}`,"Keeps flipping",`Mostly ${c.r.toLowerCase()}`,`${c.r} wins`][a.dir]:""}${a.s!==undefined?" · "+["peaceful with it","bothers me a little","bothers me quite a lot","tearing me apart"][a.s]:""}`},
+ mask:{name:"Masking",cards:MASK,eyebrow:"Part 4 · Masking",auto:1,
+  intro:()=>`<h2 tabindex="-1" id="st">${ic("mask")} The performance you didn't audition for</h2>
+   <p>Masking means hiding your natural reactions to fit in. Everyone does it a little. For AuDHD people it often runs all day, for two conditions at once.</p>
+   <p>For each one: how often you do it, how much it drains you, and where you do it most.</p>
+   <div class="facts"><span>${MASK.length} cards</span><span>About 3 minutes</span></div>`,
+  qs:c=>[{k:"v",t:"scale",opts:["Never","Rarely","Sometimes","Often","Always"],label:"How often do you do this?"},{k:"d",t:"scale",opts:["Barely","Noticeable","Draining","Wipes me out"],label:"How draining is it?",cond:a=>a.v>=1},{k:"ctx",t:"multi",opts:CTX,label:"Where do you do it most?",sub:"Pick any.",cond:a=>a.v>=2}]},
+ burn:{name:"Burnout",cards:BURN,eyebrow:"Part 4 · Burnout signals",auto:1,
+  intro:()=>`<h2 tabindex="-1" id="st">Burnout signals</h2>
+   <p>AuDHD burnout goes deeper than "I need a holiday". It's what happens when you've been compensating past your capacity for a long time.</p>
+   <p>For each signal: how much is this you <b>lately</b>, and for how long?</p>
+   <div class="note">${T("You're not getting worse.","Usually you're running out of capacity to compensate. That's fixable, and it starts with seeing it.")}</div>`,
+  qs:c=>[{k:"p",t:"scale",opts:["Not at all","A little","Clearly","Severely"],label:"Lately, how much is this you?"},{k:"t",t:"scale",opts:["Recent","Months","Years","Most of my life"],label:"How long has it been like this?",cond:a=>a.p>=1}]}};
+const ORDER=["adhd","autism","shared","seesaw","mask","burn"];
+function dk(key){S.dk=S.dk||{};if(!S.dk[key]){const n=DECKS[key].cards.length,o=[...Array(n).keys()];if(DECKS[key].shuffle){let seed=(Date.now()%2147483646)+1;for(let i=n-1;i>0;i--){seed=(seed*16807)%2147483647;const j=seed%(i+1);[o[i],o[j]]=[o[j],o[i]]}}S.dk[key]={step:"intro",i:0,order:o,a:{}}}return S.dk[key]}
+const qDone=(q,a)=>(q.cond&&!q.cond(a))||a[q.k]!==undefined||(q.dep&&a.dep);
+const done=(D,c,a)=>!!a&&D.qs(c).every(q=>qDone(q,a));
+function qHTML(q,c,a,fresh){
+  const lv=(o,i)=>`<span class="lv">${o.map((_,d)=>`<b class="${d<=i?"f":""}"></b>`).join("")}</span>`;
+  const wrap=h=>`<div class="qb ${fresh?"qin":""} ${qDone(q,a)?"qdone":""}">${h}</div>`;
+  if(q.t==="scale"){const depOn=q.dep&&(a.depOpen||a.dep);
+    return wrap(`<span class="ql"><b>${q.label}</b></span><div class="${q.opts.length===5?"scale5":"scale4"}" role="group" aria-label="${q.label}">${q.opts.map((o,i)=>`<button class="s5 ${a[q.k]===i?"on":""}" data-k="${q.k}" data-v="${i}" aria-pressed="${a[q.k]===i}">${lv(q.opts,i)}${o}</button>`).join("")}</div>
+     ${q.dep?(depOn?`<div class="depbox"><span class="ql"><b>It depends on…</b> pick any</span><div class="chiprow">${DEPS.map(d=>`<button class="chip dp" aria-pressed="${(a.dep||[]).includes(d)}">${d}</button>`).join("")}</div></div>`:`<button class="dep" id="dep">It depends…</button>`):""}`)}
+  if(q.t==="multi"){const sel=a[q.k]||[],none=a._none&&a._none[q.k];
+    return wrap(`<span class="ql"><b>${q.label}</b> <span class="muted">${q.sub||""}</span></span><div class="chiprow">${q.opts.map(o=>`<button class="chip mu" data-k="${q.k}" aria-pressed="${sel.includes(o)}">${o}</button>`).join("")}${q.none?`<button class="chip mun" data-k="${q.k}" aria-pressed="${!!none}">${q.none}</button>`:""}</div>`)}
+  if(q.t==="chips") return wrap(`<span class="ql"><b>${q.label}</b></span><div class="chiprow">${q.opts.map((o,i)=>`<button class="chip ch1" data-k="${q.k}" data-v="${i}" aria-pressed="${a[q.k]===i}" style="flex:1;text-align:center">${o}</button>`).join("")}</div>`);
+  if(q.t==="dir"){const L=[`${c.l} wins`,`Mostly ${c.l.toLowerCase()}`,"Keeps flipping",`Mostly ${c.r.toLowerCase()}`,`${c.r} wins`];
+    return wrap(`<span class="ql"><b>Lately, which side wins?</b></span>${ssBeam(a.dir??2,c.l,c.r,0)}<div class="scale5">${L.map((s,i)=>`<button class="s5 dr ${a.dir===i?"on":""}" data-v="${i}" aria-pressed="${a.dir===i}" style="${a.dir===i?"":i<2?"color:var(--au)":i>2?"color:var(--dh)":""}">${s}</button>`).join("")}</div>`)}
+  return "";
+}
+const PA={adhd:"var(--dh)",autism:"var(--au)",shared:"var(--pr)",seesaw:"var(--pr)",mask:"var(--in)",burn:"var(--in)"};
+function renderDeck(key){
+  const D=DECKS[key],st=dk(key),N=D.cards.length;
+  const ticks=st.order.map((k,n)=>{const c=D.cards[k],a=st.a[c.id];return `<button class="tk ${st.step==="card"&&n===st.i?"n":done(D,c,a)?"d":""}" data-n="${n}" aria-label="Card ${n+1}"></button>`}).join("");
+  let body="",still=!!S._still;S._still=0;
+  if(st.step==="intro") body=`<span class="eyebrow pa">${D.eyebrow}</span>${D.intro()}`;
+  else if(st.step==="card"){const c=D.cards[st.order[st.i]],a=st.a[c.id]=st.a[c.id]||{};
+    const qs=D.qs(c).filter(q=>!(q.cond&&!q.cond(a)));const shown=[];for(const q of qs){shown.push(q);if(!qDone(q,a))break}
+    const prev=a._shown||0;a._shown=shown.length;
+    const showRev=a.rev&&D.reveal,fresh=a.revNew;a.revNew=0;
+    body=`<span class="eyebrow pa">${D.eyebrow} · Card ${st.i+1} of ${N}</span>
+     <div class="deckwrap"><div class="ghost g2"></div><div class="ghost g1"></div>
+      <div class="dcard dmain ${showRev?"flipped":""} ${still?"still":""}" id="dc">${key==="burn"||key==="mask"?`<h3 style="margin:0">${c.lab}</h3><p class="mo" style="font-size:calc(19px * var(--hs))">${c.mo}</p>`:`<p class="mo">"${c.mo}"</p>`}
+       ${showRev?`<div class="${fresh?"":"nofx"}">${D.reveal(c,a)}</div>`:""}</div></div>
+     <div class="qstack">${shown.map((q,j)=>qHTML(q,c,a,still&&j>=prev)).join("")}</div>`;}
+  else if(st.step==="end"){const E=D.end;
+    body=`<span class="eyebrow pa">${D.eyebrow} · Last step</span><h2 tabindex="-1" id="st">${E.title}</h2><p>${E.q}</p>
+     <div class="whybox">${E.opts.map((o,i)=>`<button class="chip en" data-v="${i}" aria-pressed="${st.end===i}">${o}</button>`).join("")}</div><p class="small muted">${E.sub}</p>`;}
+  else body=miniHTML(key);
+  const cur=st.step==="card"?D.cards[st.order[st.i]]:null,curA=cur&&st.a[cur.id];
+  const canNext=st.step==="card"?done(D,cur,curA)&&(!D.reveal||curA.rev):st.step==="end"?st.end!==undefined:true;
+  const after=()=>D.end?"end":D.nomini?"leave":"mini";
+  const nextTxt=st.step==="intro"?"Deal the cards →":st.step==="card"?(st.i<N-1?"Next card →":"Finish deck →"):st.step==="end"?"See this part →":(ORDER.indexOf(key)===ORDER.length-1?"See my map →":"Continue →");
+  const y=scrollY;
+  app.innerHTML=`${topbar(`<button class="textbtn" id="home" style="text-decoration:none;font-weight:600">← Map</button><span class="ticks">${ticks}</span>`)}<section class="stack g16 deck" style="padding-top:8px;--pa:${PA[key]}">${body}
+   <div class="navrow"><button class="btn ghost" id="prev" style="flex:0 0 auto;padding:0 18px" aria-label="Previous">←</button><button class="btn" id="next" ${canNext?"":"disabled"}>${nextTxt}</button></div>${st.step==="card"&&!canNext?`<button class="textbtn" id="skipc" style="align-self:center">Skip this card for now</button>`:""}</section>`;
+  if(still) scrollTo(0,y);
+  wireTop();
+  $("#home").onclick=()=>{S.view="welcome";save();render();scrollTo(0,0)};
+  const re=()=>{save();renderDeck(key)};const reStill=()=>{S._still=1;re()};
+  const ki=ORDER.indexOf(key);
+  const leave=()=>{const nx=ORDER[ki+1];S.view=nx?"deck:"+nx:"results";if(!nx)chime();save();render();scrollTo(0,0)};
+  const advance=()=>{if(st.i<N-1){st.i++;re()}else{const s=after();if(s==="leave"){leave();return}st.step=s;re()}scrollTo(0,0)};
+  $$(".ticks .tk").forEach(b=>b.onclick=()=>{st.step="card";st.i=+b.dataset.n;re();scrollTo(0,0)});
+  if($("#skipc")) $("#skipc").onclick=advance;
+  $("#prev").onclick=()=>{if(st.step==="intro"){if(ki>0){S.view="deck:"+ORDER[ki-1];save();render()}else{S.view="done";save();render()}}
+    else if(st.step==="card"){if(st.i>0)st.i--;else st.step="intro";re()}
+    else if(st.step==="end"){st.step="card";st.i=N-1;re()}
+    else{st.step=D.end?"end":"card";if(!D.end)st.i=N-1;re()}scrollTo(0,0)};
+  $("#next").onclick=()=>{if(st.step==="intro"){st.step="card";st.i=0;re();scrollTo(0,0)}else if(st.step==="card")advance();else if(st.step==="end"){st.step="mini";re();scrollTo(0,0)}else leave()};
+  if(st.step==="end") $$(".en").forEach(b=>b.onclick=()=>{st.end=+b.dataset.v;tap();reStill()});
+  if(st.step==="card"){const c=cur,a=curA;
+    const prune=()=>{D.qs(c).forEach(q=>{if(q.cond&&!q.cond(a))delete a[q.k]})};
+    const after2=(lastT)=>{prune();const was=a.rev;if(done(D,c,a)){if(D.reveal&&!was){a.rev=1;a.revNew=1}
+        if(!D.reveal&&lastT!=="multi"){reStill();setTimeout(()=>{if(S.view==="deck:"+key&&st.step==="card"&&st.order[st.i]===D.cards.indexOf(c))advance()},420);return}}
+      reStill()};
+    $$(".s5[data-k]").forEach(b=>b.onclick=()=>{a[b.dataset.k]=+b.dataset.v;if(b.dataset.k==="v")delete a.dep,delete a.depOpen;tap();after2("scale")});
+    $$(".s5.dr").forEach(b=>b.onclick=()=>{a.dir=+b.dataset.v;tap();after2("dir")});
+    $$(".ch1").forEach(b=>b.onclick=()=>{a[b.dataset.k]=+b.dataset.v;tap();after2("chips")});
+    $$(".mu").forEach(b=>b.onclick=()=>{const k=b.dataset.k,o=b.textContent;const s=a[k]||[];const ns=s.includes(o)?s.filter(x=>x!==o):[...s,o];a._none=a._none||{};a._none[k]=0;if(ns.length)a[k]=ns;else delete a[k];tap();after2("multi")});
+    $$(".mun").forEach(b=>b.onclick=()=>{const k=b.dataset.k;a._none=a._none||{};a._none[k]=1;a[k]=[];tap();after2("multi")});
+    if($("#dep")) $("#dep").onclick=()=>{a.depOpen=1;reStill()};
+    $$(".dp").forEach(b=>b.onclick=()=>{const d=b.textContent;const s=a.dep||[];const ns=s.includes(d)?s.filter(x=>x!==d):[...s,d];if(ns.length){a.dep=ns;delete a.v}else delete a.dep;tap();after2("multi")});
+  }
+  if(!still){const h=$("#st");h&&h.focus({preventScroll:true})}
+}
+
+/* ================= SCORING ================= */
+const fq=a=>!a?null:a.dep?2:a.v!==undefined?a.v:null;
+const avg=xs=>{const v=xs.filter(x=>x!==null&&x!==undefined);return v.length?v.reduce((p,q)=>p+q,0)/v.length:0};
+const HI=.5, CF=.45; /* first guesses, tuned with real answers later */
+function scores(){
+  const A=dk("adhd"),U=dk("autism"),SH=dk("shared"),SS=dk("seesaw"),M=dk("mask"),B=dk("burn");
+  const ans=c=>(c.side==="dh"?A:c.side==="au"?U:SH).a[c.id];
+  const side=s=>TRAITS.filter(c=>c.side===s);
+  const lvl=s=>avg(side(s).map(c=>fq(ans(c))))/4;
+  const adhd=lvl("dh"),aut=lvl("au"),both=lvl("both");
+  const strong=s=>side(s).filter(c=>strongA(ans(c)));
+  const strongAll=TRAITS.filter(c=>strongA(ans(c)));
+  const hidden=strongAll.filter(c=>{const a=ans(c);return a.hide===0||a.hide===1});
+  const areaCount=AREAS3.map(x=>[x,TRAITS.filter(c=>(ans(c)?.areas||[]).includes(x)).length]);
+  const conflict=avg(SEESAW.map(c=>SS.a[c.id]?.r))/3;
+  const felt=SEESAW.filter(c=>SS.a[c.id]?.r>=2);
+  const distress=avg(SEESAW.map(c=>{const a=SS.a[c.id];return a&&a.r>=1?a.s:null}))/3;
+  const dirs=SEESAW.map(c=>SS.a[c.id]?.dir).filter(x=>x!==undefined);
+  const swings=dirs.filter(d=>d===2).length,dirMean=dirs.length?avg(dirs):2;
+  const maskB=avg(MASK.map(c=>{const a=M.a[c.id];if(!a||a.v===undefined)return null;return a.v===0?0:(a.v/4)*(((a.d??0)+1)/4)}));
+  const hideShare=strongAll.length?hidden.length/strongAll.length:0;
+  const mask=Math.min(1,maskB*.75+hideShare*.25);
+  const ctx=CTX.map(x=>[x,MASK.filter(c=>(M.a[c.id]?.ctx||[]).includes(x)).length]).filter(x=>x[1]>0).sort((p,q)=>q[1]-p[1]);
+  const burn=avg(BURN.map(c=>{const a=B.a[c.id];if(!a||a.p===undefined)return null;return (a.p/3)*(a.p?[.7,.85,1,1][a.t??0]:1)}));
+  const flags=BURN.filter(c=>B.a[c.id]?.p>=2).map(c=>c.lab);
+  const hiA=adhd>=HI,hiU=aut>=HI,hiC=conflict>=CF;
+  const res=hiA&&hiU?(hiC?"audhd":"both"):hiA?"adhd":hiU?"aut":"none";
+  const hiding=res!=="audhd"&&res!=="both"&&hiC;
+  const near=Math.abs(adhd-HI)<.06||Math.abs(aut-HI)<.06||(hiA&&hiU&&Math.abs(conflict-CF)<.06);
+  let lean=null;if(res==="audhd"){if(swings>=3)lean="var";else if(adhd-aut>=.12)lean="dh";else if(aut-adhd>=.12)lean="au";else lean=dirMean>2.4?"dh":dirMean<1.6?"au":"var"}
+  const care=burn>=.6||strongA(U.a.melt)&&U.a.melt.v===4||BURN.some(c=>B.a[c.id]?.p===3);
+  return {adhd,aut,both,conflict,distress,felt,swings,mask,burn,flags,ctx,res,hiding,near,lean,care,
+   strongDh:strong("dh"),strongAu:strong("au"),strongBoth:strong("both"),hidden,areaCount,childA:A.end,childU:U.end};
+}
+
+/* ================= MINI RESULTS (after each part) ================= */
+const word=x=>x>=.6?"Strong":x>=.35?"Some":"Low";
+const barRow=(l,v,col)=>`<div class="rrow"><span>${l}</span><div class="sbar"><i style="width:${Math.max(3,Math.round(v*100))}%;background:${col}"></i></div><b>${word(v)}</b></div>`;
+const dotRow=(cards,ansOf,col)=>`<div class="dots">${cards.map(c=>{const a=ansOf(c);const on=strongA(a);return `<span class="dt ${on?"on":fq(a)>=2?"half":""}" style="--c:${col}" title="${c.lab}"></span>`}).join("")}</div>`;
+const stage=(n,h,r)=>`<div class="yellow-stage stack g12"><span class="eyebrow" style="color:#2B2140;opacity:.7">Part ${n} complete</span><h2 style="color:#2B2140">${h}</h2>${route(r)}</div>`;
+function miniHTML(key){
+  const s=scores();
+  if(key==="adhd"||key==="autism"){const dh=key==="adhd",side=dh?"dh":"au",st=dk(key),cards=TRAITS.filter(c=>c.side===side),strong=dh?s.strongDh:s.strongAu,col=dh?"var(--dh)":"var(--au)";
+    const hid=strong.filter(c=>s.hidden.includes(c)).length;
+    return `${stage(dh?1:2,dh?"Your ADHD side is mapped.":"Your autism side is mapped.",dh?2:3)}
+     <div class="panel stack g10"><span class="eyebrow">${dh?"ADHD":"Autism"} traits that show up weekly or more</span>${dotRow(cards,c=>st.a[c.id],col)}
+      <p><b>${strong.length} of ${cards.length}</b>${strong.length?`: ${strong.map(c=>c.lab).join(", ")}.`:"."}</p>
+      ${strong.length?`<p class="small">You hide <b>${hid}</b> of them from people, at least sometimes.</p>`:""}
+      <p class="small muted">Full dot: weekly, daily or "it depends". Half dot: monthly.</p></div>
+     <p class="muted">${dh?"Next: Part 2, your autism side.":"Next: Part 3, where the two sides meet."}</p>`;}
+  if(key==="seesaw"){const SS=dk("seesaw");
+    return `${stage(3,"Your seesaw is mapped.",4)}
+     <div class="panel">${SEESAW.map(c=>{const a=SS.a[c.id]||{};return `<div class="ssrow"><span class="l">${c.l}</span>${ssBeam(a.dir,"","",0)}<span class="r">${c.r}</span></div>`}).join("")}</div>
+     <p><b>${s.felt.length} of 7</b> pulls you feel often or constantly.</p>
+     <p class="small muted">Beams tip toward the side that wins lately. Rocking beams keep flipping. Flat, still beams are pulls you rarely feel.</p>
+     <p class="muted">Next: masking and burnout. What all of this costs you.</p>`;}
+  if(key==="mask") return `<div class="panel stack g10"><span class="eyebrow">Masking load</span>${barRow("Masking",s.mask,"var(--au)")}<p class="small muted">How often you mask, how much it drains you, and how many of your strong traits you hide.</p>${s.ctx.length?`<p class="small">You mask most at: <b>${s.ctx.slice(0,2).map(x=>x[0]).join(" and ")}</b>.</p>`:""}</div><p>One more short deck: burnout signals.</p>`;
+  if(key==="burn") return `${stage(4,"Your costs are mapped.",5)}
+     <div class="panel stack g10">${barRow("Masking",s.mask,"var(--au)")}${barRow("Burnout",s.burn,"var(--dh)")}</div>
+     ${s.flags.length?`<div class="note pink">${T("Your red flags right now",s.flags.slice(0,5).join(" · "))}</div>`:""}
+     <p class="muted">Everything is in. Time to see your map.</p>`;
+  return "";
+}
+
+/* ================= FINAL RESULTS ================= */
+const RES={
+ adhd:{icon:`${ic("bolt","var(--dh)")}`,name:"ADHD-leading",line:"Your ADHD side shows up strongly. Your autism side shows up less.",
+  body:"Your answers look most like ADHD on its own. Some autistic traits may still be part of you, just quieter."},
+ aut:{icon:`${ic("inf","var(--au)")}`,name:"Autism-leading",line:"Your autism side shows up strongly. Your ADHD side shows up less.",
+  body:"Your answers look most like autism on its own. Some ADHD traits may still be part of you, just quieter."},
+ both:{icon:`${ic("bolt","var(--dh)")}${ic("inf","var(--au)")}`,name:"Both, but separate",line:"Both sides show up strongly, and they rarely fight.",
+  body:"Your answers show strong ADHD and strong autism traits, with little tug-of-war between them. The two seem to live side by side."},
+ audhd:{icon:`${ic("seesaw")}`,name:"The AuDHD experience",line:"Both sides show up strongly, and they pull against each other.",
+  body:"This is the pattern most AuDHD people describe: two strong systems and a constant tug-of-war between them. It's why you may never have fully fit with people who are only ADHD, or only autistic."},
+ none:{icon:`${ic("path")}`,name:"Not a strong match for either",line:"Neither side shows up strongly in your answers.",
+  body:"That's useful to know too. Stress, anxiety, burnout or hard past experiences can cause some of the same struggles. Your shape below still shows where things cost you."}};
+const LEAN={var:["Swings both ways","Which side leads keeps changing with where you are, who you're with and your energy."],
+ dh:["ADHD side leads","Both are there, and your ADHD side tends to take the wheel."],
+ au:["Autism side leads","Both are there, and your autism side tends to take the wheel."]};
+function radarN(vals,labels,cols){const n=vals.length,R=92,c=120,p=(i,r)=>{const a=-Math.PI/2+i*2*Math.PI/n;return [c+Math.cos(a)*R*r,c+Math.sin(a)*R*r]};
+  const ring=s=>[...Array(n).keys()].map(i=>p(i,s).join(",")).join(" ");
+  return `<svg class="radar6" viewBox="-34 -6 308 252" role="img" aria-label="Your shape: ${labels.map((l,i)=>l+" "+word(vals[i]).toLowerCase()).join(", ")}">${[.25,.5,.75,1].map(s=>`<polygon points="${ring(s)}" fill="none" stroke="var(--rule)"/>`).join("")}
+   ${[...Array(n).keys()].map(i=>{const [x,y]=p(i,1);return `<line x1="${c}" y1="${c}" x2="${x}" y2="${y}" stroke="var(--rule)"/>`}).join("")}
+   <polygon class="rpoly" points="${vals.map((v,i)=>p(i,Math.max(.05,v)).join(",")).join(" ")}" fill="var(--dh)" fill-opacity=".18" stroke="var(--dh)" stroke-width="2.5" stroke-linejoin="round"/>
+   ${vals.map((v,i)=>{const [x,y]=p(i,Math.max(.05,v));return `<circle cx="${x}" cy="${y}" r="4.5" fill="${cols[i]}"/>`}).join("")}
+   ${labels.map((l,i)=>{const [x,y]=p(i,1.18);return `<text x="${x}" y="${y+4}" text-anchor="${Math.abs(x-c)<6?"middle":x>c?"start":"end"}" font-size="11" font-family="Lexend" font-weight="600" fill="${cols[i]}">${l}</text>`}).join("")}</svg>`}
+function quad(s){const W=260,P=34,G=W-P*2,X=v=>P+v*G,Y=v=>W-P-v*G,cut=HI;
+  const lab=(x,y,t,on)=>`<text x="${x}" y="${y}" text-anchor="middle" font-size="11" font-family="Lexend" font-weight="${on?700:500}" fill="${on?"var(--ink)":"var(--muted)"}">${t}</text>`;
+  const on=k=>s.res===k||(k==="both"&&s.res==="audhd");
+  return `<svg class="quad" viewBox="0 0 ${W} ${W}" role="img" aria-label="Where you land: ADHD ${word(s.adhd).toLowerCase()}, autism ${word(s.aut).toLowerCase()}">
+   <rect x="${P}" y="${P}" width="${G}" height="${G}" rx="12" fill="var(--sheet)"/>
+   <rect x="${X(cut)}" y="${P}" width="${G*(1-cut)}" height="${G*(1-cut)}" fill="${s.res==="audhd"?"#FFD43B":"var(--sheet2)"}" opacity="${s.res==="audhd"?.55:1}"/>
+   <line x1="${X(cut)}" y1="${P}" x2="${X(cut)}" y2="${W-P}" stroke="var(--rule)" stroke-dasharray="4 4"/><line x1="${P}" y1="${Y(cut)}" x2="${W-P}" y2="${Y(cut)}" stroke="var(--rule)" stroke-dasharray="4 4"/>
+   ${lab(X(cut+(1-cut)/2),P+18,s.res==="audhd"?"AuDHD":"Both",on("both"))}${lab(X(cut/2),P+18,"Autism-leading",on("aut"))}
+   ${lab(X(cut+(1-cut)/2),W-P-10,"ADHD-leading",on("adhd"))}${lab(X(cut/2),W-P-10,"Neither strongly",on("none"))}
+   <text x="${W/2}" y="${W-8}" text-anchor="middle" font-size="11" font-family="Lexend" font-weight="600" fill="var(--dh)">ADHD side →</text>
+   <text x="12" y="${W/2}" text-anchor="middle" font-size="11" font-family="Lexend" font-weight="600" fill="var(--au)" transform="rotate(-90 12 ${W/2})">Autism side →</text>
+   <circle cx="${X(s.adhd)}" cy="${Y(s.aut)}" r="16" fill="var(--dh)" opacity=".18" class="qpulse"/><circle cx="${X(s.adhd)}" cy="${Y(s.aut)}" r="8" fill="var(--dh)" stroke="var(--paper)" stroke-width="2.5"/>
+   <text x="${X(s.adhd)>W-80?X(s.adhd)-14:X(s.adhd)+14}" y="${Y(s.aut)+4}" text-anchor="${X(s.adhd)>W-80?"end":"start"}" font-size="11" font-family="Lexend" font-weight="700" fill="var(--ink)">you</text></svg>`}
+function renderResults(){
+  const s=scores(),R=RES[s.res];
+  const chips=xs=>`<div class="chiprow">${xs.map(c=>`<span class="chip static">${c}</span>`).join("")}</div>`;
+  const kidNow=[s.childA,s.childU].filter(x=>x!==undefined);
+  const recent=kidNow.length&&kidNow.every(x=>x===2), lifelong=kidNow.some(x=>x===0);
+  app.innerHTML=`${topbar(`<button class="textbtn" id="home" style="text-decoration:none;font-weight:600">← Map</button>`)}<section class="stack g24" style="padding-top:8px">
+   <div class="yellow-stage stack g12"><span class="eyebrow" style="color:#2B2140;opacity:.7">Part 5 · Your AuDHD Map</span>
+    <p style="color:#2B2140;margin:0">Your answers look most like</p>
+    <h1 style="color:#2B2140;margin:0" tabindex="-1" id="st"><span class="resic">${R.icon}</span> ${R.name}</h1>
+    <p style="color:#2B2140"><b>${R.line}</b></p>
+    ${s.lean?`<div class="leanbox"><span class="eyebrow" style="color:#2B2140;opacity:.7">Your kind of AuDHD</span><b>${LEAN[s.lean][0]}</b><span class="small">${LEAN[s.lean][1]}</span></div>`:""}</div>
+   <p>${R.body}</p>
+   ${s.hiding?`<div class="note yel">${T("One side may be hiding the other.","You feel the seesaw pull strongly, even though one side scored lower. ADHD and autism are known to mask each other, so the quieter side may be bigger than it looks. Worth a closer look.")}</div>`:""}
+   ${s.near?`<div class="note">${T("You're close to the line.","Some of your scores sit near the edge between two results. Read the neighbouring result too, and trust what fits.")}</div>`:""}
+
+   <div class="stack g12"><h2>Where you land</h2><p class="small muted">Across: your ADHD side. Up: your autism side. Top right means both are strong. Then the seesaw decides: if they pull against each other, that's AuDHD.</p>${quad(s)}</div>
+
+   <div class="stack g12"><h2>Your shape</h2><p class="small muted">A spiky shape is normal for us.</p>
+    ${radarN([s.adhd,s.aut,s.conflict,s.mask,s.burn],["ADHD","Autism","Seesaw","Masking","Burnout"],["var(--dh)","var(--au)","var(--ink)","var(--au)","var(--dh)"])}
+    <div class="panel stack g8">${barRow(ic("bolt")+" ADHD",s.adhd,"var(--dh)")}${barRow(ic("inf")+" Autism",s.aut,"var(--au)")}${barRow(ic("seesaw")+" Seesaw",s.conflict,"var(--ink)")}${barRow(ic("mask")+" Masking",s.mask,"var(--au)")}${barRow("Burnout",s.burn,"var(--dh)")}</div></div>
+
+   <div class="stack g12"><h2>Where the two sides meet</h2>
+    ${s.strongBoth.length?`<p>Shared traits that show up weekly or more for you:</p>${chips(s.strongBoth.map(c=>c.lab))}`:`<p class="muted">None of the shared traits showed up weekly or more.</p>`}
+    <p>You feel <b>${s.felt.length} of 7</b> seesaw pulls often or constantly${s.felt.length?`: ${s.felt.map(c=>c.lab.toLowerCase()).join(", ")}`:""}.</p>
+    ${s.felt.length?`<p class="small muted">On average, the pulls bother you: <b>${["very little","a little","quite a lot","a lot"][Math.min(3,Math.round(s.distress*3))]}</b>.</p>`:""}</div>
+
+   <div class="stack g12"><h2>What you hide</h2>
+    ${s.hidden.length?`<p>Strong traits you hide from people, at least sometimes:</p>${chips(s.hidden.map(c=>c.lab))}`:`<p class="muted">You didn't mark any strong traits as hidden.</p>`}
+    ${s.ctx.length?`<p>You mask most at: <b>${s.ctx.slice(0,3).map(x=>x[0]).join(", ")}</b>.</p>`:""}
+    <div class="note pink">${T("Hiding has a cost.","Every trait you hide takes energy, all day. Over years, that running cost is what turns into burnout.")}</div></div>
+
+   <div class="stack g12"><h2>Burnout signals</h2>${barRow("Burnout",s.burn,"var(--dh)")}
+    ${s.flags.length?`<p>Your red flags right now:</p>${chips(s.flags.slice(0,6))}`:`<p class="muted">No strong red flags right now.</p>`}
+    ${s.care?`<div class="note yel">${T("Go gently.","Some of your answers show things are heavy right now. If it ever feels like too much, please talk to someone you trust or a local support line. You don't have to wait until it gets worse.")}</div>`:""}</div>
+
+   ${recent?`<div class="note">${T("Most of this started recently.","ADHD and autism are lifelong, so they usually show up in childhood. If most of yours started in the last few years, stress or burnout may be a big part of the picture. Worth exploring with a professional.")}</div>`:lifelong?`<div class="note">${T("These have been with you for a long time.","That fits: ADHD and autism are both lifelong.")}</div>`:""}
+
+   <div class="stack g12"><h2>What next</h2>
+    <div class="offer"><b>Take this to a professional</b><span class="small muted">Screenshot this page. It gives you clear words and examples for an assessment, or just for explaining yourself to people you love.</span></div>
+    <div class="offer on"><span class="you-badge">Part 6</span><b>Choose your season</b><span class="small muted">You know your shape. Now pick the one area of life to work on first, and how much energy it gets. About 5 minutes.</span><button class="btn" id="toSeason" style="min-height:46px">Choose my season →</button></div></div>
+
+   <div class="note pink">${T("This comes before a diagnosis.","It's a pre-diagnosis map, built from 30 years of lived experience and checked against published research. Your answers <i>look like</i> a pattern. Only a qualified clinician can diagnose ADHD or autism.")}</div>
+   <button class="btn ghost" id="redo">← Review my answers</button><button class="textbtn" id="restart" style="align-self:center">Start the whole Map again</button></section>`;
+  wireTop();$("#home").onclick=()=>{S.view="welcome";save();render()};
+  $("#redo").onclick=()=>{S.view="deck:adhd";const st=dk("adhd");st.step="card";st.i=0;save();render();scrollTo(0,0)};
+  $("#restart").onclick=()=>{delete S.dk;S.view="deck:adhd";save();render();scrollTo(0,0)};
+  $("#toSeason").onclick=()=>{S.view="season";save();render();scrollTo(0,0)};
+  const h=$("#st");h&&h.focus({preventScroll:true});
+}
+/* ================= PART 6 · YOUR SEASON ================= */
+const OWNERS_URL=""; /* set when the Owner's Manual page is live */
+const VALUES=["Freedom","Family","Health","Creativity","Security","Growth","Love","Adventure","Honesty","Peace","Achievement","Learning","Fun","Helping others","Independence","Meaning or faith","Friendship","Calm"];
+const AREAS=[["h","Health","your body, sleep, food, movement, medical stuff"],["w","Wealth","money, work, the business you're building"],["r","Relationships","partner, family, friends, people at work"]];
+const LENS=["3 months","6 months","1 year","Until it lifts"];
+function SE(){S.season=S.season||{vals:[],r:{},up:null,len:null,why:"",pts:null};return S.season}
+const fmt=n=>(Math.round(n*2)/2).toString();
+function seasonReady(z){return z.vals.length===3&&AREAS.every(([k])=>z.r[k])&&z.up&&z.len!==null}
+function defaultPts(){return {h:0,w:0,r:0}}
+function renderSeason(){
+  const z=SE();
+  if(!z.pts){z.pts=defaultPts()}
+  const rated=AREAS.every(([k])=>z.r[k]);
+  const low=rated?AREAS.slice().sort((a,b)=>z.r[a[0]]-z.r[b[0]])[0][0]:null;
+  const floor=rated&&AREAS.every(([k])=>z.r[k]<=3);
+  const total=z.pts?z.pts.h+z.pts.w+z.pts.r:0;
+  const area=k=>AREAS.find(a=>a[0]===k)[1];
+  app.innerHTML=`${topbar(`<button class="textbtn" id="back" style="text-decoration:none;font-weight:600">← My map</button>`)}<section class="stack g24" style="padding-top:8px">
+   <div class="yellow-stage stack g12"><span class="eyebrow" style="color:#2B2140;opacity:.7">Part 6 · Your season</span>
+    <h1 style="color:#2B2140;margin:0" tabindex="-1" id="st">Where do you want to go?</h1>
+    <p style="color:#2B2140">A map shows everywhere. You still have to choose where you're going.</p></div>
+   <p>Nobody fixes health, wealth and relationships all at once. Try to do everything and you end up doing nothing. So you pick <b>one area for a season</b>, give it most of your energy, and keep the other two on maintenance. Be unbalanced for a short time so you can be balanced for a long time.</p>
+
+   <div class="stack g12"><span class="stg in">Step 1</span><h2>Pick 3 values</h2>
+    <p class="small muted">What matters to you, even on a bad day. Pick exactly three. <b>${z.vals.length} of 3</b></p>
+    <div class="chiprow">${VALUES.map(v=>`<button class="chip sv" aria-pressed="${z.vals.includes(v)}" ${!z.vals.includes(v)&&z.vals.length>=3?"disabled style='opacity:.4'":""}>${v}</button>`).join("")}</div></div>
+
+   <div class="stack g12"><span class="stg in">Step 2</span><h2>Rate your three areas</h2>
+    <p class="small muted">How is each one going right now? 1 is on fire, 10 is great.</p>
+    ${AREAS.map(([k,n,d])=>`<div class="panel stack g8"><div class="rlab"><span><b style="color:var(--ink);font-size:15px">${n}</b> · ${d}</span><b style="color:var(--ink);font-size:16px" id="rv-${k}">${z.r[k]||"–"}</b></div>
+      <input type="range" class="rng sr" id="rate-${k}" data-k="${k}" min="1" max="10" step="1" value="${z.r[k]||5}" aria-label="${n}, 1 to 10">
+      <div class="rlab"><span>1 · on fire</span><span>10 · great</span></div></div>`).join("")}
+    ${floor?`<div class="note pink">${T("Build a small floor first.","All three are low right now. Nobody can run on all three empty. Pick the season below, but make sure each area has a tiny base: someone to talk to, enough health to function, enough money to get by.")}</div>`:""}</div>
+
+   <div class="stack g12"><span class="stg pr">Step 3</span><h2>Find the one that lifts the rest</h2>
+    <p>If one of these moved, which would make the other two easier?</p>
+    <div class="chiprow">${AREAS.map(([k,n])=>`<button class="chip su" data-k="${k}" aria-pressed="${z.up===k}" style="flex:1;text-align:center">${n}${low===k&&!z.up?" · lowest":""}</button>`).join("")}</div>
+    <div class="note">${T("A hint if you're stuck.","Money is often the upstream one: it buys back time and pays for the things that make life easier on your brain. Your survival number comes first. Some seasons it's health or a relationship instead. Pick what you lack most.")}</div></div>
+
+   <div class="stack g12"><span class="stg pr">Step 4</span><h2>How long is the season?</h2>
+    <p class="small muted">For a season or a reason: until that one area stops holding the rest back.</p>
+    <div class="chiprow">${LENS.map((l,i)=>`<button class="chip sl" data-v="${i}" aria-pressed="${z.len===i}" style="flex:1;text-align:center">${l}</button>`).join("")}</div>
+    <label for="why" class="small"><b>In one sentence: why this, why now?</b> <span class="muted">(optional)</span></label>
+    <textarea id="why" class="wyin" placeholder="I want to… because…">${(z.why||"").replace(/</g,"&lt;")}</textarea></div>
+
+   <div class="stack g12"><span class="stg out">Step 5</span><h2>Split your 10 energy points</h2>
+    ${true?`<p class="small muted">You get about 10 points of energy a day. Place them however feels right for you. Many people give their season area the most and keep the other two on maintenance, which means looked after, never abandoned.</p>
+    <div class="pts">${AREAS.map(([k,n])=>`<div class="prow sprow"><span>${n}${z.up===k?" <span class='stg out' style='font-size:9.5px;padding:2px 7px'>season</span>":""}</span>
+      <button class="pm sp" data-k="${k}" data-d="-0.5" ${z.pts[k]<=0?"disabled":""} aria-label="Less for ${n}">−</button><b>${fmt(z.pts[k])}</b>
+      <button class="pm sp" data-k="${k}" data-d="0.5" ${total>=10?"disabled":""} aria-label="More for ${n}">+</button>
+      <span class="pips">${"●".repeat(Math.floor(z.pts[k]))}${z.pts[k]%1?"◐":""}</span></div>`).join("")}</div>
+    <p class="small" style="text-align:right"><b class="num" style="color:${total===10?"var(--ok)":"var(--dh)"}">${fmt(total)} of 10 used</b></p>`:`<p class="muted">Pick the area that lifts the rest (Step 3) and your points appear here.</p>`}</div>
+
+   <button class="btn" id="seeHere" ${seasonReady(z)&&total===10?"":"disabled"}>See where you are →</button>
+   ${seasonReady(z)&&total!==10?`<p class="small" style="color:var(--dh);text-align:center">Place all 10 points to continue.</p>`:!seasonReady(z)?`<p class="small muted" style="text-align:center">Finish steps 1 to 4 to continue.</p>`:""}
+  </section>`;
+  wireTop();
+  const keep=fn=>{const y=scrollY;fn();save();renderSeason();scrollTo(0,y)};
+  $("#back").onclick=()=>{S.view="results";save();render();scrollTo(0,0)};
+  $$(".sv").forEach(b=>b.onclick=()=>keep(()=>{const v=b.textContent;z.vals=z.vals.includes(v)?z.vals.filter(x=>x!==v):z.vals.length<3?[...z.vals,v]:z.vals}));
+  $$(".sr").forEach(r=>{r.oninput=()=>{$("#rv-"+r.dataset.k).textContent=r.value};r.onchange=()=>keep(()=>{z.r[r.dataset.k]=+r.value})});
+  $$(".su").forEach(b=>b.onclick=()=>keep(()=>{z.up=b.dataset.k}));
+  $$(".sl").forEach(b=>b.onclick=()=>keep(()=>{z.len=+b.dataset.v}));
+  $$(".sp").forEach(b=>b.onclick=()=>keep(()=>{const k=b.dataset.k,d=+b.dataset.d;z.pts[k]=Math.max(0,Math.min(10,z.pts[k]+d))}));
+  $("#why").oninput=e=>{z.why=e.target.value.slice(0,240);save()};
+  $("#seeHere").onclick=()=>{S.view="here";save();render();scrollTo(0,0)};
+  const h=$("#st");h&&h.focus({preventScroll:true});
+}
+function triHere(){
+  return `<svg class="trihere" viewBox="0 0 320 300" role="img" aria-label="The triangle: you finished side 1, Understand, and stand at the Clear corner. Next are Channel and Compound.">
+   <polygon points="30,262 160,40 290,262" fill="none" stroke="var(--rule)" stroke-width="2"/>
+   <line x1="30" y1="262" x2="160" y2="40" stroke="var(--au)" stroke-width="6" stroke-linecap="round"/>
+   <line x1="160" y1="40" x2="290" y2="262" stroke="var(--dh)" stroke-width="3" stroke-linecap="round" stroke-dasharray="3 9"/>
+   <line x1="290" y1="262" x2="30" y2="262" stroke="var(--dh)" stroke-width="3" stroke-linecap="round" stroke-dasharray="3 9"/>
+   ${[[73,188],[103,137],[134,86]].map(([x,y],i)=>`<circle cx="${x}" cy="${y}" r="12" fill="var(--au)"/><text x="${x}" y="${y+4}" text-anchor="middle" font-size="11" font-weight="700" font-family="Lexend" fill="var(--paper)">${i+1}</text>`).join("")}
+   ${[[195,100],[226,153],[257,206],[225,262],[160,262],[95,262]].map(([x,y],i)=>`<circle cx="${x}" cy="${y}" r="11" fill="var(--paper)" stroke="var(--dh)" stroke-width="2"/><text x="${x}" y="${y+4}" text-anchor="middle" font-size="10.5" font-weight="700" font-family="Lexend" fill="var(--ink)">${i+4}</text>`).join("")}
+   <circle cx="160" cy="40" r="20" fill="#FFD43B" opacity=".5" class="qpulse"/><circle cx="160" cy="40" r="9" fill="var(--dh)" stroke="var(--paper)" stroke-width="3"/>
+   <text x="186" y="36" font-size="13" font-weight="700" font-family="Lexend" fill="var(--ink)">you are here</text>
+   <text x="186" y="52" font-size="11" font-family="Lexend" fill="var(--muted)">Clear</text>
+   <text x="300" y="290" text-anchor="end" font-size="11" font-family="Lexend" fill="var(--muted)">Unstuck</text>
+   <text x="20" y="290" font-size="11" font-family="Lexend" fill="var(--muted)">Capable</text>
+   <text x="70" y="140" text-anchor="middle" font-size="10.5" font-weight="600" font-family="Lexend" fill="var(--au)" transform="rotate(-60 70 140)">UNDERSTAND</text>
+   <text x="250" y="140" text-anchor="middle" font-size="10.5" font-weight="600" font-family="Lexend" fill="var(--dh)" transform="rotate(60 250 140)">CHANNEL</text>
+   <text x="160" y="284" text-anchor="middle" font-size="10.5" font-weight="600" font-family="Lexend" fill="var(--dh)">COMPOUND</text></svg>`;
+}
+function renderHere(){
+  const z=SE();if(!seasonReady(z)){S.view="season";return renderSeason()}
+  const s=scores(),R=RES[s.res],area=k=>AREAS.find(a=>a[0]===k)[1];
+  const others=AREAS.filter(a=>a[0]!==z.up).map(a=>a[1]);
+  const CHAP=[["4","Shape what comes in","what you see, hear, eat and touch, set up for both sides"],["5","Negotiate the voices","the full Peace Treaty Wizard, and when to use the fire instead"],["6","Act on what matters","small moves toward your season, even before you feel ready"],["7","Find your window","stretch without strain, and rest on purpose"],["8","Find your rhythm","fixed anchors for one side, a menu of options for the other"],["9","Hit your goal","a 2-minute daily check-in that counts bounce-backs"]];
+  app.innerHTML=`${topbar(`<button class="textbtn" id="back" style="text-decoration:none;font-weight:600">← My season</button>`)}<section class="stack g24" style="padding-top:8px">
+   <div class="yellow-stage stack g16"><span class="eyebrow" style="color:#2B2140;opacity:.7">Part 6 complete</span>
+    <h1 style="color:#2B2140;margin:0" tabindex="-1" id="st">You're clear.</h1>
+    <p style="color:#2B2140">You know your shape, and you know where you're going first.</p>${route(7)}</div>
+
+   <div class="panel stack g12"><span class="eyebrow">Your plan, on one card</span>
+    <div class="wread2"><b>Your map</b><span>${R.name}</span>
+     <b>Your values</b><span>${z.vals.join(", ")}</span>
+     <b>Your season</b><span><span class="kw dh">${area(z.up)}</span>, for ${LENS[z.len].toLowerCase()}</span>
+     <b>Energy</b><span>${fmt(z.pts[z.up])} points to ${area(z.up).toLowerCase()}, ${others.map(o=>fmt(z.pts[AREAS.find(a=>a[1]===o)[0]])+" to "+o.toLowerCase()).join(", ")}</span>
+     ${z.why?`<b>Why</b><span>“${z.why.replace(/</g,"&lt;")}”</span>`:""}</div>
+    <p class="small muted">Screenshot this card. It's the first page of your plan.</p></div>
+
+   <div class="stack g12"><h2>Where you are on the triangle</h2>
+    <p>Every AuDHD life change goes around the same three sides. You just finished the first one: <b style="color:var(--au)">Understand</b>. The next two are where things start to move.</p>
+    ${triHere()}
+    <div class="lanes2">
+     <div class="note"><b class="t" style="color:var(--dh)">Channel → Unstuck</b>Change what comes in, how you handle the two voices, and what you do next.</div>
+     <div class="note"><b class="t" style="color:var(--dh)">Compound → Capable</b>A pace, a week and a daily check that keep the plan alive on bad weeks.</div></div></div>
+
+   <div class="offer on stack g12"><span class="you-badge">What's next</span>
+    <h2 style="margin:0">The <span class="kau">Au</span><span class="kdh">DHD</span> Owner's Manual<sup class="tm">TM</sup></h2>
+    <p>Nobody gave you the manual for running two operating systems in one head. This is it: chapters 4 to 9, built around <b>your</b> season, with the tools I use myself.</p>
+    <div class="chlist">${CHAP.map(([n,t,d])=>`<div><i>${n}</i><span><b>${t}</b><br><span class="small muted">${d}</span></span></div>`).join("")}</div>
+    <p class="small"><b>Your $37 counts toward it.</b> You've already done chapters 1 to 3.</p>
+    ${OWNERS_URL?`<a class="btn" href="${OWNERS_URL}" target="_blank" rel="noopener" style="text-decoration:none;align-self:stretch">See the Owner's Manual →</a>`:`<button class="btn" disabled style="align-self:stretch">Founding seats open in November</button><span class="small muted" style="align-self:center">You'll get an email the day it opens.</span>`}</div>
+
+   <div class="note pink">${T("This comes before a diagnosis.","Your map shows a pattern your answers look like. Only a qualified clinician can diagnose ADHD or autism. Take your map and this card with you.")}</div>
+   <button class="btn ghost" id="redoS">← Change my season</button></section>`;
+  wireTop();
+  $("#back").onclick=()=>{S.view="season";save();render();scrollTo(0,0)};
+  $("#redoS").onclick=$("#back").onclick;
+  const h=$("#st");h&&h.focus({preventScroll:true});
+}
+
+
+
+/* ================= SOUND (generated, off by default) ================= */
+let AC=null,amb=null;
+function ac(){if(!AC){try{AC=new (window.AudioContext||window.webkitAudioContext)()}catch(e){}}return AC}
+function blip(f1,f2,dur,vol){if(!S.sfx)return;const a=ac();if(!a)return;const o=a.createOscillator(),g=a.createGain();o.type="sine";o.frequency.setValueAtTime(f1,a.currentTime);o.frequency.exponentialRampToValueAtTime(f2,a.currentTime+dur);g.gain.setValueAtTime(vol,a.currentTime);g.gain.exponentialRampToValueAtTime(.0001,a.currentTime+dur);o.connect(g).connect(a.destination);o.start();o.stop(a.currentTime+dur)}
+function tap(){}
+function chime(){blip(660,990,.35,.07);setTimeout(()=>blip(880,1320,.4,.05),120)}
+function noiseBuf(a,type){const len=a.sampleRate*3,b=a.createBuffer(1,len,a.sampleRate),d=b.getChannelData(0);let last=0;for(let i=0;i<len;i++){const w=Math.random()*2-1;if(type==="brown"){last=(last+.02*w)/1.02;d[i]=last*3.5}else d[i]=w}return b}
+function setAmb(kind){const a=ac();if(amb){amb.forEach(n=>{try{n.stop()}catch(e){}});amb=null}S.amb=kind;save();if(!kind||!a)return;a.resume&&a.resume();
+  const src=a.createBufferSource();src.buffer=noiseBuf(a,kind==="brown"?"brown":"white");src.loop=true;const g=a.createGain();g.gain.value=kind==="brown"?.35:.06;
+  const f=a.createBiquadFilter();f.type=kind==="rain"?"bandpass":kind==="cafe"?"lowpass":"lowpass";f.frequency.value=kind==="rain"?1800:kind==="cafe"?700:500;f.Q.value=kind==="rain"?.4:.7;
+  src.connect(f).connect(g).connect(a.destination);src.start();amb=[src];
+  if(kind==="rain"){const drops=()=>{if(S.amb!=="rain")return;const o=a.createOscillator(),gg=a.createGain();o.frequency.value=1800+Math.random()*2200;gg.gain.setValueAtTime(.012,a.currentTime);gg.gain.exponentialRampToValueAtTime(.0001,a.currentTime+.05);o.connect(gg).connect(a.destination);o.start();o.stop(a.currentTime+.06);setTimeout(drops,30+Math.random()*90)};drops()}}
+
+
+
+/* colour the words ADHD / autism / AuDHD wherever they appear in reading text */
+const KW=/\b(AuDHD|ADHD|[Aa]utis(?:m|tic))\b/;
+function colorize(root){const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode(n){if(!KW.test(n.nodeValue))return 2;const p=n.parentElement;if(!p||p.closest("svg,button,input,textarea,label,.kw,.eyebrow,.tag,.ticks,.top,.bub,.stg,.vb,.ptitle,.chip,.s5,.rrow,.flip,.prow,.stp,.yellow-stage,.who,[data-nocol]"))return 2;return 1}});
+  const ns=[];while(w.nextNode())ns.push(w.currentNode);
+  ns.forEach(n=>{const f=document.createDocumentFragment();n.nodeValue.split(/\b(AuDHD|ADHD|[Aa]utis(?:m|tic))\b/).forEach((s,i)=>{if(i%2===0){if(s)f.append(s);return}const sp=document.createElement("span");sp.className="kw";
+    if(s==="AuDHD")sp.innerHTML='<span class="kau">Au</span><span class="kdh">DHD</span>';else{sp.classList.add(s==="ADHD"?"dh":"au");sp.textContent=s}f.append(sp)});n.replaceWith(f)})}
+let _cz=0;new MutationObserver(()=>{if(_cz)return;_cz=requestAnimationFrame(()=>{_cz=0;colorize(app)})}).observe(app,{childList:true,subtree:true});
+function render(){ closeSheet(); paperLayer(); if(LEAD&&S.view!=="welcome"&&S.view!=="p0"&&S.view!=="done"){S.view="welcome"} if(LEAD&&S.view==="p0"&&!S.email){S.view="welcome"} if(S.view&&S.view.startsWith("deck:")){if(!DECKS[S.view.slice(5)]){S.view="deck:adhd";delete S.dk}return renderDeck(S.view.slice(5))} if(S.view==="results") return renderResults(); if(S.view==="season") return renderSeason(); if(S.view==="here") return renderHere(); if(S.view==="p1"||S.view==="p2soon"||S.view==="dest"){S.view="deck:adhd";return render()} if(S.view==="p0") renderP0(); else if(S.view==="done") renderDone(); else renderWelcome(); }
+render();
+})();
+</script>
+
+<script>try{posthog.register({surface:"toolkit"});posthog.capture("toolkit_opened")}catch(e){}</script></body></html>
