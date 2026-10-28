@@ -30,14 +30,14 @@
 .ht .hero h1 .a{color:#3E2F66}.ht .hero h1 .d{color:#C8442A}
 .ht .hero .sub{font-size:18px;max-width:46ch}
 .ht .logo{display:flex;flex-direction:column;align-items:flex-start;line-height:1}
-.ht .logo i{font:italic 500 20px Georgia,serif;opacity:.75}
-.ht .logo span{font:800 40px/1 system-ui,-apple-system,sans-serif;letter-spacing:-1.5px;color:#2B2140}
-.ht .logo span em{font:700 48px/1 var(--fd);color:#C8442A;font-style:normal;letter-spacing:0;margin-left:2px;display:inline-block;animation:wob 3s ease-in-out infinite}
+.ht .logo i{font:italic 500 15px Georgia,serif;opacity:.75}
+.ht .logo span{font:800 26px/1 system-ui,-apple-system,sans-serif;letter-spacing:-1.5px;color:#2B2140}
+.ht .logo span em{font:700 31px/1 var(--fd);color:#C8442A;font-style:normal;letter-spacing:0;margin-left:2px;display:inline-block;animation:wob 3s ease-in-out infinite}
 @keyframes wob{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg) translateY(-2px)}}
 .ht .dots{display:flex;gap:6px;align-items:center;margin-top:8px}
-.ht .dots b{width:6px;height:6px;border-radius:50%;background:#2B2140}
+.ht .dots b{width:4px;height:4px;border-radius:50%;background:#2B2140}
 .ht .dots b.r{background:#C8442A;animation:jump 1.6s ease-in-out infinite}
-.ht .dots b.r:nth-child(odd){animation-delay:.2s}.ht .dots b.r:nth-child(3n){animation-delay:.5s;width:9px;height:9px}
+.ht .dots b.r:nth-child(odd){animation-delay:.2s}.ht .dots b.r:nth-child(3n){animation-delay:.5s;width:6px;height:6px}
 @keyframes jump{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 .ht .trust{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;justify-content:center;color:var(--on-y)}
 .ht .trust span::before{content:"✓ ";font-weight:700}
@@ -62,8 +62,8 @@
 .ht .who small{display:block;font:500 11px/1.2 var(--fb);color:var(--muted);margin-top:4px}
 .ht .rope{position:relative;height:44px}
 .ht .rope svg{width:100%;height:100%;display:block;overflow:visible}
-.ht .rope .knot{animation:pull 2.4s ease-in-out infinite}
-@keyframes pull{0%,100%{transform:translateX(-18%)}50%{transform:translateX(18%)}}
+.ht .rope .knot{position:absolute;left:50%;top:50%;width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;background:#FFD43B;box-shadow:0 0 0 2.5px #2B2140;animation:pull 2.4s ease-in-out infinite}
+@keyframes pull{0%,100%{transform:translateX(-26px)}50%{transform:translateX(26px)}}
 .ht .you{text-align:center;font-size:14px;color:var(--ink2)}
 .ht .you b{color:var(--ink)}
 
@@ -101,7 +101,7 @@
 @keyframes draw{to{stroke-dashoffset:0}}
 .ht .trisvg .here{animation:pulse 1.8s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
 @keyframes pulse{0%,100%{transform:scale(1);opacity:.55}50%{transform:scale(1.5);opacity:.15}}
-.ht .trisvg .nd{opacity:0;animation:fadein .4s ease forwards}
+.ht .nd{opacity:0;animation:fadein .4s ease forwards}
 @keyframes fadein{to{opacity:1}}
 .ht .legend{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 @media (max-width:560px){.ht .legend{grid-template-columns:minmax(0,1fr)}}
@@ -114,6 +114,27 @@
 .ht .herecard{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:center;background:var(--yellow);color:var(--on-y);border-radius:18px;padding:12px 14px}
 .ht .herecard .z{width:44px;height:44px;border-radius:50%;background:#C8442A;color:#fff;display:grid;place-items:center;font:700 24px var(--fd)}
 
+.ht .tmap{position:relative;width:100%;max-width:420px;margin:8px auto 4px;aspect-ratio:1/1.02}
+.ht .tmap .trisvg{position:absolute;inset:0;width:100%;height:100%}
+.ht .tn{position:absolute;transform:translate(-50%,-50%);display:flex;align-items:center;gap:5px;white-space:nowrap}
+.ht .tn i{font-style:normal;width:28px;height:28px;border-radius:50%;background:var(--c);color:#fff;display:grid;place-items:center;font:700 13px var(--fb);box-shadow:0 0 0 3px var(--sheet)}
+.ht .tn em{font:600 12px/1.1 var(--fb);font-style:normal;color:var(--c);background:var(--sheet);padding:2px 4px;border-radius:6px}
+.ht .tn.l{flex-direction:row-reverse;transform:translate(calc(-100% + 14px),-50%)}
+.ht .tn.r{transform:translate(-14px,-50%)}
+.ht .tn.b{flex-direction:column;gap:3px;transform:translate(-50%,-14px)}
+.ht .tc{position:absolute;font:700 20px/1 var(--fd);color:var(--ink)}
+.ht .tc.top{left:50%;top:0;transform:translate(-50%,-70%)}
+.ht .tc.bl{left:14%;top:86%;transform:translate(-60%,95%)}
+.ht .tc.br{left:86%;top:86%;transform:translate(-40%,95%)}
+.ht .ts{position:absolute;font:700 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+.ht .ts.s-l{left:22%;top:38%;transform:translate(-50%,-50%) rotate(-65deg);color:#3E2F66}
+.ht .ts.s-r{left:78%;top:38%;transform:translate(-50%,-50%) rotate(65deg);color:#C8442A}
+.ht .ts.s-b{left:50%;top:99%;transform:translate(-50%,0);color:#3F7D58}
+.ht .thome{position:absolute;left:50%;top:60%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:4px}
+.ht .thome b{width:34px;height:34px;border-radius:50%;background:#C8442A;box-shadow:0 0 0 4px #F7F2E8,0 0 0 9px rgba(255,212,59,.7);animation:pulse2 1.8s ease-in-out infinite}
+.ht .thome em{font:700 18px/1 var(--fd);font-style:normal;color:#C8442A;background:#FFD43B;padding:3px 8px;border-radius:8px}
+@keyframes pulse2{0%,100%{box-shadow:0 0 0 4px #F7F2E8,0 0 0 9px rgba(255,212,59,.7)}50%{box-shadow:0 0 0 4px #F7F2E8,0 0 0 16px rgba(255,212,59,.2)}}
+.ht .tmap .side{stroke-dasharray:none}
 /* proof */
 .ht .quotes{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 12px}
 .ht .q{flex:0 0 82%;max-width:340px;scroll-snap-align:start;background:var(--paper);border-radius:22px;padding:18px;box-shadow:inset 0 0 0 1.5px var(--rule);display:flex;flex-direction:column;gap:10px;font-size:15.5px}
@@ -152,7 +173,7 @@
 .ht.js .rv.in{opacity:1;transform:none}
 .ht .full{align-self:stretch}
 .ht :focus-visible{outline:3px solid var(--dh);outline-offset:3px}
-@media (prefers-reduced-motion:reduce){.ht *{animation:none!important;transition:none!important}.ht .bub{opacity:1;transform:none}.ht .trisvg .side{stroke-dashoffset:0}.ht .trisvg .nd{opacity:1}.ht.js .rv{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.ht *{animation:none!important;transition:none!important}.ht .bub{opacity:1;transform:none}.ht .trisvg .side{stroke-dashoffset:0}.ht .nd{opacity:1}.ht.js .rv{opacity:1;transform:none}}
 </style>
 
 <div class="ht" id="ht">
@@ -161,7 +182,6 @@
 <header class="hero">
   <div class="logo" aria-label="how to AuDHD"><i>how to</i><span>Au<em>DHD</em></span>
     <div class="dots" aria-hidden="true"><b></b><b></b><b></b><b></b><b></b><b class="r"></b><b class="r"></b><b class="r"></b><b class="r"></b><b class="r"></b></div></div>
-  <span class="eye">Free · 2 minutes · works on your phone</span>
   <h1>The <span class="a">Au</span><span class="d">DHD</span> Peace Treaty</h1>
   <p class="sub">Your <b>ADHD brain</b> and your <b>autistic brain</b> want opposite things. This gets them to agree on one small next step, so you can finally move.</p>
   <a data-gumroad-action="buy" class="btn full" href="#">Get the Peace Treaty <span class="free">FREE</span></a>
@@ -187,7 +207,7 @@
   <div class="tug">
     <div class="tugrow">
       <div class="who au">Autism<small>order, sameness, depth</small></div>
-      <div class="rope" aria-hidden="true"><svg viewBox="0 0 200 44" preserveAspectRatio="none"><path d="M0 22 Q50 14 100 22 T200 22" fill="none" stroke="#9C7B4F" stroke-width="5" stroke-linecap="round"/><path d="M0 22 Q50 14 100 22 T200 22" fill="none" stroke="#C9A877" stroke-width="2" stroke-dasharray="4 5"/><g class="knot"><circle cx="100" cy="22" r="10" fill="#FFD43B" stroke="#2B2140" stroke-width="2.5"/></g></svg></div>
+      <div class="rope" aria-hidden="true"><svg viewBox="0 0 200 44" preserveAspectRatio="none"><path d="M0 22 Q50 14 100 22 T200 22" fill="none" stroke="#9C7B4F" stroke-width="5" stroke-linecap="round"/><path d="M0 22 Q50 14 100 22 T200 22" fill="none" stroke="#C9A877" stroke-width="2" stroke-dasharray="4 5"/></svg><span class="knot"></span></div>
       <div class="who dh">ADHD<small>novelty, speed, freedom</small></div>
     </div>
     <p class="you">And <b>you</b> are the yellow knot in the middle, watching yourself not do the thing. Again.</p>
@@ -243,24 +263,7 @@
   <h2>The whole AuDHD map, and you are here</h2>
   <p>Every change with an AuDHD brain goes around the same three sides. The Peace Treaty sits right in the middle, because every step needs your two brains to stop fighting first.</p>
   <div class="tri">
-    <svg class="trisvg" viewBox="0 0 320 290" role="img" aria-label="A triangle with nine steps around three sides: Understand, Channel and Compound. The Peace Treaty sits in the centre.">
-      <polygon points="30,262 160,36 290,262" fill="#F7F2E8" stroke="none"/>
-      <line class="side s1" x1="30" y1="262" x2="160" y2="36" stroke="#3E2F66" stroke-width="6" stroke-linecap="round"/>
-      <line class="side s2" x1="160" y1="36" x2="290" y2="262" stroke="#C8442A" stroke-width="6" stroke-linecap="round"/>
-      <line class="side s3" x1="290" y1="262" x2="30" y2="262" stroke="#3F7D58" stroke-width="6" stroke-linecap="round"/>
-      <g class="nd" style="animation-delay:.4s"><circle cx="73" cy="187" r="12" fill="#3E2F66"/><circle cx="73" cy="187" r="5" fill="#F7F2E8"/></g>
-      <g class="nd" style="animation-delay:.6s"><circle cx="103" cy="135" r="12" fill="#3E2F66"/><circle cx="103" cy="135" r="5" fill="#F7F2E8"/></g>
-      <g class="nd" style="animation-delay:.8s"><circle cx="134" cy="81" r="12" fill="#3E2F66"/><circle cx="134" cy="81" r="5" fill="#F7F2E8"/></g>
-      <g class="nd" style="animation-delay:1s"><circle cx="186" cy="81" r="12" fill="#C8442A"/><circle cx="186" cy="81" r="5" fill="#F7F2E8"/></g>
-      <g class="nd" style="animation-delay:1.2s"><circle cx="217" cy="135" r="12" fill="#C8442A"/><circle cx="217" cy="135" r="5" fill="#F7F2E8"/></g>
-      <g class="nd" style="animation-delay:1.4s"><circle cx="247" cy="187" r="12" fill="#C8442A"/><circle cx="247" cy="187" r="5" fill="#F7F2E8"/></g>
-      <g class="nd" style="animation-delay:1.6s"><circle cx="225" cy="262" r="12" fill="#3F7D58"/><circle cx="225" cy="262" r="5" fill="#F7F2E8"/></g>
-      <g class="nd" style="animation-delay:1.8s"><circle cx="160" cy="262" r="12" fill="#3F7D58"/><circle cx="160" cy="262" r="5" fill="#F7F2E8"/></g>
-      <g class="nd" style="animation-delay:2s"><circle cx="95" cy="262" r="12" fill="#3F7D58"/><circle cx="95" cy="262" r="5" fill="#F7F2E8"/></g>
-      <circle class="here" cx="160" cy="185" r="26" fill="#FFD43B"/>
-      <circle cx="160" cy="185" r="17" fill="#C8442A" stroke="#F7F2E8" stroke-width="4"/>
-      <path d="M154 185h12M160 179v12" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
-    </svg>
+    <div class="tmap" role="img" aria-label="The AuDHD map: a triangle with nine steps. Understand: two voices, the cost, your season. Channel: inputs, negotiate, act. Compound: window, rhythm, goal. You are here, at the Peace Treaty in the centre."><svg class="trisvg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><polygon points="14,86 50,8 86,86" fill="#F7F2E8"/><line class="side s1" x1="14" y1="86" x2="50" y2="8" stroke="#3E2F66" stroke-width="5" stroke-linecap="round" vector-effect="non-scaling-stroke"/><line class="side s2" x1="50" y1="8" x2="86" y2="86" stroke="#C8442A" stroke-width="5" stroke-linecap="round" vector-effect="non-scaling-stroke"/><line class="side s3" x1="86" y1="86" x2="14" y2="86" stroke="#3F7D58" stroke-width="5" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg><span class="tn nd l" style="left:23%;top:66.5%;--c:#3E2F66;animation-delay:0.4s"><i>1</i><em>Two voices</em></span><span class="tn nd l" style="left:32%;top:47%;--c:#3E2F66;animation-delay:0.6s"><i>2</i><em>The cost</em></span><span class="tn nd l" style="left:41%;top:27.5%;--c:#3E2F66;animation-delay:0.8s"><i>3</i><em>Your season</em></span><span class="tn nd r" style="left:59%;top:27.5%;--c:#C8442A;animation-delay:1.0s"><i>4</i><em>Inputs</em></span><span class="tn nd r" style="left:68%;top:47%;--c:#C8442A;animation-delay:1.2s"><i>5</i><em>Negotiate</em></span><span class="tn nd r" style="left:77%;top:66.5%;--c:#C8442A;animation-delay:1.4s"><i>6</i><em>Act</em></span><span class="tn nd b" style="left:68%;top:86%;--c:#3F7D58;animation-delay:1.6s"><i>7</i><em>Window</em></span><span class="tn nd b" style="left:50%;top:86%;--c:#3F7D58;animation-delay:1.8s"><i>8</i><em>Rhythm</em></span><span class="tn nd b" style="left:32%;top:86%;--c:#3F7D58;animation-delay:2.0s"><i>9</i><em>Goal</em></span><span class="tc top">Clear</span><span class="tc bl">Capable</span><span class="tc br">Unstuck</span><span class="thome"><b></b><em>You are here</em></span></div>
     <div class="herecard"><span class="z">0</span><div><b>You are here: The Peace Treaty</b><br><span class="small">Get your two brains to stop fighting. Every other step builds on this one.</span></div></div>
     <div class="legend">
       <div class="lg" style="--c:#3E2F66"><h4>1 · Understand</h4><ol><li><i>1</i>Map your two voices</li><li><i>2</i>See what it costs</li><li><i>3</i>Choose your season</li></ol><span class="end">You become: <b>Clear</b></span></div>
