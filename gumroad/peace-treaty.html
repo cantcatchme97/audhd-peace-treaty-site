@@ -2,7 +2,7 @@
 !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags identify setPersonProperties group resetGroups reset get_distinct_id get_session_id alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
 posthog.init("phc_vhUmnsmQbPvXfpUHhuKVgh6a3arJ6E5ivCV8y2KjcBCu",{api_host:"https://us.i.posthog.com",person_profiles:"identified_only",session_recording:{maskAllInputs:true}});
 try{posthog.register({product:"peace_treaty",surface:"gumroad"});posthog.capture("gumroad_page_viewed",{product:"peace_treaty"})}catch(e){}
-document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("[data-gumroad-action=buy]");if(a)try{posthog.capture("checkout_clicked",{product:"peace_treaty",price:0})}catch(_){}},true);
+document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a.buy");if(a)try{posthog.capture("checkout_clicked",{product:"peace_treaty",price:0})}catch(_){}},true);
 </script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gaegu:wght@700&family=Lexend:wght@400;500;600;700&display=swap">
 <style>
@@ -225,7 +225,7 @@ document.addEventListener("click",function(e){var a=e.target.closest&&e.target.c
     <div class="dots" aria-hidden="true"><b></b><b></b><b></b><b></b><b></b><b class="r"></b><b class="r"></b><b class="r"></b><b class="r"></b><b class="r"></b></div></div>
   <h1>The <span class="a">Au</span><span class="d">DHD</span> Peace Treaty<sup class="tm">TM</sup></h1>
   <p class="sub">Your <b>ADHD brain</b> and your <b>autistic brain</b> want opposite things. This gets them to agree on one small next step, so you can finally move.</p>
-  <a data-gumroad-action="buy" class="btn full" href="#">Get the Peace Treaty <span class="free">FREE</span></a>
+  <a class="btn full buy" href="https://howtoaudhd.gumroad.com/l/peace-treaty?wanted=true">Get the Peace Treaty <span class="free">FREE</span></a>
   <div class="trust"><span>Free forever</span><span>No app to install</span><span>2-minute read</span></div>
 </header>
 
@@ -357,13 +357,13 @@ document.addEventListener("click",function(e){var a=e.target.closest&&e.target.c
 <section class="final rv">
   <h2>Two brains. One deal. Two minutes.</h2>
   <p>You're not broken. You're running two operating systems that never came with a manual. This is the first page of it.</p>
-  <a data-gumroad-action="buy" class="btn" href="#">Get the Peace Treaty <span class="free">FREE</span></a>
+  <a class="btn buy" href="https://howtoaudhd.gumroad.com/l/peace-treaty?wanted=true">Get the Peace Treaty <span class="free">FREE</span></a>
 </section>
 
 <p class="small muted" style="text-align:center">© 2026 How to AuDHD by Bhuvan · Not medical advice</p>
 </div>
 
-<div class="sticky" id="htSticky"><a data-gumroad-action="buy" class="btn" href="#">Get it free</a></div>
+<div class="sticky" id="htSticky"><a class="btn buy" href="https://howtoaudhd.gumroad.com/l/peace-treaty?wanted=true">Get it free</a></div>
 </div>
 
 <script>
