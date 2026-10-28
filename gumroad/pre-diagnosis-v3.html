@@ -82,9 +82,9 @@ mark{background:linear-gradient(transparent 55%,rgba(255,212,59,.75) 55%);color:
 /* me */
 .me{display:grid;grid-template-columns:72px minmax(0,1fr);gap:16px;align-items:start}
 .av{width:72px;height:72px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFE27A,var(--yel));display:grid;place-items:center;font:700 32px var(--fd);color:#2B2140}
-.stats{display:flex;gap:10px}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 .stats div{flex:1;background:var(--sheet);border-radius:16px;padding:12px;text-align:center}
-.stats b{display:block;font:700 30px/1 var(--fd);color:var(--au)}
+.stats b{display:block;font:700 28px/1 var(--fd);color:var(--au)}
 .stats span{font-size:13px;color:var(--ink2)}
 
 /* introducing */
@@ -211,7 +211,7 @@ details p{margin-top:8px;font-size:15.5px;color:var(--ink2)}
     <p>So you read a post about autism.</p>
     <div class="post r"><span class="hd">@someone · autism post</span><span class="tx">"Autistic people need things to stay the same."</span></div>
     <p>You nod again. <i>That's me too.</i></p>
-    <p>Except you're the one who gets bored of the same thing by Wednesday.</p>
+    <p>Except you're the one who gets <mark>bored</mark> of the same thing by Wednesday.</p>
     <p class="verdict">Half of every post fits. The other half pulls you the other way.</p>
   </div>
   <p>And in your head, it sounds like this:</p>
@@ -298,11 +298,12 @@ details p{margin-top:8px;font-size:15.5px;color:var(--ink2)}
   </div>
   <div class="stats">
     <div><b>1,000+</b><span>people coached as a dietitian</span></div>
+    <div><b>96</b><span>people bought my first AuDHD toolkit</span></div>
     <div><b>14.5K</b><span>people on my Threads</span></div>
   </div>
   <div class="beats">
-    <p>I built this map for me first.</p>
-    <p>It's what I wish I'd had before my own assessment.</p>
+    <p>I built these tools for me first. Then 96 people bought my first toolkit.</p>
+    <p>This map is the first time I've put it all into one path. It's what I wish I'd had before my own assessment.</p>
   </div>
 </section>
 
@@ -335,7 +336,7 @@ details p{margin-top:8px;font-size:15.5px;color:var(--ink2)}
   <span class="eye">Where this fits</span>
   <h2>The AuDHD Owner's Manual™</h2>
   <div class="goal"><b>A life that fits your brain.</b>One goal. 3 levels to get there.</div>
-  <img class="circ" src="https://public-files.gumroad.com/qurqn7ebv90kbz8r17mnf4u45g8p" alt="The AuDHD Owner's Manual: a circle with three levels around the goal, a life that fits your brain. Level 1, Understand, lights up checkpoint by checkpoint and ends at Clear." loading="lazy">
+  <img class="circ" src="https://public-files.gumroad.com/hv9w4grqpkdi7jhjcxr2c5846w27" alt="The AuDHD Owner's Manual: a circle with three levels around the goal, a life that fits your brain. Level 1, Understand, lights up checkpoint by checkpoint and ends at Clear." loading="lazy">
   <p class="big" style="text-align:center">This map is <mark>Level 1</mark>.<br>3 checkpoints. From Confusion to Clear.</p>
 </section>
 
@@ -384,7 +385,7 @@ details p{margin-top:8px;font-size:15.5px;color:var(--ink2)}
   </div>
   <div class="path">
     <div class="lv l1"><span>Level 1 · Understand</span><b>Map Both Brains · Spot The Tug · Pick Main Quest</b><i>→ Clear</i></div>
-    <div class="lv l2"><span>Level 2 · Untangle</span><b>Tune Inputs · Make Peace · Make Moves</b><em>what goes in · how you process it · what you do</em><i>→ Unstuck</i></div>
+    <div class="lv l2"><span>Level 2 · Regulate</span><b>Calm The Noise · Make Peace · Make Moves</b><em>what goes in · how you process it · what you do</em><i>→ Unstuck</i></div>
     <div class="lv l3"><span>Level 3 · Sustain</span><b>Budget Spoons · Build Rhythm · Stack Wins</b><i>→ Capable</i></div>
   </div>
   <p class="small muted" style="text-align:center">This map is Level 1. Levels 2 and 3 are the full AuDHD Owner's Manual™.</p>
@@ -393,12 +394,15 @@ details p{margin-top:8px;font-size:15.5px;color:var(--ink2)}
 <section class="s">
   <h2>What you walk away with</h2>
   <ul class="walk">
-    <li><i>1</i><span><b>Your answer.</b> ADHD-leading, autism-leading, both, or the AuDHD tug-of-war.</span></li>
-    <li><i>2</i><span><b>Your shape.</b> ADHD, autism, where they collide, your mask and your burnout. On one screen.</span></li>
-    <li><i>3</i><span><b>Your shape, decoded.</b> The tools that fit. And what to stop forcing.</span></li>
-    <li><i>4</i><span><b>Your traits, both ways.</b> Where they help you, and where they get in your way.</span></li>
-    <li><i>5</i><span><b>Your main quest.</b> The one area to fix first, and your spoons for it. Saved on a plan card.</span></li>
+    <li><i>1</i><span><b>Your answer to "Am I ADHD, autistic, or both?"</b> Mostly ADHD. Mostly autistic. Both, side by side. Or both, and they clash. (That's AuDHD.)</span></li>
+    <li><i>2</i><span><b>Your ADHD traits.</b> Which of the 12 show up for you, and how often.</span></li>
+    <li><i>3</i><span><b>Your autistic traits.</b> Which of the 12 show up for you.</span></li>
+    <li><i>4</i><span><b>Where they collide.</b> The places your two brains want opposite things.</span></li>
+    <li><i>5</i><span><b>What you mask.</b> The traits you hide, and where you hide them most.</span></li>
+    <li><i>6</i><span><b>What's burning you out.</b> Your red flags, right now.</span></li>
+    <li><i>7</i><span><b>Your main quest.</b> The one thing holding the rest back, and your spoons for it.</span></li>
   </ul>
+  <p class="big" style="text-align:center">That's Clear. And from Clear, the next stop is Unstuck.</p>
 </section>
 
 <section class="honest">
@@ -413,9 +417,8 @@ details p{margin-top:8px;font-size:15.5px;color:var(--ink2)}
 <section class="s">
   <h2>Bonuses</h2>
   <div class="bonus">
-    <div class="bn"><span class="tag">Bonus #1</span><b>1-on-1 Map Call</b><span class="val">$150 value</span><p>30 minutes with me, on video. We go through your map together and pick your first move.</p><span class="lim">For the first 50 buyers only.</span></div>
-    <div class="bn"><span class="tag">Bonus #2</span><b>Your Doctor Page</b><span class="val">$27 value</span><p>Your answers, turned into one page for an assessment. Plus a before, during and after plan. No more freezing in the room.</p></div>
-    <div class="bn"><span class="tag">Bonus #3</span><b>The Peace Treaty Wizard</b><span class="val">$10 value</span><p>When your two brains fight, it walks them to one next step. A tool from Level 2, yours to keep.</p></div>
+    <div class="bn"><span class="tag">Bonus #1 · optional</span><b>A Personal Walkthrough</b><span class="val">$150 value</span><p>Want a second pair of eyes on your shape? Book 30 minutes with me, on video. Totally optional.</p><span class="lim">For the first 50 buyers only.</span></div>
+    <div class="bn"><span class="tag">Bonus #2</span><b>Your Pre-Diagnosis Page</b><span class="val">$27 value</span><p>Your answers, on one page you can take to an assessment. Plus a before, during and after plan. No more freezing in the room.</p></div>
   </div>
 </section>
 
@@ -423,10 +426,9 @@ details p{margin-top:8px;font-size:15.5px;color:var(--ink2)}
   <div class="stack">
     <span class="eye" style="text-align:center">Everything you get</span>
     <div class="row"><span>The AuDHD Pre-Diagnosis Map™ (Level 1, all 3 checkpoints)</span><b>$97</b></div>
-    <div class="row"><span>Bonus #1: 1-on-1 Map Call (first 50 buyers)</span><b>$150</b></div>
-    <div class="row"><span>Bonus #2: Your Doctor Page</span><b>$27</b></div>
-    <div class="row"><span>Bonus #3: The Peace Treaty Wizard</span><b>$10</b></div>
-    <div class="tot"><span>Total value</span><s>$284</s></div>
+    <div class="row"><span>Bonus #1: A Personal Walkthrough (optional, first 50 buyers)</span><b>$150</b></div>
+    <div class="row"><span>Bonus #2: Your Pre-Diagnosis Page</span><b>$27</b></div>
+    <div class="tot"><span>Total value</span><s>$274</s></div>
     <div class="now"><span class="eye">Today</span><span class="p">$37</span></div>
     <a data-gumroad-action="buy" class="btn buy" data-where="price" href="#">Get my map →</a>
     <p class="credit"><b>Plus:</b> your $37 counts toward the full AuDHD Owner's Manual if you join later.</p>
@@ -474,7 +476,7 @@ details p{margin-top:8px;font-size:15.5px;color:var(--ink2)}
     <details><summary>How long does it take?</summary><p>About 30 minutes. It saves as you go, so you can do one checkpoint a day.</p></details>
     <details><summary>Where do my answers go?</summary><p>Nowhere. They stay on your own device. No login, no account.</p></details>
     <details><summary>What do I get after paying?</summary><p>A link to open your map right away, on your phone or computer.</p></details>
-    <details><summary>How do I book the call?</summary><p>Finish your map, then email me a screenshot. I'll send you a time. First 50 buyers.</p></details>
+    <details><summary>Do I have to do the call?</summary><p>No. It's optional. If you want it, finish your map and email me a screenshot, and I'll send you a time. First 50 buyers.</p></details>
   </div>
 </section>
 
@@ -483,7 +485,7 @@ details p{margin-top:8px;font-size:15.5px;color:var(--ink2)}
   <p>Nobody gave you the manual. This is Level 1 of it.</p>
   <a data-gumroad-action="buy" class="btn buy" data-where="end" href="#" style="width:100%">Get my map →</a>
   <p class="ps"><b>P.S.</b> If you've spent years wondering "am I lazy, or too much, or both?", 30 minutes is a small price to finally see your own shape.</p>
-  <p class="ps"><b>P.P.S.</b> The 1-on-1 call is me, on video, going through your map with you. It's only for the first 50 buyers.</p>
+  <p class="ps"><b>P.P.S.</b> The optional walkthrough is me, on video, going through your shape with you. It's only for the first 50 buyers.</p>
 </section>
 
 <p class="small muted" style="text-align:center">© 2026 How to AuDHD by Bhuvan · Not medical advice</p>
