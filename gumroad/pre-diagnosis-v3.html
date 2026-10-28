@@ -14,6 +14,8 @@ html,body{margin:0;background:var(--paper)}
 body{color:var(--ink);font:400 17.5px/1.6 var(--fb);-webkit-font-smoothing:antialiased;overflow-x:clip}
 .w{max-width:640px;margin:0 auto;padding:18px max(18px,env(safe-area-inset-left,0px)) 130px;display:flex;flex-direction:column;gap:72px}
 h1,h2,h3{font-family:var(--fd);font-weight:700;margin:0;line-height:1.02;text-wrap:balance}
+p,li,.big,.v,.post .tx,summary{text-wrap:pretty}
+.big,.verdict,.hl,.goal,.diff b,.cp .top b{text-wrap:balance}
 h1{font-size:clamp(46px,12vw,64px)}h2{font-size:clamp(36px,9.5vw,46px)}h3{font-size:28px}
 p{margin:0}
 .s{display:flex;flex-direction:column;gap:18px}
@@ -107,7 +109,7 @@ mark{background:linear-gradient(transparent 55%,rgba(255,212,59,.75) 55%);color:
 /* checkpoints */
 .cp{background:#fff;border-radius:26px;padding:22px 18px;display:flex;flex-direction:column;gap:14px;box-shadow:0 6px 22px rgba(33,27,46,.07)}
 .cp .top{display:flex;align-items:center;gap:12px}
-.cp .n{flex:none;width:46px;height:46px;border-radius:50%;background:var(--au);color:#fff;display:grid;place-items:center;font:800 18px var(--fb)}
+.cp .n{flex:none;width:46px;height:46px;border-radius:50%;background:var(--yel);color:#2B2140;box-shadow:inset 0 0 0 2px #2B2140;display:grid;place-items:center;font:800 18px var(--fb)}
 .cp .top b{font:700 30px/1 var(--fd);display:block}
 .cp .top span{font-size:13px;color:var(--muted);font-weight:600}
 .cp .what{font-size:16px}
@@ -140,8 +142,8 @@ mark{background:linear-gradient(transparent 55%,rgba(255,212,59,.75) 55%);color:
 .stack{background:#fff;border-radius:28px;padding:24px 20px;box-shadow:0 0 0 3px var(--ink),0 14px 34px rgba(33,27,46,.14);display:flex;flex-direction:column;gap:12px}
 .row{display:flex;justify-content:space-between;gap:12px;font-size:16px;border-bottom:1px dashed var(--rule);padding-bottom:10px}
 .row b{white-space:nowrap}
-.tot{display:flex;justify-content:space-between;font:700 18px var(--fb)}
-.tot s{color:var(--muted)}
+.tot{display:flex;justify-content:space-between;align-items:center;font:700 19px var(--fb)}
+.tot s{font:700 40px/1 var(--fd);color:var(--dh);text-decoration-thickness:4px}
 .now{text-align:center;display:flex;flex-direction:column;gap:2px;margin-top:6px}
 .now .p{font:700 76px/1 var(--fd);color:var(--dh)}
 .credit{background:var(--au-s);border-radius:14px;padding:12px 14px;font-size:14.5px;color:var(--au);font-weight:500}
@@ -174,6 +176,18 @@ details p{margin-top:8px;font-size:15.5px;color:var(--ink2)}
 .sticky .btn{min-height:52px;font-size:17px;width:100%;max-width:440px}
 :focus-visible{outline:3px solid var(--dh);outline-offset:3px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.eq{background:var(--ink);color:#F7F2E8;border-radius:24px;padding:22px 20px;display:flex;flex-direction:column;gap:6px;text-align:center}
+.eq p{font:700 clamp(24px,6.6vw,36px)/1.2 var(--fd);opacity:.6;white-space:nowrap}
+.eq p b{color:var(--dh);font-size:1.15em}
+.eq p.yes{opacity:1;color:#fff}
+.eq .dh{color:#F08A68}.eq .au{color:#B9A6F0}
+.path{display:flex;flex-direction:column;gap:10px}
+.lv{border-radius:18px;padding:14px 16px;display:flex;flex-direction:column;gap:3px;position:relative}
+.lv span{font:800 11.5px var(--fb);letter-spacing:.12em;text-transform:uppercase}
+.lv b{font:700 22px/1.15 var(--fd)}
+.lv em{font-style:normal;font-size:14px;color:var(--ink2)}
+.lv i{font-style:normal;font-weight:700;font-size:15px}
+.l1{background:var(--yel);color:#2B2140}.l2{background:var(--au-s);color:var(--au)}.l3{background:var(--ok-s);color:var(--ok)}
 </style>
 
 <div class="w">
@@ -181,8 +195,9 @@ details p{margin-top:8px;font-size:15.5px;color:var(--ink2)}
 <header class="hero" id="top">
   <span class="lvl">Level 1 · The AuDHD Owner's Manual<sup>™</sup></span>
   <h1>Am I <span class="d">ADHD</span>, <span class="a">autistic</span>, or both?</h1>
-  <p class="sub">Get clear on your own brain in 35 minutes. Without waiting years for an assessment. Even if every quiz told you something different.</p>
+  <p class="sub">Get clear on your own brain in 30 minutes. Without waiting years for an assessment. Even if every quiz told you something different.</p>
   <a data-gumroad-action="buy" class="btn buy" data-where="hero" href="#">Get my map →</a>
+  <p class="small" style="text-align:center;font-weight:600">Already know you're AuDHD? This is the map of what that means for <i>you</i>.</p>
   <div class="trust"><span>Instant access</span><span>Works on your phone</span><span>30-day guarantee</span></div>
 </header>
 
@@ -199,6 +214,7 @@ details p{margin-top:8px;font-size:15.5px;color:var(--ink2)}
     <p>Except you're the one who gets bored of the same thing by Wednesday.</p>
     <p class="verdict">Half of every post fits. The other half pulls you the other way.</p>
   </div>
+  <p>And in your head, it sounds like this:</p>
   <div class="voices">
     <div class="v au"><b>Autistic brain</b>I need structure.</div>
     <div class="v dh"><b>ADHD brain</b>I hate being controlled.</div>
@@ -226,7 +242,7 @@ details p{margin-top:8px;font-size:15.5px;color:var(--ink2)}
 <section class="s">
   <h2>You've tried it all</h2>
   <ul class="list x">
-    <li>The free online quizzes<small>Three quizzes. Three different answers.</small></li>
+    <li>The free online quizzes<small>An ADHD quiz. An autism quiz. Never one for both.</small></li>
     <li>TikTok<small>Which says you're definitely AuDHD. And also a Scorpio.</small></li>
     <li>Your doctor<small>"Everyone's a bit like that."</small></li>
     <li>The assessment waitlist<small>Months. Maybe years.</small></li>
@@ -254,7 +270,8 @@ details p{margin-top:8px;font-size:15.5px;color:var(--ink2)}
 <section class="s">
   <h2>Why nothing has worked</h2>
   <div class="beats">
-    <p>Every test checks <mark>one side</mark>.</p>
+    <p>Until 2013, doctors weren't even allowed to diagnose autism and ADHD together.</p>
+    <p>So most tests still check <mark>one side</mark>.</p>
   </div>
   <div class="split">
     <div class="a1">ADHD tests<span>ask about ADHD</span></div>
@@ -266,7 +283,7 @@ details p{margin-top:8px;font-size:15.5px;color:var(--ink2)}
     <p>The <span class="au">autistic</span> routines cover the <span class="dh">ADHD</span> mess.</p>
     <p>So you score "a bit of both"… and walk away with nothing.</p>
   </div>
-  <p class="hl">You don't need another one-sided test. You need a map of both brains, and the tug between them.</p>
+  <p class="hl">You don't need another one-sided test. You need a map of both brains, and where they collide.</p>
 </section>
 
 <section class="s">
@@ -289,18 +306,27 @@ details p{margin-top:8px;font-size:15.5px;color:var(--ink2)}
   </div>
 </section>
 
+<section class="s">
+  <h2>Already know you're AuDHD?</h2>
+  <div class="beats">
+    <p>Knowing the name isn't the same as knowing your shape.</p>
+    <p>Which side leads. Where your two brains collide. What your mask is hiding.</p>
+    <p class="big">That's your map.</p>
+  </div>
+</section>
+
 <section class="intro">
   <span class="eye">Introducing</span>
   <h2>The <span class="a">Au</span><span class="d">DHD</span> Pre-Diagnosis Map™</h2>
   <span class="lvl">Level 1 of the AuDHD Owner's Manual™</span>
-  <p>The first map built for both brains at once. In 35 minutes, from confused to clear.</p>
+  <p>The first map built for both brains at once. In 30 minutes, from confused to clear.</p>
 </section>
 
 <section class="s">
   <h2>What makes it different</h2>
   <div class="diff">
     <div><b>Both brains, same questions</b><span>ADHD and autism, side by side. So neither one hides the other.</span></div>
-    <div><b>The tug in the middle</b><span>The 7 pulls between your two brains. The part no test asks about.</span></div>
+    <div><b>Where they collide</b><span>The 7 places your two brains want opposite things. The part no test asks about.</span></div>
     <div><b>It tells you what's next</b><span>The tools that fit your shape. And the ones to stop forcing.</span></div>
   </div>
 </section>
@@ -315,7 +341,7 @@ details p{margin-top:8px;font-size:15.5px;color:var(--ink2)}
 
 <section class="s">
   <div class="cp">
-    <div class="top"><span class="n">1</span><div><b>Map Both Brains</b><span>Checkpoint 1 · about 15 min</span></div></div>
+    <div class="top"><span class="n">1</span><div><b>Map Both Brains</b><span>Checkpoint 1 · about 13 min</span></div></div>
     <p class="what">12 everyday ADHD moments. 12 autism moments. 6 that live in both. For each one: how often it's you, and whether you hide it.</p>
     <div class="lm">
       <div class="less"><h4>Less of</h4><ul><li>"Half of this post is me"</li><li>Guessing which brain a struggle comes from</li><li>Hiding traits you didn't know had names</li></ul></div>
@@ -323,11 +349,11 @@ details p{margin-top:8px;font-size:15.5px;color:var(--ink2)}
     </div>
   </div>
   <div class="cp">
-    <div class="top"><span class="n">2</span><div><b>Spot The Tug</b><span>Checkpoint 2 · about 12 min</span></div></div>
-    <p class="what">7 tugs where your brains want opposite things. 11 ways people mask. 11 burnout signs.</p>
+    <div class="top"><span class="n">2</span><div><b>Spot The Tug</b><span>Where your two brains collide · about 12 min</span></div></div>
+    <p class="what">7 places your brains want opposite things. 11 ways people mask. 11 burnout signs.</p>
     <div class="lm">
       <div class="less"><h4>Less of</h4><ul><li>Feeling pulled two ways without knowing why</li><li>Running on empty and calling it normal</li><li>Burnout that sneaks up on you</li></ul></div>
-      <div class="more"><h4>More of</h4><ul><li>Knowing which tug costs you most</li><li>Seeing what masking really takes</li><li>Your full AuDHD shape</li></ul></div>
+      <div class="more"><h4>More of</h4><ul><li>Knowing which collision costs you most</li><li>Seeing what masking really takes</li><li>Your full AuDHD shape</li></ul></div>
     </div>
   </div>
   <div class="cp">
@@ -341,13 +367,37 @@ details p{margin-top:8px;font-size:15.5px;color:var(--ink2)}
 </section>
 
 <section class="s">
+  <span class="eye">The shape you'll discover</span>
+  <div class="eq">
+    <p>AuDHD <b>≠</b> <span class="dh">ADHD</span> + <span class="au">autism</span></p>
+    <p class="yes">AuDHD = <span class="dh">ADHD</span> × <span class="au">autism</span></p>
+  </div>
+  <div class="beats">
+    <p>When they multiply, they overlap.</p>
+    <p class="big">The whole is greater than the sum of its parts.</p>
+    <p>And it looks different in every AuDHD person. That's <mark>the shape you'll discover</mark>.</p>
+  </div>
+  <img class="circ" src="https://public-files.gumroad.com/qmnervrvuurz61h10ei80bx47bfw" alt="An animated spider diagram: the ADHD side, the autistic side, their overlap as your AuDHD shape, the mask on top, and the burnout it causes." loading="lazy">
+  <div class="beats">
+    <p>Then comes the part that changes things.</p>
+    <p>Once you know your shape, you know <b>what to lower the mask on first</b>.</p>
+  </div>
+  <div class="path">
+    <div class="lv l1"><span>Level 1 · Understand</span><b>Map Both Brains · Spot The Tug · Pick Main Quest</b><i>→ Clear</i></div>
+    <div class="lv l2"><span>Level 2 · Untangle</span><b>Tune Inputs · Make Peace · Make Moves</b><em>what goes in · how you process it · what you do</em><i>→ Unstuck</i></div>
+    <div class="lv l3"><span>Level 3 · Sustain</span><b>Budget Spoons · Build Rhythm · Stack Wins</b><i>→ Capable</i></div>
+  </div>
+  <p class="small muted" style="text-align:center">This map is Level 1. Levels 2 and 3 are the full AuDHD Owner's Manual™.</p>
+</section>
+
+<section class="s">
   <h2>What you walk away with</h2>
   <ul class="walk">
     <li><i>1</i><span><b>Your answer.</b> ADHD-leading, autism-leading, both, or the AuDHD tug-of-war.</span></li>
-    <li><i>2</i><span><b>Your shape.</b> ADHD, autism, the tug, masking and burnout. On one screen.</span></li>
+    <li><i>2</i><span><b>Your shape.</b> ADHD, autism, where they collide, your mask and your burnout. On one screen.</span></li>
     <li><i>3</i><span><b>Your shape, decoded.</b> The tools that fit. And what to stop forcing.</span></li>
-    <li><i>4</i><span><b>Your strengths.</b> Not just your struggles.</span></li>
-    <li><i>5</i><span><b>Your plan card.</b> Your main quest, saved.</span></li>
+    <li><i>4</i><span><b>Your traits, both ways.</b> Where they help you, and where they get in your way.</span></li>
+    <li><i>5</i><span><b>Your main quest.</b> The one area to fix first, and your spoons for it. Saved on a plan card.</span></li>
   </ul>
 </section>
 
@@ -355,7 +405,7 @@ details p{margin-top:8px;font-size:15.5px;color:var(--ink2)}
   <span class="eye">Honest truth</span>
   <div class="beats">
     <p>This map can't diagnose you. Only a clinician can.</p>
-    <p>And it's not a 5-minute quiz. It takes 35 minutes.</p>
+    <p>And it's not a 5-minute quiz. It takes 30 minutes.</p>
     <p><b>But that's exactly why</b> it's the clearest picture of your brain you'll have… before a doctor ever sees you.</p>
   </div>
 </section>
@@ -421,7 +471,7 @@ details p{margin-top:8px;font-size:15.5px;color:var(--ink2)}
     <details><summary>Is this a diagnosis?</summary><p>No. It comes before a diagnosis, never instead of one. Only a qualified clinician can diagnose ADHD or autism.</p></details>
     <details><summary>I'm already diagnosed with one. Is it still useful?</summary><p>Yes. Many people find the other side hiding behind the one they know.</p></details>
     <details><summary>I found out late. Is it too late?</summary><p>Not at all. Lots of people only find out in their 30s, 40s or later. Understanding your brain changes how you treat yourself from here on.</p></details>
-    <details><summary>How long does it take?</summary><p>About 35 minutes. It saves as you go, so you can do one checkpoint a day.</p></details>
+    <details><summary>How long does it take?</summary><p>About 30 minutes. It saves as you go, so you can do one checkpoint a day.</p></details>
     <details><summary>Where do my answers go?</summary><p>Nowhere. They stay on your own device. No login, no account.</p></details>
     <details><summary>What do I get after paying?</summary><p>A link to open your map right away, on your phone or computer.</p></details>
     <details><summary>How do I book the call?</summary><p>Finish your map, then email me a screenshot. I'll send you a time. First 50 buyers.</p></details>
@@ -432,7 +482,7 @@ details p{margin-top:8px;font-size:15.5px;color:var(--ink2)}
   <h2>You're not broken.<br>You're running two operating systems.</h2>
   <p>Nobody gave you the manual. This is Level 1 of it.</p>
   <a data-gumroad-action="buy" class="btn buy" data-where="end" href="#" style="width:100%">Get my map →</a>
-  <p class="ps"><b>P.S.</b> If you've spent years wondering "am I lazy, or too much, or both?", 35 minutes is a small price to finally see your own shape.</p>
+  <p class="ps"><b>P.S.</b> If you've spent years wondering "am I lazy, or too much, or both?", 30 minutes is a small price to finally see your own shape.</p>
   <p class="ps"><b>P.P.S.</b> The 1-on-1 call is me, on video, going through your map with you. It's only for the first 50 buyers.</p>
 </section>
 
