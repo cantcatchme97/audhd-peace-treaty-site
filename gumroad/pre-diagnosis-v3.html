@@ -1,0 +1,456 @@
+<script>
+!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags identify setPersonProperties group resetGroups reset get_distinct_id get_session_id alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+posthog.init("phc_vhUmnsmQbPvXfpUHhuKVgh6a3arJ6E5ivCV8y2KjcBCu",{api_host:"https://us.i.posthog.com",person_profiles:"identified_only",session_recording:{maskAllInputs:true}});
+</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gaegu:wght@700&family=Lexend:wght@400;500;600;700;800&display=swap">
+<style>
+/* The $37 page. Always light. One column, max 640px. Short blocks: 1–2 sentences, lots of air.
+   Plum = autism, tomato = ADHD, yellow = brand moments, green = "more of". */
+:root{--paper:#F7F2E8;--sheet:#EFE7D7;--ink:#211B2E;--ink2:#4A4257;--muted:#736A80;--rule:rgba(33,27,46,.13);
+ --au:#3E2F66;--dh:#C8442A;--yel:#FFD43B;--ok:#3F7D58;--ok-s:#E3EFE5;--dh-s:#F8E1DA;--au-s:#E7E2F1;
+ --fd:"Gaegu","Comic Neue",cursive;--fb:"Lexend",system-ui,-apple-system,sans-serif;color-scheme:light}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper)}
+body{color:var(--ink);font:400 17.5px/1.6 var(--fb);-webkit-font-smoothing:antialiased;overflow-x:clip}
+.w{max-width:640px;margin:0 auto;padding:18px max(18px,env(safe-area-inset-left,0px)) 130px;display:flex;flex-direction:column;gap:72px}
+h1,h2,h3{font-family:var(--fd);font-weight:700;margin:0;line-height:1.02;text-wrap:balance}
+h1{font-size:clamp(46px,12vw,64px)}h2{font-size:clamp(36px,9.5vw,46px)}h3{font-size:28px}
+p{margin:0}
+.s{display:flex;flex-direction:column;gap:18px}
+.beats{display:flex;flex-direction:column;gap:14px}
+.beats p{max-width:34ch}
+.big{font:700 clamp(30px,8vw,38px)/1.1 var(--fd)}
+mark{background:linear-gradient(transparent 55%,rgba(255,212,59,.75) 55%);color:inherit;padding:0 .1em}
+.dh{color:var(--dh);font-weight:600}.au{color:var(--au);font-weight:600}
+.eye{font:700 12px/1 var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.btn{appearance:none;border:0;cursor:pointer;background:var(--ink);color:var(--yel);font:700 18px/1 var(--fb);min-height:62px;padding:0 28px;border-radius:999px;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 8px 22px rgba(33,27,46,.22);transition:transform .12s}
+.btn:active{transform:scale(.98)}
+.small{font-size:14px}.muted{color:var(--muted)}
+
+/* hero */
+.hero{background:radial-gradient(120% 90% at 25% 15%,#FFE680,var(--yel) 60%,#F4C430);border-radius:30px;padding:30px 22px 26px;display:flex;flex-direction:column;gap:18px;color:#2B2140}
+.lvl{align-self:flex-start;background:#2B2140;color:var(--yel);font:800 13px/1 var(--fb);letter-spacing:.1em;text-transform:uppercase;padding:11px 16px;border-radius:999px}
+.lvl sup{font-size:.7em}
+.hero h1 .a{color:var(--au)}.hero h1 .d{color:var(--dh)}
+.hero .sub{font-size:18.5px;font-weight:500;max-width:30ch}
+.trust{display:flex;flex-wrap:wrap;gap:6px 16px;font:600 13.5px var(--fb);justify-content:center}
+.trust span::before{content:"✓ "}
+
+/* scene */
+.post{background:#fff;border-radius:18px;padding:14px 16px;box-shadow:0 4px 16px rgba(33,27,46,.08);display:flex;flex-direction:column;gap:4px;max-width:420px}
+.post .hd{font:600 13px var(--fb);color:var(--muted)}
+.post .tx{font-weight:600}
+.post.r{align-self:flex-end}
+.verdict{font:700 22px/1.15 var(--fd);color:var(--ink2)}
+.voices{display:flex;flex-direction:column;gap:10px}
+.v{border-radius:20px;padding:12px 16px;max-width:82%;font-size:16.5px}
+.v b{display:block;font:700 11px var(--fb);letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px}
+.v.au{background:var(--au-s);align-self:flex-start}.v.au b{color:var(--au)}
+.v.dh{background:var(--dh-s);align-self:flex-end}.v.dh b{color:var(--dh)}
+.v.both{background:var(--sheet);align-self:center;max-width:100%;text-align:center}
+
+/* do what you've always done */
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.three div{background:var(--sheet);border-radius:18px;padding:16px 10px;text-align:center;display:flex;flex-direction:column;gap:4px}
+.three b{font:700 22px/1.05 var(--fd)}.three span{font-size:14px;color:var(--dh);font-weight:600}
+
+/* lists */
+.list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.list li{background:#fff;border-radius:16px;padding:13px 16px;box-shadow:0 2px 10px rgba(33,27,46,.05)}
+.list.x li{position:relative;padding-left:44px}
+.list.x li::before{content:"✕";position:absolute;left:16px;top:13px;color:var(--dh);font-weight:800}
+.list li small{display:block;color:var(--muted);font-size:14px;margin-top:2px}
+
+/* cost */
+.costs{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+@media (max-width:520px){.costs{grid-template-columns:minmax(0,1fr)}}
+.costs div{background:var(--dh-s);border-radius:18px;padding:16px;font-size:16px}
+.costs b{display:block;font:700 22px/1.1 var(--fd);color:var(--dh);margin-bottom:4px}
+.worst{background:var(--ink);color:#F7F2E8;border-radius:24px;padding:24px 22px;display:flex;flex-direction:column;gap:10px}
+.worst .eye{color:var(--yel)}
+.worst p{font-size:18px}.worst .big{color:#fff}
+
+/* reveal */
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+.split div{border-radius:18px;padding:16px;text-align:center;font-weight:600}
+.split .a1{background:var(--dh-s);color:var(--dh)}.split .a2{background:var(--au-s);color:var(--au)}
+.split div span{display:block;font-size:13px;font-weight:500;color:var(--ink2);margin-top:4px}
+.hl{background:var(--yel);border-radius:20px;padding:18px 20px;font-weight:600;color:#2B2140}
+
+/* me */
+.me{display:grid;grid-template-columns:72px minmax(0,1fr);gap:16px;align-items:start}
+.av{width:72px;height:72px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFE27A,var(--yel));display:grid;place-items:center;font:700 32px var(--fd);color:#2B2140}
+.stats{display:flex;gap:10px}
+.stats div{flex:1;background:var(--sheet);border-radius:16px;padding:12px;text-align:center}
+.stats b{display:block;font:700 30px/1 var(--fd);color:var(--au)}
+.stats span{font-size:13px;color:var(--ink2)}
+
+/* introducing */
+.intro{background:var(--ink);color:#F7F2E8;border-radius:30px;padding:30px 22px;display:flex;flex-direction:column;gap:14px;text-align:center;align-items:center}
+.intro .eye{color:var(--yel)}
+.intro h2{color:#fff}.intro h2 .a{color:#B9A6F0}.intro h2 .d{color:#F08A68}
+.intro .lvl{align-self:center;background:var(--yel);color:#2B2140}
+.intro p{max-width:30ch;font-size:18px}
+
+/* different */
+.diff{display:flex;flex-direction:column;gap:10px}
+.diff div{background:#fff;border-radius:18px;padding:16px 18px 16px 58px;position:relative;box-shadow:0 2px 10px rgba(33,27,46,.05)}
+.diff div::before{content:"✓";position:absolute;left:16px;top:15px;width:28px;height:28px;border-radius:50%;background:var(--ok);color:#fff;display:grid;place-items:center;font:800 15px/1 var(--fb)}
+.diff b{display:block;font:700 22px/1.1 var(--fd)}
+.diff span{font-size:15.5px;color:var(--ink2)}
+
+/* circle */
+.circ{width:100%;height:auto;display:block;border-radius:26px;background:#EEE6D6}
+.goal{background:var(--sheet);border-radius:22px;padding:18px 20px;text-align:center;font-size:18px}
+.goal b{font:700 30px/1.1 var(--fd);display:block;color:var(--au)}
+
+/* checkpoints */
+.cp{background:#fff;border-radius:26px;padding:22px 18px;display:flex;flex-direction:column;gap:14px;box-shadow:0 6px 22px rgba(33,27,46,.07)}
+.cp .top{display:flex;align-items:center;gap:12px}
+.cp .n{flex:none;width:46px;height:46px;border-radius:50%;background:var(--au);color:#fff;display:grid;place-items:center;font:800 18px var(--fb)}
+.cp .top b{font:700 30px/1 var(--fd);display:block}
+.cp .top span{font-size:13px;color:var(--muted);font-weight:600}
+.cp .what{font-size:16px}
+.lm{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+@media (max-width:520px){.lm{grid-template-columns:minmax(0,1fr)}}
+.lm>div{border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:8px}
+.lm .less{background:var(--dh-s)}.lm .more{background:var(--ok-s)}
+.lm h4{margin:0;font:800 12px var(--fb);letter-spacing:.12em;text-transform:uppercase}
+.lm .less h4{color:var(--dh)}.lm .more h4{color:var(--ok)}
+.lm ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:15px}
+
+/* walk away */
+.walk{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.walk li{display:grid;grid-template-columns:30px minmax(0,1fr);gap:10px;align-items:start;font-size:16.5px}
+.walk li i{font-style:normal;width:28px;height:28px;border-radius:50%;background:var(--yel);display:grid;place-items:center;font:800 13px var(--fb);color:#2B2140}
+
+/* honest */
+.honest{border:2px dashed var(--rule);border-radius:22px;padding:20px;display:flex;flex-direction:column;gap:10px}
+
+/* bonuses */
+.bonus{display:flex;flex-direction:column;gap:12px}
+.bn{background:#fff;border-radius:22px;padding:18px;display:flex;flex-direction:column;gap:6px;box-shadow:0 2px 12px rgba(33,27,46,.06);border-left:6px solid var(--yel)}
+.bn .tag{align-self:flex-start;font:800 11px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--dh)}
+.bn b{font:700 26px/1.05 var(--fd)}
+.bn .val{font:700 14px var(--fb);color:var(--ok)}
+.bn p{font-size:15.5px;color:var(--ink2)}
+.bn .lim{font-size:14px;font-weight:600;color:var(--dh)}
+
+/* stack */
+.stack{background:#fff;border-radius:28px;padding:24px 20px;box-shadow:0 0 0 3px var(--ink),0 14px 34px rgba(33,27,46,.14);display:flex;flex-direction:column;gap:12px}
+.row{display:flex;justify-content:space-between;gap:12px;font-size:16px;border-bottom:1px dashed var(--rule);padding-bottom:10px}
+.row b{white-space:nowrap}
+.tot{display:flex;justify-content:space-between;font:700 18px var(--fb)}
+.tot s{color:var(--muted)}
+.now{text-align:center;display:flex;flex-direction:column;gap:2px;margin-top:6px}
+.now .p{font:700 76px/1 var(--fd);color:var(--dh)}
+.credit{background:var(--au-s);border-radius:14px;padding:12px 14px;font-size:14.5px;color:var(--au);font-weight:500}
+
+/* why */
+.why{background:var(--sheet);border-radius:24px;padding:22px 20px;display:flex;flex-direction:column;gap:12px}
+
+/* proof */
+.proof{display:flex;flex-direction:column;gap:12px;align-items:center}
+.proof img{width:100%;max-width:460px;height:auto;border-radius:18px;background:var(--sheet);box-shadow:0 6px 20px rgba(43,33,64,.10)}
+
+/* guarantee */
+.guar{background:var(--ok);color:#fff;border-radius:28px;padding:26px 22px;display:flex;flex-direction:column;gap:12px;text-align:center;align-items:center}
+.guar .seal{width:84px;height:84px;border-radius:50%;background:#fff;color:var(--ok);display:grid;place-items:center;font:700 22px/1 var(--fd);text-align:center}
+.guar h3{color:#fff;font-size:34px}
+.guar p{max-width:32ch}
+
+/* faq */
+details{background:#fff;border-radius:16px;padding:15px 18px}
+details+details{margin-top:-8px}
+summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:10px}
+summary::after{content:"+";font-weight:800;color:var(--dh)}
+details[open] summary::after{content:"–"}
+details p{margin-top:8px;font-size:15.5px;color:var(--ink2)}
+
+.end{text-align:center;align-items:center}
+.ps{font-size:16px;color:var(--ink2);text-align:left}
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(247,242,232,.96);border-top:1px solid var(--rule);display:flex;justify-content:center;transform:translateY(110%);transition:transform .25s}
+.sticky.show{transform:none}
+.sticky .btn{min-height:52px;font-size:17px;width:100%;max-width:440px}
+:focus-visible{outline:3px solid var(--dh);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="w">
+
+<header class="hero" id="top">
+  <span class="lvl">Level 1 · The AuDHD Owner's Manual<sup>™</sup></span>
+  <h1>Am I <span class="d">ADHD</span>, <span class="a">autistic</span>, or both?</h1>
+  <p class="sub">Get clear on your own brain in 35 minutes. Without waiting years for an assessment. Even if every quiz told you something different.</p>
+  <a data-gumroad-action="buy" class="btn buy" data-where="hero" href="#">Get my map →</a>
+  <div class="trust"><span>Instant access</span><span>Works on your phone</span><span>30-day guarantee</span></div>
+</header>
+
+<section class="s">
+  <h2>This might sound familiar…</h2>
+  <div class="beats">
+    <p>You read a post about ADHD.</p>
+    <div class="post"><span class="hd">@someone · ADHD post</span><span class="tx">"ADHD brains crave novelty. Routine feels like a cage."</span></div>
+    <p>You nod. <i>That's me.</i></p>
+    <p>But wait. You <mark>need</mark> your routine. Without it, everything falls apart.</p>
+    <p>So you read a post about autism.</p>
+    <div class="post r"><span class="hd">@someone · autism post</span><span class="tx">"Autistic people need things to stay the same."</span></div>
+    <p>You nod again. <i>That's me too.</i></p>
+    <p>Except you're the one who gets bored of the same thing by Wednesday.</p>
+    <p class="verdict">Half of every post fits. The other half pulls you the other way.</p>
+  </div>
+  <div class="voices">
+    <div class="v au"><b>Autistic brain</b>I need structure.</div>
+    <div class="v dh"><b>ADHD brain</b>I hate being controlled.</div>
+    <div class="v au"><b>Autistic brain</b>I love routine.</div>
+    <div class="v dh"><b>ADHD brain</b>I'm allergic to repetition.</div>
+    <div class="v both"><b>Both, at the same time</b>Please schedule my chaos. But not too strictly.</div>
+  </div>
+</section>
+
+<section class="s">
+  <h2>And suddenly…</h2>
+  <div class="beats">
+    <p>It's 2 a.m. You're 40 tabs deep. (Again.)</p>
+    <p>Asking the same question you've asked for years.</p>
+    <p class="big"><mark>"What is wrong with me?"</mark></p>
+    <p>So you do what you've always done:</p>
+  </div>
+  <div class="three">
+    <div><b>Mask it</b><span>exhausting!</span></div>
+    <div><b>Push through</b><span>ouch!</span></div>
+    <div><b>Hope it passes</b><span>lonely!</span></div>
+  </div>
+</section>
+
+<section class="s">
+  <h2>You've tried it all</h2>
+  <ul class="list x">
+    <li>The free online quizzes<small>Three quizzes. Three different answers.</small></li>
+    <li>TikTok<small>Which says you're definitely AuDHD. And also a Scorpio.</small></li>
+    <li>Your doctor<small>"Everyone's a bit like that."</small></li>
+    <li>The assessment waitlist<small>Months. Maybe years.</small></li>
+    <li>The 2 a.m. articles<small>That describe you perfectly… for three paragraphs.</small></li>
+  </ul>
+  <p class="big">And you're still not sure.</p>
+</section>
+
+<section class="s">
+  <h2>The real cost?</h2>
+  <p>It's more than the hours lost to Googling.</p>
+  <div class="costs">
+    <div><b>The wrong fixes</b>Planners and routines made for a different brain. And the guilt when they don't stick.</div>
+    <div><b>The mask</b>Holding it together all day. Falling apart at home.</div>
+    <div><b>The people</b>Family who think you're "just not trying hard enough."</div>
+    <div><b>The doctor</b>You finally get the appointment. Then freeze and say "I'm fine."</div>
+  </div>
+  <div class="worst">
+    <span class="eye">The biggest cost?</span>
+    <p class="big">Slowly believing the problem is you.</p>
+    <p>It's not. You just never had the map.</p>
+  </div>
+</section>
+
+<section class="s">
+  <h2>Why nothing has worked</h2>
+  <div class="beats">
+    <p>Every test checks <mark>one side</mark>.</p>
+  </div>
+  <div class="split">
+    <div class="a1">ADHD tests<span>ask about ADHD</span></div>
+    <div class="a2">Autism tests<span>ask about autism</span></div>
+  </div>
+  <div class="beats">
+    <p>But when both live in one head, they <b>hide each other</b>.</p>
+    <p>The <span class="dh">ADHD</span> chaos covers the <span class="au">autistic</span> need for order.</p>
+    <p>The <span class="au">autistic</span> routines cover the <span class="dh">ADHD</span> mess.</p>
+    <p>So you score "a bit of both"… and walk away with nothing.</p>
+  </div>
+  <p class="hl">You don't need another one-sided test. You need a map of both brains, and the tug between them.</p>
+</section>
+
+<section class="s">
+  <span class="eye">A map that works with your brain, not against it</span>
+  <div class="me">
+    <div class="av" aria-hidden="true">B</div>
+    <div class="beats">
+      <h3>Hi, I'm Bhuvan.</h3>
+      <p>I'm AuDHD.</p>
+      <p>For most of my life, I made the most detailed plans… and watched them fall apart before lunch.</p>
+    </div>
+  </div>
+  <div class="stats">
+    <div><b>1,000+</b><span>people coached as a dietitian</span></div>
+    <div><b>14.5K</b><span>people on my Threads</span></div>
+  </div>
+  <div class="beats">
+    <p>I built this map for me first.</p>
+    <p>It's what I wish I'd had before my own assessment.</p>
+  </div>
+</section>
+
+<section class="intro">
+  <span class="eye">Introducing</span>
+  <h2>The <span class="a">Au</span><span class="d">DHD</span> Pre-Diagnosis Map™</h2>
+  <span class="lvl">Level 1 of the AuDHD Owner's Manual™</span>
+  <p>The first map built for both brains at once. In 35 minutes, from confused to clear.</p>
+</section>
+
+<section class="s">
+  <h2>What makes it different</h2>
+  <div class="diff">
+    <div><b>Both brains, same questions</b><span>ADHD and autism, side by side. So neither one hides the other.</span></div>
+    <div><b>The tug in the middle</b><span>The 7 pulls between your two brains. The part no test asks about.</span></div>
+    <div><b>It tells you what's next</b><span>The tools that fit your shape. And the ones to stop forcing.</span></div>
+  </div>
+</section>
+
+<section class="s">
+  <span class="eye">Where this fits</span>
+  <h2>The AuDHD Owner's Manual™</h2>
+  <div class="goal"><b>A life that fits your brain.</b>One goal. 3 levels to get there.</div>
+  <img class="circ" src="https://public-files.gumroad.com/qurqn7ebv90kbz8r17mnf4u45g8p" alt="The AuDHD Owner's Manual: a circle with three levels around the goal, a life that fits your brain. Level 1, Understand, lights up checkpoint by checkpoint and ends at Clear." loading="lazy">
+  <p class="big" style="text-align:center">This map is <mark>Level 1</mark>.<br>3 checkpoints. From Confusion to Clear.</p>
+</section>
+
+<section class="s">
+  <div class="cp">
+    <div class="top"><span class="n">1</span><div><b>Map Both Brains</b><span>Checkpoint 1 · about 15 min</span></div></div>
+    <p class="what">12 everyday ADHD moments. 12 autism moments. 6 that live in both. For each one: how often it's you, and whether you hide it.</p>
+    <div class="lm">
+      <div class="less"><h4>Less of</h4><ul><li>"Half of this post is me"</li><li>Guessing which brain a struggle comes from</li><li>Hiding traits you didn't know had names</li></ul></div>
+      <div class="more"><h4>More of</h4><ul><li>Both sides on one screen</li><li>Words for things you've felt forever</li><li>"Oh. <i>That's</i> why."</li></ul></div>
+    </div>
+  </div>
+  <div class="cp">
+    <div class="top"><span class="n">2</span><div><b>Spot The Tug</b><span>Checkpoint 2 · about 12 min</span></div></div>
+    <p class="what">7 tugs where your brains want opposite things. 11 ways people mask. 11 burnout signs.</p>
+    <div class="lm">
+      <div class="less"><h4>Less of</h4><ul><li>Feeling pulled two ways without knowing why</li><li>Running on empty and calling it normal</li><li>Burnout that sneaks up on you</li></ul></div>
+      <div class="more"><h4>More of</h4><ul><li>Knowing which tug costs you most</li><li>Seeing what masking really takes</li><li>Your full AuDHD shape</li></ul></div>
+    </div>
+  </div>
+  <div class="cp">
+    <div class="top"><span class="n">3</span><div><b>Pick Main Quest</b><span>Checkpoint 3 · about 5 min</span></div></div>
+    <p class="what">3 values. 3 areas of life. One main quest to put first. 10 spoons to split.</p>
+    <div class="lm">
+      <div class="less"><h4>Less of</h4><ul><li>Trying to fix everything at once</li><li>Starting 5 things, finishing none</li><li>Spending spoons you don't have</li></ul></div>
+      <div class="more"><h4>More of</h4><ul><li>One clear thing to work on first</li><li>Permission to let the rest wait</li><li>A plan you can actually keep</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="s">
+  <h2>What you walk away with</h2>
+  <ul class="walk">
+    <li><i>1</i><span><b>Your answer.</b> ADHD-leading, autism-leading, both, or the AuDHD tug-of-war.</span></li>
+    <li><i>2</i><span><b>Your shape.</b> ADHD, autism, the tug, masking and burnout. On one screen.</span></li>
+    <li><i>3</i><span><b>Your shape, decoded.</b> The tools that fit. And what to stop forcing.</span></li>
+    <li><i>4</i><span><b>Your strengths.</b> Not just your struggles.</span></li>
+    <li><i>5</i><span><b>Your plan card.</b> Your main quest, saved.</span></li>
+  </ul>
+</section>
+
+<section class="honest">
+  <span class="eye">Honest truth</span>
+  <div class="beats">
+    <p>This map can't diagnose you. Only a clinician can.</p>
+    <p>And it's not a 5-minute quiz. It takes 35 minutes.</p>
+    <p><b>But that's exactly why</b> it's the clearest picture of your brain you'll have… before a doctor ever sees you.</p>
+  </div>
+</section>
+
+<section class="s">
+  <h2>Bonuses</h2>
+  <div class="bonus">
+    <div class="bn"><span class="tag">Bonus #1</span><b>1-on-1 Map Call</b><span class="val">$150 value</span><p>30 minutes with me, on video. We go through your map together and pick your first move.</p><span class="lim">For the first 50 buyers only.</span></div>
+    <div class="bn"><span class="tag">Bonus #2</span><b>Your Doctor Page</b><span class="val">$27 value</span><p>Your answers, turned into one page for an assessment. Plus a before, during and after plan. No more freezing in the room.</p></div>
+    <div class="bn"><span class="tag">Bonus #3</span><b>The Peace Treaty Wizard</b><span class="val">$10 value</span><p>When your two brains fight, it walks them to one next step. A tool from Level 2, yours to keep.</p></div>
+  </div>
+</section>
+
+<section id="price">
+  <div class="stack">
+    <span class="eye" style="text-align:center">Everything you get</span>
+    <div class="row"><span>The AuDHD Pre-Diagnosis Map™ (Level 1, all 3 checkpoints)</span><b>$97</b></div>
+    <div class="row"><span>Bonus #1: 1-on-1 Map Call (first 50 buyers)</span><b>$150</b></div>
+    <div class="row"><span>Bonus #2: Your Doctor Page</span><b>$27</b></div>
+    <div class="row"><span>Bonus #3: The Peace Treaty Wizard</span><b>$10</b></div>
+    <div class="tot"><span>Total value</span><s>$284</s></div>
+    <div class="now"><span class="eye">Today</span><span class="p">$37</span></div>
+    <a data-gumroad-action="buy" class="btn buy" data-where="price" href="#">Get my map →</a>
+    <p class="credit"><b>Plus:</b> your $37 counts toward the full AuDHD Owner's Manual if you join later.</p>
+    <p class="small muted" style="text-align:center">Instant access · Lifetime updates · Saves on your device</p>
+  </div>
+</section>
+
+<section class="why">
+  <h3>Why so accessible?</h3>
+  <div class="beats">
+    <p>Because I know what it's like to need answers and not be able to afford them.</p>
+    <p>A waitlist shouldn't decide when you get to understand yourself.</p>
+    <p>And I'd rather you start at Level 1 than skip to tools that don't fit.</p>
+  </div>
+</section>
+
+<section class="s">
+  <span class="eye">From my Threads</span>
+  <h2>Their words, not mine</h2>
+  <div class="proof" aria-label="Screenshots of replies on Threads">
+    <img src="https://public-files.gumroad.com/a1i9xwdqs890ef8wddlt7a3pv8kx" alt="Reply from a reader on Threads" loading="lazy">
+    <img src="https://public-files.gumroad.com/ywjgns5qtd43bxrzad2t13zz2x1h" alt="Reply from a reader on Threads" loading="lazy">
+    <img src="https://public-files.gumroad.com/6eqslg8l7ipwzdic8n5ymyoc5hl2" alt="Reply from a reader on Threads" loading="lazy">
+    <img src="https://public-files.gumroad.com/rce24s9jf06z1ucwslyj78xo2gw9" alt="Reply from a reader on Threads" loading="lazy">
+    <img src="https://public-files.gumroad.com/gtv80uiz4rqox4e66icku5v6q3vh" alt="Reply from a reader on Threads" loading="lazy">
+    <img src="https://public-files.gumroad.com/8do6fcej0g3juyysr8qxxqhld0a6" alt="Reply from a reader on Threads" loading="lazy">
+    <img src="https://public-files.gumroad.com/r52l3rebuawe896nsnrnvpn24b57" alt="Reply from a reader on Threads" loading="lazy">
+    <img src="https://public-files.gumroad.com/8352mnre9rbqa4g71jdma3uato09" alt="Reply from a reader on Threads" loading="lazy">
+  </div>
+</section>
+
+<section class="guar">
+  <div class="seal">3 things<br>or free</div>
+  <h3>The 3-Things Guarantee</h3>
+  <p>Learn at least 3 things about your brain you didn't know before.</p>
+  <p>If you don't, even after our call, email me within 30 days. Full refund. Keep everything.</p>
+</section>
+
+<section class="s">
+  <h2>Questions</h2>
+  <div>
+    <details><summary>Is this a diagnosis?</summary><p>No. It comes before a diagnosis, never instead of one. Only a qualified clinician can diagnose ADHD or autism.</p></details>
+    <details><summary>I'm already diagnosed with one. Is it still useful?</summary><p>Yes. Many people find the other side hiding behind the one they know.</p></details>
+    <details><summary>I found out late. Is it too late?</summary><p>Not at all. Lots of people only find out in their 30s, 40s or later. Understanding your brain changes how you treat yourself from here on.</p></details>
+    <details><summary>How long does it take?</summary><p>About 35 minutes. It saves as you go, so you can do one checkpoint a day.</p></details>
+    <details><summary>Where do my answers go?</summary><p>Nowhere. They stay on your own device. No login, no account.</p></details>
+    <details><summary>What do I get after paying?</summary><p>A link to open your map right away, on your phone or computer.</p></details>
+    <details><summary>How do I book the call?</summary><p>Finish your map, then email me a screenshot. I'll send you a time. First 50 buyers.</p></details>
+  </div>
+</section>
+
+<section class="s end">
+  <h2>You're not broken.<br>You're running two operating systems.</h2>
+  <p>Nobody gave you the manual. This is Level 1 of it.</p>
+  <a data-gumroad-action="buy" class="btn buy" data-where="end" href="#" style="width:100%">Get my map →</a>
+  <p class="ps"><b>P.S.</b> If you've spent years wondering "am I lazy, or too much, or both?", 35 minutes is a small price to finally see your own shape.</p>
+  <p class="ps"><b>P.P.S.</b> The 1-on-1 call is me, on video, going through your map with you. It's only for the first 50 buyers.</p>
+</section>
+
+<p class="small muted" style="text-align:center">© 2026 How to AuDHD by Bhuvan · Not medical advice</p>
+</div>
+
+<div class="sticky" id="sticky"><a data-gumroad-action="buy" class="btn buy" data-where="sticky" href="#">Get my map →</a></div>
+
+<script>
+(function(){
+  var q=new URLSearchParams(location.search);
+  document.querySelectorAll(".buy").forEach(function(a){
+    a.addEventListener("click",function(){try{posthog.capture("checkout_clicked",{product:"pre_diagnosis_map",price:37,where:a.dataset.where,page:"v3",utm_content:q.get("utm_content")||null})}catch(e){}});
+  });
+  try{posthog.register({surface:"gumroad"});posthog.capture("gumroad_page_viewed",{product:"pre_diagnosis_map",page:"v3"})}catch(e){}
+  var st=document.getElementById("sticky"),hero=document.getElementById("top"),price=document.getElementById("price");
+  function upd(){var h=hero.getBoundingClientRect().bottom<0,p=price.getBoundingClientRect();var inPrice=p.top<innerHeight&&p.bottom>0;st.classList.toggle("show",h&&!inPrice)}
+  addEventListener("scroll",upd,{passive:true});upd();
+  document.querySelectorAll("details").forEach(function(x){x.addEventListener("toggle",function(){if(x.open)try{posthog.capture("faq_opened",{q:x.querySelector("summary").textContent})}catch(e){}})});
+})();
+</script>
