@@ -26,6 +26,29 @@ posthog.init("phc_vhUmnsmQbPvXfpUHhuKVgh6a3arJ6E5ivCV8y2KjcBCu",{api_host:"https
 .tlegend div{background:var(--sheet);border-radius:12px;padding:9px 10px;font-size:12.5px;line-height:1.35;display:flex;flex-direction:column;gap:2px}
 .tlegend b{font-size:13.5px}
 @media (prefers-reduced-motion:no-preference){.tri .dash{animation:tdash 1.6s linear infinite}@keyframes tdash{to{stroke-dashoffset:-24}}}
+.cm{background:#17141F;color:#F1EAF7;border-radius:24px;padding:8px 6px 14px;overflow:hidden}
+.cm .cmv{overflow:hidden;border-radius:18px}
+.cm svg{width:100%;height:auto;display:block}
+.cm [data-k]{cursor:pointer}
+.cm .stp .bl{transition:transform .2s;transform-box:fill-box;transform-origin:center}
+.cm .stp:hover .bl,.cm .stp.sel .bl{transform:scale(1.08)}
+.cm .stp.sel .bl{stroke:#FFD43B;stroke-width:5}
+.cm .cinfo{margin:6px 8px 0;background:#221D2C;border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;min-height:120px}
+.cm .cinfo .tg{align-self:flex-start;font:700 11px var(--fb);letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:rgba(185,166,240,.16);color:#B9A6F0}
+.cm .cinfo h3{margin:0;font:700 20px/1.15 var(--fb);color:#F1EAF7}
+.cm .cinfo p{margin:0;font-size:14.5px;line-height:1.55;color:#D3C9DE}
+.cm .cinfo p b{color:#F1EAF7}
+.cm .chint{margin:8px 0 0;text-align:center;font-size:12.5px;color:#A79FB6}
+.cm .ccap{margin:4px 10px 6px;font:600 14px var(--fb);color:#F1EAF7;text-align:center}
+.cm .pulse{animation:cmp 1.6s ease-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes cmp{0%{transform:scale(.75);opacity:1}100%{transform:scale(1.3);opacity:0}}
+.cm .glow{animation:cmg 1.4s ease-in-out infinite}
+@keyframes cmg{50%{opacity:.45}}
+.cm.zout svg{animation:cmz 1.1s cubic-bezier(.2,.7,.2,1) both;transform-origin:var(--ox) var(--oy)}
+@keyframes cmz{from{transform:scale(2.4)}to{transform:scale(1)}}
+.cm.zin svg{animation:cmzi .6s cubic-bezier(.6,0,.8,.4) both;transform-origin:var(--ox) var(--oy)}
+@keyframes cmzi{from{transform:scale(1)}to{transform:scale(2.6);opacity:.2}}
+@media (prefers-reduced-motion:reduce){.cm .pulse,.cm .glow,.cm.zout svg,.cm.zin svg{animation:none}}
 </style></head><body>
 <title>Am I AuDHD? The Pre-Diagnosis Map</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -766,7 +789,7 @@ function dotField(){
   ["pointerleave","pointerup","pointercancel"].forEach(t=>brand.addEventListener(t,()=>{px=null;kick()}));
 }
 /* ================= route ================= */
-const CH=["How it works","ADHD","Autism","The seesaw","Masking & burnout","Your map","Your season"];
+const CH=["How it works","ADHD","Autism","The seesaw","Masking & burnout","Your map","Your main quest"];
 const route=cur=>`<div class="route">${CH.map((c,i)=>`<div class="${i<cur?"done":i===cur?"now":""}"><i>${i<cur?"✓":i}</i><span>${c}</span></div>`).join("")}</div>`;
 
 /* ================= WELCOME ================= */
@@ -793,12 +816,12 @@ function renderWelcome(){
      ${li("seesaw","var(--ink)","Your AuDHD seesaw","two systems that want opposite things at the same time")}
      ${li("mask","var(--ink)","Your masking and burnout","the hidden cost of performing \"normal\"")}
      ${li("map","var(--ink)","Your complete brain map","your shape across all five, in one picture")}
-     ${li("path","var(--dh)","Your season","one area of life to work on first, and how to split your energy")}</ul></div>
+     ${li("path","var(--dh)","Your main quest","the one area of life to work on first, and how to split your spoons")}</ul></div>
    </div>
    <div class="facts"><span>About 35 minutes</span><span>Saves on this device</span><span>No login</span><span>Comes before a diagnosis</span></div>
    <div class="stack g12"><h2>The whole journey, and where today fits</h2>
-    <p>Every AuDHD life change goes around the same three sides. <b>Today you walk side 1, Understand</b>: steps 1 to 3. It ends at <b>Clear</b>: you know what's going on in your head, and what it needs.</p>
-    ${triMap("start")}</div>
+    <p>Every AuDHD life change goes around the same circle: from <b>Confusion</b> to <b>Clear</b>, from <b>Civil War</b> to <b>Unstuck</b>, from <b>Burnout</b> to <b>Capable</b>. In the middle sits what you're really after: <b>a life that fits your brain</b>.</p>
+    ${circleMap("start")}</div>
    <div class="journey"><h3>Your Journey</h3>${route(0)}
     <p class="small">Part 0 shows how your brain works. Parts 1 to 4 map each piece. Part 5 puts it all together. Part 6 picks where you go next.</p></div>
    ${LEAD&&!S.email?`<form class="leadf" id="leadf" novalidate><label for="em"><b>Start free: How your AuDHD brain works</b><br><span class="small muted">About 8 minutes, interactive. We'll also email you the link so you can come back.</span></label><input type="email" id="em" name="email" autocomplete="email" placeholder="your@email.com" required><input type="text" name="bot-field" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true"><p class="small" id="emerr" style="color:var(--dh)" hidden>That email doesn't look right. Check it and try again.</p><button class="btn" type="submit">Start the free walkthrough →</button></form>`:""}
@@ -808,7 +831,7 @@ function renderWelcome(){
   wireTop();
   requestAnimationFrame(buildLogo);
   if(document.fonts) document.fonts.ready.then(buildLogo);
-  $("#go").onclick=()=>{const go=()=>{S.view="p0";save();render();scrollTo(0,0)};if(!S.setup)openSheet(true,go);else go()};
+  $("#go").onclick=()=>{const go=()=>{S.view="p0";save();render();scrollTo(0,0)};const run=()=>{if(!S.setup)openSheet(true,go);else go()};if(started)run();else cmZoomIn(run)};
   const lf=$("#leadf");if(lf)lf.onsubmit=e=>{e.preventDefault();const em=$("#em").value.trim();if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)){$("#emerr").hidden=false;return}
    const body=new URLSearchParams({"form-name":"leads",email:em,source:"lead-magnet-part0","bot-field":lf.elements["bot-field"].value}).toString();
    fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body}).catch(()=>{});
@@ -828,15 +851,15 @@ function exampleRadar(){
 const T=(t,b)=>`<b class="t">${t}</b>${b}`;
 const STG={in:"Stage 1 · Input",pr:"Stage 2 · Processing",out:"Stage 3 · Output"};
 const SCREENS_ALL=[
-/* 1 */ {t:`${ic("inf","var(--au)")}${ic("bolt","var(--dh)")} Two Voices, One Brain`, vis:voicesVis,
- beats:[`If that chat sounds like the inside of your head, you've met the two voices.`,
+/* 1 */ {t:`${ic("inf","var(--au)")}${ic("bolt","var(--dh)")} Two Brains, One Head`, vis:voicesVis,
+ beats:[`If that chat sounds like the inside of your head, you've met your two brains.`,
   {c:"big",h:`That's your brain.`},
-  `One voice is tuned for pattern, order and depth. The other is tuned for novelty, speed and stimulation. They share <b>one body, one day and one battery</b>. Neither one has an off switch.`,
-  `This part explains <b>how the two voices work</b>, why they clash, and what that means for your everyday life.`]},
+  `One brain is tuned for pattern, order and depth. The other is tuned for novelty, speed and stimulation. They share <b>one body, one day and one battery</b>. Neither one has an off switch.`,
+  `This part explains <b>how your two brains work</b>, why they clash, and what that means for your everyday life.`]},
 /* 2 */ {t:`${ic("key","var(--dh)")} The Core Idea`, vis:momentVis,
  beats:[`Every moment passes through <b>three stages</b>. Let's follow one: <b>your phone buzzes while a friend is talking.</b>`,
   {c:"stg-in",h:`<b>Input: what comes in.</b> Everything that reaches you: sounds, sights, your body, your feelings.`},
-  {c:"stg-pr",h:`<b>Processing: what your head does with it.</b> Sorting, deciding, feeling. This is where the two voices talk.`},
+  {c:"stg-pr",h:`<b>Processing: what your head does with it.</b> Sorting, deciding, feeling. This is where the two brains talk.`},
   {c:"stg-out",h:`<b>Output: what you do.</b> What you say, do or show. It goes back out into the world, and the loop starts again.`},
   `This loop runs <b>every second of every day</b>. In your brain it works fine. The settings on each stage just sit at different levels.`,
   `Now switch to <b>AuDHD settings</b> and follow the same moment again.`]},
@@ -855,21 +878,21 @@ const SCREENS_ALL=[
   `You're flooded with input (ADHD) and can't tune any of it out (autism). That's why AuDHD people feel overwhelmed in places that seem normal to everyone else.`,
   `Researchers call the result a <b>narrow window of tolerance</b>. The amount of stimulation you can handle gets squeezed from both sides.`]},
 /* 6 */ {stage:"pr", t:`${ic("gear","var(--au)")} Where the Tug-of-War Lives`, vis:procVis,
- beats:[`Once input arrives, your head has to <b>do something with it</b>. This is where the two voices start arguing.`,
-  {c:"rule dh",h:`<span class="who" style="color:var(--dh)">${ic("bolt")} Your ADHD voice asks:</span><span class="ask">"Is this interesting?"</span><span class="yn"><b>Yes</b> → full power.</span><span class="yn"><b>No</b> → shut it down and find something better.</span>`},
-  {c:"rule au",h:`<span class="who" style="color:var(--au)">${ic("inf")} Your autism voice asks:</span><span class="ask">"Does this fit the plan?"</span><span class="yn"><b>Yes</b> → safe, carry on.</span><span class="yn"><b>No</b> → danger, analyse further.</span>`},
+ beats:[`Once input arrives, your head has to <b>do something with it</b>. This is where the two brains start arguing.`,
+  {c:"rule dh",h:`<span class="who" style="color:var(--dh)">${ic("bolt")} Your ADHD brain asks:</span><span class="ask">"Is this interesting?"</span><span class="yn"><b>Yes</b> → full power.</span><span class="yn"><b>No</b> → shut it down and find something better.</span>`},
+  {c:"rule au",h:`<span class="who" style="color:var(--au)">${ic("inf")} Your autistic brain asks:</span><span class="ask">"Does this fit the plan?"</span><span class="yn"><b>Yes</b> → safe, carry on.</span><span class="yn"><b>No</b> → danger, analyse further.</span>`},
   `Two different questions, about the same moment, at the same time.`,
-  {c:"callout yel",h:T("The tug-of-war",`Most of your daily struggle comes from the two voices <b>reaching different answers about the same moment</b>, then fighting over what to do.`)}]},
+  {c:"callout yel",h:T("The tug-of-war",`Most of your daily struggle comes from your two brains <b>reaching different answers about the same moment</b>, then fighting over what to do.`)}]},
 /* 7 */ {stage:"out", t:`${ic("mask","var(--dh)")} What You Actually Do`, vis:maskVis,
- beats:[`After the input arrives and the voices have argued, you <b>do something</b>. This is the part the world sees.`,
+ beats:[`After the input arrives and the two brains have argued, you <b>do something</b>. This is the part the world sees.`,
   {c:"big",h:`Most of the time, what you show the world is different from what your brain actually wanted to do.`},
-  `In between sits a <b>mask</b>: what you say out loud, while the two voices are still arguing inside.`,
+  `In between sits a <b>mask</b>: what you say out loud, while the two brains are still arguing inside.`,
   {c:"callout pink",h:T("Burnout comes from the mask",`It builds up from the energy it costs to hide your natural reactions, all day, every day, for years.`)}]},
 /* 8 */ {t:`${ic("map","var(--ink)")} The Whole Loop`, vis:pictureVis,
  beats:[`Here's everything in one picture, from the moment something happens to what it costs you.`,
-  {c:"callout",h:T(`${ic("cam")} Screenshot this`,`Next time you're overwhelmed and can't tell why, ask: <em>where am I stuck?</em><span class="yn"><b>Input:</b> too much coming in.</span><span class="yn"><b>Processing:</b> the voices are fighting.</span><span class="yn"><b>Output:</b> the mask is too heavy.</span><span class="yn" style="margin-top:6px">Knowing where you're stuck is the first step to getting unstuck.</span>`)}]},
+  {c:"callout",h:T(`${ic("cam")} Screenshot this`,`Next time you're overwhelmed and can't tell why, ask: <em>where am I stuck?</em><span class="yn"><b>Input:</b> too much coming in.</span><span class="yn"><b>Processing:</b> the brains are fighting.</span><span class="yn"><b>Output:</b> the mask is too heavy.</span><span class="yn" style="margin-top:6px">Knowing where you're stuck is the first step to getting unstuck.</span>`)}]},
 /* 9 */ {t:`${ic("inf","var(--au)")}${ic("bolt","var(--dh)")} Quick Reference`, vis:qrVis,
- beats:[`The cheat sheet for both voices, and for when they run together.`]},
+ beats:[`The cheat sheet for both brains, and for when they run together.`]},
 /* 10 */ {t:`${ic("path","var(--dh)")} Before You Start`, vis:null, plain:true}
 ];
 const SCREENS=LEAD?SCREENS_ALL.slice(0,9):SCREENS_ALL;
@@ -924,7 +947,7 @@ addEventListener("keydown",e=>{if(S.view!=="p0"||/INPUT|TEXTAREA|SELECT/.test(do
 /* ---------- visual 1: two voices (from the #1 post format) ---------- */
 function voicesVis(v){
   const CH=[["au","I need structure."],["dh","I hate being controlled."],["au","I love the same routine."],["dh","I'm allergic to repetition."]];
-  v.innerHTML=`${tryPill("Tap Replay to hear the two voices again.")}
+  v.innerHTML=`${tryPill("Tap Replay to hear both brains again.")}
    <div class="chat" id="chat">${CH.map(([s,t],i)=>`<div class="bub ${s}"><span class="who">${s==="au"?ic("inf")+" Autism":"ADHD "+ic("bolt")}</span>${t}</div>`).join("")}
     <div class="bub both"><span class="who">${ic("inf")}${ic("bolt")} Living with both</span>Please schedule my chaos. But not too strictly.<br>Let it surprise me. But not too much.</div></div>
    <div class="res2"><span class="rt">One shared battery: energy, attention, time</span><div class="bar2"><i class="a"></i><i class="mid"></i><i class="d"></i></div>
@@ -1049,7 +1072,7 @@ function procVis(v){
    ["Plans changed last minute","Ooh, something new. Fine by me!","NO. The plan was the plan.",0],
    ["Same lunch as yesterday","Again? So boring.","Perfect. Same as always.",0],
    ["Deep dive into your favourite topic","Is it interesting? YES!","Does it fit the pattern? YES!",1]];
-  v.innerHTML=`${tryPill("Pick a moment. Watch both voices answer it.")}
+  v.innerHTML=`${tryPill("Pick a moment. Watch both brains answer it.")}
    <div class="scen">${SC.map((s,i)=>`<button class="chip" data-s="${i}">${s[0]}</button>`).join("")}</div>
    <div class="chat small2"><div class="bub dh" id="q1"></div><div class="bub au" id="q2"></div></div>
    <div class="merge"><div class="node" style="text-align:center" id="res"></div>
@@ -1102,8 +1125,8 @@ function pictureVis(v){
 
 /* ---------- visual 9: quick reference as flip cards ---------- */
 function qrVis(v){
-  const Q=[["dh",`${ic("bolt")} The ADHD voice`,"No filter, everything at once, novelty wears off fast","Interest, urgency, novelty, challenge","Bored, understimulated, stuck in routine, forced to wait","Speed, creativity, energy bursts, making connections"],
-   ["au",`${ic("inf")} The autism voice`,"Full resolution, nothing fades, details first","Predictability, depth, pattern, favourite topics","Too much input, routine broken, sudden change, social overload","Depth, pattern spotting, loyalty, systematic thinking"],
+  const Q=[["dh",`${ic("bolt")} The ADHD brain`,"No filter, everything at once, novelty wears off fast","Interest, urgency, novelty, challenge","Bored, understimulated, stuck in routine, forced to wait","Speed, creativity, energy bursts, making connections"],
+   ["au",`${ic("inf")} The autistic brain`,"Full resolution, nothing fades, details first","Predictability, depth, pattern, favourite topics","Too much input, routine broken, sudden change, social overload","Depth, pattern spotting, loyalty, systematic thinking"],
    ["both",`${ic("inf")}${ic("bolt")} Both at once`,"Flooded and unable to tune out (the narrow window)","Needs novelty and predictability at the same time","The tug-of-war tips too far either way","When both line up, deep creative focus meets pattern spotting, and you're unstoppable"]];
   v.innerHTML=`${tryPill("Tap a card to flip it.")}<div class="flips">${Q.map(q=>`<button class="flip ${q[0]}" aria-pressed="false"><span class="fr"><b>${q[1]}</b><span class="small">Tap to flip</span></span>
     <span class="bk"><b>${q[1]}</b><dl><dt>Input</dt><dd>${q[2]}</dd><dt>Fuel</dt><dd>${q[3]}</dd><dt>Crashes when</dt><dd>${q[4]}</dd><dt>Strength</dt><dd>${q[5]}</dd></dl></span></button>`).join("")}</div>`;
@@ -1126,7 +1149,7 @@ function beforeStart(){
    ["gear","Processes, not labels","This map asks \"what's going on in my brain?\" instead of \"what's wrong with me?\"<br>The idea comes from process-based therapy research."],
    ["path","Lived experience","Built from 30 years of living with an AuDHD brain.<br>Checked against published research."]];
   return `<div class="stack g16">
-   <p>Now you know how the two voices work. Here's how to map yours.</p>
+   <p>Now you know how your two brains work. Here's how to map yours.</p>
    <div class="vis">${tryPill("Tap each rule once you've read it.")}
     <div class="rules">${RULES.map((r,i)=>`<button class="rulec" data-r="${i}" aria-pressed="false"><span class="tk">✓</span><span>${T(r[0],r[1])}</span></button>`).join("")}</div>
     <p class="small muted" id="rc" style="text-align:center;margin-top:8px">0 of 4 read</p></div>
@@ -1512,6 +1535,7 @@ function miniHTML(key){
       <p><b>${strong.length} of ${cards.length}</b>${strong.length?`: ${strong.map(c=>c.lab).join(", ")}.`:"."}</p>
       ${strong.length?`<p class="small">You hide <b>${hid}</b> of them from people, at least sometimes.</p>`:""}
       <p class="small muted">Full dot: weekly, daily or "it depends". Half dot: monthly.</p></div>
+     ${dh?"":circleMap("s1")}
      <p class="muted">${dh?"Next: Part 2, your autism side.":"Next: Part 3, where the two sides meet."}</p>`;}
   if(key==="seesaw"){const SS=dk("seesaw");
     return `${stage(3,"Your seesaw is mapped.",4)}
@@ -1604,9 +1628,11 @@ function renderResults(){
     ${decodeHTML(s)}
     <p class="small muted">Start with one change, not all of them. Pick the one that feels easiest.</p></div>
 
+   <div class="stack g12"><h2>Where you are</h2>${circleMap("s2")}</div>
+
    <div class="stack g12"><h2>What next</h2>
     <div class="offer"><b>Make your doctor page</b><span class="small muted">Your answers, turned into one page you can bring to an assessment, or use to explain yourself to people you love. About 3 minutes.</span><button class="btn ghost" id="toDoc" style="min-height:46px">Make my doctor page →</button></div>
-    <div class="offer on"><span class="you-badge">Part 6</span><b>Choose your season</b><span class="small muted">You know your shape. Now pick the one area of life to work on first, and how much energy it gets. About 5 minutes.</span><button class="btn" id="toSeason" style="min-height:46px">Choose my season →</button></div></div>
+    <div class="offer on"><span class="you-badge">Part 6</span><b>Pick your main quest</b><span class="small muted">You know your shape. Now pick the one area of life to work on first, and how many spoons it gets. About 5 minutes.</span><button class="btn" id="toSeason" style="min-height:46px">Pick my main quest →</button></div></div>
 
    <div class="note pink">${T("This comes before a diagnosis.","It's a pre-diagnosis map, built from 30 years of lived experience and checked against published research. Your answers <i>look like</i> a pattern. Only a qualified clinician can diagnose ADHD or autism.")}</div>
    <button class="btn ghost" id="redo">← Review my answers</button><button class="textbtn" id="restart" style="align-self:center">Start the whole Map again</button></section>`;
@@ -1618,6 +1644,108 @@ function renderResults(){
   const h=$("#st");h&&h.focus({preventScroll:true});
 }
 
+
+
+/* ================= THE AuDHD CIRCLE (start, between steps, and the end) =================
+   Centre: the dream outcome. Pink: the problem. Green: how. Gold: who you become. 9 steps outside. */
+const CM_CX=560,CM_CY=520,CM_VB=[-110,-20,1340,1150];
+const cmPt=(r,deg)=>{const a=deg*Math.PI/180;return [CM_CX+r*Math.sin(a),CM_CY-r*Math.cos(a)]};
+const cmF=n=>Math.round(n*10)/10;
+const cmArc=(r,a1,a2,sw)=>{const [x1,y1]=cmPt(r,a1),[x2,y2]=cmPt(r,a2);return `M${cmF(x1)},${cmF(y1)} A${r},${r} 0 0 ${sw} ${cmF(x2)},${cmF(y2)}`};
+const CM_PH=[
+ {k:"p0",name:"Understand",prob:"Confusion",feel:"lost",to:"Clear",mid:300,say:"Phase 1 · steps 1 to 3 · this map",text:"Kills the confusion of never fitting the ADHD box or the autism box. You come out <b>Clear</b>: you know what's going on in your head, and what it needs."},
+ {k:"p1",name:"Channel",prob:"Civil War",feel:"stuck",to:"Unstuck",mid:60,say:"Phase 2 · steps 4 to 6 · Owner's Manual",text:"Ends the civil war between your two brains: what goes in, how they decide, and what you do. You come out <b>Unstuck</b>."},
+ {k:"p2",name:"Compound",prob:"Burnout",feel:"drained",to:"Capable",mid:180,say:"Phase 3 · steps 7 to 9 · Owner's Manual",text:"Breaks the burnout cycle with a spoon budget, a rhythm and small wins that hold up on bad weeks. You come out <b>Capable</b>."}];
+const CM_ST=[
+ ["Map Both","Brains","profile",267,"→ How your two brains take in the world and decide, in a quick walk-through<br>→ 12 everyday ADHD moments, 12 autism moments, and 6 that live in both<br>→ For each one: how often it's you, and whether you hide it<br><b>You walk away with:</b> your profile, the traits that are strong and the ones you hide.","This map · Parts 0 to 2 · about 15 min","Map both brains","Your ADHD side and your autism side, mapped side by side."],
+ ["Spot The","Tug","costs",300,"→ 7 tugs where your brains want opposite things (calm vs stimulation, familiar vs new, alone vs together…)<br>→ 11 ways people mask, and which ones cost you most<br>→ 11 burnout signs, to see where you are right now<br><b>You walk away with:</b> your full AuDHD shape, what it's costing you, and your red flags.","This map · Parts 3 to 5 · about 12 min","Spot the tug","The tug-of-war, masking and burnout: what it costs you."],
+ ["Pick Main","Quest","focus",332,"→ Pick 3 values that matter even on a bad day<br>→ Rate health, wealth and relationships<br>→ Choose your main quest, and for how long<br>→ Split your 10 spoons across the three<br><b>You walk away with:</b> your plan card.","This map · Part 6 · about 5 min","Pick your main quest","The one area of life to work on first."],
+ ["Tune","Inputs","setup",28,"Sleep, food, movement, screens, noise and your space: everything going in, set up so neither brain gets flooded.<br><b>You walk away with:</b> your setup.","Owner's Manual · input","Tune your inputs","Sleep, food, movement, screens, noise and your space, set up for both brains."],
+ ["Make","Peace","treaty",60,"When your two brains fight, they agree on one next step. The full Peace Treaty, for every kind of stuck.<br><b>You walk away with:</b> your treaty.","Owner's Manual · processing","Make peace","The full Peace Treaty, for every kind of stuck."],
+ ["Make","Moves","output",92,"Small moves on your main quest, even before you feel ready.<br><b>You walk away with:</b> your next moves.","Owner's Manual · output","Make moves","Small moves on your main quest, even before you feel ready."],
+ ["Budget","Spoons","energy",148,"Know what fills your spoons and what drains them, and spend them on purpose.<br><b>You walk away with:</b> your energy budget.","Owner's Manual · energy","Budget your spoons","What fills your spoons, what drains them, and how to spend them on purpose."],
+ ["Build","Rhythm","anchors",180,"A few fixed anchors for one brain, freedom in between for the other.<br><b>You walk away with:</b> your anchors.","Owner's Manual · rhythm","Build your rhythm","A few fixed anchors for one brain, freedom in between for the other."],
+ ["Stack","Wins","momentum",212,"Small wins, stacked daily, until your main quest is done. A 2-minute check-in counts every bounce-back.<br><b>You walk away with:</b> momentum.","Owner's Manual · the goal","Stack wins","A 2-minute daily check-in that counts every win and bounce-back."]];
+const CM_OFF={"yl-Capable":{"x":27,"y":-33},"yl-Unstuck":{"x":-29,"y":-25},"yl-Clear":{"x":19,"y":16},"pk2":{"x":-3,"y":-42},"pk1":{"x":-34,"y":16},"pk0":{"x":38,"y":18},"goal":{"x":-1,"y":-5},"s4":{"x":14,"y":-18},"s3":{"x":5,"y":-15},"s5":{"x":-1,"y":-14},"s2":{"x":-6,"y":-12}};
+const IC=c=>[
+ /* 1 map both brains: two friendly blobs */
+ `<circle cx="-12" cy="2" r="15" fill="currentColor" fill-opacity=".22"/><circle cx="12" cy="2" r="15" fill="currentColor" fill-opacity=".22"/><circle cx="-16" cy="-1" r="2.3" fill="currentColor" stroke="none"/><circle cx="-8" cy="-1" r="2.3" fill="currentColor" stroke="none"/><circle cx="8" cy="-1" r="2.3" fill="currentColor" stroke="none"/><circle cx="16" cy="-1" r="2.3" fill="currentColor" stroke="none"/><path d="M-16,7 Q-12,10 -8,7"/><path d="M8,7 Q12,10 16,7"/>`,
+ /* 2 spot the tug: rope with a knot, pulled both ways */
+ `<path d="M-22,0 C-15,-6 -7,6 0,0 C7,-6 15,6 22,0"/><circle r="5.5" fill="currentColor" fill-opacity=".9" stroke="none"/><path d="M-24,-9 l-8,9 l8,9"/><path d="M24,-9 l8,9 l-8,9"/>`,
+ /* 3 pick main quest: map pin with a star */
+ `<path d="M0,28 C-12,14 -20,3 -20,-6 A20,20 0 0 1 20,-6 C20,3 12,14 0,28Z" fill="currentColor" fill-opacity=".22"/><path d="M0,-15 L2.6,-9.2 L9,-8.6 L4.2,-4.4 L5.6,1.8 L0,-1.4 L-5.6,1.8 L-4.2,-4.4 L-9,-8.6 L-2.6,-9.2Z" fill="currentColor" stroke="none"/>`,
+ /* 4 tune inputs: three sliders */
+ `<path d="M-14,-24 V24 M0,-24 V24 M14,-24 V24"/><circle cx="-14" cy="-8" r="6" fill="currentColor" fill-opacity=".9" stroke="none"/><circle cx="0" cy="10" r="6" fill="currentColor" fill-opacity=".9" stroke="none"/><circle cx="14" cy="-14" r="6" fill="currentColor" fill-opacity=".9" stroke="none"/>`,
+ /* 5 make peace: two circles that agree, a heart where they meet */
+ `<circle cx="-11" r="18" fill="currentColor" fill-opacity=".14"/><circle cx="11" r="18" fill="currentColor" fill-opacity=".14"/><path d="M0,7 C-7,1 -7,-5 -3.5,-6 C-1.5,-6.5 0,-5 0,-3.5 C0,-5 1.5,-6.5 3.5,-6 C7,-5 7,1 0,7Z" fill="currentColor" stroke="none"/>`,
+ /* 6 make moves: footsteps */
+ `<ellipse cx="-11" cy="7" rx="8" ry="12" transform="rotate(-12 -11 7)" fill="currentColor" fill-opacity=".22"/><ellipse cx="11" cy="-7" rx="8" ry="12" transform="rotate(12 11 -7)" fill="currentColor" fill-opacity=".22"/><circle cx="-14" cy="-11" r="2.4" fill="currentColor" stroke="none"/><circle cx="-7" cy="-12.5" r="2.4" fill="currentColor" stroke="none"/><circle cx="8" cy="-25" r="2.4" fill="currentColor" stroke="none"/><circle cx="15" cy="-24" r="2.4" fill="currentColor" stroke="none"/>`,
+ /* 7 budget spoons: a spoon with a sparkle */
+ `<ellipse cx="-3" cy="-11" rx="10" ry="13" fill="currentColor" fill-opacity=".22"/><path d="M-3,2 V28"/><path d="M17,-20 v8 M13,-16 h8"/>`,
+ /* 8 build rhythm: an anchor */
+ `<circle cx="0" cy="-20" r="5"/><path d="M0,-15 V26"/><path d="M-10,-6 H10"/><path d="M-22,8 C-20,22 -8,26 0,26 C8,26 20,22 22,8"/><path d="M-26,12 l4,-5 l4,5 M18,12 l4,-5 l4,5"/>`,
+ /* 9 stack wins: stacked blocks and a sparkle */
+ `<rect x="-24" y="10" width="48" height="13" rx="4" fill="currentColor" fill-opacity=".22"/><rect x="-17" y="-4" width="34" height="13" rx="4" fill="currentColor" fill-opacity=".22"/><rect x="-10" y="-18" width="20" height="13" rx="4" fill="currentColor" fill-opacity=".22"/><path d="M19,-28 v9 M14.5,-23.5 h9"/>`];
+const CM_MODES={
+ start:{done:0,here:0,tag:"start here",info:"s0",cap:"Today you walk <b>Understand</b>: steps 1, 2 and 3. It ends at <b>Clear</b>."},
+ s1:{done:1,here:1,tag:"next",info:"s1",from:0,cap:"Step 1 done ✓ Next: <b>Spot the tug</b>."},
+ s2:{done:2,here:2,tag:"next",info:"s2",from:1,cap:"Step 2 done ✓ One more step to <b>Clear</b>."},
+ end:{done:3,here:"Clear",tag:"you are here",info:"p1",from:2,glow:1,cap:"You're <b>Clear</b>. Next on the circle: <b>Channel</b>, from Clear to <b>Unstuck</b>."}};
+function cmStepPos(i){const [x,y]=cmPt(400,CM_ST[i][3]),o=CM_OFF["s"+i]||{x:0,y:0};return [x+o.x,y+o.y]}
+function cmOrigin(i){const [x,y]=i==="Clear"?cmPt(352,357):cmStepPos(i);return [((x-CM_VB[0])/CM_VB[2]*100).toFixed(1)+"%",((y-CM_VB[1])/CM_VB[3]*100).toFixed(1)+"%"]}
+let cmN=0;
+function circleMap(mode){
+  const M=CM_MODES[mode],uid="cm"+(++cmN);
+  const H=`font-family="Lexend,system-ui,sans-serif" font-weight="700"`,LAV="#B9A6F0",YEL="#FFD43B",GREY="#A79FB6",LINE="rgba(220,214,232,.42)",DONE="#FFD43B";
+  const Dg=(k,inner)=>{const o=CM_OFF[k]||{x:0,y:0};return `<g transform="translate(${o.x} ${o.y})">${inner}</g>`};
+  let o=`<svg viewBox="${CM_VB.join(" ")}" role="img" aria-label="The AuDHD circle. In the middle: a life that fits your brain. Understand takes you from Confusion to Clear, Channel from Civil War to Unstuck, Compound from Burnout to Capable.">
+  <defs><marker id="${uid}a" viewBox="0 0 12 12" refX="7" refY="6" markerWidth="7" markerHeight="7" orient="auto"><path d="M1,1 L9,6 L1,11" fill="none" stroke="${LINE}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  <marker id="${uid}d" viewBox="0 0 12 12" refX="7" refY="6" markerWidth="7" markerHeight="7" orient="auto"><path d="M1,1 L9,6 L1,11" fill="none" stroke="${DONE}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  ${CM_PH.map((p,i)=>{const lo=p.mid-34,hi=p.mid+34;return i===2?`<path id="${uid}g${i}" d="${cmArc(300,hi,lo,0)}"/>`:`<path id="${uid}g${i}" d="${cmArc(300,lo,hi,1)}"/>`}).join("")}</defs>`;
+  CM_PH.forEach(p=>{o+=`<path d="${cmArc(212,p.mid-48,p.mid+48,1)}" fill="none" stroke="rgba(220,214,232,.13)" stroke-width="5" stroke-linecap="round"/>`});
+  CM_PH.forEach((p,i)=>{const d=M.done>=(i+1)*3,c=d?DONE:LINE;
+    o+=`<path d="${cmArc(338,p.mid-45,p.mid+44,1)}" fill="none" stroke="${c}" stroke-width="${d?7:5}" stroke-linecap="round" marker-end="url(#${uid}${d?"d":"a"})"/>`;
+    [p.mid-20,p.mid+20].forEach(a=>{const [x1,y1]=cmPt(330,a),[x2,y2]=cmPt(362,a);o+=`<line x1="${cmF(x1)}" y1="${cmF(y1)}" x2="${cmF(x2)}" y2="${cmF(y2)}" stroke="${c}" stroke-width="5" stroke-linecap="round"/>`})});
+  CM_PH.forEach((p,i)=>{o+=`<g data-k="${p.k}" role="button" tabindex="0" aria-label="Phase ${i+1}: ${p.name}" class="${M.glow===i?"glow":""}"><use href="#${uid}g${i}" fill="none" stroke="${M.glow===i?"#3D6B55":"#2B4A3D"}" stroke-width="54" stroke-linecap="round"/>
+    <text ${H} font-size="30" fill="#6FD49B" dy="10" letter-spacing="3"><textPath href="#${uid}g${i}" startOffset="50%" text-anchor="middle">${p.name.toUpperCase()}</textPath></text></g>`});
+  [["Clear",357,352],["Unstuck",119,372],["Capable",239,370]].forEach(([w,a,rr])=>{const [x,y]=cmPt(rr,a),wd=w.length*17+34,on=M.here==="Clear"&&w==="Clear";
+    o+=Dg("yl-"+w,`<rect x="${cmF(x-wd/2)}" y="${cmF(y-21)}" width="${wd}" height="42" rx="21" fill="${on?DONE:"#9C7A24"}"/><text ${H} x="${cmF(x)}" y="${cmF(y+9)}" text-anchor="middle" font-size="26" fill="${on?"#2B2140":"#fff"}" letter-spacing="1">${w}</text>`)});
+  [[300,-60],[60,60],[180,0]].forEach(([a,rot],i)=>{const [x,y]=cmPt(178,a),p=CM_PH[i];
+    o+=Dg("pk"+i,`<g data-k="${p.k}" role="button" tabindex="0" aria-label="The problem: ${p.prob}" transform="translate(${cmF(x)} ${cmF(y)}) rotate(${rot})"><rect x="-104" y="-30" width="208" height="60" rx="30" fill="#45283B"/>
+     <text ${H} y="9" text-anchor="middle" font-size="26" fill="#F07FA0" letter-spacing="1">${p.prob}</text><text ${H} y="${i===2?54:-40}" text-anchor="middle" font-size="15" fill="${GREY}" letter-spacing="2">${p.feel.toUpperCase()}</text></g>`)});
+  const [ax,ay]=cmPt(150,0),[bx,by]=cmPt(150,120),[cx2,cy2]=cmPt(150,240);
+  o+=`<g data-k="center" role="button" tabindex="0" aria-label="The goal: a life that fits your brain"><polygon points="${cmF(ax)},${cmF(ay)} ${cmF(bx)},${cmF(by)} ${cmF(cx2)},${cmF(cy2)}" fill="#2A2438" stroke="rgba(241,234,247,.75)" stroke-width="5" stroke-linejoin="round"/>
+   ${Dg("goal",`<text ${H} text-anchor="middle" fill="#F1EAF7"><tspan x="${CM_CX}" y="${CM_CY-28}" font-size="22">A life</tspan><tspan x="${CM_CX}" y="${CM_CY+2}" font-size="22">that fits</tspan><tspan x="${CM_CX}" y="${CM_CY+32}" font-size="22">your brain</tspan></text>`)}</g>`;
+  CM_ST.forEach(([w1,w2,noun,a],i)=>{const [x,y]=cmPt(400,a);
+    const side=a>=240&&a<=345?"L":a>=15&&a<=110?"R":"B",done=i<M.done,here=M.here===i;
+    const ml=Math.max(w1.length,w2.length),gap=54,cw=12.5;
+    let words="";
+    if(side==="L") words=`<text ${H} text-anchor="end" fill="${LAV}" font-size="22"><tspan x="-${gap}" y="-6">${w1}</tspan><tspan x="-${gap}" y="20">${w2}</tspan></text><text ${H} x="-${gap+ml*cw+30}" y="12" text-anchor="end" font-size="44" fill="${LAV}">${i+1}</text>`;
+    if(side==="R") words=`<text ${H} text-anchor="start" fill="${LAV}" font-size="22"><tspan x="${gap}" y="-6">${w1}</tspan><tspan x="${gap}" y="20">${w2}</tspan></text><text ${H} x="${gap+ml*cw+30}" y="12" text-anchor="start" font-size="44" fill="${LAV}">${i+1}</text>`;
+    if(side==="B") words=`<text ${H} text-anchor="middle" fill="${LAV}" font-size="22"><tspan x="0" y="94">${w1}</tspan><tspan x="0" y="118">${w2}</tspan></text><text ${H} x="0" y="164" text-anchor="middle" font-size="44" fill="${LAV}">${i+1}</text>`;
+    const ring=here?`<circle class="pulse" r="54" fill="none" stroke="${YEL}" stroke-width="5" pointer-events="none"/>`:"";
+    const tag=here?`<g pointer-events="none"><rect x="-64" y="-98" width="128" height="32" rx="9" fill="${YEL}"/><text ${H} x="0" y="-76" text-anchor="middle" font-size="18" fill="#2B2140">${M.tag}</text></g>`:"";
+    const icol=done?"#17141F":YEL;
+    o+=Dg("s"+i,`<g class="stp" data-k="s${i}" role="button" tabindex="0" aria-label="Step ${i+1}: ${w1} ${w2}${done?", done":""}" transform="translate(${cmF(x)} ${cmF(y)})">${ring}<circle class="bl" r="40" fill="${done?LAV:"#17141F"}" stroke="${LAV}" stroke-width="3"/>
+     <g fill="none" color="${icol}" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="scale(.66)">${done?`<path d="M-16,0 L-4,12 L18,-12" stroke-width="7"/>`:IC(icol)[i]}</g>
+     <text ${H} x="0" y="62" text-anchor="middle" font-size="16" font-weight="500" fill="${GREY}">${noun}</text>${words}${tag}</g>`)});
+  if(M.here==="Clear"){const [x0,y0]=cmPt(352,357),of=CM_OFF["yl-Clear"],x=x0+of.x,y=y0+of.y;o+=`<circle class="pulse" cx="${cmF(x)}" cy="${cmF(y)}" r="58" fill="none" stroke="${YEL}" stroke-width="5" pointer-events="none"/><g pointer-events="none"><rect x="${cmF(x-75)}" y="${cmF(y+30)}" width="150" height="36" rx="9" fill="${YEL}"/><text ${H} x="${cmF(x)}" y="${cmF(y+55)}" text-anchor="middle" font-size="19" fill="#2B2140">${M.tag}</text></g>`}
+  o+=`</svg>`;
+  const org=M.from!==undefined?cmOrigin(M.from):cmOrigin(0);
+  return `<div class="cm ${M.from!==undefined?"zout":""}" data-mode="${mode}" style="--ox:${org[0]};--oy:${org[1]}">${M.cap?`<p class="ccap">${M.cap}</p>`:""}<div class="cmv">${o}</div><div class="cinfo" aria-live="polite">${cmInfo(M.info,mode)}</div><p class="chint">Tap any step, problem or the middle to see what happens there.</p></div>`;
+}
+function cmTag(i,mode){const M=CM_MODES[mode];if(i<M.done)return "Done";if(i===M.done)return M.done===0?"Today":"Next";return i<3?"Today":"Later"}
+function cmInfo(k,mode){
+  if(k==="center")return `<span class="tg">The goal</span><h3>A life that fits your brain</h3><p>Instead of forcing your brain to fit life, you shape life around your brain. Every step around the circle moves you here.</p>`;
+  if(k[0]==="p"){const p=CM_PH[+k[1]];return `<span class="tg">${p.say}</span><h3>${p.name}: ${p.prob} → ${p.to}</h3><p>${p.text}</p>`}
+  const i=+k.slice(1),st=CM_ST[i];return `<span class="tg">${cmTag(i,mode)} · ${st[5]}</span><h3>${i+1}. ${st[6]}</h3><p>${st[4]}</p>`;
+}
+document.addEventListener("click",e=>{const g=e.target.closest&&e.target.closest(".cm [data-k]");if(!g)return;const cm=g.closest(".cm"),k=g.dataset.k;
+  cm.querySelectorAll(".sel").forEach(x=>x.classList.remove("sel"));cm.querySelectorAll(`[data-k="${k}"]`).forEach(x=>x.classList.add("sel"));
+  cm.querySelector(".cinfo").innerHTML=cmInfo(k,cm.dataset.mode);try{posthog.capture("circle_tapped",{k,mode:cm.dataset.mode})}catch(_){}});
+document.addEventListener("keydown",e=>{if(e.key!=="Enter"&&e.key!==" ")return;const g=e.target.closest&&e.target.closest(".cm [data-k]");if(!g)return;e.preventDefault();g.dispatchEvent(new MouseEvent("click",{bubbles:true}))});
+function cmZoomIn(next){const c=document.querySelector(".cm[data-mode='start']");if(!c||matchMedia("(prefers-reduced-motion: reduce)").matches)return next();
+  c.scrollIntoView({behavior:"smooth",block:"center"});setTimeout(()=>{c.classList.add("zin");setTimeout(()=>{next();setTimeout(()=>c.classList.remove("zin"),50)},560)},250)}
 
 /* ================= THE TRIANGLE (interactive) ================= */
 const TRI_SIDES=[
@@ -1716,11 +1844,11 @@ function decodeHTML(s){
     <span class="k">Tools to try</span><ul>${d.tools.map(x=>`<li>${x}</li>`).join("")}</ul>
     <span class="k">Stop forcing</span><ul>${d.stop.map(x=>`<li class="no">${x}</li>`).join("")}</ul></div>`}).join("");
 }
-const FIRSTCH={burn:["7","Energy budget","Your burnout is high, so the first job is your battery: know what drains it and spend it on purpose."],
- seesaw:["5","Voices negotiate","Your two sides fight a lot, so the first job is getting them to agree on one next step."],
- au:["4","Calm what comes in","Your autism side is strong, so the first job is what you see, hear and touch every day."],
- dh:["8","Systems for both","Your ADHD side is strong, so the first job is structure that still leaves room for new."],
- mask:["6","Drop masks safely","You mask a lot, so the first job is finding places where you can stop performing."]};
+const FIRSTCH={burn:["7","Budget your spoons","Your burnout is high, so the first job is your spoons: know what drains them and spend them on purpose."],
+ seesaw:["5","Make peace","Your two brains fight a lot, so the first job is getting them to agree on one next step."],
+ au:["4","Tune your inputs","Your autistic brain is strong, so the first job is what you see, hear, eat and touch every day."],
+ dh:["8","Build your rhythm","Your ADHD brain is strong, so the first job is a few anchors that still leave room for new."],
+ mask:["6","Make moves","You mask a lot, so the first job is what you do and show: small moves where you can drop the mask."]};
 
 /* ================= YOUR DOCTOR PAGE ================= */
 function DOC(){S.doc=S.doc||{moment:"",kid:"",help:""};return S.doc}
@@ -1795,10 +1923,10 @@ function renderSeason(){
   const total=z.pts?z.pts.h+z.pts.w+z.pts.r:0;
   const area=k=>AREAS.find(a=>a[0]===k)[1];
   app.innerHTML=`${topbar(`<button class="textbtn" id="back" style="text-decoration:none;font-weight:600">← My map</button>`)}<section class="stack g24" style="padding-top:8px">
-   <div class="yellow-stage stack g12"><span class="eyebrow" style="color:#2B2140;opacity:.7">Part 6 · Your season</span>
+   <div class="yellow-stage stack g12"><span class="eyebrow" style="color:#2B2140;opacity:.7">Part 6 · Your main quest</span>
     <h1 style="color:#2B2140;margin:0" tabindex="-1" id="st">Where do you want to go?</h1>
     <p style="color:#2B2140">A map shows everywhere. You still have to choose where you're going.</p></div>
-   <p>Nobody fixes health, wealth and relationships all at once. Try to do everything and you end up doing nothing. So you pick <b>one area for a season</b>, give it most of your energy, and keep the other two on maintenance. Be unbalanced for a short time so you can be balanced for a long time.</p>
+   <p>Nobody fixes health, wealth and relationships all at once. Try to do everything and you end up doing nothing. So you pick <b>one main quest</b>, give it most of your spoons, and keep the other two as side quests, on maintenance. Be unbalanced for a short time so you can be balanced for a long time.</p>
 
    <div class="stack g12"><span class="stg in">Step 1</span><h2>Pick 3 values</h2>
     <p class="small muted">What matters to you, even on a bad day. Pick exactly three. <b>${z.vals.length} of 3</b></p>
@@ -1809,29 +1937,29 @@ function renderSeason(){
     ${AREAS.map(([k,n,d])=>`<div class="panel stack g8"><div class="rlab"><span><b style="color:var(--ink);font-size:15px">${n}</b> · ${d}</span><b style="color:var(--ink);font-size:16px" id="rv-${k}">${z.r[k]||"–"}</b></div>
       <input type="range" class="rng sr" id="rate-${k}" data-k="${k}" min="1" max="10" step="1" value="${z.r[k]||5}" aria-label="${n}, 1 to 10">
       <div class="rlab"><span>1 · on fire</span><span>10 · great</span></div></div>`).join("")}
-    ${floor?`<div class="note pink">${T("Build a small floor first.","All three are low right now. Nobody can run on all three empty. Pick the season below, but make sure each area has a tiny base: someone to talk to, enough health to function, enough money to get by.")}</div>`:""}</div>
+    ${floor?`<div class="note pink">${T("Build a small floor first.","All three are low right now. Nobody can run on all three empty. Pick your main quest below, but make sure each area has a tiny base: someone to talk to, enough health to function, enough money to get by.")}</div>`:""}</div>
 
    <div class="stack g12"><span class="stg pr">Step 3</span><h2>Find the one that lifts the rest</h2>
     <p>If one of these moved, which would make the other two easier?</p>
     <div class="chiprow">${AREAS.map(([k,n])=>`<button class="chip su" data-k="${k}" aria-pressed="${z.up===k}" style="flex:1;text-align:center">${n}${low===k&&!z.up?" · lowest":""}</button>`).join("")}</div>
-    <div class="note">${T("A hint if you're stuck.","Money is often the upstream one: it buys back time and pays for the things that make life easier on your brain. Your survival number comes first. Some seasons it's health or a relationship instead. Pick what you lack most.")}</div></div>
+    <div class="note">${T("A hint if you're stuck.","Money is often the upstream one: it buys back time and pays for the things that make life easier on your brain. Your survival number comes first. Sometimes it's health or a relationship instead. Pick what you lack most.")}</div></div>
 
-   <div class="stack g12"><span class="stg pr">Step 4</span><h2>How long is the season?</h2>
-    <p class="small muted">For a season or a reason: until that one area stops holding the rest back.</p>
+   <div class="stack g12"><span class="stg pr">Step 4</span><h2>How long is this quest?</h2>
+    <p class="small muted">Until that one area stops holding the rest back.</p>
     <div class="chiprow">${LENS.map((l,i)=>`<button class="chip sl" data-v="${i}" aria-pressed="${z.len===i}" style="flex:1;text-align:center">${l}</button>`).join("")}</div>
     <label for="why" class="small"><b>In one sentence: why this, why now?</b> <span class="muted">(optional)</span></label>
     <textarea id="why" class="wyin" placeholder="I want to… because…">${(z.why||"").replace(/</g,"&lt;")}</textarea></div>
 
-   <div class="stack g12"><span class="stg out">Step 5</span><h2>Split your 10 energy points</h2>
-    ${true?`<p class="small muted">You get about 10 points of energy a day. Place them however feels right for you. Many people give their season area the most and keep the other two on maintenance, which means looked after, never abandoned.</p>
-    <div class="pts">${AREAS.map(([k,n])=>`<div class="prow sprow"><span>${n}${z.up===k?" <span class='stg out' style='font-size:9.5px;padding:2px 7px'>season</span>":""}</span>
+   <div class="stack g12"><span class="stg out">Step 5</span><h2>Split your 10 spoons</h2>
+    ${true?`<p class="small muted">You get about 10 spoons of energy a day. Place them however feels right for you. Many people give their main quest the most and keep the other two on maintenance, which means looked after, never abandoned.</p>
+    <div class="pts">${AREAS.map(([k,n])=>`<div class="prow sprow"><span>${n}${z.up===k?" <span class='stg out' style='font-size:9.5px;padding:2px 7px'>main quest</span>":""}</span>
       <button class="pm sp" data-k="${k}" data-d="-0.5" ${z.pts[k]<=0?"disabled":""} aria-label="Less for ${n}">−</button><b>${fmt(z.pts[k])}</b>
       <button class="pm sp" data-k="${k}" data-d="0.5" ${total>=10?"disabled":""} aria-label="More for ${n}">+</button>
       <span class="pips">${"●".repeat(Math.floor(z.pts[k]))}${z.pts[k]%1?"◐":""}</span></div>`).join("")}</div>
-    <p class="small" style="text-align:right"><b class="num" style="color:${total===10?"var(--ok)":"var(--dh)"}">${fmt(total)} of 10 used</b></p>`:`<p class="muted">Pick the area that lifts the rest (Step 3) and your points appear here.</p>`}</div>
+    <p class="small" style="text-align:right"><b class="num" style="color:${total===10?"var(--ok)":"var(--dh)"}">${fmt(total)} of 10 used</b></p>`:`<p class="muted">Pick the area that lifts the rest (Step 3) and your spoons appear here.</p>`}</div>
 
    <button class="btn" id="seeHere" ${seasonReady(z)&&total===10?"":"disabled"}>See where you are →</button>
-   ${seasonReady(z)&&total!==10?`<p class="small" style="color:var(--dh);text-align:center">Place all 10 points to continue.</p>`:!seasonReady(z)?`<p class="small muted" style="text-align:center">Finish steps 1 to 4 to continue.</p>`:""}
+   ${seasonReady(z)&&total!==10?`<p class="small" style="color:var(--dh);text-align:center">Place all 10 spoons to continue.</p>`:!seasonReady(z)?`<p class="small muted" style="text-align:center">Finish steps 1 to 4 to continue.</p>`:""}
   </section>`;
   wireTop();
   const keep=fn=>{const y=scrollY;fn();save();renderSeason();scrollTo(0,y)};
@@ -1866,8 +1994,8 @@ function renderHere(){
   const z=SE();if(!seasonReady(z)){S.view="season";return renderSeason()}
   const s=scores(),R=RES[s.res],area=k=>AREAS.find(a=>a[0]===k)[1];
   const others=AREAS.filter(a=>a[0]!==z.up).map(a=>a[1]);
-  const CHAP=TRI_STEPS.slice(3).map(([t,d],i)=>[String(i+4),t,d]);
-  app.innerHTML=`${topbar(`<button class="textbtn" id="back" style="text-decoration:none;font-weight:600">← My season</button>`)}<section class="stack g24" style="padding-top:8px">
+  const CHAP=CM_ST.slice(3).map((x,i)=>[String(i+4),x[6],x[7]]);
+  app.innerHTML=`${topbar(`<button class="textbtn" id="back" style="text-decoration:none;font-weight:600">← My main quest</button>`)}<section class="stack g24" style="padding-top:8px">
    <div class="yellow-stage stack g16"><span class="eyebrow" style="color:#2B2140;opacity:.7">Part 6 complete</span>
     <h1 style="color:#2B2140;margin:0" tabindex="-1" id="st">You're clear.</h1>
     <p style="color:#2B2140">You know your shape, and you know where you're going first.</p>${route(7)}</div>
@@ -1875,26 +2003,26 @@ function renderHere(){
    <div class="panel stack g12"><span class="eyebrow">Your plan, on one card</span>
     <div class="wread2"><b>Your map</b><span>${R.name}</span>
      <b>Your values</b><span>${z.vals.join(", ")}</span>
-     <b>Your season</b><span><span class="kw dh">${area(z.up)}</span>, for ${LENS[z.len].toLowerCase()}</span>
-     <b>Energy</b><span>${fmt(z.pts[z.up])} points to ${area(z.up).toLowerCase()}, ${others.map(o=>fmt(z.pts[AREAS.find(a=>a[1]===o)[0]])+" to "+o.toLowerCase()).join(", ")}</span>
+     <b>Main quest</b><span><span class="kw dh">${area(z.up)}</span>, for ${LENS[z.len].toLowerCase()}</span>
+     <b>Spoons</b><span>${fmt(z.pts[z.up])} spoons to ${area(z.up).toLowerCase()}, ${others.map(o=>fmt(z.pts[AREAS.find(a=>a[1]===o)[0]])+" to "+o.toLowerCase()).join(", ")}</span>
      ${z.why?`<b>Why</b><span>“${z.why.replace(/</g,"&lt;")}”</span>`:""}</div>
     <p class="small muted">Screenshot this card. It's the first page of your plan.</p></div>
 
-   <div class="stack g12"><h2>Where you are on the triangle</h2>
-    <p>You just finished side 1, <b style="color:var(--au)">Understand</b>. You're at <b>Clear</b>. Remember, this whole map, from Part 0 to your season, was only this first side. The next two are where life starts to change.</p>
-    ${triMap("end")}</div>
+   <div class="stack g12"><h2>Where you are on the circle</h2>
+    <p>You just finished <b>Understand</b>, steps 1 to 3. You're <b>Clear</b>. This whole map, from Part 0 to your main quest, was one third of the circle. Your two brains are clear now, but they're still at war. The next two thirds are where life starts to change.</p>
+    ${circleMap("end")}</div>
 
    ${(()=>{const {ks}=decodeKeys(s);const f=ks.length?FIRSTCH[ks[0]]:null;return f?`<div class="note yel">${T("Your first stop on the next sides: step "+f[0]+", "+f[1]+".",f[2])}</div>`:""})()}
    <div class="offer on stack g12"><span class="you-badge">What's next</span>
     <h2 style="margin:0">The <span class="kau">Au</span><span class="kdh">DHD</span> Owner's Manual<sup class="tm">TM</sup></h2>
-    <p>Nobody gave you the manual for running two operating systems in one head. This is it: chapters 4 to 9, built around <b>your</b> season, with the tools I use myself.</p>
+    <p>Nobody gave you the manual for running two operating systems in one head. This is it: chapters 4 to 9, built around <b>your</b> main quest, with the tools I use myself.</p>
     <div class="chlist">${CHAP.map(([n,t,d])=>`<div><i>${n}</i><span><b>${t}</b><br><span class="small muted">${d}</span></span></div>`).join("")}</div>
     <p class="small"><b>Your $37 counts toward it.</b> You've already done chapters 1 to 3.</p>
     ${OWNERS_URL?`<a class="btn" href="${OWNERS_URL}" target="_blank" rel="noopener" style="text-decoration:none;align-self:stretch">See the Owner's Manual →</a>`:`<button class="btn" disabled style="align-self:stretch">Founding seats open in November</button><span class="small muted" style="align-self:center">You'll get an email the day it opens.</span>`}</div>
 
    <div class="note pink">${T("This comes before a diagnosis.","Your map shows a pattern your answers look like. Only a qualified clinician can diagnose ADHD or autism. Take your map and this card with you.")}</div>
    <button class="btn ghost" id="toDoc2">Make my doctor page →</button>
-   <button class="btn ghost" id="redoS">← Change my season</button></section>`;
+   <button class="btn ghost" id="redoS">← Change my main quest</button></section>`;
   wireTop();
   $("#back").onclick=()=>{S.view="season";save();render();scrollTo(0,0)};
   $("#redoS").onclick=$("#back").onclick;
@@ -1921,7 +2049,7 @@ function setAmb(kind){const a=ac();if(amb){amb.forEach(n=>{try{n.stop()}catch(e)
 
 /* colour the words ADHD / autism / AuDHD wherever they appear in reading text */
 const KW=/\b(AuDHD|ADHD|[Aa]utis(?:m|tic))\b/;
-function colorize(root){const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode(n){if(!KW.test(n.nodeValue))return 2;const p=n.parentElement;if(!p||p.closest("svg,button,input,textarea,label,.kw,.eyebrow,.tag,.ticks,.top,.bub,.stg,.vb,.ptitle,.chip,.s5,.rrow,.flip,.prow,.stp,.yellow-stage,.who,[data-nocol]"))return 2;return 1}});
+function colorize(root){const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode(n){if(!KW.test(n.nodeValue))return 2;const p=n.parentElement;if(!p||p.closest(".cm,svg,button,input,textarea,label,.kw,.eyebrow,.tag,.ticks,.top,.bub,.stg,.vb,.ptitle,.chip,.s5,.rrow,.flip,.prow,.stp,.yellow-stage,.who,[data-nocol]"))return 2;return 1}});
   const ns=[];while(w.nextNode())ns.push(w.currentNode);
   ns.forEach(n=>{const f=document.createDocumentFragment();n.nodeValue.split(/\b(AuDHD|ADHD|[Aa]utis(?:m|tic))\b/).forEach((s,i)=>{if(i%2===0){if(s)f.append(s);return}const sp=document.createElement("span");sp.className="kw";
     if(s==="AuDHD")sp.innerHTML='<span class="kau">Au</span><span class="kdh">DHD</span>';else{sp.classList.add(s==="ADHD"?"dh":"au");sp.textContent=s}f.append(sp)});n.replaceWith(f)})}
