@@ -12,7 +12,7 @@
 .ht .wrap{max-width:680px;margin:0 auto;padding:20px max(16px,env(safe-area-inset-left,0px)) 110px;display:flex;flex-direction:column;gap:64px}
 .ht h1,.ht h2,.ht h3{font-family:var(--fd);font-weight:700;line-height:1.02;margin:0;text-wrap:balance;color:var(--ink)}
 .ht h1{font-size:clamp(44px,12vw,64px)}.ht h2{font-size:clamp(34px,8.5vw,44px)}.ht h3{font-size:25px}
-.ht p{margin:0}.ht b{font-weight:600}
+.ht p{margin:0;text-wrap:pretty}.ht li,.ht .bub{text-wrap:pretty}.ht .tm{font:600 .28em/1 var(--fb);letter-spacing:.04em;vertical-align:super;margin-left:3px;opacity:.75}.ht b{font-weight:600}
 .ht section{display:flex;flex-direction:column;gap:18px}
 .ht .eye{font:600 11px/1.2 var(--fb);letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
 .ht .au{color:var(--au);font-weight:600}.ht .dh{color:var(--dh);font-weight:600}
@@ -135,14 +135,49 @@
 .ht .thome em{font:700 18px/1 var(--fd);font-style:normal;color:#C8442A;background:#FFD43B;padding:3px 8px;border-radius:8px}
 @keyframes pulse2{0%,100%{box-shadow:0 0 0 4px #F7F2E8,0 0 0 9px rgba(255,212,59,.7)}50%{box-shadow:0 0 0 4px #F7F2E8,0 0 0 16px rgba(255,212,59,.2)}}
 .ht .tmap .side{stroke-dasharray:none}
+.ht .tmap .side{stroke-dasharray:120;stroke-dashoffset:120}
+.ht .tmap.play .side{animation:draw2 1.1s ease-out forwards}.ht .tmap.play .s2{animation-delay:.5s}.ht .tmap.play .s3{animation-delay:1s}
+@keyframes draw2{to{stroke-dashoffset:0}}
+.ht .tmap .tn{opacity:0;scale:.6;transition:opacity .35s,scale .35s cubic-bezier(.3,1.6,.5,1)}
+.ht .tmap.play .tn{opacity:1;scale:1}
+.ht .tmap .trav{position:absolute;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#FFD43B;box-shadow:0 0 0 3px #2B2140;left:23%;top:66.5%;opacity:0;z-index:2}
+.ht .tmap.play .trav{animation:travel 2.2s 2.4s cubic-bezier(.5,0,.3,1) forwards}
+@keyframes travel{0%{left:23%;top:66.5%;opacity:1}22%{left:32%;top:47%}44%{left:41%;top:27.5%}62%{left:50%;top:8%}80%{left:59%;top:27.5%}99%{left:68%;top:47%;opacity:1}100%{left:68%;top:47%;opacity:0}}
+.ht .here5{position:absolute;left:68%;top:47%;width:0;height:0;opacity:0;z-index:3}
+.ht .tmap.play .here5{animation:fadein .3s 4.5s forwards}
+.ht .here5 b{position:absolute;width:44px;height:44px;left:-22px;top:-22px;border-radius:50%;border:3px solid #FFD43B;animation:ring 1.6s ease-out infinite}
+.ht .here5 em{position:absolute;right:-6px;top:24px;white-space:nowrap;font:700 17px/1 var(--fd);font-style:normal;color:#C8442A;background:#FFD43B;padding:4px 8px;border-radius:8px}
+@keyframes ring{0%{transform:scale(.7);opacity:1}100%{transform:scale(1.6);opacity:0}}
+.ht .tmap.play .tn:nth-of-type(1){transition-delay:0.30s}
+.ht .tmap.play .tn:nth-of-type(2){transition-delay:0.48s}
+.ht .tmap.play .tn:nth-of-type(3){transition-delay:0.66s}
+.ht .tmap.play .tn:nth-of-type(4){transition-delay:0.84s}
+.ht .tmap.play .tn:nth-of-type(5){transition-delay:1.02s}
+.ht .tmap.play .tn:nth-of-type(6){transition-delay:1.20s}
+.ht .tmap.play .tn:nth-of-type(7){transition-delay:1.38s}
+.ht .tmap.play .tn:nth-of-type(8){transition-delay:1.56s}
+.ht .tmap.play .tn:nth-of-type(9){transition-delay:1.74s}
+.ht .phone{width:100%;max-width:330px;margin:0 auto;background:#2B2140;border-radius:40px;padding:12px;box-shadow:0 18px 40px rgba(43,33,64,.25)}
+.ht .pbar{display:flex;align-items:center;gap:8px;background:#F7F2E8;border-radius:28px 28px 8px 8px;padding:12px 14px;font-size:14px}
+.ht .pdot{width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFE27A,#FFD43B)}
+.ht .pbar .ex{margin-left:auto;font:600 10px var(--fb);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:var(--sheet);padding:3px 7px;border-radius:999px}
+.ht .pchat{background:#F7F2E8;height:400px;margin-top:3px;padding:12px;display:flex;flex-direction:column;gap:8px;overflow:hidden;justify-content:flex-end}
+.ht .pm{max-width:84%;padding:9px 12px;border-radius:16px;font-size:14px;line-height:1.4;animation:pop .35s cubic-bezier(.2,.9,.3,1.3) forwards;opacity:0;transform:translateY(8px)}
+.ht .pm.u{align-self:flex-end;background:#2B2140;color:#F7F2E8;border-bottom-right-radius:5px}
+.ht .pm.w{align-self:flex-start;background:#EEE6D6;color:#211B2E;border-bottom-left-radius:5px}
+.ht .pm.w b{color:#C8442A}
+.ht .pm.deal{align-self:stretch;max-width:100%;background:#FFD43B;color:#2B2140;text-align:center;font-weight:600}
+.ht .pm.dots{display:flex;gap:4px;padding:12px}.ht .pm.dots i{width:6px;height:6px;border-radius:50%;background:#736A80;animation:jump 1s infinite}.ht .pm.dots i:nth-child(2){animation-delay:.15s}.ht .pm.dots i:nth-child(3){animation-delay:.3s}
+.ht .pin{display:flex;align-items:center;gap:8px;background:#F7F2E8;border-radius:8px 8px 28px 28px;margin-top:3px;padding:12px 14px;font-size:13.5px;color:#736A80}
+.ht .pin i{margin-left:auto;width:28px;height:28px;border-radius:50%;background:#C8442A}
 /* proof */
 .ht .quotes{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 12px}
 .ht .q{flex:0 0 82%;max-width:340px;scroll-snap-align:start;background:var(--paper);border-radius:22px;padding:18px;box-shadow:inset 0 0 0 1.5px var(--rule);display:flex;flex-direction:column;gap:10px;font-size:15.5px}
 .ht .q .st{color:#E0A21B;letter-spacing:2px}
 .ht .q .by{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
 .ht .q .by i{width:28px;height:28px;border-radius:50%;background:var(--c,var(--au-s));display:inline-block}
-.ht .shots{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px}
-.ht .shots img{height:300px;width:auto;max-width:none;border-radius:16px;scroll-snap-align:start;background:var(--sheet)}
+.ht .shots{display:flex;flex-direction:column;gap:12px;align-items:center}
+.ht .shots img{width:100%;max-width:440px;height:auto;border-radius:18px;background:var(--sheet);box-shadow:0 6px 20px rgba(43,33,64,.10)}
 
 /* me */
 .ht .me{display:grid;grid-template-columns:72px minmax(0,1fr);gap:16px;align-items:start}
@@ -182,7 +217,7 @@
 <header class="hero">
   <div class="logo" aria-label="how to AuDHD"><i>how to</i><span>Au<em>DHD</em></span>
     <div class="dots" aria-hidden="true"><b></b><b></b><b></b><b></b><b></b><b class="r"></b><b class="r"></b><b class="r"></b><b class="r"></b><b class="r"></b></div></div>
-  <h1>The <span class="a">Au</span><span class="d">DHD</span> Peace Treaty</h1>
+  <h1>The <span class="a">Au</span><span class="d">DHD</span> Peace Treaty<sup class="tm">TM</sup></h1>
   <p class="sub">Your <b>ADHD brain</b> and your <b>autistic brain</b> want opposite things. This gets them to agree on one small next step, so you can finally move.</p>
   <a data-gumroad-action="buy" class="btn full" href="#">Get the Peace Treaty <span class="free">FREE</span></a>
   <div class="trust"><span>Free forever</span><span>No app to install</span><span>2-minute read</span></div>
@@ -250,12 +285,22 @@
     </div>
     <div class="get" style="--c:#3E2F66">
       <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#3E2F66" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 11h.01M12 11h.01M15.5 11h.01"/></svg></span>
-      <h3>The Peace Treaty Wizard</h3>
+      <h3>The Peace Treaty Wizard<sup class="tm">TM</sup></h3>
       <p>A chat that walks you through one negotiation, live, when you're actually stuck. It uses your own Claude account, so the chat stays yours.</p>
       <div class="modes"><span>Stalled</span><span>Detour</span><span>Circling the block</span><span>Too loud</span></div>
     </div>
   </div>
   <p class="small muted">Works for tasks you can't start, and for urges you can't stop: the 2 a.m. snack, the scroll, the cigarette, the bailed plans.</p>
+</section>
+<section class="rv">
+  <span class="eye">See it work</span>
+  <h2>One stuck moment, start to finish</h2>
+  <div class="phone" id="htPhone" aria-label="An example chat with the Peace Treaty Wizard">
+    <div class="pbar"><span class="pdot"></span><b>Peace Treaty Wizard</b><span class="ex">Example</span></div>
+    <div class="pchat" id="htChat"></div>
+    <div class="pin"><span id="htTyping">Type how you're stuck…</span><i></i></div>
+  </div>
+  <p class="small muted" style="text-align:center">An example of how a chat goes. Every real chat is shaped by your words.</p>
 </section>
 
 <section class="rv">
@@ -263,8 +308,8 @@
   <h2>The whole AuDHD map, and you are here</h2>
   <p>Every change with an AuDHD brain goes around the same three sides. The Peace Treaty sits right in the middle, because every step needs your two brains to stop fighting first.</p>
   <div class="tri">
-    <div class="tmap" role="img" aria-label="The AuDHD map: a triangle with nine steps. Understand: two voices, the cost, your season. Channel: inputs, negotiate, act. Compound: window, rhythm, goal. You are here, at the Peace Treaty in the centre."><svg class="trisvg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><polygon points="14,86 50,8 86,86" fill="#F7F2E8"/><line class="side s1" x1="14" y1="86" x2="50" y2="8" stroke="#3E2F66" stroke-width="1.4" stroke-linecap="round"/><line class="side s2" x1="50" y1="8" x2="86" y2="86" stroke="#C8442A" stroke-width="1.4" stroke-linecap="round"/><line class="side s3" x1="86" y1="86" x2="14" y2="86" stroke="#3F7D58" stroke-width="1.4" stroke-linecap="round"/></svg><span class="tn nd l" style="left:23%;top:66.5%;--c:#3E2F66;animation-delay:0.4s"><i>1</i><em>Two voices</em></span><span class="tn nd l" style="left:32%;top:47%;--c:#3E2F66;animation-delay:0.6s"><i>2</i><em>The cost</em></span><span class="tn nd l" style="left:41%;top:27.5%;--c:#3E2F66;animation-delay:0.8s"><i>3</i><em>Your season</em></span><span class="tn nd r" style="left:59%;top:27.5%;--c:#C8442A;animation-delay:1.0s"><i>4</i><em>Inputs</em></span><span class="tn nd r" style="left:68%;top:47%;--c:#C8442A;animation-delay:1.2s"><i>5</i><em>Negotiate</em></span><span class="tn nd r" style="left:77%;top:66.5%;--c:#C8442A;animation-delay:1.4s"><i>6</i><em>Act</em></span><span class="tn nd b" style="left:68%;top:86%;--c:#3F7D58;animation-delay:1.6s"><i>7</i><em>Window</em></span><span class="tn nd b" style="left:50%;top:86%;--c:#3F7D58;animation-delay:1.8s"><i>8</i><em>Rhythm</em></span><span class="tn nd b" style="left:32%;top:86%;--c:#3F7D58;animation-delay:2.0s"><i>9</i><em>Goal</em></span><span class="tc top">Clear</span><span class="tc bl">Capable</span><span class="tc br">Unstuck</span><span class="thome"><b></b><em>You are here</em></span></div>
-    <div class="herecard"><span class="z">0</span><div><b>You are here: The Peace Treaty</b><br><span class="small">Get your two brains to stop fighting. Every other step builds on this one.</span></div></div>
+    <div class="tmap" role="img" aria-label="The AuDHD map: a triangle with nine steps. Understand: two voices, the cost, your season. Channel: inputs, negotiate, act. Compound: window, rhythm, goal. You are here, at the Peace Treaty in the centre."><svg class="trisvg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><polygon points="14,86 50,8 86,86" fill="#F7F2E8"/><line class="side s1" x1="14" y1="86" x2="50" y2="8" stroke="#3E2F66" stroke-width="1.4" stroke-linecap="round"/><line class="side s2" x1="50" y1="8" x2="86" y2="86" stroke="#C8442A" stroke-width="1.4" stroke-linecap="round"/><line class="side s3" x1="86" y1="86" x2="14" y2="86" stroke="#3F7D58" stroke-width="1.4" stroke-linecap="round"/></svg><span class="tn l" style="left:23%;top:66.5%;--c:#3E2F66"><i>1</i><em>Two voices</em></span><span class="tn l" style="left:32%;top:47%;--c:#3E2F66"><i>2</i><em>The cost</em></span><span class="tn l" style="left:41%;top:27.5%;--c:#3E2F66"><i>3</i><em>Your season</em></span><span class="tn r" style="left:59%;top:27.5%;--c:#C8442A"><i>4</i><em>Inputs</em></span><span class="tn r" style="left:68%;top:47%;--c:#C8442A"><i>5</i><em>Negotiate</em></span><span class="tn r" style="left:77%;top:66.5%;--c:#C8442A"><i>6</i><em>Act</em></span><span class="tn b" style="left:68%;top:86%;--c:#3F7D58"><i>7</i><em>Window</em></span><span class="tn b" style="left:50%;top:86%;--c:#3F7D58"><i>8</i><em>Rhythm</em></span><span class="tn b" style="left:32%;top:86%;--c:#3F7D58"><i>9</i><em>Goal</em></span><span class="tc top">Clear</span><span class="tc bl">Capable</span><span class="tc br">Unstuck</span><span class="trav"></span><span class="here5"><b></b><em>You are here</em></span></div>
+    <div class="herecard"><span class="z">5</span><div><b>You are here: step 5, Negotiate the voices</b><br><span class="small">The Peace Treaty is how your two brains stop fighting and agree on a move. Every other step leans on it.</span></div></div>
     <div class="legend">
       <div class="lg" style="--c:#3E2F66"><h4>1 · Understand</h4><ol><li><i>1</i>Map your two voices</li><li><i>2</i>See what it costs</li><li><i>3</i>Choose your season</li></ol><span class="end">You become: <b>Clear</b></span></div>
       <div class="lg" style="--c:#C8442A"><h4>2 · Channel</h4><ol><li><i>4</i>Shape what comes in</li><li><i>5</i>Negotiate the voices</li><li><i>6</i>Act on what matters</li></ol><span class="end">You become: <b>Unstuck</b></span></div>
@@ -276,8 +321,8 @@
 <section class="rv">
   <span class="eye">From my Threads</span>
   <h2>What people say</h2>
-  <div class="shots" tabindex="0" aria-label="Screenshots of replies on Threads"><img src="https://public-files.gumroad.com/a1i9xwdqs890ef8wddlt7a3pv8kx" alt="A reader's reply on Threads" loading="lazy"><img src="https://public-files.gumroad.com/ywjgns5qtd43bxrzad2t13zz2x1h" alt="A reader's reply on Threads" loading="lazy"><img src="https://public-files.gumroad.com/6eqslg8l7ipwzdic8n5ymyoc5hl2" alt="A reader's reply on Threads" loading="lazy"><img src="https://public-files.gumroad.com/rce24s9jf06z1ucwslyj78xo2gw9" alt="A reader's reply on Threads" loading="lazy"><img src="https://public-files.gumroad.com/gtv80uiz4rqox4e66icku5v6q3vh" alt="A reader's reply on Threads" loading="lazy"><img src="https://public-files.gumroad.com/8do6fcej0g3juyysr8qxxqhld0a6" alt="A reader's reply on Threads" loading="lazy"><img src="https://public-files.gumroad.com/r52l3rebuawe896nsnrnvpn24b57" alt="A reader's reply on Threads" loading="lazy"><img src="https://public-files.gumroad.com/8352mnre9rbqa4g71jdma3uato09" alt="A reader's reply on Threads" loading="lazy"><img src="https://public-files.gumroad.com/1iup848rpghhshmm8ntyua8pf1hm" alt="A reader's reply on Threads" loading="lazy"><img src="https://public-files.gumroad.com/s0tkwssgs7jm91vm8oli9cs27s1n" alt="A reader's reply on Threads" loading="lazy"></div>
-  <p class="small muted">Real replies to my posts. Swipe for more.</p>
+  <div class="shots"><img src="https://public-files.gumroad.com/a1i9xwdqs890ef8wddlt7a3pv8kx" alt="A reader's reply on Threads" loading="lazy"><img src="https://public-files.gumroad.com/ywjgns5qtd43bxrzad2t13zz2x1h" alt="A reader's reply on Threads" loading="lazy"><img src="https://public-files.gumroad.com/6eqslg8l7ipwzdic8n5ymyoc5hl2" alt="A reader's reply on Threads" loading="lazy"></div>
+  <p class="small muted">Real replies to my posts on Threads.</p>
 </section>
 
 <section class="rv">
@@ -324,6 +369,19 @@
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12});
     els.forEach(function(el){io.observe(el)});
   } else els.forEach(function(el){el.classList.add("in")});
+
+  var tm=root.querySelector(".tmap");
+  if(tm&&"IntersectionObserver" in window){new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){tm.classList.remove("play");void tm.offsetWidth;tm.classList.add("play")}else tm.classList.remove("play")})},{threshold:.35}).observe(tm)} else if(tm) tm.classList.add("play");
+  var chat=document.getElementById("htChat"),ph=document.getElementById("htPhone"),typ=document.getElementById("htTyping");
+  var S=[["u","I can't start my taxes. It's been 3 weeks."],["w","Okay. Let's <b>pause</b> for a sec. What does your ADHD brain want right now?"],["u","Anything else. It's so boring."],["w","Fair. And your autistic brain?"],["u","It wants to know exactly how long it'll take before I start."],["w","Both make sense. One wants it fun, one wants it clear. What if we gave each side something?"],["w","<b>The deal:</b> 10-minute timer, your favourite playlist on, and you only find <b>one</b> form. When it rings, you can stop."],["u","ok… that I can do 😅"],["deal","Treaty signed. Timer started."]];
+  var run=0,busy=false;
+  function play(){if(busy)return;busy=true;var my=++run;chat.innerHTML="";var k=0;
+    (function next(){if(my!==run)return;if(k>=S.length){busy=false;setTimeout(function(){if(my===run&&inView){busy=false;play()}},4000);return}
+      var m=S[k++];if(m[0]==="u"){typ.textContent=m[1].slice(0,30)+"…"}
+      var d=document.createElement("div");d.className="pm dots";d.innerHTML="<i></i><i></i><i></i>";if(m[0]!=="u")chat.appendChild(d);
+      setTimeout(function(){if(my!==run)return;if(d.parentNode)d.remove();typ.textContent="Type how you're stuck…";var b=document.createElement("div");b.className="pm "+m[0];b.innerHTML=m[1];chat.appendChild(b);setTimeout(next,m[0]==="u"?900:1300)},m[0]==="u"?700:1100)})()}
+  var inView=false;
+  if(ph&&"IntersectionObserver" in window){new IntersectionObserver(function(es){es.forEach(function(e){inView=e.isIntersecting;if(inView&&!busy)play();if(!inView){run++;busy=false}})},{threshold:.4}).observe(ph)} else if(ph) play();
   var st=document.getElementById("htSticky"),hero=root.querySelector(".hero"),fin=root.querySelector(".final");
   function upd(){var h=hero.getBoundingClientRect().bottom<0,f=fin.getBoundingClientRect();st.classList.toggle("show",h&&!(f.top<innerHeight&&f.bottom>0))}
   addEventListener("scroll",upd,{passive:true});upd();
