@@ -1631,7 +1631,7 @@ function renderResults(){
    <div class="stack g12"><h2>Where you are</h2>${circleMap("s2")}</div>
 
    <div class="stack g12"><h2>What next</h2>
-    <div class="offer"><b>Make your doctor page</b><span class="small muted">Your answers, turned into one page you can bring to an assessment, or use to explain yourself to people you love. About 3 minutes.</span><button class="btn ghost" id="toDoc" style="min-height:46px">Make my doctor page →</button></div>
+    <div class="offer"><b>Make your pre-diagnosis page</b><span class="small muted">Your answers, turned into one page you can bring to an assessment, or use to explain yourself to people you love. About 3 minutes.</span><button class="btn ghost" id="toDoc" style="min-height:46px">Make my pre-diagnosis page →</button></div>
     <div class="offer on"><span class="you-badge">Part 6</span><b>Pick your main quest</b><span class="small muted">You know your shape. Now pick the one area of life to work on first, and how many spoons it gets. About 5 minutes.</span><button class="btn" id="toSeason" style="min-height:46px">Pick my main quest →</button></div></div>
 
    <div class="note pink">${T("This comes before a diagnosis.","It's a pre-diagnosis map, built from 30 years of lived experience and checked against published research. Your answers <i>look like</i> a pattern. Only a qualified clinician can diagnose ADHD or autism.")}</div>
@@ -1862,7 +1862,7 @@ function renderDoctor(){
   const esc=t=>(t||"").replace(/</g,"&lt;");
   const today=new Date().toLocaleDateString(undefined,{day:"numeric",month:"long",year:"numeric"});
   app.innerHTML=`${topbar(`<button class="textbtn" id="back" style="text-decoration:none;font-weight:600">← My map</button>`)}<section class="stack g24" style="padding-top:8px">
-   <div class="yellow-stage stack g12 noprint"><span class="eyebrow" style="color:#2B2140;opacity:.7">Your doctor page</span>
+   <div class="yellow-stage stack g12 noprint"><span class="eyebrow" style="color:#2B2140;opacity:.7">Your pre-diagnosis page</span>
     <h1 style="color:#2B2140;margin:0" tabindex="-1" id="st">Your words, ready.</h1>
     <p style="color:#2B2140">Most people freeze in the appointment and forget half of it. This page says it for you. Add a few real moments below, then print it or screenshot it.</p></div>
 
@@ -2023,7 +2023,7 @@ function renderHere(){
     ${OWNERS_URL?`<a class="btn" href="${OWNERS_URL}" target="_blank" rel="noopener" style="text-decoration:none;align-self:stretch">See the Owner's Manual →</a>`:`<button class="btn" disabled style="align-self:stretch">Founding seats open in November</button><span class="small muted" style="align-self:center">You'll get an email the day it opens.</span>`}</div>
 
    <div class="note pink">${T("This comes before a diagnosis.","Your map shows a pattern your answers look like. Only a qualified clinician can diagnose ADHD or autism. Take your map and this card with you.")}</div>
-   <button class="btn ghost" id="toDoc2">Make my doctor page →</button>
+   <button class="btn ghost" id="toDoc2">Make my pre-diagnosis page →</button>
    <button class="btn ghost" id="redoS">← Change my main quest</button></section>`;
   wireTop();
   $("#back").onclick=()=>{S.view="season";save();render();scrollTo(0,0)};
