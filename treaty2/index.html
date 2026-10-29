@@ -904,8 +904,14 @@ circle.jig{animation:jit .35s linear 3}
 .ptchip i{font-style:normal}
 .cm.zin2 svg{animation:cmzi2 1.6s cubic-bezier(.6,0,.8,.4) both;transform-origin:var(--ox) var(--oy)}
 @keyframes cmzi2{from{transform:scale(1)}to{transform:scale(2.8);opacity:0}}
-.cm.zin3 svg{animation:cmzi3 2.6s ease-in-out both;transform-origin:var(--ox) var(--oy)}
-@keyframes cmzi3{0%{transform:scale(1)}45%,60%{transform:scale(2.4)}100%{transform:scale(1)}}
+.cm.zin3 svg{animation:cmzi3 5.2s ease-in-out both;transform-origin:var(--ox) var(--oy)}
+@keyframes cmzi3{0%{transform:scale(1)}35%,68%{transform:scale(2.5)}100%{transform:scale(1)}}
+.ptleg{display:flex;flex-direction:column;gap:6px;background:var(--cm-info,#F7F2E8);border-radius:14px;padding:12px 14px;font:500 14.5px/1.4 var(--fb,Lexend),sans-serif;color:var(--ink,#211B2E)}
+.ptleg span{display:flex;gap:10px;align-items:center}
+.ptleg i{flex:none;display:inline-block;width:5px;height:18px;border-radius:3px;background:#3E2F66;opacity:.55}
+.ptleg i.y{background:#FFD43B;opacity:1;width:7px;box-shadow:0 0 0 3px rgba(255,212,59,.35)}
+.ptre{align-self:center;background:none;border:2px solid currentColor;border-radius:999px;padding:8px 16px;font:700 14px var(--fb,Lexend),sans-serif;color:inherit;cursor:pointer}
+.cm .ccap{font-size:16px!important;line-height:1.35}
 @media (prefers-reduced-motion:reduce){.cm.zin3 svg{animation:none}}
 @media (prefers-reduced-motion:reduce){.cm.zin2 svg{animation:none}}
 
@@ -1392,12 +1398,17 @@ function ptTicks(){let o='<g class="tools" pointer-events="none">';const N=30,a0
     o+=`<line x1="${cmF(x1)}" y1="${cmF(y1)}" x2="${cmF(x2)}" y2="${cmF(y2)}" stroke="${on?"#FFD43B":"var(--cm-num)"}" stroke-width="${on?9:4}" stroke-linecap="round" opacity="${on?1:.55}"/>`;
     if(on){const [cx,cy]=cmPt(374,a);o+=`<circle class="pulse" cx="${cmF(cx)}" cy="${cmF(cy)}" r="16" fill="none" stroke="#FFD43B" stroke-width="5"/>`}}
   return o+"</g>"}
-function ptCircle(){return `<div class="ptc" id="ptc">${circleMap("ptin")}</div>`}
+const PTLEG=`<div class="ptleg"><span><i></i>Each line around Level 2 is one tool. There are 30+.</span><span><i class="y"></i>The yellow one is the Peace Treaty. That's you, right now.</span><span>🔒 The other tools come in Level 2 of the Owner's Manual.</span></div>`;
+function ptCircle(){return `<div class="ptc" id="ptc">${circleMap("ptin")}${PTLEG}<button class="ptre" id="ptre" type="button">🔍 Zoom in again</button></div>`}
 function ptZoomIn(){const box=document.getElementById("ptc");if(!box)return;const c=box.querySelector(".cm");if(!c)return;
   const chip=document.createElement("span");chip.className="ptchip";chip.innerHTML="<i>📍</i>You are here: Make Peace · 1 of 30+&nbsp;tools";
-  if(matchMedia("(prefers-reduced-motion: reduce)").matches){box.prepend(chip);return}
+  const re=document.getElementById("ptre");
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches){box.prepend(chip);if(re)re.hidden=true;return}
   const o=cmOrigin(4);c.style.setProperty("--ox",o[0]);c.style.setProperty("--oy",o[1]);
-  setTimeout(()=>{c.classList.add("zin3");track("circle_zoom_in",{});setTimeout(()=>{c.classList.remove("zin3");box.prepend(chip)},2600)},1200)}
+  const play=(first)=>{c.classList.remove("zin3");void c.offsetWidth;c.classList.add("zin3");track("circle_zoom_in",{replay:!first});if(re)re.disabled=true;
+    setTimeout(()=>{c.classList.remove("zin3");if(first)box.prepend(chip);if(re)re.disabled=false},5300)};
+  if(re)re.onclick=()=>play(false);
+  setTimeout(()=>play(true),1500)}
 function vHow(fast){
   if (!fast && readStyle() && ls.get("pt.style","")) { vThread(); return }
   const i = ORD[S.hi]; const E = ex(); let body = ""; track("slide_viewed",{slide:S.hi+1});
