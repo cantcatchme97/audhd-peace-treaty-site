@@ -1,0 +1,22 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>How to AuDHD</title><style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#FFD43B;color:#2B2140;font:600 18px system-ui,sans-serif}</style></head>
+<body><p>Opening…</p>
+<script>
+(function(){
+  var parts=location.pathname.split('/').filter(Boolean); // ["go","1029a"] or ["pd","1029a"]
+  var kind=parts[0]==='pd'?'pd':'go', code=(parts[1]||'none').slice(0,40).replace(/[^a-zA-Z0-9_-]/g,'');
+  var src=new URLSearchParams(location.search).get('s')||'threads';
+  var base=kind==='pd'?'https://howtoaudhd.net/l/pre-diagnosis':'https://howtoaudhd.net/l/peace-treaty';
+  var camp=kind==='pd'?'pre_diagnosis':'peace_treaty';
+  var dest=base+'?utm_source='+encodeURIComponent(src)+'&utm_medium=post&utm_campaign='+camp+'&utm_content='+encodeURIComponent(code);
+  var id; try{id=localStorage.getItem('htaid')||('r'+Math.random().toString(36).slice(2)+Date.now().toString(36));localStorage.setItem('htaid',id)}catch(e){id='r'+Math.random().toString(36).slice(2)}
+  var done=false;function go(){if(done)return;done=true;location.replace(dest)}
+  try{
+    fetch('https://us.i.posthog.com/i/v0/e/',{method:'POST',keepalive:true,headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({api_key:'phc_vhUmnsmQbPvXfpUHhuKVgh6a3arJ6E5ivCV8y2KjcBCu',event:'link_clicked',distinct_id:id,
+        properties:{code:code,product:camp,source:src,dest:dest,referrer:document.referrer||null,$current_url:location.href,utm_source:src,utm_content:code,utm_campaign:camp}})
+    }).then(go,go);
+  }catch(e){go()}
+  setTimeout(go,700);
+})();
+</script></body></html>
