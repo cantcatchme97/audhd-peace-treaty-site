@@ -1398,7 +1398,7 @@ function ptTicks(){let o='<g class="tools" pointer-events="none">';const N=30,a0
     o+=`<line x1="${cmF(x1)}" y1="${cmF(y1)}" x2="${cmF(x2)}" y2="${cmF(y2)}" stroke="${on?"#FFD43B":"var(--cm-num)"}" stroke-width="${on?9:4}" stroke-linecap="round" opacity="${on?1:.55}"/>`;
     if(on){const [cx,cy]=cmPt(374,a);o+=`<circle class="pulse" cx="${cmF(cx)}" cy="${cmF(cy)}" r="16" fill="none" stroke="#FFD43B" stroke-width="5"/>`}}
   return o+"</g>"}
-const PTLEG=`<div class="ptleg"><span><i></i>Each line around Level 2 is one tool. There are 30+.</span><span><i class="y"></i>The yellow one is the Peace Treaty. That's you, right now.</span><span>🔒 The other tools come in Level 2 of the Owner's Manual.</span></div>`;
+const PTLEG=`<div class="ptleg"><span><i></i>Each line around Level 2 is one tool. There are 30+.</span><span><i class="y"></i>The yellow one is the Peace Treaty. That's you, right&nbsp;now.</span><span>🔒 The other tools come in Level 2 of the Owner's&nbsp;Manual.</span></div>`;
 function ptCircle(){return `<div class="ptc" id="ptc">${circleMap("ptin")}${PTLEG}<button class="ptre" id="ptre" type="button">🔍 Zoom in again</button></div>`}
 function ptZoomIn(){const box=document.getElementById("ptc");if(!box)return;const c=box.querySelector(".cm");if(!c)return;
   const chip=document.createElement("span");chip.className="ptchip";chip.innerHTML="<i>📍</i>You are here: Make Peace · 1 of 30+&nbsp;tools";
