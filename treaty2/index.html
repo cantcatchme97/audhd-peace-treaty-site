@@ -904,6 +904,9 @@ circle.jig{animation:jit .35s linear 3}
 .ptchip i{font-style:normal}
 .cm.zin2 svg{animation:cmzi2 1.6s cubic-bezier(.6,0,.8,.4) both;transform-origin:var(--ox) var(--oy)}
 @keyframes cmzi2{from{transform:scale(1)}to{transform:scale(2.8);opacity:0}}
+.cm.zin3 svg{animation:cmzi3 2.6s ease-in-out both;transform-origin:var(--ox) var(--oy)}
+@keyframes cmzi3{0%{transform:scale(1)}45%,60%{transform:scale(2.4)}100%{transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.cm.zin3 svg{animation:none}}
 @media (prefers-reduced-motion:reduce){.cm.zin2 svg{animation:none}}
 
 </style>
@@ -1383,28 +1386,17 @@ document.addEventListener("click",e=>{const g=e.target.closest&&e.target.closest
   cm.querySelector(".cinfo").innerHTML=cmInfo(k,cm.dataset.mode);track("circle_tapped",{k,mode:cm.dataset.mode})});
 document.addEventListener("keydown",e=>{if(e.key!=="Enter"&&e.key!==" ")return;const g=e.target.closest&&e.target.closest(".cm [data-k]");if(!g)return;e.preventDefault();g.dispatchEvent(new MouseEvent("click",{bubbles:true}))});
 function ptCircle(){return `<div class="ptc" id="ptc">${circleMap("ptin")}</div>`}
-function ptZoomIn(){const box=document.getElementById("ptc");if(!box)return;const c=box.querySelector(".cm");const chip=`<span class="ptchip"><i>📍</i>You are here: Level 2 · Step 5 · Make Peace</span>`;
-  let seen=false;try{seen=sessionStorage.getItem("pt.zoomed")==="1"}catch(_){}
-  if(seen||matchMedia("(prefers-reduced-motion: reduce)").matches){box.innerHTML=chip;return}
+function ptZoomIn(){const box=document.getElementById("ptc");if(!box)return;const c=box.querySelector(".cm");if(!c)return;
+  const chip=document.createElement("span");chip.className="ptchip";chip.innerHTML="<i>📍</i>You are here: Level 2 · Step 5 · Make Peace";
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches){box.prepend(chip);return}
   const o=cmOrigin(4);c.style.setProperty("--ox",o[0]);c.style.setProperty("--oy",o[1]);
-  setTimeout(()=>{c.classList.add("zin2");track("circle_zoom_in",{});setTimeout(()=>{box.innerHTML=chip;try{sessionStorage.setItem("pt.zoomed","1")}catch(_){}},1550)},1800)}
-
-
-async function vArticle(){
-  if (!ARTICLE){ if (building) return; await buildArticle() }
-  app.innerHTML = top() + ptCircle() + `<div class="article">${ARTICLE}</div><div class="stack g10"><p class="hook" style="text-align:center">And it starts by practicing. Right now.</p><button class="btn" id="artgo">Start the Wizard<sup class='tm'>TM</sup></button></div>`;
-  wireTop(); ptZoomIn(); track("article_opened");
-  const seen = {}; const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); const n = e.target.dataset.n; if (!seen[n]){ seen[n] = 1; track("section_viewed",{slide:+n}) } } }), {threshold:.25});
-  $$(".asec").forEach(x => io.observe(x));
-  $("#artgo").onclick = () => { track("wizard_clicked",{from:"article"}); if (SITE==="web"){ ls.set("pt.intro",true); setTimeout(()=>{ location.href = WIZARD_URL },250) } else { S.view="start"; render(); scrollTo(0,0) } };
-  if (focusOn()){ S.sdone = {}; readThen(null, () => {}) }
-}
+  setTimeout(()=>{c.classList.add("zin3");track("circle_zoom_in",{});setTimeout(()=>{c.classList.remove("zin3");box.prepend(chip)},2600)},1200)}
 function vHow(fast){
   if (!fast && readStyle() && ls.get("pt.style","")) { vThread(); return }
   const i = ORD[S.hi]; const E = ex(); let body = ""; track("slide_viewed",{slide:S.hi+1});
   if (i===0) body = `
     <h1 class="ptitle">The AuDHD <span class="hl">Peace Treaty</span><sup class='tm'>TM</sup></h1>
-    ${ptCircle()}
+    ${ls.get("pt.style","")?ptCircle():""}
     <p class="body">Your <span class="kdh"><b>ADHD brain</b></span> and your <span class="kau"><b>autistic brain</b></span> both have a Feeling side that grabs the wheel. Your Thinking side is the one who brokers the deal.</p>
     <p class="body">Learn it in a few taps. Then the <b>Wizard<sup class='tm'>TM</sup></b> walks you through it, live.</p>
     <p class="cardtxt tline"><span class="tic">${ICONS.t[0]}</span><span><b>About 2 minutes of reading. Only once.</b><br>A peace treaty, not a PhD.</span></p>
