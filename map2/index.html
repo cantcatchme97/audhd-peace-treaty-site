@@ -2056,7 +2056,13 @@ function colorize(root){const w=document.createTreeWalker(root,NodeFilter.SHOW_T
   ns.forEach(n=>{const f=document.createDocumentFragment();n.nodeValue.split(/\b(AuDHD|ADHD|[Aa]utis(?:m|tic))\b/).forEach((s,i)=>{if(i%2===0){if(s)f.append(s);return}const sp=document.createElement("span");sp.className="kw";
     if(s==="AuDHD")sp.innerHTML='<span class="kau">Au</span><span class="kdh">DHD</span>';else{sp.classList.add(s==="ADHD"?"dh":"au");sp.textContent=s}f.append(sp)});n.replaceWith(f)})}
 let _cz=0;new MutationObserver(()=>{if(_cz)return;_cz=requestAnimationFrame(()=>{_cz=0;colorize(app)})}).observe(app,{childList:true,subtree:true});
-function render(){ closeSheet(); paperLayer(); if(LEAD&&S.view!=="welcome"&&S.view!=="p0"&&S.view!=="done"){S.view="welcome"} if(LEAD&&S.view==="p0"&&!S.email){S.view="welcome"} if(S.view&&S.view.startsWith("deck:")){if(!DECKS[S.view.slice(5)]){S.view="deck:adhd";delete S.dk}return renderDeck(S.view.slice(5))} if(S.view==="results") return renderResults(); if(S.view==="season") return renderSeason(); if(S.view==="here") return renderHere(); if(S.view==="doctor") return renderDoctor(); if(S.view==="p1"||S.view==="p2soon"||S.view==="dest"){S.view="deck:adhd";return render()} if(S.view==="p0") renderP0(); else if(S.view==="done") renderDone(); else renderWelcome(); }
+const MS_NAMES={welcome:"map_opened",p0:"walkthrough_started","deck:adhd":"checkpoint1_started","deck:tug":"checkpoint2_started",results:"shape_seen",season:"checkpoint3_started",here:"map_completed",doctor:"doctor_page_opened_view"};
+function trackView(v){try{if(!v)return;let seen={};try{seen=JSON.parse(localStorage.getItem("pdm.seen")||"{}")}catch(_){}
+  posthog.capture("map_view",{view:v,first:!seen[v]});
+  if(MS_NAMES[v]&&!seen[v])posthog.capture(MS_NAMES[v],{view:v});
+  seen[v]=1;try{localStorage.setItem("pdm.seen",JSON.stringify(seen))}catch(_){}}catch(_){}}
+let _lastV=null;
+function render(){ closeSheet(); paperLayer(); if(S.view!==_lastV){_lastV=S.view;setTimeout(()=>trackView(S.view),0)} if(LEAD&&S.view!=="welcome"&&S.view!=="p0"&&S.view!=="done"){S.view="welcome"} if(LEAD&&S.view==="p0"&&!S.email){S.view="welcome"} if(S.view&&S.view.startsWith("deck:")){if(!DECKS[S.view.slice(5)]){S.view="deck:adhd";delete S.dk}return renderDeck(S.view.slice(5))} if(S.view==="results") return renderResults(); if(S.view==="season") return renderSeason(); if(S.view==="here") return renderHere(); if(S.view==="doctor") return renderDoctor(); if(S.view==="p1"||S.view==="p2soon"||S.view==="dest"){S.view="deck:adhd";return render()} if(S.view==="p0") renderP0(); else if(S.view==="done") renderDone(); else renderWelcome(); }
 render();
 })();
 </script>
