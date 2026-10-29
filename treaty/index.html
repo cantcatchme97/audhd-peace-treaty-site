@@ -867,9 +867,57 @@ circle.jig{animation:jit .35s linear 3}
 .tchat .fb{align-self:flex-end;background:var(--dh-s)}
 .thread #storygo{margin-top:8px}
 .tend{height:22vh}
+.cm{--cm-bg:#EEE6D6;--cm-tri:#F7F2E8;--cm-trist:rgba(62,47,102,.55);--cm-ink:#211B2E;--cm-num:#3E2F66;--cm-icon:#C8442A;--cm-ring:#3E2F66;--cm-done:#3E2F66;--cm-check:#F7F2E8;
+  --cm-line:rgba(33,27,46,.32);--cm-inner:rgba(33,27,46,.09);--cm-green:#CFE6D7;--cm-green2:#B5DCC4;--cm-greent:#2E6B4A;--cm-pink:#F4D2D8;--cm-pinkt:#A8344F;--cm-gold:#3E2F66;--cm-goldt:#FFD43B;
+  --cm-grey:#6E6579;--cm-yel:#E0A800;--cm-lit:#C8442A;--cm-info:#F7F2E8;--cm-infot:#211B2E;--cm-infop:#4A4257;--cm-tg:rgba(62,47,102,.10);--cm-tgt:#3E2F66;
+  background:var(--cm-bg);color:var(--cm-ink);border-radius:24px;padding:8px 6px 14px;overflow:hidden}
+.cm .cmv{overflow:hidden;border-radius:18px}
+.cm svg{width:100%;height:auto;display:block}
+.cm [data-k]{cursor:pointer}
+.cm .stp .bl{transition:transform .2s;transform-box:fill-box;transform-origin:center}
+.cm .stp:hover .bl,.cm .stp.sel .bl{transform:scale(1.08)}
+.cm .stp.sel .bl{stroke:#FFD43B;stroke-width:5}
+.cm .cinfo{margin:6px 8px 0;background:var(--cm-info);border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;min-height:120px}
+.cm .cinfo .tg{align-self:flex-start;font:700 11px var(--fb);letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:var(--cm-tg);color:var(--cm-tgt)}
+.cm .cinfo h3{margin:0;font:700 20px/1.15 var(--fb);color:var(--cm-infot)}
+.cm .cinfo p{margin:0;font-size:14.5px;line-height:1.55;color:var(--cm-infop)}
+.cm .cinfo p b{color:var(--cm-infot)}
+.cm .chint{margin:8px 0 0;text-align:center;font-size:12.5px;color:var(--cm-grey)}
+.cm .ccap{margin:4px 10px 6px;font:600 14px var(--fb);color:var(--cm-ink);text-align:center}
+.cm .pulse{animation:cmp 1.6s ease-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes cmp{0%{transform:scale(.75);opacity:1}100%{transform:scale(1.3);opacity:0}}
+.cm .glow{animation:cmg 1.4s ease-in-out infinite}
+@keyframes cmg{50%{opacity:.45}}
+.cm.zout svg{animation:cmz 1.8s cubic-bezier(.2,.7,.2,1) both;transform-origin:var(--ox) var(--oy)}
+@keyframes cmz{from{transform:scale(2.4)}to{transform:scale(1)}}
+.cm.zin svg{animation:cmzi 1.5s cubic-bezier(.6,0,.8,.4) both;transform-origin:var(--ox) var(--oy)}
+@keyframes cmzi{from{transform:scale(1)}to{transform:scale(2.6);opacity:.2}}
+@media (prefers-reduced-motion:reduce){.cm .pulse,.cm .glow,.cm.zout svg,.cm.zin svg{animation:none}}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .cm{--cm-bg:#17141F;--cm-tri:#2A2438;--cm-trist:rgba(241,234,247,.75);--cm-ink:#F1EAF7;--cm-num:#B9A6F0;--cm-icon:#FFD43B;--cm-ring:#B9A6F0;--cm-done:#B9A6F0;--cm-check:#17141F;
+  --cm-line:rgba(220,214,232,.42);--cm-inner:rgba(220,214,232,.13);--cm-green:#2B4A3D;--cm-green2:#3D6B55;--cm-greent:#6FD49B;--cm-pink:#45283B;--cm-pinkt:#F07FA0;--cm-gold:#9C7A24;--cm-goldt:#fff;
+  --cm-grey:#A79FB6;--cm-yel:#FFD43B;--cm-lit:#FFD43B;--cm-info:#221D2C;--cm-infot:#F1EAF7;--cm-infop:#D3C9DE;--cm-tg:rgba(185,166,240,.16);--cm-tgt:#B9A6F0}}
+:root[data-theme="dark"] .cm{--cm-bg:#17141F;--cm-tri:#2A2438;--cm-trist:rgba(241,234,247,.75);--cm-ink:#F1EAF7;--cm-num:#B9A6F0;--cm-icon:#FFD43B;--cm-ring:#B9A6F0;--cm-done:#B9A6F0;--cm-check:#17141F;
+  --cm-line:rgba(220,214,232,.42);--cm-inner:rgba(220,214,232,.13);--cm-green:#2B4A3D;--cm-green2:#3D6B55;--cm-greent:#6FD49B;--cm-pink:#45283B;--cm-pinkt:#F07FA0;--cm-gold:#9C7A24;--cm-goldt:#fff;
+  --cm-grey:#A79FB6;--cm-yel:#FFD43B;--cm-lit:#FFD43B;--cm-info:#221D2C;--cm-infot:#F1EAF7;--cm-infop:#D3C9DE;--cm-tg:rgba(185,166,240,.16);--cm-tgt:#B9A6F0}
+.ptc{display:flex;flex-direction:column;gap:8px}
+.ptchip{align-self:flex-start;display:inline-flex;gap:8px;align-items:center;background:#FFD43B;color:#2B2140;border-radius:999px;padding:8px 14px;font:700 13.5px var(--fb,Lexend),sans-serif}
+.ptchip i{font-style:normal}
+.cm.zin2 svg{animation:cmzi2 1.6s cubic-bezier(.6,0,.8,.4) both;transform-origin:var(--ox) var(--oy)}
+@keyframes cmzi2{from{transform:scale(1)}to{transform:scale(2.8);opacity:0}}
+.cm.zin3 svg{animation:cmzi3 5.2s ease-in-out both;transform-origin:var(--ox) var(--oy)}
+@keyframes cmzi3{0%{transform:scale(1)}35%,68%{transform:scale(2.5)}100%{transform:scale(1)}}
+.ptleg{display:flex;flex-direction:column;gap:6px;background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:12px 14px;font:500 14.5px/1.4 var(--fb);color:var(--ink)}
+.ptleg span{display:flex;gap:10px;align-items:center}
+.ptleg i{flex:none;display:inline-block;width:5px;height:18px;border-radius:3px;background:var(--au);opacity:.6}
+.ptleg i.y{background:#FFD43B;opacity:1;width:7px;box-shadow:0 0 0 3px rgba(255,212,59,.35)}
+.ptre{align-self:center;background:none;border:2px solid currentColor;border-radius:999px;padding:8px 16px;font:700 14px var(--fb,Lexend),sans-serif;color:inherit;cursor:pointer}
+.cm .ccap{font-size:16px!important;line-height:1.35}
+@media (prefers-reduced-motion:reduce){.cm.zin3 svg{animation:none}}
+@media (prefers-reduced-motion:reduce){.cm.zin2 svg{animation:none}}
+
 </style>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<meta property="og:image" content="https://audhd-peace-treaty.netlify.app/og.png">
+<meta property="og:image" content="https://ptk7q.pages.dev/og.png">
 <script>
 !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags identify setPersonProperties group resetGroups reset get_distinct_id get_session_id alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
 posthog.init("phc_vhUmnsmQbPvXfpUHhuKVgh6a3arJ6E5ivCV8y2KjcBCu",{api_host:"https://us.i.posthog.com",person_profiles:"identified_only",session_recording:{maskAllInputs:true}});
@@ -882,7 +930,7 @@ posthog.init("phc_vhUmnsmQbPvXfpUHhuKVgh6a3arJ6E5ivCV8y2KjcBCu",{api_host:"https
 "use strict";
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 /* ---------- settings ---------- */
-const MAP_URL = "";            // the $37 Map checkout link goes here
+const MAP_URL = "https://go.howtoaudhd.net/pd/treaty";            // the $37 Map checkout link goes here
 const MODEL = "claude-sonnet-5-5";
 const STEPS = [["pause","Pause","P"],["explore","Explore","E"],["acknowledge","Acknowledge","A"],["connect","Connect","C"],["ease","Ease in","E"],["card","Your card","Card"]];
 const WHY = {
@@ -1246,20 +1294,128 @@ async function buildArticle(){
   }
   ARTICLE = parts.join(`<div class="adiv" aria-hidden="true"></div>`);
 }
-async function vArticle(){
-  if (!ARTICLE){ if (building) return; await buildArticle() }
-  app.innerHTML = top() + `<div class="article">${ARTICLE}</div><div class="stack g10"><p class="hook" style="text-align:center">And it starts by practicing. Right now.</p><button class="btn" id="artgo">Start the Wizard<sup class='tm'>TM</sup></button></div>`;
-  wireTop(); track("article_opened");
-  const seen = {}; const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); const n = e.target.dataset.n; if (!seen[n]){ seen[n] = 1; track("section_viewed",{slide:+n}) } } }), {threshold:.25});
-  $$(".asec").forEach(x => io.observe(x));
-  $("#artgo").onclick = () => { track("wizard_clicked",{from:"article"}); if (SITE==="web"){ ls.set("pt.intro",true); setTimeout(()=>{ location.href = WIZARD_URL },250) } else { S.view="start"; render(); scrollTo(0,0) } };
-  if (focusOn()){ S.sdone = {}; readThen(null, () => {}) }
+/* ================= OWNER'S MANUAL CIRCLE (from the Map) ================= */
+const CM_CX=560,CM_CY=520,CM_VB=[-110,-20,1340,1150];
+const cmPt=(r,deg)=>{const a=deg*Math.PI/180;return [CM_CX+r*Math.sin(a),CM_CY-r*Math.cos(a)]};
+const cmF=n=>Math.round(n*10)/10;
+const cmArc=(r,a1,a2,sw)=>{const [x1,y1]=cmPt(r,a1),[x2,y2]=cmPt(r,a2);return `M${cmF(x1)},${cmF(y1)} A${r},${r} 0 0 ${sw} ${cmF(x2)},${cmF(y2)}`};
+const CM_PH=[
+ {k:"p0",name:"Understand",prob:"Confusion",feel:"lost",to:"Clear",mid:300,say:"Level 1 · checkpoints 1 to 3 · The Pre-Diagnosis Map",text:"Kills the confusion of never fitting the ADHD box or the autism box. You come out <b>Clear</b>: you know what's going on in your head, and what it needs."},
+ {k:"p1",name:"Regulate",prob:"Civil War",feel:"stuck",to:"Unstuck",mid:60,say:"Level 2 · checkpoints 4 to 6 · Owner's Manual",text:"Ends the civil war between your two brains: what goes in, how they decide, and what you do. You come out <b>Unstuck</b>."},
+ {k:"p2",name:"Sustain",prob:"Burnout",feel:"drained",to:"Capable",mid:180,say:"Level 3 · checkpoints 7 to 9 · Owner's Manual",text:"Breaks the burnout cycle with a spoon budget, a rhythm and small wins that hold up on bad weeks. You come out <b>Capable</b>."}];
+const CM_ST=[
+ ["Map Both","Brains","profile",267,"→ How your two brains take in the world and decide, in a quick walk-through<br>→ 12 everyday ADHD moments, 12 autism moments, and 6 that live in both<br>→ For each one: how often it's you, and whether you hide it<br><b>You walk away with:</b> your profile, the traits that are strong and the ones you hide.","This map · Parts 0 to 2 · about 15 min","Map both brains","Your ADHD side and your autism side, mapped side by side."],
+ ["Spot The","Tug","costs",300,"→ 7 tugs where your brains want opposite things (calm vs stimulation, familiar vs new, alone vs together…)<br>→ 11 ways people mask, and which ones cost you most<br>→ 11 burnout signs, to see where you are right now<br><b>You walk away with:</b> your full AuDHD shape, what it's costing you, and your red flags.","This map · Parts 3 to 5 · about 12 min","Spot the tug","The tug-of-war, masking and burnout: what it costs you."],
+ ["Pick Main","Quest","focus",332,"→ Pick 3 values that matter even on a bad day<br>→ Rate health, wealth and relationships<br>→ Choose your main quest, and for how long<br>→ Split your 10 spoons across the three<br><b>You walk away with:</b> your plan card.","This map · Part 6 · about 5 min","Pick your main quest","The one area of life to work on first."],
+ ["Calm The","Noise","input",28,"Sleep, food, movement, screens, noise and your space: everything going in, set up so neither brain gets flooded.<br><b>You walk away with:</b> your setup.","Owner's Manual · input","Calm the noise","Sleep, food, movement, screens, noise and your space, set up for both brains."],
+ ["Make","Peace","processing",60,"When your two brains fight, they agree on one next step. The full Peace Treaty, for every kind of stuck.<br><b>You walk away with:</b> your treaty.","Owner's Manual · processing","Make peace","The full Peace Treaty, for every kind of stuck."],
+ ["Make","Moves","output",92,"Small moves on your main quest, even before you feel ready.<br><b>You walk away with:</b> your next moves.","Owner's Manual · output","Make moves","Small moves on your main quest, even before you feel ready."],
+ ["Budget","Spoons","energy",148,"Know what fills your spoons and what drains them, and spend them on purpose.<br><b>You walk away with:</b> your energy budget.","Owner's Manual · energy","Budget your spoons","What fills your spoons, what drains them, and how to spend them on purpose."],
+ ["Build","Rhythm","anchors",180,"A few fixed anchors for one brain, freedom in between for the other.<br><b>You walk away with:</b> your anchors.","Owner's Manual · rhythm","Build your rhythm","A few fixed anchors for one brain, freedom in between for the other."],
+ ["Stack","Wins","momentum",212,"Small wins, stacked daily, until your main quest is done. A 2-minute check-in counts every bounce-back.<br><b>You walk away with:</b> momentum.","Owner's Manual · the goal","Stack wins","A 2-minute daily check-in that counts every win and bounce-back."]];
+const CM_OFF={"yl-Capable":{"x":27,"y":-33},"yl-Unstuck":{"x":-29,"y":-25},"yl-Clear":{"x":19,"y":16},"pk2":{"x":-3,"y":-42},"pk1":{"x":-34,"y":16},"pk0":{"x":38,"y":18},"goal":{"x":-1,"y":-5},"s4":{"x":14,"y":-18},"s3":{"x":5,"y":-15},"s5":{"x":-1,"y":-14},"s2":{"x":-6,"y":-12}};
+const CMIC=c=>[
+ /* 1 map both brains: two friendly blobs */
+ `<circle cx="-12" cy="2" r="15" fill="currentColor" fill-opacity=".22"/><circle cx="12" cy="2" r="15" fill="currentColor" fill-opacity=".22"/><circle cx="-16" cy="-1" r="2.3" fill="currentColor" stroke="none"/><circle cx="-8" cy="-1" r="2.3" fill="currentColor" stroke="none"/><circle cx="8" cy="-1" r="2.3" fill="currentColor" stroke="none"/><circle cx="16" cy="-1" r="2.3" fill="currentColor" stroke="none"/><path d="M-16,7 Q-12,10 -8,7"/><path d="M8,7 Q12,10 16,7"/>`,
+ /* 2 spot the tug: rope with a knot, pulled both ways */
+ `<path d="M-22,0 C-15,-6 -7,6 0,0 C7,-6 15,6 22,0"/><circle r="5.5" fill="currentColor" fill-opacity=".9" stroke="none"/><path d="M-24,-9 l-8,9 l8,9"/><path d="M24,-9 l8,9 l-8,9"/>`,
+ /* 3 pick main quest: map pin with a star */
+ `<path d="M0,28 C-12,14 -20,3 -20,-6 A20,20 0 0 1 20,-6 C20,3 12,14 0,28Z" fill="currentColor" fill-opacity=".22"/><path d="M0,-15 L2.6,-9.2 L9,-8.6 L4.2,-4.4 L5.6,1.8 L0,-1.4 L-5.6,1.8 L-4.2,-4.4 L-9,-8.6 L-2.6,-9.2Z" fill="currentColor" stroke="none"/>`,
+ /* 4 tune inputs: three sliders */
+ `<path d="M-14,-24 V24 M0,-24 V24 M14,-24 V24"/><circle cx="-14" cy="-8" r="6" fill="currentColor" fill-opacity=".9" stroke="none"/><circle cx="0" cy="10" r="6" fill="currentColor" fill-opacity=".9" stroke="none"/><circle cx="14" cy="-14" r="6" fill="currentColor" fill-opacity=".9" stroke="none"/>`,
+ /* 5 make peace: two circles that agree, a heart where they meet */
+ `<circle cx="-11" r="18" fill="currentColor" fill-opacity=".14"/><circle cx="11" r="18" fill="currentColor" fill-opacity=".14"/><path d="M0,7 C-7,1 -7,-5 -3.5,-6 C-1.5,-6.5 0,-5 0,-3.5 C0,-5 1.5,-6.5 3.5,-6 C7,-5 7,1 0,7Z" fill="currentColor" stroke="none"/>`,
+ /* 6 make moves: footsteps */
+ `<ellipse cx="-11" cy="7" rx="8" ry="12" transform="rotate(-12 -11 7)" fill="currentColor" fill-opacity=".22"/><ellipse cx="11" cy="-7" rx="8" ry="12" transform="rotate(12 11 -7)" fill="currentColor" fill-opacity=".22"/><circle cx="-14" cy="-11" r="2.4" fill="currentColor" stroke="none"/><circle cx="-7" cy="-12.5" r="2.4" fill="currentColor" stroke="none"/><circle cx="8" cy="-25" r="2.4" fill="currentColor" stroke="none"/><circle cx="15" cy="-24" r="2.4" fill="currentColor" stroke="none"/>`,
+ /* 7 budget spoons: a spoon with a sparkle */
+ `<ellipse cx="-3" cy="-11" rx="10" ry="13" fill="currentColor" fill-opacity=".22"/><path d="M-3,2 V28"/><path d="M17,-20 v8 M13,-16 h8"/>`,
+ /* 8 build rhythm: an anchor */
+ `<circle cx="0" cy="-20" r="5"/><path d="M0,-15 V26"/><path d="M-10,-6 H10"/><path d="M-22,8 C-20,22 -8,26 0,26 C8,26 20,22 22,8"/><path d="M-26,12 l4,-5 l4,5 M18,12 l4,-5 l4,5"/>`,
+ /* 9 stack wins: stacked blocks and a sparkle */
+ `<rect x="-24" y="10" width="48" height="13" rx="4" fill="currentColor" fill-opacity=".22"/><rect x="-17" y="-4" width="34" height="13" rx="4" fill="currentColor" fill-opacity=".22"/><rect x="-10" y="-18" width="20" height="13" rx="4" fill="currentColor" fill-opacity=".22"/><path d="M19,-28 v9 M14.5,-23.5 h9"/>`];
+const CM_MODES={
+ ptin:{done:0,here:4,tag:"you are here",info:"s4",glow:1,cap:"<b>Level 2 · Regulate</b> has 30+ tools. You're about to use one: <b>the Peace Treaty</b>."},
+ ptout:{done:0,here:4,tag:"you are here",info:"p1",from:4,glow:1,cap:"That yellow spike is you: <b>1 of 30+ tools</b> in Level 2. Here's the whole <b>AuDHD Owner's Manual™</b>."}};
+function cmStepPos(i){const [x,y]=cmPt(400,CM_ST[i][3]),o=CM_OFF["s"+i]||{x:0,y:0};return [x+o.x,y+o.y]}
+function cmOrigin(i){const [x,y]=i==="Clear"?cmPt(352,357):cmStepPos(i);return [((x-CM_VB[0])/CM_VB[2]*100).toFixed(1)+"%",((y-CM_VB[1])/CM_VB[3]*100).toFixed(1)+"%"]}
+let cmN=0;
+function circleMap(mode){
+  const M=CM_MODES[mode],uid="cm"+(++cmN);
+  const H=`font-family="Lexend,system-ui,sans-serif" font-weight="700"`,LAV="var(--cm-num)",YEL="var(--cm-yel)",GREY="var(--cm-grey)",LINE="var(--cm-line)",DONE="var(--cm-lit)";
+  const Dg=(k,inner)=>{const o=CM_OFF[k]||{x:0,y:0};return `<g transform="translate(${o.x} ${o.y})">${inner}</g>`};
+  let o=`<svg viewBox="${CM_VB.join(" ")}" role="img" aria-label="The AuDHD circle. In the middle: a life that fits your brain. Understand takes you from Confusion to Clear, Channel from Civil War to Unstuck, Compound from Burnout to Capable.">
+  <defs><marker id="${uid}a" viewBox="0 0 12 12" refX="7" refY="6" markerWidth="7" markerHeight="7" orient="auto"><path d="M1,1 L9,6 L1,11" fill="none" stroke="${LINE}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  <marker id="${uid}d" viewBox="0 0 12 12" refX="7" refY="6" markerWidth="7" markerHeight="7" orient="auto"><path d="M1,1 L9,6 L1,11" fill="none" stroke="${DONE}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  ${CM_PH.map((p,i)=>{const lo=p.mid-34,hi=p.mid+34;return i===2?`<path id="${uid}g${i}" d="${cmArc(300,hi,lo,0)}"/>`:`<path id="${uid}g${i}" d="${cmArc(300,lo,hi,1)}"/>`}).join("")}</defs>`;
+  CM_PH.forEach(p=>{o+=`<path d="${cmArc(212,p.mid-48,p.mid+48,1)}" fill="none" stroke="var(--cm-inner)" stroke-width="5" stroke-linecap="round"/>`});
+  CM_PH.forEach((p,i)=>{const d=M.done>=(i+1)*3,c=d?DONE:LINE;
+    o+=`<path d="${cmArc(338,p.mid-45,p.mid+44,1)}" fill="none" stroke="${c}" stroke-width="${d?7:5}" stroke-linecap="round" marker-end="url(#${uid}${d?"d":"a"})"/>`;
+    [p.mid-20,p.mid+20].forEach(a=>{const [x1,y1]=cmPt(330,a),[x2,y2]=cmPt(362,a);o+=`<line x1="${cmF(x1)}" y1="${cmF(y1)}" x2="${cmF(x2)}" y2="${cmF(y2)}" stroke="${c}" stroke-width="5" stroke-linecap="round"/>`})});
+  CM_PH.forEach((p,i)=>{o+=`<g data-k="${p.k}" role="button" tabindex="0" aria-label="Level ${i+1}: ${p.name}" class="${M.glow===i?"glow":""}"><use href="#${uid}g${i}" fill="none" stroke="${M.glow===i?"var(--cm-green2)":"var(--cm-green)"}" stroke-width="54" stroke-linecap="round"/>
+    <text ${H} font-size="30" fill="var(--cm-greent)" dy="10" letter-spacing="3"><textPath href="#${uid}g${i}" startOffset="50%" text-anchor="middle">${i+1} · ${p.name.toUpperCase()}</textPath></text></g>`});
+  [["Clear",357,352],["Unstuck",119,372],["Capable",239,370]].forEach(([w,a,rr])=>{const [x,y]=cmPt(rr,a),wd=w.length*17+34,on=M.here==="Clear"&&w==="Clear";
+    o+=Dg("yl-"+w,`<rect x="${cmF(x-wd/2)}" y="${cmF(y-21)}" width="${wd}" height="42" rx="21" fill="${on?"#FFD43B":"var(--cm-gold)"}"/><text ${H} x="${cmF(x)}" y="${cmF(y+9)}" text-anchor="middle" font-size="26" fill="${on?"#2B2140":"var(--cm-goldt)"}" letter-spacing="1">${w}</text>`)});
+  [[300,-60],[60,60],[180,0]].forEach(([a,rot],i)=>{const [x,y]=cmPt(178,a),p=CM_PH[i];
+    o+=Dg("pk"+i,`<g data-k="${p.k}" role="button" tabindex="0" aria-label="The problem: ${p.prob}" transform="translate(${cmF(x)} ${cmF(y)}) rotate(${rot})"><rect x="-104" y="-30" width="208" height="60" rx="30" fill="var(--cm-pink)"/>
+     <text ${H} y="9" text-anchor="middle" font-size="26" fill="var(--cm-pinkt)" letter-spacing="1">${p.prob}</text><text ${H} y="${i===2?54:-40}" text-anchor="middle" font-size="15" fill="${GREY}" letter-spacing="2">${p.feel.toUpperCase()}</text></g>`)});
+  const [ax,ay]=cmPt(150,0),[bx,by]=cmPt(150,120),[cx2,cy2]=cmPt(150,240);
+  o+=`<g data-k="center" role="button" tabindex="0" aria-label="The goal: a life that fits your brain"><polygon points="${cmF(ax)},${cmF(ay)} ${cmF(bx)},${cmF(by)} ${cmF(cx2)},${cmF(cy2)}" fill="var(--cm-tri)" stroke="var(--cm-trist)" stroke-width="5" stroke-linejoin="round"/>
+   ${Dg("goal",`<text ${H} text-anchor="middle" fill="var(--cm-ink)"><tspan x="${CM_CX}" y="${CM_CY-28}" font-size="22">A life</tspan><tspan x="${CM_CX}" y="${CM_CY+2}" font-size="22">that fits</tspan><tspan x="${CM_CX}" y="${CM_CY+32}" font-size="22">your brain</tspan></text>`)}</g>`;
+  CM_ST.forEach(([w1,w2,noun,a],i)=>{const [x,y]=cmPt(400,a);
+    const side=a>=240&&a<=345?"L":a>=15&&a<=110?"R":"B",done=i<M.done,here=M.here===i;
+    const ml=Math.max(w1.length,w2.length),gap=54,cw=12.5;
+    let words="";
+    if(side==="L") words=`<text ${H} text-anchor="end" fill="var(--cm-ink)" font-size="24"><tspan x="-${gap}" y="-6">${w1}</tspan><tspan x="-${gap}" y="20">${w2}</tspan></text><text ${H} x="-${gap+ml*cw+30}" y="12" text-anchor="end" font-size="44" fill="${LAV}">${i+1}</text>`;
+    if(side==="R") words=`<text ${H} text-anchor="start" fill="var(--cm-ink)" font-size="24"><tspan x="${gap}" y="-6">${w1}</tspan><tspan x="${gap}" y="20">${w2}</tspan></text><text ${H} x="${gap+ml*cw+30}" y="12" text-anchor="start" font-size="44" fill="${LAV}">${i+1}</text>`;
+    if(side==="B") words=`<text ${H} text-anchor="middle" fill="var(--cm-ink)" font-size="24"><tspan x="0" y="94">${w1}</tspan><tspan x="0" y="118">${w2}</tspan></text><text ${H} x="0" y="164" text-anchor="middle" font-size="44" fill="${LAV}">${i+1}</text>`;
+    const ring=here?`<circle class="pulse" r="54" fill="none" stroke="${YEL}" stroke-width="5" pointer-events="none"/>`:"";
+    const tag=here?`<g pointer-events="none"><rect x="-64" y="-98" width="128" height="32" rx="9" fill="#FFD43B"/><text ${H} x="0" y="-76" text-anchor="middle" font-size="18" fill="#2B2140">${M.tag}</text></g>`:"";
+    const icol=done?"var(--cm-check)":"var(--cm-icon)";
+    o+=Dg("s"+i,`<g class="stp" data-k="s${i}" role="button" tabindex="0" aria-label="Step ${i+1}: ${w1} ${w2}${done?", done":""}" transform="translate(${cmF(x)} ${cmF(y)})">${ring}<circle class="bl" r="40" fill="${done?"var(--cm-done)":"var(--cm-bg)"}" stroke="var(--cm-ring)" stroke-width="3"/>
+     <g fill="none" color="${icol}" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="scale(.66)">${done?`<path d="M-16,0 L-4,12 L18,-12" stroke-width="7"/>`:CMIC(icol)[i]}</g>
+     <text ${H} x="0" y="62" text-anchor="middle" font-size="16" font-weight="500" fill="${GREY}">${noun}</text>${words}${tag}</g>`)});
+  if(M.here==="Clear"){const [x0,y0]=cmPt(352,357),of=CM_OFF["yl-Clear"],x=x0+of.x,y=y0+of.y;o+=`<circle class="pulse" cx="${cmF(x)}" cy="${cmF(y)}" r="58" fill="none" stroke="${YEL}" stroke-width="5" pointer-events="none"/><g pointer-events="none"><rect x="${cmF(x-75)}" y="${cmF(y+30)}" width="150" height="36" rx="9" fill="#FFD43B"/><text ${H} x="${cmF(x)}" y="${cmF(y+55)}" text-anchor="middle" font-size="19" fill="#2B2140">${M.tag}</text></g>`}
+  if(String(mode).slice(0,2)==="pt") o+=ptTicks();
+  o+=`</svg>`;
+  const org=M.from!==undefined?cmOrigin(M.from):cmOrigin(0);
+  return `<div class="cm ${M.from!==undefined?"zout":""}" data-mode="${mode}" style="--ox:${org[0]};--oy:${org[1]}">${M.cap?`<p class="ccap">${M.cap}</p>`:""}<div class="cmv">${o}</div><div class="cinfo" aria-live="polite">${cmInfo(M.info,mode)}</div><p class="chint">${mode==="start"?"Tap step 1 to start. Tap anything else to see what happens there.":(mode==="end"||mode.slice(0,2)==="pt")?"Tap any step to see what happens there.":"Tap the pulsing step to keep going."}</p></div>`;
 }
+function cmTag(i,mode){if(i===4)return "You are here";if(i<3)return "Level 1 · The Pre-Diagnosis Map";return "The Owner's Manual"}
+function cmInfo(k,mode){
+  if(k==="center")return `<span class="tg">The goal</span><h3>A life that fits your brain</h3><p>Instead of forcing your brain to fit life, you shape life around your brain. Every step around the circle moves you here.</p>`;
+  if(k[0]==="p"){const p=CM_PH[+k[1]];return `<span class="tg">${p.say}</span><h3>${p.name}: ${p.prob} → ${p.to}</h3><p>${p.text}</p>`}
+  const i=+k.slice(1),st=CM_ST[i];return `<span class="tg">${cmTag(i,mode)} · ${st[5]}</span><h3>${i+1}. ${st[6]}</h3><p>${st[4]}</p>`;
+}
+document.addEventListener("click",e=>{const g=e.target.closest&&e.target.closest(".cm [data-k]");if(!g)return;const cm=g.closest(".cm"),k=g.dataset.k;
+  const go={start:["s0","go"],s1:["s1","next"],s2:["s2","toSeason"]}[cm.dataset.mode];
+  if(go&&k===go[0]){const b=document.getElementById(go[1]);if(b&&!b.disabled&&!b.closest("[hidden]")){try{posthog.capture("circle_step_started",{k})}catch(_){}b.click();return}}
+  cm.querySelectorAll(".sel").forEach(x=>x.classList.remove("sel"));cm.querySelectorAll(`[data-k="${k}"]`).forEach(x=>x.classList.add("sel"));
+  cm.querySelector(".cinfo").innerHTML=cmInfo(k,cm.dataset.mode);track("circle_tapped",{k,mode:cm.dataset.mode})});
+document.addEventListener("keydown",e=>{if(e.key!=="Enter"&&e.key!==" ")return;const g=e.target.closest&&e.target.closest(".cm [data-k]");if(!g)return;e.preventDefault();g.dispatchEvent(new MouseEvent("click",{bubbles:true}))});
+function ptTicks(){let o='<g class="tools" pointer-events="none">';const N=30,a0=14,a1=106;let best=0,bd=1e9;
+  for(let i=0;i<N;i++){const a=a0+(a1-a0)*i/(N-1);if(Math.abs(a-60)<bd){bd=Math.abs(a-60);best=i}}
+  for(let i=0;i<N;i++){const a=a0+(a1-a0)*i/(N-1),on=i===best;const [x1,y1]=cmPt(on?341:344,a),[x2,y2]=cmPt(on?374:358,a);
+    o+=`<line x1="${cmF(x1)}" y1="${cmF(y1)}" x2="${cmF(x2)}" y2="${cmF(y2)}" stroke="${on?"#FFD43B":"var(--cm-num)"}" stroke-width="${on?9:4}" stroke-linecap="round" opacity="${on?1:.55}"/>`;
+    if(on){const [cx,cy]=cmPt(374,a);o+=`<circle class="pulse" cx="${cmF(cx)}" cy="${cmF(cy)}" r="16" fill="none" stroke="#FFD43B" stroke-width="5"/>`}}
+  return o+"</g>"}
+const PTLEG=`<div class="ptleg"><span><i></i>Each line around Level 2 is one tool. There are 30+.</span><span><i class="y"></i>The yellow one is the Peace Treaty. That's you, right&nbsp;now.</span><span>🔒 The other tools come in Level 2 of the Owner's&nbsp;Manual.</span></div>`;
+function ptCircle(){return `<div class="ptc" id="ptc">${circleMap("ptin")}${PTLEG}<button class="ptre" id="ptre" type="button">🔍 Zoom in again</button></div>`}
+function ptZoomIn(){const box=document.getElementById("ptc");if(!box)return;const c=box.querySelector(".cm");if(!c)return;
+  const chip=document.createElement("span");chip.className="ptchip";chip.innerHTML="<i>📍</i>You are here: Make Peace · 1 of 30+&nbsp;tools";
+  const re=document.getElementById("ptre");
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches){box.prepend(chip);if(re)re.hidden=true;return}
+  const o=cmOrigin(4);c.style.setProperty("--ox",o[0]);c.style.setProperty("--oy",o[1]);
+  const play=(first)=>{c.classList.remove("zin3");void c.offsetWidth;c.classList.add("zin3");track("circle_zoom_in",{replay:!first});if(re)re.disabled=true;
+    setTimeout(()=>{c.classList.remove("zin3");if(first)box.prepend(chip);if(re)re.disabled=false},5300)};
+  if(re)re.onclick=()=>play(false);
+  setTimeout(()=>play(true),1500)}
 function vHow(fast){
   if (!fast && readStyle() && ls.get("pt.style","")) { vThread(); return }
   const i = ORD[S.hi]; const E = ex(); let body = ""; track("slide_viewed",{slide:S.hi+1});
   if (i===0) body = `
     <h1 class="ptitle">The AuDHD <span class="hl">Peace Treaty</span><sup class='tm'>TM</sup></h1>
+    ${ls.get("pt.style","")?ptCircle():""}
+    <p class="body">Your <span class="kdh"><b>ADHD brain</b></span> and your <span class="kau"><b>autistic brain</b></span> both have a Feeling side that grabs the wheel. Your Thinking side is the one who brokers the deal.</p>
     <p class="body">Learn it in a few taps. Then the <b>Wizard<sup class='tm'>TM</sup></b> walks you through it, live.</p>
     <p class="cardtxt tline"><span class="tic">${ICONS.t[0]}</span><span><b>About 2 minutes of reading. Only once.</b><br>A peace treaty, not a PhD.</span></p>
     <div class="war" id="modebox" ${ls.get("pt.style","")?"hidden":""}>
@@ -1449,7 +1605,7 @@ function vHow(fast){
     <div class="stack g10"><button class="btn" id="hnext" ${S.sdone[S.hi]?"":"hidden"}>${NEXTL[i]}</button>
     ${S.hi>0?`<button class="textbtn" id="hback" style="align-self:center">Back</button>`:""}
     ${S.hi<NSL-1&&ls.get("pt.intro",false)?`<button class="textbtn" id="hskip" style="align-self:center">Skip to the Wizard<sup class='tm'>TM</sup></button>`:""}</div>`;
-  wireTop();
+  wireTop(); if (i===0) ptZoomIn();
   const toWizard = () => { track("wizard_clicked",{from_slide:S.hi+1}); if (SITE==="web"){ ls.set("pt.intro",true); setTimeout(()=>{ location.href=WIZARD_URL },250); return true } return false };
   $("#hnext").onclick = () => { if (S.hi<NSL-1){ S.hi++; render() } else { if(toWizard()) return; S.view="start"; render() } scrollTo(0,0) };
   const sk=$("#hskip"); if (sk) sk.onclick = () => { if(toWizard()) return; S.view="start"; render(); scrollTo(0,0) };
@@ -2107,12 +2263,14 @@ function vThread(keepY){
     <div class="sprog" aria-hidden="true"><i></i></div>
     <article class="thread slide">
       <header class="thead"><h1 class="ptitle">The AuDHD <span class="hl">Peace Treaty</span><sup class='tm'>TM</sup></h1>
-        <p class="tmeta">${ICONS.t[0]} About 2 minutes of reading. Only once.</p></header>
+        <p class="tmeta">${ICONS.t[0]} About 2 minutes of reading. Only once.</p>
+        ${ptCircle()}
+        <p class="body">Your <span class="kdh"><b>ADHD brain</b></span> and your <span class="kau"><b>autistic brain</b></span> both have a Feeling side that grabs the wheel. Your Thinking side is the one who brokers the deal.</p></header>
       ${parts.map((p,n)=>`<section class="tp" id="ss${n+1}" data-n="${n+1}" aria-label="${esc(p.name)}"><span class="tnum">${n+1}/</span>${p.html}</section>`).join("")}
       <div class="tend"></div>
     </article>
     <button class="spill" aria-expanded="false"><b>1</b>/${parts.length} · <span>${esc(parts[0].name)}</span></button>`;
-  wireTop(); track("thread_opened");
+  wireTop(); ptZoomIn(); track("thread_opened");
   const els = $$(".tp"), bar = $(".sprog i"), pill = $(".spill");
   const units = [...document.querySelectorAll(".thread .tp > p")];
   const seen = {}; let cur = -1, raf = 0, curU = null;
@@ -2143,6 +2301,8 @@ function vStart(){
   <div class="stack g10">
     <span class="tag">The AuDHD Peace Treaty Wizard<sup class='tm'>TM</sup></span>
     <h1 class="ptitle" style="font-size:44px">Let's broker the <span class="hl">P.E.A.C.E.</span></h1>
+    ${ptCircle()}
+    <p class="body">Your ADHD brain and your autistic brain both have a Feeling side that grabs the wheel. Your Thinking side is the one who brokers the deal.</p>
     <p class="body">Your <span class="kau"><b>Thinking Brain</b></span> and your <span class="kdh"><b>Feeling Brain</b></span> are about to sit down together. The Wizard<sup class='tm'>TM</sup> walks you through PEACE, one step at a time.</p>
   </div>
   <div class="stack g10"><p class="hook">Which one is it right now?</p>
@@ -2153,8 +2313,8 @@ function vStart(){
   </div>
   <button class="btn" id="go" ${S.task.trim()&&m?"":"disabled"}>Start the Wizard<sup class='tm'>TM</sup></button>
   <p class="note" id="aiNote">Runs on <b>your own Claude account</b> (the free plan works). Claude asks you once before it starts. Your words go only to Claude, and your saved cards stay on this device.</p>
-  ${SITE==="claude"?`<a class="textbtn" href="https://audhd-peace-treaty.netlify.app/treaty/" target="_blank" rel="noopener" style="align-self:center">See how it works again</a>`:`<button class="textbtn" id="howagain" style="align-self:center">See how it works again</button>`}`;
-  wireTop();
+  ${SITE==="claude"?`<a class="textbtn" href="https://ptk7q.pages.dev/treaty/" target="_blank" rel="noopener" style="align-self:center">See how it works again</a>`:`<button class="textbtn" id="howagain" style="align-self:center">See how it works again</button>`}`;
+  wireTop(); ptZoomIn();
   if (sampleChecked && !sample) $("#aiNote").textContent = NOAI;
   const go = $("#go");
   const upd = () => { const ta=$("#task"); S.task = ta.value; go.disabled = !(S.task.trim() && S.mode) };
@@ -2306,9 +2466,7 @@ function vCard(){
     <span class="tag">Now zoom out</span>
     <h2>You're on step 5 of 9.</h2>
     <p class="body">You just used one negotiating tool. Watch where it sits.</p>
-    <svg class="tri" id="tri" role="img" aria-label="The AuDHD triangle: three sides, nine steps, and the life you want at your pace in the middle. You are at step 5, Negotiate the voices."></svg>
-    <div class="key"><span><i style="background:var(--red)"></i>the problem</span><span><i style="background:var(--ok)"></i>the solution</span><span><i style="background:var(--in)"></i>the steps, in order</span><span><i style="background:var(--yellow)"></i>what you become</span><span>→ the direction to travel</span></div>
-    ${legendHTML(MODEL_B,4)}
+    ${circleMap("ptout")}
   </div>
   <div class="box">
     <span class="tag">Inside step 5</span>
@@ -2317,13 +2475,15 @@ function vCard(){
     <div class="toolgrid"><span class="me">Peace Treaty · you used this</span>${TOOLS.map(t=>`<span>${esc(t)}</span>`).join("")}</div>
     <p>Real self-control shows up when both brains agree on where to go.</p>
     <p>This fight probably isn't your only one. Your two brains pull against each other all day: routine and something new, plans and going with the flow, people and alone time.</p>
-    <p><b>The AuDHD Map</b> shows you <b>which fights you have</b>, what they cost you, and <b>where you actually want to go</b>. Then your tools stop being random and start fitting you.</p>
-    ${MAP_URL?`<a class="btn" href="${esc(MAP_URL)}" target="_blank" rel="noopener">Map your two voices: $37</a>`:`<button class="btn" disabled>The AuDHD Map: $37 (link coming soon)</button>`}
+    <p>No two AuDHD brains look the same, so your tools shouldn't either.</p>
+    <p><b>The AuDHD Pre-Diagnosis Map™</b> is Level 1. In about 30 minutes it shows <b>your</b> shape: your ADHD side, your autistic side, and where they collide. Then your tools stop being random and start fitting you.</p>
+    <a class="btn" href="${esc(MAP_URL)}" target="_blank" rel="noopener" id="mapcta">See my AuDHD shape →</a>
   </div>
   <button class="btn ghost" id="again">Start another treaty</button>
   <p class="credit">${CREDIT}</p>`;
   wireTop();
-  drawTri($("#tri"), MODEL_B, 4); zoomOut($("#tri"));
+  track("circle_zoom_out",{});
+  const mc=$("#mapcta"); if (mc) mc.onclick=()=>track("map_cta_clicked",{from:"card"});
   $("#save").onclick = e => {
     const list = ls.get("ptw.deals",[]); list.unshift({...c, task:S.task.slice(0,140), at:Date.now()});
     const ok = ls.set("ptw.deals", list.slice(0,50));
