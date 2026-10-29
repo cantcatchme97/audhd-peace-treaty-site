@@ -1,0 +1,399 @@
+<script>
+!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags identify setPersonProperties group resetGroups reset get_distinct_id get_session_id alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+posthog.init("phc_vhUmnsmQbPvXfpUHhuKVgh6a3arJ6E5ivCV8y2KjcBCu",{api_host:"https://us.i.posthog.com",person_profiles:"identified_only",session_recording:{maskAllInputs:true}});
+try{posthog.register({product:"peace_treaty",surface:"gumroad"});posthog.capture("gumroad_page_viewed",{product:"peace_treaty"})}catch(e){}
+document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("[data-pt-buy]");if(a)try{posthog.capture("checkout_clicked",{product:"peace_treaty",price:0})}catch(_){}},true);
+</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gaegu:wght@700&family=Lexend:wght@400;500;600;700&display=swap">
+<style>
+/* How to AuDHD · Peace Treaty landing page for Gumroad. Phone-first column, plum = autism, tomato = ADHD, yellow = brand. */
+.ht{
+  --paper:#F7F2E8; --sheet:#EEE6D6; --sheet2:#E4D9C4; --ink:#211B2E; --ink2:#4A4257; --muted:#736A80; --rule:rgba(33,27,46,.14);
+  --au:#3E2F66; --au-s:rgba(62,47,102,.10); --dh:#C8442A; --dh-s:rgba(200,68,42,.10); --ok:#3F7D58; --ok-s:rgba(63,125,88,.13);
+  --yellow:#FFD43B; --on-y:#2B2140;
+  --fd:"Gaegu","Comic Neue",cursive; --fb:"Lexend",system-ui,-apple-system,sans-serif;
+  background:var(--paper);color:var(--ink);font:400 16.5px/1.65 var(--fb);-webkit-font-smoothing:antialiased;overflow-x:clip;
+}
+.ht *{box-sizing:border-box}
+.ht .wrap{max-width:680px;margin:0 auto;padding:20px max(16px,env(safe-area-inset-left,0px)) 110px;display:flex;flex-direction:column;gap:64px}
+.ht h1,.ht h2,.ht h3{font-family:var(--fd);font-weight:700;line-height:1.02;margin:0;text-wrap:balance;color:var(--ink)}
+.ht h1{font-size:clamp(44px,12vw,64px)}.ht h2{font-size:clamp(34px,8.5vw,44px)}.ht h3{font-size:25px}
+.ht p{margin:0;text-wrap:pretty}.ht li,.ht .bub{text-wrap:pretty}.ht .tm{font:600 .28em/1 var(--fb);letter-spacing:.04em;vertical-align:super;margin-left:3px;opacity:.75}.ht b{font-weight:600}
+.ht section{display:flex;flex-direction:column;gap:18px}
+.ht .eye{font:600 11px/1.2 var(--fb);letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.ht .au{color:var(--au);font-weight:600}.ht .dh{color:var(--dh);font-weight:600}
+.ht .muted{color:var(--muted)}.ht .small{font-size:13.5px}
+
+/* buttons */
+.ht .btn{appearance:none;border:0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:60px;padding:0 28px;border-radius:999px;background:#2B2140;color:#FFD43B;font:600 18px/1 var(--fb);text-decoration:none;transition:transform .15s,box-shadow .15s;box-shadow:0 8px 0 rgba(43,33,64,.18)}
+.ht .btn:hover{transform:translateY(-2px);box-shadow:0 10px 0 rgba(43,33,64,.18)}
+.ht .btn:active{transform:translateY(2px);box-shadow:0 4px 0 rgba(43,33,64,.18)}
+.ht .btn .free{background:#FFD43B;color:#2B2140;border-radius:999px;padding:4px 10px;font-size:13px;letter-spacing:.06em}
+
+/* hero */
+.ht .hero{background:radial-gradient(95% 85% at 30% 18%,#FFE27A,var(--yellow) 62%,#F2C21F);color:var(--on-y);border-radius:30px;padding:30px 22px 26px;display:flex;flex-direction:column;gap:18px;position:relative;overflow:hidden}
+.ht .hero h1,.ht .hero p,.ht .hero .eye{color:var(--on-y)}.ht .hero .eye{opacity:.7}
+.ht .hero h1 .a{color:#3E2F66}.ht .hero h1 .d{color:#C8442A}
+.ht .hero .sub{font-size:18px;max-width:46ch}
+.ht .logo{display:flex;flex-direction:column;align-items:flex-start;line-height:1}
+.ht .logo i{font:italic 500 15px Georgia,serif;opacity:.75}
+.ht .logo span{font:800 26px/1 system-ui,-apple-system,sans-serif;letter-spacing:-1.5px;color:#2B2140}
+.ht .logo span em{font:700 31px/1 var(--fd);color:#C8442A;font-style:normal;letter-spacing:0;margin-left:2px;display:inline-block;animation:wob 3s ease-in-out infinite}
+@keyframes wob{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg) translateY(-2px)}}
+.ht .dots{display:flex;gap:6px;align-items:center;margin-top:8px}
+.ht .dots b{width:4px;height:4px;border-radius:50%;background:#2B2140}
+.ht .dots b.r{background:#C8442A;animation:jump 1.6s ease-in-out infinite}
+.ht .dots b.r:nth-child(odd){animation-delay:.2s}.ht .dots b.r:nth-child(3n){animation-delay:.5s;width:6px;height:6px}
+@keyframes jump{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.ht .trust{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;justify-content:center;color:var(--on-y)}
+.ht .trust span::before{content:"✓ ";font-weight:700}
+
+/* chat voices */
+.ht .chat{display:flex;flex-direction:column;gap:10px;background:var(--sheet);border-radius:26px;padding:18px}
+.ht .bub{max-width:82%;padding:12px 16px;border-radius:20px;font-size:16.5px;opacity:0;transform:translateY(12px) scale(.96);animation:pop .5s cubic-bezier(.2,.9,.3,1.3) forwards}
+.ht .bub small{display:block;font:600 10.5px var(--fb);letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px}
+.ht .bub.au{align-self:flex-start;background:var(--paper);border-bottom-left-radius:6px;box-shadow:inset 0 0 0 2px var(--au)}.ht .bub.au small{color:var(--au)}
+.ht .bub.dh{align-self:flex-end;background:var(--dh);color:#fff;border-bottom-right-radius:6px}.ht .bub.dh small{color:#FFE0D6}
+.ht .bub.both{align-self:center;max-width:100%;text-align:center;background:var(--yellow);color:var(--on-y);font-weight:500}.ht .bub.both small{color:var(--on-y);opacity:.7}
+.ht .bub:nth-child(1){animation-delay:.2s}.ht .bub:nth-child(2){animation-delay:1s}.ht .bub:nth-child(3){animation-delay:1.8s}.ht .bub:nth-child(4){animation-delay:2.6s}.ht .bub:nth-child(5){animation-delay:3.6s}
+@keyframes pop{to{opacity:1;transform:none}}
+.ht .typing{align-self:center;display:flex;gap:4px;padding:6px 0}
+.ht .typing b{width:7px;height:7px;border-radius:50%;background:var(--muted);animation:jump 1s infinite}.ht .typing b:nth-child(2){animation-delay:.15s}.ht .typing b:nth-child(3){animation-delay:.3s}
+
+/* tug of war */
+.ht .tug{background:var(--sheet);border-radius:26px;padding:20px 14px 16px;display:flex;flex-direction:column;gap:12px}
+.ht .tugrow{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:8px}
+.ht .who{font:700 22px/1 var(--fd);text-align:center;width:78px}
+.ht .who.au{color:var(--au)}.ht .who.dh{color:var(--dh)}
+.ht .who small{display:block;font:500 11px/1.2 var(--fb);color:var(--muted);margin-top:4px}
+.ht .rope{position:relative;height:44px}
+.ht .rope svg{width:100%;height:100%;display:block;overflow:visible}
+.ht .rope .knot{position:absolute;left:50%;top:50%;width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;background:#FFD43B;box-shadow:0 0 0 2.5px #2B2140;animation:pull 2.4s ease-in-out infinite}
+@keyframes pull{0%,100%{transform:translateX(-26px)}50%{transform:translateX(26px)}}
+.ht .you{text-align:center;font-size:14px;color:var(--ink2)}
+.ht .you b{color:var(--ink)}
+
+/* signs */
+.ht .signs{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.ht .signs li{display:grid;grid-template-columns:26px minmax(0,1fr);gap:8px;background:var(--sheet);border-radius:16px;padding:12px 14px;font-size:15.5px}
+.ht .signs li::before{content:"→";color:var(--dh);font-weight:700}
+
+/* callout */
+.ht .callout{border-radius:22px;padding:20px;display:flex;flex-direction:column;gap:10px;background:var(--sheet)}
+.ht .callout.y{background:rgba(255,212,59,.24)}.ht .callout.p{background:var(--dh-s)}
+
+/* peace steps */
+.ht .peace{display:flex;flex-direction:column;gap:0;position:relative}
+.ht .step{display:grid;grid-template-columns:56px minmax(0,1fr);gap:14px;padding:12px 0;position:relative}
+.ht .step::before{content:"";position:absolute;left:27px;top:0;bottom:0;width:2px;background:repeating-linear-gradient(var(--rule) 0 6px,transparent 6px 12px)}
+.ht .step:first-child::before{top:50%}.ht .step:last-child::before{bottom:50%}
+.ht .step .L{position:relative;z-index:1;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font:700 30px/1 var(--fd);color:#fff;background:var(--c);box-shadow:0 0 0 5px var(--paper)}
+.ht .step b{font-size:17px}.ht .step p{color:var(--ink2);font-size:15px;margin-top:2px}
+
+/* what you get */
+.ht .gets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:520px){.ht .gets{grid-template-columns:minmax(0,1fr)}}
+.ht .get{background:var(--sheet);border-radius:22px;padding:18px;display:flex;flex-direction:column;gap:8px}
+.ht .get .ic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:var(--paper);box-shadow:inset 0 0 0 2px var(--c,var(--ink2))}
+.ht .get .ic svg{width:26px;height:26px}
+.ht .modes{display:flex;flex-wrap:wrap;gap:6px}
+.ht .modes span{font-size:12.5px;padding:5px 10px;border-radius:999px;background:var(--paper);box-shadow:inset 0 0 0 1px var(--rule)}
+
+/* triangle */
+.ht .tri{background:var(--sheet);border-radius:26px;padding:18px 14px;display:flex;flex-direction:column;gap:14px}
+.ht .trisvg{width:100%;max-width:380px;height:auto;display:block;margin:0 auto;overflow:visible}
+.ht .trisvg .side{stroke-dasharray:420;stroke-dashoffset:420;animation:draw 1.6s ease-out forwards}
+.ht .trisvg .s2{animation-delay:.6s}.ht .trisvg .s3{animation-delay:1.2s}
+@keyframes draw{to{stroke-dashoffset:0}}
+.ht .trisvg .here{animation:pulse 1.8s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:.55}50%{transform:scale(1.5);opacity:.15}}
+.ht .nd{opacity:0;animation:fadein .4s ease forwards}
+@keyframes fadein{to{opacity:1}}
+.ht .legend{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (max-width:560px){.ht .legend{grid-template-columns:minmax(0,1fr)}}
+.ht .lg{background:var(--paper);border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:6px}
+.ht .lg h4{margin:0;font:600 11px var(--fb);letter-spacing:.1em;text-transform:uppercase;color:var(--c)}
+.ht .lg ol{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:5px;font-size:13.5px}
+.ht .lg li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:6px;align-items:start}
+.ht .lg li i{font-style:normal;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font:700 11px var(--fb);box-shadow:inset 0 0 0 1.5px var(--c);color:var(--c)}
+.ht .lg .end{font-size:12px;color:var(--muted)}
+.ht .herecard{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:center;background:var(--yellow);color:var(--on-y);border-radius:18px;padding:12px 14px}
+.ht .herecard .z{width:44px;height:44px;border-radius:50%;background:#C8442A;color:#fff;display:grid;place-items:center;font:700 24px var(--fd)}
+
+.ht .tmap{position:relative;width:100%;max-width:420px;margin:8px auto 4px;aspect-ratio:1/1.02}
+.ht .tmap .trisvg{position:absolute;inset:0;width:100%;height:100%}
+.ht .tn{position:absolute;transform:translate(-50%,-50%);display:flex;align-items:center;gap:5px;white-space:nowrap}
+.ht .tn i{font-style:normal;width:28px;height:28px;border-radius:50%;background:var(--c);color:#fff;display:grid;place-items:center;font:700 13px var(--fb);box-shadow:0 0 0 3px var(--sheet)}
+.ht .tn em{font:600 12px/1.1 var(--fb);font-style:normal;color:var(--c);background:var(--sheet);padding:2px 4px;border-radius:6px}
+.ht .tn.l{flex-direction:row-reverse;transform:translate(calc(-100% + 14px),-50%)}
+.ht .tn.r{transform:translate(-14px,-50%)}
+.ht .tn.b{flex-direction:column;gap:3px;transform:translate(-50%,-14px)}
+.ht .tc{position:absolute;font:700 20px/1 var(--fd);color:var(--ink)}
+.ht .tc.top{left:50%;top:0;transform:translate(-50%,-70%)}
+.ht .tc.bl{left:14%;top:86%;transform:translate(-60%,95%)}
+.ht .tc.br{left:86%;top:86%;transform:translate(-40%,95%)}
+.ht .ts{position:absolute;font:700 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+.ht .ts.s-l{left:22%;top:38%;transform:translate(-50%,-50%) rotate(-65deg);color:#3E2F66}
+.ht .ts.s-r{left:78%;top:38%;transform:translate(-50%,-50%) rotate(65deg);color:#C8442A}
+.ht .ts.s-b{left:50%;top:99%;transform:translate(-50%,0);color:#3F7D58}
+.ht .thome{position:absolute;left:50%;top:60%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:4px}
+.ht .thome b{width:34px;height:34px;border-radius:50%;background:#C8442A;box-shadow:0 0 0 4px #F7F2E8,0 0 0 9px rgba(255,212,59,.7);animation:pulse2 1.8s ease-in-out infinite}
+.ht .thome em{font:700 18px/1 var(--fd);font-style:normal;color:#C8442A;background:#FFD43B;padding:3px 8px;border-radius:8px}
+@keyframes pulse2{0%,100%{box-shadow:0 0 0 4px #F7F2E8,0 0 0 9px rgba(255,212,59,.7)}50%{box-shadow:0 0 0 4px #F7F2E8,0 0 0 16px rgba(255,212,59,.2)}}
+.ht .tmap .side{stroke-dasharray:none}
+.ht .tmap .side{stroke-dasharray:120;stroke-dashoffset:120}
+.ht .tmap.play .side{animation:draw2 1.1s ease-out forwards}.ht .tmap.play .s2{animation-delay:.5s}.ht .tmap.play .s3{animation-delay:1s}
+@keyframes draw2{to{stroke-dashoffset:0}}
+.ht .tmap .tn{opacity:0;scale:.6;transition:opacity .35s,scale .35s cubic-bezier(.3,1.6,.5,1)}
+.ht .tmap.play .tn{opacity:1;scale:1}
+.ht .tmap .trav{position:absolute;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#FFD43B;box-shadow:0 0 0 3px #2B2140;left:23%;top:66.5%;opacity:0;z-index:2}
+.ht .tmap.play .trav{animation:travel 2.2s 2.4s cubic-bezier(.5,0,.3,1) forwards}
+@keyframes travel{0%{left:23%;top:66.5%;opacity:1}22%{left:32%;top:47%}44%{left:41%;top:27.5%}62%{left:50%;top:8%}80%{left:59%;top:27.5%}99%{left:68%;top:47%;opacity:1}100%{left:68%;top:47%;opacity:0}}
+.ht .here5{position:absolute;left:68%;top:47%;width:0;height:0;opacity:0;z-index:3}
+.ht .tmap.play .here5{animation:fadein .3s 4.5s forwards}
+.ht .here5 b{position:absolute;width:44px;height:44px;left:-22px;top:-22px;border-radius:50%;border:3px solid #FFD43B;animation:ring 1.6s ease-out infinite}
+.ht .here5 em{position:absolute;right:-6px;top:24px;white-space:nowrap;font:700 17px/1 var(--fd);font-style:normal;color:#C8442A;background:#FFD43B;padding:4px 8px;border-radius:8px}
+@keyframes ring{0%{transform:scale(.7);opacity:1}100%{transform:scale(1.6);opacity:0}}
+.ht .tmap.play .tn:nth-of-type(1){transition-delay:0.30s}
+.ht .tmap.play .tn:nth-of-type(2){transition-delay:0.48s}
+.ht .tmap.play .tn:nth-of-type(3){transition-delay:0.66s}
+.ht .tmap.play .tn:nth-of-type(4){transition-delay:0.84s}
+.ht .tmap.play .tn:nth-of-type(5){transition-delay:1.02s}
+.ht .tmap.play .tn:nth-of-type(6){transition-delay:1.20s}
+.ht .tmap.play .tn:nth-of-type(7){transition-delay:1.38s}
+.ht .tmap.play .tn:nth-of-type(8){transition-delay:1.56s}
+.ht .tmap.play .tn:nth-of-type(9){transition-delay:1.74s}
+.ht .phone{width:100%;max-width:330px;margin:0 auto;background:#2B2140;border-radius:40px;padding:12px;box-shadow:0 18px 40px rgba(43,33,64,.25)}
+.ht .pbar{display:flex;align-items:center;gap:8px;background:#F7F2E8;border-radius:28px 28px 8px 8px;padding:12px 14px;font-size:14px}
+.ht .pdot{width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFE27A,#FFD43B)}
+.ht .pbar .ex{margin-left:auto;font:600 10px var(--fb);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:var(--sheet);padding:3px 7px;border-radius:999px}
+.ht .pchat{background:#F7F2E8;height:400px;margin-top:3px;padding:12px;display:flex;flex-direction:column;gap:8px;overflow:hidden;justify-content:flex-end}
+.ht .pm{max-width:84%;padding:9px 12px;border-radius:16px;font-size:14px;line-height:1.4;animation:pop .35s cubic-bezier(.2,.9,.3,1.3) forwards;opacity:0;transform:translateY(8px)}
+.ht .pm.u{align-self:flex-end;background:#2B2140;color:#F7F2E8;border-bottom-right-radius:5px}
+.ht .pm.w{align-self:flex-start;background:#EEE6D6;color:#211B2E;border-bottom-left-radius:5px}
+.ht .pm.w b{color:#C8442A}
+.ht .pm.deal{align-self:stretch;max-width:100%;background:#FFD43B;color:#2B2140;text-align:center;font-weight:600}
+.ht .pm.dots{display:flex;gap:4px;padding:12px}.ht .pm.dots i{width:6px;height:6px;border-radius:50%;background:#736A80;animation:jump 1s infinite}.ht .pm.dots i:nth-child(2){animation-delay:.15s}.ht .pm.dots i:nth-child(3){animation-delay:.3s}
+.ht .pin{display:flex;align-items:center;gap:8px;background:#F7F2E8;border-radius:8px 8px 28px 28px;margin-top:3px;padding:12px 14px;font-size:13.5px;color:#736A80}
+.ht .pin i{margin-left:auto;width:28px;height:28px;border-radius:50%;background:#C8442A}
+/* proof */
+.ht .quotes{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 12px}
+.ht .q{flex:0 0 82%;max-width:340px;scroll-snap-align:start;background:var(--paper);border-radius:22px;padding:18px;box-shadow:inset 0 0 0 1.5px var(--rule);display:flex;flex-direction:column;gap:10px;font-size:15.5px}
+.ht .q .st{color:#E0A21B;letter-spacing:2px}
+.ht .q .by{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
+.ht .q .by i{width:28px;height:28px;border-radius:50%;background:var(--c,var(--au-s));display:inline-block}
+.ht .shots{display:flex;flex-direction:column;gap:12px;align-items:center}
+.ht .shots img{width:100%;max-width:440px;height:auto;border-radius:18px;background:var(--sheet);box-shadow:0 6px 20px rgba(43,33,64,.10)}
+
+/* me */
+.ht .me{display:grid;grid-template-columns:72px minmax(0,1fr);gap:16px;align-items:start}
+.ht .me .av{width:72px;height:72px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFE27A,#FFD43B);display:grid;place-items:center;font:700 32px var(--fd);color:#2B2140;box-shadow:inset 0 0 0 3px #2B2140}
+
+/* faq */
+.ht details{background:var(--sheet);border-radius:16px;padding:14px 16px}
+.ht summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.ht summary::-webkit-details-marker{display:none}
+.ht summary::after{content:"+";font-weight:700;color:var(--dh);transition:transform .2s}
+.ht details[open] summary::after{transform:rotate(45deg)}
+.ht details p{margin-top:8px;font-size:15px;color:var(--ink2)}
+.ht .faq{display:flex;flex-direction:column;gap:8px}
+
+/* final */
+.ht .final{background:#2B2140;color:#F7F2E8;border-radius:30px;padding:30px 22px;display:flex;flex-direction:column;gap:16px;text-align:center;align-items:center}
+.ht .final h2{color:#F7F2E8}.ht .final p{color:#D3C9DE}
+.ht .final .btn{background:#FFD43B;color:#2B2140;box-shadow:0 8px 0 rgba(0,0,0,.25);align-self:stretch}
+.ht .final .btn .free{background:#2B2140;color:#FFD43B}
+
+/* sticky */
+.ht .sticky{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:var(--paper);border-top:1px solid var(--rule);display:flex;justify-content:center;transform:translateY(120%);transition:transform .3s}
+.ht .sticky.show{transform:none}
+.ht .sticky .btn{min-height:52px;width:100%;max-width:440px;font-size:16.5px}
+
+/* reveal on scroll (only when JS runs) */
+.ht.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.ht.js .rv.in{opacity:1;transform:none}
+.ht .full{align-self:stretch}
+.ht :focus-visible{outline:3px solid var(--dh);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){.ht *{animation:none!important;transition:none!important}.ht .bub{opacity:1;transform:none}.ht .trisvg .side{stroke-dashoffset:0}.ht .nd{opacity:1}.ht.js .rv{opacity:1;transform:none}}
+</style>
+
+<div class="ht" id="ht">
+<div class="wrap">
+
+<header class="hero">
+  <div class="logo" aria-label="how to AuDHD"><i>how to</i><span>Au<em>DHD</em></span>
+    <div class="dots" aria-hidden="true"><b></b><b></b><b></b><b></b><b></b><b class="r"></b><b class="r"></b><b class="r"></b><b class="r"></b><b class="r"></b></div></div>
+  <h1>The <span class="a">Au</span><span class="d">DHD</span> Peace Treaty<sup class="tm">TM</sup></h1>
+  <p class="sub">Your <b>ADHD brain</b> and your <b>autistic brain</b> want opposite things. This gets them to agree on one small next step, so you can finally move.</p>
+  <a data-pt-buy class="btn full buy" href="https://howtoaudhd.net/l/peace-treaty?wanted=true&amp;price=0" target="_top">Get the Peace Treaty <span class="free">FREE</span></a>
+  <div class="trust"><span>Free forever</span><span>No app to install</span><span>2-minute read</span></div>
+</header>
+
+<section class="rv">
+  <span class="eye">Sound familiar?</span>
+  <h2>Two brains trying to share one life</h2>
+  <div class="chat" aria-label="A conversation between your two brains">
+    <div class="bub au"><small>Autistic brain</small>I need to know every step before I start.</div>
+    <div class="bub dh"><small>ADHD brain</small>Just start! We'll figure it out.</div>
+    <div class="bub au"><small>Autistic brain</small>But what if it goes wrong?</div>
+    <div class="bub dh"><small>ADHD brain</small>Ugh, this is boring. Let's check our phone.</div>
+    <div class="bub both"><small>You, 40 minutes later</small>Still staring at the same tab.</div>
+  </div>
+  <p>If you laughed and then felt a little too seen, you're in the right place.</p>
+</section>
+
+<section class="rv">
+  <span class="eye">What's actually going on</span>
+  <h2>It's a tug of war, all day</h2>
+  <div class="tug">
+    <div class="tugrow">
+      <div class="who au">Autism<small>order, sameness, depth</small></div>
+      <div class="rope" aria-hidden="true"><svg viewBox="0 0 200 44" preserveAspectRatio="none"><path d="M0 22 Q50 14 100 22 T200 22" fill="none" stroke="#9C7B4F" stroke-width="5" stroke-linecap="round"/><path d="M0 22 Q50 14 100 22 T200 22" fill="none" stroke="#C9A877" stroke-width="2" stroke-dasharray="4 5"/></svg><span class="knot"></span></div>
+      <div class="who dh">ADHD<small>novelty, speed, freedom</small></div>
+    </div>
+    <p class="you">And <b>you</b> are the yellow knot in the middle, watching yourself not do the thing. Again.</p>
+  </div>
+  <ul class="signs">
+    <li>You know exactly what to do, and you physically can't start.</li>
+    <li>You make the most detailed plan, and it falls apart before lunch.</li>
+    <li>You know why you should stop, and you reach for it anyway.</li>
+    <li>You're not lazy. Two strong forces are pulling you in opposite directions.</li>
+  </ul>
+</section>
+
+<section class="rv">
+  <span class="eye">The idea</span>
+  <h2>You can't force either side. You can broker a deal.</h2>
+  <p>You can't make your ADHD brain follow the plan. You can't logic your autistic brain out of needing certainty. But your <b>thinking brain</b> can sit both of them down and negotiate something small enough that both say yes.</p>
+  <div class="callout y"><b>Emotional problems need emotional solutions.</b><span>The Peace Treaty doesn't argue with your feelings. It bargains with them, the way a kid trades lunch, until the plan feels like their own idea.</span></div>
+</section>
+
+<section class="rv">
+  <span class="eye">The method</span>
+  <h2>P · E · A · C · E</h2>
+  <div class="peace">
+    <div class="step" style="--c:#C8442A"><span class="L">P</span><div><b>Pause</b><p>Catch the stuck moment instead of pushing through it.</p></div></div>
+    <div class="step" style="--c:#3E2F66"><span class="L">E</span><div><b>Explore</b><p>Ask what each side actually wants right now.</p></div></div>
+    <div class="step" style="--c:#C8442A"><span class="L">A</span><div><b>Acknowledge</b><p>Both sides have a point. Say it out loud.</p></div></div>
+    <div class="step" style="--c:#3E2F66"><span class="L">C</span><div><b>Connect</b><p>Find the deal that gives each side something it needs.</p></div></div>
+    <div class="step" style="--c:#3F7D58"><span class="L">E</span><div><b>Ease in</b><p>Start tiny. So tiny neither side can say no.</p></div></div>
+  </div>
+</section>
+
+<section class="rv">
+  <span class="eye">What you get, free</span>
+  <h2>Two tools, one deal</h2>
+  <div class="gets">
+    <div class="get" style="--c:#C8442A">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#C8442A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16M4 10h16M4 15h10M4 20h7"/></svg></span>
+      <h3>The 2-minute read</h3>
+      <p>The whole idea in one short, beautiful read. Pick quick read or tap through, focus mode on or off, and the font that's easiest on your brain.</p>
+    </div>
+    <div class="get" style="--c:#3E2F66">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#3E2F66" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 11h.01M12 11h.01M15.5 11h.01"/></svg></span>
+      <h3>The Peace Treaty Wizard<sup class="tm">TM</sup></h3>
+      <p>A chat that walks you through one negotiation, live, when you're actually stuck. It uses your own Claude account, so the chat stays yours.</p>
+      <div class="modes"><span>Stalled</span><span>Detour</span><span>Circling the block</span><span>Too loud</span></div>
+    </div>
+  </div>
+  <p class="small muted">Works for tasks you can't start, and for urges you can't stop: the 2 a.m. snack, the scroll, the cigarette, the bailed plans.</p>
+</section>
+<section class="rv">
+  <span class="eye">See it work</span>
+  <h2>One stuck moment, start to finish</h2>
+  <div class="phone" id="htPhone" aria-label="An example chat with the Peace Treaty Wizard">
+    <div class="pbar"><span class="pdot"></span><b>Peace Treaty Wizard</b><span class="ex">Example</span></div>
+    <div class="pchat" id="htChat"></div>
+    <div class="pin"><span id="htTyping">Type how you're stuck…</span><i></i></div>
+  </div>
+  <p class="small muted" style="text-align:center">An example of how a chat goes. Every real chat is shaped by your words.</p>
+</section>
+
+<section class="rv">
+  <span class="eye">Where this fits</span>
+  <h2>The AuDHD Owner's Manual, and you are here</h2>
+  <p>Every change with an AuDHD brain goes through the same 3 levels, 3 checkpoints each. The Peace Treaty is a free tool from <b>Level 2</b>, and every other step leans on it.</p>
+  <div class="tri">
+    <img src="https://public-files.gumroad.com/3dw5u531mk5bzvqqtbnvpzs7kmok" alt="The AuDHD Owner's Manual circle: 3 levels, 9 steps, around the goal: a life that fits your brain. You are here: Level 2, step 5, Make Peace." style="width:100%;height:auto;display:block;border-radius:18px;margin:6px 0 14px">
+    <div class="herecard"><span class="z">5</span><div><b>You are here: Level 2, Make Peace</b><br><span class="small">Level 2 is where your two brains stop fighting and start moving. It has a whole set of tools for making peace. This is one of them, free, so you can feel how it works. It's interactive, and you can chat with it when you're stuck.</span></div></div>
+    <div class="legend">
+      <div class="lg" style="--c:#3E2F66"><h4>Level 1 · Understand</h4><ol><li><i>1</i>Map Both Brains</li><li><i>2</i>Spot The Tug</li><li><i>3</i>Pick Main Quest</li></ol><span class="end">You become: <b>Clear</b></span></div>
+      <div class="lg" style="--c:#C8442A"><h4>Level 2 · Regulate</h4><ol><li><i>4</i>Calm The Noise</li><li><i>5</i>Make Peace</li><li><i>6</i>Make Moves</li></ol><span class="end">You become: <b>Unstuck</b></span></div>
+      <div class="lg" style="--c:#3F7D58"><h4>Level 3 · Sustain</h4><ol><li><i>7</i>Budget Spoons</li><li><i>8</i>Build Rhythm</li><li><i>9</i>Stack Wins</li></ol><span class="end">You become: <b>Capable</b></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="rv">
+  <span class="eye">From my Threads</span>
+  <h2>What people say</h2>
+  <div class="shots"><img src="https://public-files.gumroad.com/r5qt0skoy2rt289yxqdxh1eyocso" alt="A reader on Threads: I thought I'm just crazy, then I found out about this 2 brains" loading="lazy"><img src="https://public-files.gumroad.com/8jo96c1wmvinplrwb24vzszsovnz" alt="5-star review: it got me out of bed and to the gym" loading="lazy"><img src="https://public-files.gumroad.com/a1i9xwdqs890ef8wddlt7a3pv8kx" alt="A reader's reply on Threads" loading="lazy"><img src="https://public-files.gumroad.com/ywjgns5qtd43bxrzad2t13zz2x1h" alt="A reader's reply on Threads" loading="lazy"><img src="https://public-files.gumroad.com/6eqslg8l7ipwzdic8n5ymyoc5hl2" alt="A reader's reply on Threads" loading="lazy"></div>
+  <p class="small muted">Real replies on Threads, and a real review on Gumroad.</p>
+</section>
+
+<section class="rv">
+  <span class="eye">Who made this</span>
+  <div class="me">
+    <div class="av" aria-hidden="true">B</div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <h3>Hi, I'm Bhuvan.</h3>
+      <p>I'm AuDHD. For years I'd make the most detailed plan and watch it fall apart before lunch. I used this negotiation to quit smoking, start the gym, stop binge eating at 2 a.m., and finish projects I cared about.</p>
+      <p>Before How to AuDHD, I coached 1,000+ people as a dietitian. This is the tool I use myself, multiple times a week.</p>
+    </div>
+  </div>
+</section>
+
+<section class="rv">
+  <span class="eye">Questions</span>
+  <div class="faq">
+    <details><summary>Is it really free?</summary><p>Yes. Put $0 in the price box and you get everything. If you want to tip, you can, but you never have to.</p></details>
+    <details><summary>Do I need a diagnosis?</summary><p>No. If the two-voices thing sounds like you, it's for you.</p></details>
+    <details><summary>How does the Wizard work?</summary><p>It opens as a chat in Claude. Sign in with your own Claude account, free plan works, and the chat stays in your account.</p></details>
+    <details><summary>Does it use AI?</summary><p>Yes. The Wizard chat runs in Claude, in your own account, so your chat stays yours. Don't want AI? The treaty works on paper too: the steps are right there in the 2-minute read.</p></details>
+    <details><summary>Is it only for getting things done?</summary><p>No. The same negotiation that helps you start also helps you stop: urges, scrolling, snacking, bailing on plans.</p></details>
+    <details><summary>What happens after I get it?</summary><p>You get a link right away and in your email. Open it on your phone, read for two minutes, then try the Wizard on one thing you're stuck on today.</p></details>
+  </div>
+</section>
+
+<section class="final rv">
+  <h2>Two brains. One deal. Two minutes.</h2>
+  <p>You're not broken. You're running two operating systems that never came with a manual. This is the first page of it.</p>
+  <a data-pt-buy class="btn buy" href="https://howtoaudhd.net/l/peace-treaty?wanted=true&amp;price=0" target="_top">Get the Peace Treaty <span class="free">FREE</span></a>
+</section>
+
+<p class="small muted" style="text-align:center">© 2026 How to AuDHD by Bhuvan · Not medical advice</p>
+</div>
+
+<div class="sticky" id="htSticky"><a data-pt-buy class="btn buy" href="https://howtoaudhd.net/l/peace-treaty?wanted=true&amp;price=0" target="_top">Get it free</a></div>
+</div>
+
+<script>
+(function(){
+  var root=document.getElementById("ht");if(!root)return;
+  root.classList.add("js");
+  var els=root.querySelectorAll(".rv");
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12});
+    els.forEach(function(el){io.observe(el)});
+  } else els.forEach(function(el){el.classList.add("in")});
+
+  var tm=root.querySelector(".tmap");
+  if(tm&&"IntersectionObserver" in window){new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){tm.classList.remove("play");void tm.offsetWidth;tm.classList.add("play")}else tm.classList.remove("play")})},{threshold:.35}).observe(tm)} else if(tm) tm.classList.add("play");
+  var chat=document.getElementById("htChat"),ph=document.getElementById("htPhone"),typ=document.getElementById("htTyping");
+  var S=[["u","I can't start my taxes. It's been 3 weeks."],["w","Okay. Let's <b>pause</b> for a sec. What does your ADHD brain want right now?"],["u","Anything else. It's so boring."],["w","Fair. And your autistic brain?"],["u","It wants to know exactly how long it'll take before I start."],["w","Both make sense. One wants it fun, one wants it clear. What if we gave each side something?"],["w","<b>The deal:</b> 10-minute timer, your favourite playlist on, and you only find <b>one</b> form. When it rings, you can stop."],["u","ok… that I can do 😅"],["deal","Treaty signed. Timer started."]];
+  var run=0,busy=false;
+  function play(){if(busy)return;busy=true;var my=++run;chat.innerHTML="";var k=0;
+    (function next(){if(my!==run)return;if(k>=S.length){busy=false;setTimeout(function(){if(my===run&&inView){busy=false;play()}},4000);return}
+      var m=S[k++];if(m[0]==="u"){typ.textContent=m[1].slice(0,30)+"…"}
+      var d=document.createElement("div");d.className="pm dots";d.innerHTML="<i></i><i></i><i></i>";if(m[0]!=="u")chat.appendChild(d);
+      setTimeout(function(){if(my!==run)return;if(d.parentNode)d.remove();typ.textContent="Type how you're stuck…";var b=document.createElement("div");b.className="pm "+m[0];b.innerHTML=m[1];chat.appendChild(b);setTimeout(next,m[0]==="u"?900:1300)},m[0]==="u"?700:1100)})()}
+  var inView=false;
+  if(ph&&"IntersectionObserver" in window){new IntersectionObserver(function(es){es.forEach(function(e){inView=e.isIntersecting;if(inView&&!busy)play();if(!inView){run++;busy=false}})},{threshold:.4}).observe(ph)} else if(ph) play();
+  var st=document.getElementById("htSticky"),hero=root.querySelector(".hero"),fin=root.querySelector(".final");
+  function upd(){var h=hero.getBoundingClientRect().bottom<0,f=fin.getBoundingClientRect();st.classList.toggle("show",h&&!(f.top<innerHeight&&f.bottom>0))}
+  addEventListener("scroll",upd,{passive:true});upd();
+})();
+</script>
+<script>
+/* homepage: buttons are plain links to the Peace Treaty checkout */
+</script>
