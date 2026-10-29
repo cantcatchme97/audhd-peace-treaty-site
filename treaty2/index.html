@@ -1328,8 +1328,8 @@ const CMIC=c=>[
  /* 9 stack wins: stacked blocks and a sparkle */
  `<rect x="-24" y="10" width="48" height="13" rx="4" fill="currentColor" fill-opacity=".22"/><rect x="-17" y="-4" width="34" height="13" rx="4" fill="currentColor" fill-opacity=".22"/><rect x="-10" y="-18" width="20" height="13" rx="4" fill="currentColor" fill-opacity=".22"/><path d="M19,-28 v9 M14.5,-23.5 h9"/>`];
 const CM_MODES={
- ptin:{done:0,here:4,tag:"you are here",info:"s4",glow:1,cap:"<b>Level 2 · Regulate</b>. You're on step 5: <b>Make Peace</b>."},
- ptout:{done:0,here:4,tag:"you are here",info:"p1",from:4,glow:1,cap:"You just used one tool from <b>step 5 · Make Peace</b>. Here's the whole <b>AuDHD Owner's Manual™</b>."}};
+ ptin:{done:0,here:4,tag:"you are here",info:"s4",glow:1,cap:"<b>Level 2 · Regulate</b> has 30+ tools. You're about to use one: <b>the Peace Treaty</b>."},
+ ptout:{done:0,here:4,tag:"you are here",info:"p1",from:4,glow:1,cap:"That yellow spike is you: <b>1 of 30+ tools</b> in Level 2. Here's the whole <b>AuDHD Owner's Manual™</b>."}};
 function cmStepPos(i){const [x,y]=cmPt(400,CM_ST[i][3]),o=CM_OFF["s"+i]||{x:0,y:0};return [x+o.x,y+o.y]}
 function cmOrigin(i){const [x,y]=i==="Clear"?cmPt(352,357):cmStepPos(i);return [((x-CM_VB[0])/CM_VB[2]*100).toFixed(1)+"%",((y-CM_VB[1])/CM_VB[3]*100).toFixed(1)+"%"]}
 let cmN=0;
@@ -1369,6 +1369,7 @@ function circleMap(mode){
      <g fill="none" color="${icol}" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="scale(.66)">${done?`<path d="M-16,0 L-4,12 L18,-12" stroke-width="7"/>`:CMIC(icol)[i]}</g>
      <text ${H} x="0" y="62" text-anchor="middle" font-size="16" font-weight="500" fill="${GREY}">${noun}</text>${words}${tag}</g>`)});
   if(M.here==="Clear"){const [x0,y0]=cmPt(352,357),of=CM_OFF["yl-Clear"],x=x0+of.x,y=y0+of.y;o+=`<circle class="pulse" cx="${cmF(x)}" cy="${cmF(y)}" r="58" fill="none" stroke="${YEL}" stroke-width="5" pointer-events="none"/><g pointer-events="none"><rect x="${cmF(x-75)}" y="${cmF(y+30)}" width="150" height="36" rx="9" fill="#FFD43B"/><text ${H} x="${cmF(x)}" y="${cmF(y+55)}" text-anchor="middle" font-size="19" fill="#2B2140">${M.tag}</text></g>`}
+  if(String(mode).slice(0,2)==="pt") o+=ptTicks();
   o+=`</svg>`;
   const org=M.from!==undefined?cmOrigin(M.from):cmOrigin(0);
   return `<div class="cm ${M.from!==undefined?"zout":""}" data-mode="${mode}" style="--ox:${org[0]};--oy:${org[1]}">${M.cap?`<p class="ccap">${M.cap}</p>`:""}<div class="cmv">${o}</div><div class="cinfo" aria-live="polite">${cmInfo(M.info,mode)}</div><p class="chint">${mode==="start"?"Tap step 1 to start. Tap anything else to see what happens there.":(mode==="end"||mode.slice(0,2)==="pt")?"Tap any step to see what happens there.":"Tap the pulsing step to keep going."}</p></div>`;
@@ -1385,9 +1386,15 @@ document.addEventListener("click",e=>{const g=e.target.closest&&e.target.closest
   cm.querySelectorAll(".sel").forEach(x=>x.classList.remove("sel"));cm.querySelectorAll(`[data-k="${k}"]`).forEach(x=>x.classList.add("sel"));
   cm.querySelector(".cinfo").innerHTML=cmInfo(k,cm.dataset.mode);track("circle_tapped",{k,mode:cm.dataset.mode})});
 document.addEventListener("keydown",e=>{if(e.key!=="Enter"&&e.key!==" ")return;const g=e.target.closest&&e.target.closest(".cm [data-k]");if(!g)return;e.preventDefault();g.dispatchEvent(new MouseEvent("click",{bubbles:true}))});
+function ptTicks(){let o='<g class="tools" pointer-events="none">';const N=30,a0=14,a1=106;let best=0,bd=1e9;
+  for(let i=0;i<N;i++){const a=a0+(a1-a0)*i/(N-1);if(Math.abs(a-60)<bd){bd=Math.abs(a-60);best=i}}
+  for(let i=0;i<N;i++){const a=a0+(a1-a0)*i/(N-1),on=i===best;const [x1,y1]=cmPt(on?341:344,a),[x2,y2]=cmPt(on?374:358,a);
+    o+=`<line x1="${cmF(x1)}" y1="${cmF(y1)}" x2="${cmF(x2)}" y2="${cmF(y2)}" stroke="${on?"#FFD43B":"var(--cm-num)"}" stroke-width="${on?9:4}" stroke-linecap="round" opacity="${on?1:.55}"/>`;
+    if(on){const [cx,cy]=cmPt(374,a);o+=`<circle class="pulse" cx="${cmF(cx)}" cy="${cmF(cy)}" r="16" fill="none" stroke="#FFD43B" stroke-width="5"/>`}}
+  return o+"</g>"}
 function ptCircle(){return `<div class="ptc" id="ptc">${circleMap("ptin")}</div>`}
 function ptZoomIn(){const box=document.getElementById("ptc");if(!box)return;const c=box.querySelector(".cm");if(!c)return;
-  const chip=document.createElement("span");chip.className="ptchip";chip.innerHTML="<i>📍</i>You are here: Level 2 · Step 5 · Make Peace";
+  const chip=document.createElement("span");chip.className="ptchip";chip.innerHTML="<i>📍</i>You are here: Make Peace · 1 of 30+&nbsp;tools";
   if(matchMedia("(prefers-reduced-motion: reduce)").matches){box.prepend(chip);return}
   const o=cmOrigin(4);c.style.setProperty("--ox",o[0]);c.style.setProperty("--oy",o[1]);
   setTimeout(()=>{c.classList.add("zin3");track("circle_zoom_in",{});setTimeout(()=>{c.classList.remove("zin3");box.prepend(chip)},2600)},1200)}
