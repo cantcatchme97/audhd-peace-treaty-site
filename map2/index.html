@@ -525,6 +525,8 @@ body::before{opacity:0!important}
 .srcs ul{margin:4px 0 6px;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:14.5px;line-height:1.45}
 .srcs p{font-size:14.5px;line-height:1.5}
 .srcs .eyebrow{margin-top:8px;display:block}
+.shape8{width:100%;max-width:420px;height:auto;display:block;margin:0 auto;overflow:visible}
+.legend8{display:flex;flex-wrap:wrap;gap:6px 14px;justify-content:center;font-size:13px;font-weight:600}.legend8 span{display:inline-flex;align-items:center;gap:6px}.legend8 i{width:12px;height:12px;border-radius:4px;display:inline-block}
 .howto{background:rgba(255,212,59,.2);border-radius:16px;padding:12px 14px;font-size:14.5px}.howto ul{margin:6px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
 .sgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.sgrid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
 .so{appearance:none;border:0;cursor:pointer;text-align:left;background:var(--sheet);color:var(--ink);border-radius:14px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;box-shadow:inset 0 0 0 1px var(--rule);font:500 14px var(--fb)}
@@ -931,7 +933,7 @@ function renderP0(force){
   const sc=SCREENS[S.i]; const n=SCREENS.length;
   app.innerHTML=`${topbar(`<button class="textbtn" id="home" style="text-decoration:none;font-weight:600">← Map</button><span class="ticks">${SCREENS.map((_,k)=>`<button class="tk ${k<S.i?"d":k===S.i?"n":k<=(S.max||0)?"v":""}" data-k="${k}" ${k>(S.max||0)?"disabled":""} aria-label="Go to screen ${k+1}"></button>`).join("")}</span>`)}
   <section class="stack g20" style="padding-top:8px">
-   <div class="stack g6"><span class="eyebrow">Part 0 · How your brain works · ${S.i+1} of ${n}</span>${sc.stage?`<span class="stg ${sc.stage}">${STG[sc.stage]}</span>`:""}<h2 tabindex="-1" id="st">${sc.t}</h2></div>
+   <div class="stack g6"><span class="eyebrow">Checkpoint 1 · How your brain works · ${S.i+1} of ${n}</span>${sc.stage?`<span class="stg ${sc.stage}">${STG[sc.stage]}</span>`:""}<h2 tabindex="-1" id="st">${sc.t}</h2></div>
    ${sc.vis?`<div class="vis" id="vis"></div>`:""}
    ${sc.plain?beforeStart():`<div class="beats ${S.all?"all":""}" id="beats" role="button" tabindex="0" aria-label="Tap to read the next line">${sc.beats.map((b,k)=>{const o=typeof b==="string"?{h:b}:b;return `<p class="beat ${o.c||""}" data-k="${k}">${hl(o.h)}</p>`}).join("")}</div>
    <div class="tapmore" id="tapmore">tap the text to continue ↓</div>`}
@@ -1141,7 +1143,7 @@ function maskVis(v){
 
 /* ---------- visual 8: the whole loop, simple ---------- */
 function pictureVis(v){
-  const R=[["w","world","The world","Something happens: a buzz, a plan change, a loud room.","Part 5 puts it all together"],
+  const R=[["w","world","The world","Something happens: a buzz, a plan change, a loud room.","Your results put it all together"],
    ["in","input","Input: what comes in","ADHD: everything at once. Autism: nothing fades.","Parts 1 and 2"],
    ["pr","gear","Processing: what your head does","Two voices, two questions, one tug-of-war.","Part 3"],
    ["out","output","Output: what you do","What you show, and what you hide behind the mask.","Parts 1, 2 and 4"],
@@ -1204,13 +1206,13 @@ function renderDone(){
    <div class="yellow-stage stack g16"><div style="font-size:44px;color:#2B2140"><span class="icw">${I.gear}</span></div><span class="eyebrow" style="color:#2B2140;opacity:.7">You did it</span><h2 style="color:#2B2140">You know how the machine works.</h2></div>
    <p>Now the real question: <b>is it ADHD, autism, both, or AuDHD?</b> And what does <i>your</i> shape look like?</p>
    <div class="panel stack g10"><span class="eyebrow">Coming soon · The full AuDHD Map</span>
-    <p class="small">• 30 everyday moments: your ADHD side, your autism side, and the traits both share<br>• Your seesaw across 7 tug-of-wars<br>• What you hide, where you mask, and your burnout signals<br>• Your result (ADHD-leading, autism-leading, both, or AuDHD) and your shape</p>
+    <p class="small">• 30 everyday moments: your ADHD side, your autism side, and the traits both share<br>• Your seesaw across 7 tug-of-wars<br>• What you hide, where you mask, and your burnout signals<br>• Your result (mostly ADHD, mostly autistic, both, or AuDHD) and your shape</p>
     <p class="small"><b>You're on the founding list</b> with ${(S.email||"").replace(/</g,"&lt;")}. You'll get it first, at the founder price.</p></div>
    <div class="note yel">${T("Know someone whose brain runs two operating systems?","Send them this page. It's free.")}</div>
    <button class="btn ghost" id="b0">← Back to the walkthrough</button><button class="textbtn" id="hm" style="align-self:center">Back to the start</button></section>`;
    wireTop();$("#b0").onclick=()=>{S.view="p0";save();render()};$("#hm").onclick=()=>{S.view="welcome";save();render();scrollTo(0,0)};return}
   app.innerHTML=`${topbar("The Pre-Diagnosis Map")}<section class="stack g20" style="padding-top:8px">
-   <div class="yellow-stage stack g16"><div style="font-size:44px;color:#2B2140"><span class="icw">${I.gear}</span></div><span class="eyebrow" style="color:#2B2140;opacity:.7">Part 0 complete</span><h2 style="color:#2B2140">You know how the machine works.</h2>${route(1)}</div>
+   <div class="yellow-stage stack g16"><div style="font-size:44px;color:#2B2140"><span class="icw">${I.gear}</span></div><span class="eyebrow" style="color:#2B2140;opacity:.7">Walkthrough complete</span><h2 style="color:#2B2140">You know how the machine works.</h2>${route(1)}</div>
    <p>Next: Part 1, your ADHD side. 12 everyday moments. You pick how often each one is true for you.</p>
    <button class="btn" id="sp1">Start Part 1 →</button><button class="btn ghost" id="b0">← Back to Part 0</button><button class="textbtn" id="hm" style="align-self:center">Back to the start</button></section>`;
   wireTop();$("#sp1").onclick=()=>{S.view="deck:adhd";save();render();scrollTo(0,0)};$("#b0").onclick=()=>{S.view="p0";save();render()};$("#hm").onclick=()=>{S.view="welcome";save();render();scrollTo(0,0)};
@@ -1414,14 +1416,14 @@ const traitIntro=(side)=>{const dh=side==="dh",n=TRAITS.filter(c=>c.side===side)
    <li class="t3"><span class="tic">↻</span><span><b>Think of the last few months</b>, not your best or worst day.</span></li></ul>
   <div class="facts"><span>${n} cards</span><span>About 5 minutes</span><span>Saves as you go</span></div>`};
 const DECKS={
- adhd:{name:"ADHD",cards:TRAITS.filter(c=>c.side==="dh"),eyebrow:"Part 1 · Your ADHD side",shuffle:1,intro:()=>traitIntro("dh"),qs:qsTrait,reveal:revTrait,said:saidTrait,end:END_CHILD},
- autism:{name:"Autism",cards:TRAITS.filter(c=>c.side==="au"),eyebrow:"Part 2 · Your autism side",shuffle:1,intro:()=>traitIntro("au"),qs:qsTrait,reveal:revTrait,said:saidTrait,end:END_CHILD},
- shared:{name:"Both sides",cards:TRAITS.filter(c=>c.side==="both"),eyebrow:"Part 3 · Both sides",shuffle:1,nomini:1,qs:qsTrait,reveal:revTrait,said:saidTrait,
+ adhd:{name:"ADHD",cards:TRAITS.filter(c=>c.side==="dh"),eyebrow:"Checkpoint 1 · Your ADHD side",shuffle:1,intro:()=>traitIntro("dh"),qs:qsTrait,reveal:revTrait,said:saidTrait,end:END_CHILD},
+ autism:{name:"Autism",cards:TRAITS.filter(c=>c.side==="au"),eyebrow:"Checkpoint 1 · Your autistic side",shuffle:1,intro:()=>traitIntro("au"),qs:qsTrait,reveal:revTrait,said:saidTrait,end:END_CHILD},
+ shared:{name:"Both sides",cards:TRAITS.filter(c=>c.side==="both"),eyebrow:"Checkpoint 1 · Both sides",shuffle:1,nomini:1,qs:qsTrait,reveal:revTrait,said:saidTrait,
   intro:()=>`<h2 tabindex="-1" id="st">${ic("bolt","var(--dh)")}${ic("inf","var(--au)")} Where the two sides meet</h2>
-   <p>Part 3 is about how ADHD and autism <b>interact</b>. It starts with 6 traits that show up on <b>both</b> sides.</p>
+   <p>This part is about how ADHD and autism <b>interact</b>. It starts with 6 traits that show up on <b>both</b> sides.</p>
    <p>Some are look-alikes: the same behaviour with a different cause. They don't count toward ADHD or autism. They show where the two overlap.</p>
    <div class="facts"><span>6 cards</span><span>About 2 minutes</span><span>Then the seesaw</span></div>`},
- seesaw:{name:"The seesaw",cards:SEESAW,eyebrow:"Part 3 · The seesaw",
+ seesaw:{name:"The seesaw",cards:SEESAW,eyebrow:"Checkpoint 2 · The tug",
   intro:()=>`<h2 tabindex="-1" id="st">${ic("seesaw")} Seven tug-of-wars</h2>
    <p>Each card is a place where ADHD and autism often pull in opposite directions. This is the heart of AuDHD: having both is one thing, <b>feeling them fight</b> is what makes it AuDHD.</p>
    <p>Three quick questions per card: do you feel the pull, which side wins lately, and how much it bothers you.</p>
@@ -1430,13 +1432,13 @@ const DECKS={
   qs:c=>[{k:"r",t:"scale",opts:["Not at all","Sometimes","Often","Constantly"],label:"Do you feel this push-pull?"},{k:"dir",t:"dir",cond:a=>a.r>=1},{k:"s",t:"scale",opts:["Peaceful with it","A little","Quite a lot","Tearing me apart"],label:"How much does it bother you?",cond:a=>a.r>=1}],
   reveal:(c,a)=>`<div class="revl">${a.dir!==undefined?ssBeam(a.dir,c.l,c.r,1):""}<span class="tag" style="color:var(--ink2)">${ic("seesaw")} AuDHD seesaw</span><h2 tabindex="-1" id="st">${c.lab}</h2><p class="small"><b>The AuDHD experience:</b> ${c.ex}</p></div>`,
   said:(c,a)=>`${["Not at all","Sometimes","Often","Constantly"][a.r]}${a.dir!==undefined?" · "+[`${c.l} wins`,`Mostly ${c.l.toLowerCase()}`,"Keeps flipping",`Mostly ${c.r.toLowerCase()}`,`${c.r} wins`][a.dir]:""}${a.s!==undefined?" · "+["peaceful with it","bothers me a little","bothers me quite a lot","tearing me apart"][a.s]:""}`},
- mask:{name:"Masking",cards:MASK,eyebrow:"Part 4 · Masking",auto:1,
+ mask:{name:"Masking",cards:MASK,eyebrow:"Checkpoint 2 · Masking",auto:1,
   intro:()=>`<h2 tabindex="-1" id="st">${ic("mask")} The performance you didn't audition for</h2>
    <p>Masking means hiding your natural reactions to fit in. Everyone does it a little. For AuDHD people it often runs all day, for two conditions at once.</p>
    <p>For each one: how often you do it, how much it drains you, and where you do it most.</p>
    <div class="facts"><span>${MASK.length} cards</span><span>About 3 minutes</span></div>`,
   qs:c=>[{k:"v",t:"scale",opts:["Never","Rarely","Sometimes","Often","Always"],label:"How often do you do this?"},{k:"d",t:"scale",opts:["Barely","Noticeable","Draining","Wipes me out"],label:"How draining is it?",cond:a=>a.v>=1},{k:"ctx",t:"multi",opts:CTX,label:"Where do you do it most?",sub:"Pick any.",cond:a=>a.v>=2}]},
- burn:{name:"Burnout",cards:BURN,eyebrow:"Part 4 · Burnout signals",auto:1,
+ burn:{name:"Burnout",cards:BURN,eyebrow:"Checkpoint 2 · Burnout signals",auto:1,
   intro:()=>`<h2 tabindex="-1" id="st">Burnout signals</h2>
    <p>AuDHD burnout goes deeper than "I need a holiday". It's what happens when you've been compensating past your capacity for a long time.</p>
    <p>For each signal: how much is this you <b>lately</b>, and for how long?</p>
@@ -1583,19 +1585,44 @@ function miniHTML(key){
 
 /* ================= FINAL RESULTS ================= */
 const RES={
- adhd:{icon:`${ic("bolt","var(--dh)")}`,name:"ADHD-leading",line:"Your ADHD side shows up strongly. Your autism side shows up less.",
+ adhd:{icon:`${ic("bolt","var(--dh)")}`,name:"Mostly ADHD",line:"Your ADHD side shows up strongly. Your autism side shows up less.",
   body:"Your answers look most like ADHD on its own. Some autistic traits may still be part of you, just quieter."},
- aut:{icon:`${ic("inf","var(--au)")}`,name:"Autism-leading",line:"Your autism side shows up strongly. Your ADHD side shows up less.",
+ aut:{icon:`${ic("inf","var(--au)")}`,name:"Mostly autistic",line:"Your autism side shows up strongly. Your ADHD side shows up less.",
   body:"Your answers look most like autism on its own. Some ADHD traits may still be part of you, just quieter."},
- both:{icon:`${ic("bolt","var(--dh)")}${ic("inf","var(--au)")}`,name:"Both, but separate",line:"Both sides show up strongly, and they rarely fight.",
+ both:{icon:`${ic("bolt","var(--dh)")}${ic("inf","var(--au)")}`,name:"Both, side by side",line:"Both sides show up strongly, and they rarely fight.",
   body:"Your answers show strong ADHD and strong autism traits, with little tug-of-war between them. The two seem to live side by side."},
- audhd:{icon:`${ic("seesaw")}`,name:"The AuDHD experience",line:"Both sides show up strongly, and they pull against each other.",
+ audhd:{icon:`${ic("seesaw")}`,name:"Both, and they clash (AuDHD)",line:"Both sides show up strongly, and they pull against each other.",
   body:"This is the pattern most AuDHD people describe: two strong systems and a constant tug-of-war between them. It's why you may never have fully fit with people who are only ADHD, or only autistic."},
  none:{icon:`${ic("path")}`,name:"Not a strong match for either",line:"Neither side shows up strongly in your answers.",
   body:"That's useful to know too. Stress, anxiety, burnout or hard past experiences can cause some of the same struggles. Your shape below still shows where things cost you."}};
 const LEAN={var:["Swings both ways","Which side leads keeps changing with where you are, who you're with and your energy."],
  dh:["ADHD side leads","Both are there, and your ADHD side tends to take the wheel."],
  au:["Autism side leads","Both are there, and your autism side tends to take the wheel."]};
+
+/* ===== 8-axis AuDHD shape ===== */
+const AX8=[["Focus",["filter","rest","fidget"],["detail"],["focus"]],["Time",["time","forget","lose","wait"],[],[]],["Starting",["finish"],[],["para"]],["Routine",["habit","bored"],["change","nohab"],[]],
+ ["Senses",[],["sense","stim"],["seek","intero"]],["People",["blurt"],["social","comm","socbat"],["rsd"]],["Feelings",[],["alexi","melt","shut"],["flood","rsd"]],["Interests",["cycle","bored"],["deep"],["focus"]]];
+function shape8(){const A=dk("adhd"),U=dk("autism"),SH=dk("shared");
+  const v=(D,id)=>{const f=fq(D.a[id]);return f==null?null:f/4};
+  const mean=xs=>{const y=xs.filter(x=>x!=null);return y.length?y.reduce((p,q)=>p+q,0)/y.length:0};
+  return AX8.map(([lab,dh,au,bo])=>{const b=bo.map(id=>v(SH,id));const d=mean([...dh.map(id=>v(A,id)),...b]),u=mean([...au.map(id=>v(U,id)),...b]);
+    return {lab,d,u,m:Math.min(1,Math.max(d,u)+.12*Math.min(d,u))}})}
+function shape8SVG(rows){const n=rows.length,R=100,c=150,p=(i,r)=>{const a=-Math.PI/2+i*2*Math.PI/n;return [c+Math.cos(a)*R*r,c+Math.sin(a)*R*r]};
+  const poly=(vals,fill,stroke,w)=>`<polygon points="${vals.map((x,i)=>p(i,Math.max(.04,x)).map(z=>z.toFixed(1)).join(",")).join(" ")}" fill="${fill}" stroke="${stroke}" stroke-width="${w}" stroke-linejoin="round"/>`;
+  let o=`<svg viewBox="-45 0 390 300" class="shape8" role="img" aria-label="Your AuDHD shape across 8 everyday areas: ${rows.map(r=>r.lab+" "+Math.round(r.m*100)+"%").join(", ")}">`;
+  [.25,.5,.75,1].forEach(k=>o+=poly(rows.map(()=>k),"none","var(--rule)",1));
+  rows.forEach((r,i)=>{const [x,y]=p(i,1);o+=`<line x1="${c}" y1="${c}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="var(--rule)" stroke-width="1"/>`;
+    const [lx,ly]=p(i,1.2);o+=`<text x="${lx.toFixed(1)}" y="${(ly+4).toFixed(1)}" text-anchor="${Math.abs(lx-c)<8?"middle":lx>c?"start":"end"}" font-size="11.5" font-weight="700" fill="var(--ink2)" font-family="var(--fb)">${r.lab}</text>`});
+  o+=poly(rows.map(r=>r.d),"rgba(200,68,42,.18)","var(--dh)",2)+poly(rows.map(r=>r.u),"rgba(62,47,102,.18)","var(--au)",2)+poly(rows.map(r=>r.m),"rgba(255,212,59,.35)","var(--ink)",3);
+  return o+"</svg>"}
+function shape8HTML(){const rows=shape8();const top=[...rows].sort((a,b)=>b.m-a.m).slice(0,2);
+  const both=rows.filter(r=>r.d>=.5&&r.u>=.5).map(r=>r.lab.toLowerCase());
+  return `<div class="stack g12"><h2>Your AuDHD shape</h2>
+   <p class="small muted">8 everyday areas. <b style="color:var(--dh)">ADHD side</b>, <b style="color:var(--au)">autistic side</b>, and the <b>yellow</b> is the two together. No two AuDHD brains look the same, so your plan shouldn't either.</p>
+   ${shape8SVG(rows)}
+   <div class="legend8"><span><i style="background:var(--dh)"></i>ADHD side</span><span><i style="background:var(--au)"></i>Autistic side</span><span><i style="background:#FFD43B;box-shadow:inset 0 0 0 2px var(--ink)"></i>Both together</span></div>
+   <p>Your biggest spikes: <b>${top.map(r=>r.lab).join("</b> and <b>")}</b>.${both.length?` Both sides pull hard on <b>${both.join(", ")}</b>. That's where the seesaw lives for you.`:""}</p>
+   <p class="small muted">If you mask a lot, your shape can look smaller than your real experience.</p></div>`}
 function radarN(vals,labels,cols){const n=vals.length,R=92,c=120,p=(i,r)=>{const a=-Math.PI/2+i*2*Math.PI/n;return [c+Math.cos(a)*R*r,c+Math.sin(a)*R*r]};
   const ring=s=>[...Array(n).keys()].map(i=>p(i,s).join(",")).join(" ");
   return `<svg class="radar6" viewBox="-34 -6 308 252" role="img" aria-label="Your shape: ${labels.map((l,i)=>l+" "+word(vals[i]).toLowerCase()).join(", ")}">${[.25,.5,.75,1].map(s=>`<polygon points="${ring(s)}" fill="none" stroke="var(--rule)"/>`).join("")}
@@ -1610,8 +1637,8 @@ function quad(s){const W=260,P=34,G=W-P*2,X=v=>P+v*G,Y=v=>W-P-v*G,cut=HI;
    <rect x="${P}" y="${P}" width="${G}" height="${G}" rx="12" fill="var(--sheet)"/>
    <rect x="${X(cut)}" y="${P}" width="${G*(1-cut)}" height="${G*(1-cut)}" fill="${s.res==="audhd"?"#FFD43B":"var(--sheet2)"}" opacity="${s.res==="audhd"?.55:1}"/>
    <line x1="${X(cut)}" y1="${P}" x2="${X(cut)}" y2="${W-P}" stroke="var(--rule)" stroke-dasharray="4 4"/><line x1="${P}" y1="${Y(cut)}" x2="${W-P}" y2="${Y(cut)}" stroke="var(--rule)" stroke-dasharray="4 4"/>
-   ${lab(X(cut+(1-cut)/2),P+18,s.res==="audhd"?"AuDHD":"Both",on("both"))}${lab(X(cut/2),P+18,"Autism-leading",on("aut"))}
-   ${lab(X(cut+(1-cut)/2),W-P-10,"ADHD-leading",on("adhd"))}${lab(X(cut/2),W-P-10,"Neither strongly",on("none"))}
+   ${lab(X(cut+(1-cut)/2),P+18,s.res==="audhd"?"AuDHD":"Both",on("both"))}${lab(X(cut/2),P+18,"Mostly autistic",on("aut"))}
+   ${lab(X(cut+(1-cut)/2),W-P-10,"Mostly ADHD",on("adhd"))}${lab(X(cut/2),W-P-10,"Neither strongly",on("none"))}
    <text x="${W/2}" y="${W-8}" text-anchor="middle" font-size="11" font-family="Lexend" font-weight="600" fill="var(--dh)">ADHD side →</text>
    <text x="12" y="${W/2}" text-anchor="middle" font-size="11" font-family="Lexend" font-weight="600" fill="var(--au)" transform="rotate(-90 12 ${W/2})">Autism side →</text>
    <circle cx="${X(s.adhd)}" cy="${Y(s.aut)}" r="16" fill="var(--dh)" opacity=".18" class="qpulse"/><circle cx="${X(s.adhd)}" cy="${Y(s.aut)}" r="8" fill="var(--dh)" stroke="var(--paper)" stroke-width="2.5"/>
@@ -1622,7 +1649,7 @@ function renderResults(){
   const kidNow=[s.childA,s.childU].filter(x=>x!==undefined);
   const recent=kidNow.length&&kidNow.every(x=>x===2), lifelong=kidNow.some(x=>x===0);
   app.innerHTML=`${topbar(`<button class="textbtn" id="home" style="text-decoration:none;font-weight:600">← Map</button>`)}<section class="stack g24" style="padding-top:8px">
-   <div class="yellow-stage stack g12"><span class="eyebrow" style="color:#2B2140;opacity:.7">Part 5 · Your AuDHD Map</span>
+   <div class="yellow-stage stack g12"><span class="eyebrow" style="color:#2B2140;opacity:.7">Your AuDHD shape</span>
     <p style="color:#2B2140;margin:0">Your answers look most like</p>
     <h1 style="color:#2B2140;margin:0" tabindex="-1" id="st"><span class="resic">${R.icon}</span> ${R.name}</h1>
     <p style="color:#2B2140"><b>${R.line}</b></p>
@@ -1633,7 +1660,9 @@ function renderResults(){
 
    <div class="stack g12"><h2>Where you land</h2><p class="small muted">Across: your ADHD side. Up: your autism side. Top right means both are strong. Then the seesaw decides: if they pull against each other, that's AuDHD.</p>${quad(s)}</div>
 
-   <div class="stack g12"><h2>Your shape</h2><p class="small muted">A spiky shape is normal for us.</p>
+   ${shape8HTML()}
+
+   <div class="stack g12"><h2>Your scores</h2><p class="small muted">A spiky shape is normal for us.</p>
     ${radarN([s.adhd,s.aut,s.conflict,s.mask,s.burn],["ADHD","Autism","Seesaw","Masking","Burnout"],["var(--dh)","var(--au)","var(--ink)","var(--au)","var(--dh)"])}
     <div class="panel stack g8">${barRow(ic("bolt")+" ADHD",s.adhd,"var(--dh)")}${barRow(ic("inf")+" Autism",s.aut,"var(--au)")}${barRow(ic("seesaw")+" Seesaw",s.conflict,"var(--ink)")}${barRow(ic("mask")+" Masking",s.mask,"var(--au)")}${barRow("Burnout",s.burn,"var(--dh)")}</div></div>
 
@@ -1662,7 +1691,7 @@ function renderResults(){
 
    <div class="stack g12"><h2>What next</h2>
     <div class="offer"><b>Make your pre-diagnosis page</b><span class="small muted">Your answers, turned into one page you can bring to an assessment, or use to explain yourself to people you love. About 3 minutes.</span><button class="btn ghost" id="toDoc" style="min-height:46px">Make my pre-diagnosis page →</button></div>
-    <div class="offer on"><span class="you-badge">Part 6</span><b>Pick your main quest</b><span class="small muted">You know your shape. Now pick the one area of life to work on first, and how many spoons it gets. About 5 minutes.</span><button class="btn" id="toSeason" style="min-height:46px">Pick my main quest →</button></div></div>
+    <div class="offer on"><span class="you-badge">Checkpoint 3</span><b>Pick your main quest</b><span class="small muted">You know your shape. Now pick the one area of life to work on first, and how many spoons it gets. About 5 minutes.</span><button class="btn" id="toSeason" style="min-height:46px">Pick my main quest →</button></div></div>
 
    <div class="note pink">${T("This comes before a diagnosis.","It's a pre-diagnosis map, built from 30 years of lived experience and checked against published research. Your answers <i>look like</i> a pattern. Only a qualified clinician can diagnose ADHD or autism.")}</div>
    <button class="btn ghost" id="redo">← Review my answers</button><button class="textbtn" id="restart" style="align-self:center">Start the whole Map again</button>${SRCBTN}</section>`;
@@ -1955,7 +1984,7 @@ function renderSeason(){
   const total=z.pts?z.pts.h+z.pts.w+z.pts.r:0;
   const area=k=>AREAS.find(a=>a[0]===k)[1];
   app.innerHTML=`${topbar(`<button class="textbtn" id="back" style="text-decoration:none;font-weight:600">← My map</button>`)}<section class="stack g24" style="padding-top:8px">
-   <div class="yellow-stage stack g12"><span class="eyebrow" style="color:#2B2140;opacity:.7">Part 6 · Your main quest</span>
+   <div class="yellow-stage stack g12"><span class="eyebrow" style="color:#2B2140;opacity:.7">Checkpoint 3 · Your main quest</span>
     <h1 style="color:#2B2140;margin:0" tabindex="-1" id="st">Where do you want to go?</h1>
     <p style="color:#2B2140">A map shows everywhere. You still have to choose where you're going.</p></div>
    <p>Nobody fixes health, wealth and relationships all at once. Try to do everything and you end up doing nothing. So you pick <b>one main quest</b>, give it most of your spoons, and keep the other two as side quests, on maintenance. Be unbalanced for a short time so you can be balanced for a long time.</p>
@@ -2028,7 +2057,7 @@ function renderHere(){
   const others=AREAS.filter(a=>a[0]!==z.up).map(a=>a[1]);
   const CHAP=CM_ST.slice(3).map((x,i)=>[String(i+4),x[6],x[7]]);
   app.innerHTML=`${topbar(`<button class="textbtn" id="back" style="text-decoration:none;font-weight:600">← My main quest</button>`)}<section class="stack g24" style="padding-top:8px">
-   <div class="yellow-stage stack g16"><span class="eyebrow" style="color:#2B2140;opacity:.7">Part 6 complete</span>
+   <div class="yellow-stage stack g16"><span class="eyebrow" style="color:#2B2140;opacity:.7">Checkpoint 3 complete</span>
     <h1 style="color:#2B2140;margin:0" tabindex="-1" id="st">You're clear.</h1>
     <p style="color:#2B2140">You know your shape, and you know where you're going first.</p>${route(7)}</div>
 
