@@ -2291,7 +2291,7 @@ function vStart(){
   <div class="stack g10">
     <span class="tag">The AuDHD Peace Treaty Wizard<sup class='tm'>TM</sup></span>
     <h1 class="ptitle" style="font-size:44px">Let's broker the <span class="hl">P.E.A.C.E.</span></h1>
-    <span class="ptchip"><i>📍</i>You are here: Level 2 · Step 5 · Make Peace</span>
+    ${ptCircle()}
     <p class="body">Your ADHD brain and your autistic brain both have a Feeling side that grabs the wheel. Your Thinking side is the one who brokers the deal.</p>
     <p class="body">Your <span class="kau"><b>Thinking Brain</b></span> and your <span class="kdh"><b>Feeling Brain</b></span> are about to sit down together. The Wizard<sup class='tm'>TM</sup> walks you through PEACE, one step at a time.</p>
   </div>
@@ -2304,7 +2304,7 @@ function vStart(){
   <button class="btn" id="go" ${S.task.trim()&&m?"":"disabled"}>Start the Wizard<sup class='tm'>TM</sup></button>
   <p class="note" id="aiNote">Runs on <b>your own Claude account</b> (the free plan works). Claude asks you once before it starts. Your words go only to Claude, and your saved cards stay on this device.</p>
   ${SITE==="claude"?`<a class="textbtn" href="https://ptk7q.pages.dev/treaty/" target="_blank" rel="noopener" style="align-self:center">See how it works again</a>`:`<button class="textbtn" id="howagain" style="align-self:center">See how it works again</button>`}`;
-  wireTop();
+  wireTop(); ptZoomIn();
   if (sampleChecked && !sample) $("#aiNote").textContent = NOAI;
   const go = $("#go");
   const upd = () => { const ta=$("#task"); S.task = ta.value; go.disabled = !(S.task.trim() && S.mode) };
