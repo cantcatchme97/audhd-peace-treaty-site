@@ -822,7 +822,7 @@ function renderWelcome(){
     <p class="lead">Never quite fit with ADHD people, or with autistic people? <b>You might be both.</b> This map walks you through Level 1, one checkpoint at a time.</p>
    </div>
    ${circleMap("start")}
-   <div class="facts"><span>About 30 minutes</span><span>Saves on this device</span><span>No login</span><span>Comes before a diagnosis</span></div>
+   <div class="facts"><span>About 30 minutes</span><span>Saves on this device</span><span>No login</span><span>Before or after a diagnosis</span></div>
    ${LEAD&&!S.email?`<form class="leadf" id="leadf" novalidate><label for="em"><b>Start free: How your AuDHD brain works</b><br><span class="small muted">About 8 minutes, interactive. We'll also email you the link so you can come back.</span></label><input type="email" id="em" name="email" autocomplete="email" placeholder="your@email.com" required><input type="text" name="bot-field" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true"><p class="small" id="emerr" style="color:var(--dh)" hidden>That email doesn't look right. Check it and try again.</p><button class="btn" type="submit">Start the free walkthrough →</button></form>`:""}
    <div class="stack g10" ${LEAD&&!S.email?"hidden":""}><button class="btn" id="go">${started?"Continue where you left off →":LEAD?"Start the free walkthrough →":"Start step 1 →"}</button>
     ${started?`<button class="textbtn" id="reset" style="align-self:center">Start over</button>`:""}</div>
